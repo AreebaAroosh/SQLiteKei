@@ -5,8 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SQLiteKei"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="SQLite Kei" Width="1024" Height="768" 
+        WindowState="Maximized">
     <Grid>
-        
+        <DockPanel HorizontalAlignment="Stretch" Height="20" LastChildFill="False" VerticalAlignment="Top">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Open"/>
+                    <MenuItem Header="_Open Recent..."/>
+                    <Separator />
+                    <MenuItem Header="_Close"/>
+                </MenuItem>
+                <MenuItem Header="_Tools">
+                    <MenuItem Header="_Preferences"/>
+                </MenuItem>
+                <MenuItem Header="_Help">
+                    <MenuItem Header="_Documentation"/>
+                    <MenuItem Header="_Check out on Github"/>
+                    <MenuItem Header="_About"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
     </Grid>
 </Window>
