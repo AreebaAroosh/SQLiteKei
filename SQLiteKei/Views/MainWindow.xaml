@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SQLiteKei"
         mc:Ignorable="d"
-        Title="SQLite Kei" Width="1024" Height="768" 
+        Title="SQLite Kei" 
+        Width="1024" Height="768" MinWidth="900" MinHeight="700"
         WindowState="Maximized">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"></RowDefinition>
-            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0" HorizontalAlignment="Stretch" LastChildFill="False" VerticalAlignment="Stretch">
@@ -31,14 +32,19 @@
                 </MenuItem>
             </Menu>
         </DockPanel>
+        <DockPanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Button x:Name="OpenDatabase" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0"/>
+            <Button x:Name="NewDatabase" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0"/>
+            <Button x:Name="DeleteDatabase" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0"/>
+        </DockPanel>
         <Grid Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" MinWidth="50" MaxWidth="250" />
+                <ColumnDefinition Width="*" MinWidth="75" MaxWidth="250" />
                 <ColumnDefinition Width="5" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <TreeView Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TreeView>
-            <GridSplitter Grid.Column="1" Width="10" Background="Black" ResizeBehavior="PreviousAndNext"/>
+            <GridSplitter Grid.Column="1" Width="10" ResizeBehavior="PreviousAndNext"/>
         </Grid>
     </Grid>
 </Window>

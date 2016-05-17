@@ -1,4 +1,8 @@
-﻿using System.Windows;
+﻿#region usings
+
+using System.Windows;
+
+#endregion
 
 namespace SQLiteKei
 {
@@ -10,6 +14,7 @@ namespace SQLiteKei
         public MainWindow()
         {
             InitializeComponent();
+            Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
         }
 
         private void MenuItem_Exit_Click(object sender, RoutedEventArgs e)
