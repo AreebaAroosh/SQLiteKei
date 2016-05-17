@@ -8,13 +8,18 @@
         Title="SQLite Kei" Width="1024" Height="768" 
         WindowState="Maximized">
     <Grid>
-        <DockPanel HorizontalAlignment="Stretch" Height="20" LastChildFill="False" VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0" HorizontalAlignment="Stretch" LastChildFill="False" VerticalAlignment="Stretch">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
-                    <MenuItem Header="_Open"/>
+                    <MenuItem Header="_Open DB"/>
                     <MenuItem Header="_Open Recent..."/>
                     <Separator />
-                    <MenuItem Header="_Close"/>
+                    <MenuItem Header="_Exit" Click="MenuItem_Exit_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Tools">
                     <MenuItem Header="_Preferences"/>
@@ -26,5 +31,14 @@
                 </MenuItem>
             </Menu>
         </DockPanel>
+        <Grid Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MinWidth="50" MaxWidth="250" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TreeView Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TreeView>
+            <GridSplitter Grid.Column="1" Width="10" Background="Black" ResizeBehavior="PreviousAndNext"/>
+        </Grid>
     </Grid>
 </Window>
