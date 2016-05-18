@@ -33,9 +33,9 @@
             </Menu>
         </DockPanel>
         <DockPanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Button x:Name="OpenDatabase" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0"/>
-            <Button x:Name="NewDatabase" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0"/>
-            <Button x:Name="DeleteDatabase" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0"/>
+            <Button x:Name="Button_OpenDatabase" Content="*" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0"/>
+            <Button x:Name="Button_NewDatabase" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="Button_NewDatabase_Click"/>
+            <Button x:Name="Button_DeleteDatabase" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0"/>
         </DockPanel>
         <Grid Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <Grid.ColumnDefinitions>
