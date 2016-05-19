@@ -4,10 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SQLiteKei"
+        xmlns:Model="clr-namespace:SQLiteKei.ViewModels" 
         mc:Ignorable="d"
         Title="SQLite Kei" 
         Width="1024" Height="768" MinWidth="900" MinHeight="700"
         WindowState="Maximized">
+    <Window.Resources>
+    </Window.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"></RowDefinition>
@@ -28,12 +32,12 @@
                 <MenuItem Header="_Help">
                     <MenuItem Header="_Documentation"/>
                     <MenuItem Header="_Check out on Github"/>
-                    <MenuItem Header="_About" Click="MenuItem_Click"/>
+                    <MenuItem Header="_About" Click="MenuItem_About_Click"/>
                 </MenuItem>
             </Menu>
         </DockPanel>
         <DockPanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Button x:Name="Button_OpenDatabase" Content="*" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0"/>
+            <Button x:Name="Button_OpenDatabase" Content="*" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="OpenDatabaseFile"/>
             <Button x:Name="Button_NewDatabase" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="Button_NewDatabase_Click"/>
             <Button x:Name="Button_DeleteDatabase" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0"/>
         </DockPanel>
@@ -43,7 +47,16 @@
                 <ColumnDefinition Width="5" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TreeView Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TreeView>
+            <TreeView x:Name="DBTreeView" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding TreeViewItems}">
+                <TreeView.Resources>
+                    <HierarchicalDataTemplate DataType="x:Type Model:DirectoryItem" ItemsSource="{Binding Items}">
+                        <TextBlock Text="{Binding Path=Name}"></TextBlock>
+                    </HierarchicalDataTemplate>
+                    <DataTemplate DataType="x:Type Model:TableItem}">
+                        <TextBlock Text="{Binding Path=Name}"></TextBlock>
+                    </DataTemplate>
+                </TreeView.Resources>
+            </TreeView>
             <GridSplitter Grid.Column="1" Width="10" ResizeBehavior="PreviousAndNext"/>
         </Grid>
     </Grid>
