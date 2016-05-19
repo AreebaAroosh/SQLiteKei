@@ -1,0 +1,26 @@
+﻿<Window x:Class="SQLiteKei.Views.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SQLiteKei.Views"
+        mc:Ignorable="d"
+        Title="About" Height="178.776" Width="265.714"
+        ResizeMode="NoResize" FontSize="10.667" FontFamily="Arial">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Label x:Name="VersionLabel" Grid.Row="0" Content="Version Placeholder" HorizontalAlignment="Left" Margin="51,18,0,0" VerticalAlignment="Top" Width="136" Height="24"/>
+        <Label x:Name="SoftwareTitle" Grid.Row="0" Content="SQLite Kei Alpha" HorizontalAlignment="Left" Margin="50,6,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Rectangle Fill="#FFF4F4F5" Grid.Row="0" HorizontalAlignment="Left" Height="39" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="35"/>
+        <Label x:Name="label" Grid.Row="0" Content="Icon" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" FontSize="8"/>
+
+        <Border Grid.Row="1" BorderThickness="1" BorderBrush="Black" Margin="5, 10, 5, 5">
+            <ScrollViewer Height="Auto" VerticalScrollBarVisibility="Auto">
+                <TextBlock x:Name="LibraryReferenceTextBlock" HorizontalAlignment="Stretch"  TextWrapping="Wrap" VerticalAlignment="Stretch" Margin="0, 0, 0, 0"/>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Window>

@@ -1,5 +1,6 @@
 ﻿#region usings
 
+using SQLiteKei.Views;
 using System.Data.SQLite;
 using System.Windows;
 using System.Windows.Forms;
@@ -41,6 +42,12 @@ namespace SQLiteKei
                     System.Windows.MessageBox.Show("Database created successfully.", "DB Creation Info", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new About();
+            window.ShowDialog();
         }
     }
 }
