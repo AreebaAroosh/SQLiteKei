@@ -1,4 +1,4 @@
-﻿namespace SQLiteKei.ViewModels
+﻿namespace SQLiteKei.ViewModels.DBTreeView
 {
     public class TreeViewItem
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SQLiteKei.ViewModels
+namespace SQLiteKei.ViewModels.DBTreeView
 {
     public class DirectoryItem : TreeViewItem
     {

@@ -1,14 +1,16 @@
 ﻿#region usings
 
 using SQLiteKei.ViewModels;
+using SQLiteKei.ViewModels.DBTreeView;
 using SQLiteKei.Views;
-
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Common;
 using System.Data.SQLite;
+using System.IO;
 using System.Windows;
 using System.Windows.Forms;
 
@@ -36,22 +38,10 @@ namespace SQLiteKei
         }
 
         public MainWindow()
-        {
-            TreeViewItems = new ObservableCollection<TreeViewItem>();
-            var directory = new DirectoryItem { Name = "Directory" };
-            directory.Items.Add(new TableItem { Name = "Item" });
-
-            TreeViewItems.Add(directory);
-
-            
-
+        {         
             InitializeComponent();
-
-            DBTreeView.ItemsSource = TreeViewItems;
             System.Windows.Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         private void MenuItem_Exit_Click(object sender, RoutedEventArgs e)
         {
@@ -85,19 +75,14 @@ namespace SQLiteKei
 
         private void OpenDatabaseFile(object sender, RoutedEventArgs e)
         {
-            //using (var dialog = new OpenFileDialog())
-            //{
-            //    dialog.Filter = "SQLite (*.sqlite)|*.sqlite";
-            //    if(dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            //    {
-            //        AddDatabaseToTreeView(dialog.FileName);
-            //    }
-            //}
-            var directory = new DirectoryItem { Name = "Directory" };
-            directory.Items.Add(new TableItem { Name = "Item" });
-
-            TreeViewItems.Add(directory);
-
+            using (var dialog = new OpenFileDialog())
+            {
+                dialog.Filter = "SQLite (*.sqlite)|*.sqlite";
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    AddDatabaseToTreeView(dialog.FileName);
+                }
+            }
         }
 
         private void AddDatabaseToTreeView(string databasePath)
@@ -108,14 +93,24 @@ namespace SQLiteKei
                 connection.ConnectionString = "Data Source=" + databasePath;
                 connection.Open();
 
-                DataTable x = connection.GetSchema("Tables");
+                DirectoryItem databaseFileTreeItem = new DirectoryItem()
+                {
+                    Name = Path.GetFileNameWithoutExtension(databasePath)
+                };
 
-                foreach(var row in x.Rows)
+                var tables = connection.GetSchema("Tables").AsEnumerable();
+
+                IEnumerable tableNames = tables.Select(x => x.ItemArray[2]);
+
+                foreach(string tableName in tableNames)
                 {
 
                 }
             }
         }
+
+        #region INotifyPropertyChanged Members
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private void NotifyPropertyChanged(string property)
         {
@@ -124,5 +119,6 @@ namespace SQLiteKei
                 PropertyChanged(this, new PropertyChangedEventArgs(property));
             }
         }
+        #endregion
     }
 }
