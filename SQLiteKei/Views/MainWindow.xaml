@@ -1,4 +1,4 @@
-﻿<Window x:Class="SQLiteKei.MainWindow"
+﻿<Window x:Name="Window" x:Class="SQLiteKei.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -37,7 +37,7 @@
         <DockPanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Button x:Name="Button_OpenDatabase" Content="*" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="OpenDatabaseFile"/>
             <Button x:Name="Button_NewDatabase" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="Button_NewDatabase_Click"/>
-            <Button x:Name="Button_RemoveDatabase" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0"/>
+            <Button x:Name="Button_RemoveDatabase" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="Button_RemoveDatabase_Click"/>
             <Button x:Name="Button_DeleteDatabase" Content="x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0"/>
         </DockPanel>
         <Grid Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
@@ -46,12 +46,23 @@
                 <ColumnDefinition Width="5" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TreeView x:Name="DBTreeView" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding TreeViewItems}">
+            <TreeView x:Name="DBTreeView" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding TreeViewItems, ElementName=Window}">
                 <TreeView.Resources>
-                    <HierarchicalDataTemplate DataType="{x:Type Model:DirectoryItem}" ItemsSource="{Binding Items}">
-                        <TextBlock Text="{Binding Path=Name}"></TextBlock>
+                    <HierarchicalDataTemplate DataType="{x:Type Model:DatabaseItem}" ItemsSource="{Binding Items}">
+                        <TextBlock Text="{Binding Name}"></TextBlock>
+                    </HierarchicalDataTemplate>
+                    <HierarchicalDataTemplate DataType="{x:Type Model:FolderItem}" ItemsSource="{Binding Items}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                            <TextBlock Text=" ("></TextBlock>
+                            <TextBlock Text="{Binding Items.Count}"></TextBlock>
+                            <TextBlock Text=")"></TextBlock>
+                        </StackPanel>
                     </HierarchicalDataTemplate>
                     <DataTemplate DataType="{x:Type Model:TableItem}">
+                        <TextBlock Text="{Binding Path=Name}"></TextBlock>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type Model:IndexItem}">
                         <TextBlock Text="{Binding Path=Name}"></TextBlock>
                     </DataTemplate>
                 </TreeView.Resources>

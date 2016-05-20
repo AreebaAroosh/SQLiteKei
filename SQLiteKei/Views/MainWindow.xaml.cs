@@ -1,10 +1,11 @@
 ﻿#region usings
 
-using SQLiteKei.ViewModels;
 using SQLiteKei.ViewModels.DBTreeView;
+using SQLiteKei.ViewModels.DBTreeView.Base;
+using SQLiteKei.ViewModels.DBTreeView.Mapping;
 using SQLiteKei.Views;
+
 using System.Collections;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
@@ -28,6 +29,8 @@ namespace SQLiteKei
         {
             get
             {
+                if(treeViewItems == null)
+                    treeViewItems = new ObservableCollection<TreeViewItem>();
                 return treeViewItems;
             }
             set
@@ -38,7 +41,7 @@ namespace SQLiteKei
         }
 
         public MainWindow()
-        {         
+        {
             InitializeComponent();
             System.Windows.Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
         }
@@ -59,6 +62,14 @@ namespace SQLiteKei
             CreateDatabaseFromFileDialog();
         }
 
+        private void Button_RemoveDatabase_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = DBTreeView.SelectedItem as DatabaseItem;
+
+            if (selectedItem != null)
+                TreeViewItems.Remove(selectedItem);
+        }
+
         private void CreateDatabaseFromFileDialog()
         {
             using (var dialog = new SaveFileDialog())
@@ -68,7 +79,7 @@ namespace SQLiteKei
                 {
                     SQLiteConnection.CreateFile(dialog.FileName);
                     //TODO: remove the message box when the newly generated database is shown and selected in main tree view automatically
-                    System.Windows.MessageBox.Show("Database created successfully.", "DB Creation Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                    AddDatabaseSchemaToTreeView(dialog.FileName);
                 }
             }
         }
@@ -80,33 +91,17 @@ namespace SQLiteKei
                 dialog.Filter = "SQLite (*.sqlite)|*.sqlite";
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    AddDatabaseToTreeView(dialog.FileName);
+                    AddDatabaseSchemaToTreeView(dialog.FileName);
                 }
             }
         }
 
-        private void AddDatabaseToTreeView(string databasePath)
+        private void AddDatabaseSchemaToTreeView(string databasePath)
         {
-            var factory = DbProviderFactories.GetFactory("System.Data.SQLite");
-            using (var connection = factory.CreateConnection())
-            {
-                connection.ConnectionString = "Data Source=" + databasePath;
-                connection.Open();
+            var schemaMapper = new SchemaToViewModelMapper();
+            DatabaseItem databaseItem = schemaMapper.MapSchemaToViewModel(databasePath);
 
-                DirectoryItem databaseFileTreeItem = new DirectoryItem()
-                {
-                    Name = Path.GetFileNameWithoutExtension(databasePath)
-                };
-
-                var tables = connection.GetSchema("Tables").AsEnumerable();
-
-                IEnumerable tableNames = tables.Select(x => x.ItemArray[2]);
-
-                foreach(string tableName in tableNames)
-                {
-
-                }
-            }
+            TreeViewItems.Add(databaseItem);
         }
 
         #region INotifyPropertyChanged Members

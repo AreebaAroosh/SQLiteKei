@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace SQLiteKei.ViewModels.DBTreeView
+namespace SQLiteKei.ViewModels.DBTreeView.Base
 {
-    public class DirectoryItem : TreeViewItem
+    public abstract class DirectoryItem : TreeViewItem
     {
         public List<TreeViewItem> Items { get; set; }
 
