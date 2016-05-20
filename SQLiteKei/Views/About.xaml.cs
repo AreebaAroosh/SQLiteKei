@@ -1,6 +1,8 @@
 ﻿#region usings
 
+using System.Diagnostics;
 using System.Windows;
+using System.Windows.Navigation;
 
 #endregion
 
@@ -28,6 +30,12 @@ namespace SQLiteKei.Views
                                            .ToString();
 
             return string.Format("Version {0}", assemblyVersion);
+        }
+
+        private void CheckoutOnGithub(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
         }
     }
 }
