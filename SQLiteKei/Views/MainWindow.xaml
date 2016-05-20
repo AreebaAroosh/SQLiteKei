@@ -19,8 +19,7 @@
         <DockPanel Grid.Row="0" HorizontalAlignment="Stretch" LastChildFill="False" VerticalAlignment="Stretch">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
-                    <MenuItem Header="_Open DB"/>
-                    <MenuItem Header="_Open Recent..."/>
+                    <MenuItem Header="_Open Database" Click="OpenDatabaseFile"/>
                     <Separator />
                     <MenuItem Header="_Exit" Click="MenuItem_Exit_Click"/>
                 </MenuItem>
