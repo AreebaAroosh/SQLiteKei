@@ -5,14 +5,9 @@ using SQLiteKei.ViewModels.DBTreeView.Base;
 using SQLiteKei.ViewModels.DBTreeView.Mapping;
 using SQLiteKei.Views;
 
-using System.Collections;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Data;
-using System.Data.Common;
 using System.Data.SQLite;
-using System.Diagnostics;
-using System.IO;
 using System.Windows;
 using System.Windows.Forms;
 
@@ -58,9 +53,17 @@ namespace SQLiteKei
             window.ShowDialog();
         }
 
-        private void Button_NewDatabase_Click(object sender, RoutedEventArgs e)
+        private void CreateNewDatabase(object sender, RoutedEventArgs e)
         {
-            CreateDatabaseFromFileDialog();
+            using (var dialog = new SaveFileDialog())
+            {
+                dialog.Filter = "SQLite (*.sqlite)|*.sqlite";
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    SQLiteConnection.CreateFile(dialog.FileName);
+                    AddDatabaseSchemaToTreeView(dialog.FileName);
+                }
+            }
         }
 
         private void Button_RemoveDatabase_Click(object sender, RoutedEventArgs e)
@@ -69,20 +72,6 @@ namespace SQLiteKei
 
             if (selectedItem != null)
                 TreeViewItems.Remove(selectedItem);
-        }
-
-        private void CreateDatabaseFromFileDialog()
-        {
-            using (var dialog = new SaveFileDialog())
-            {
-                dialog.Filter = "SQLite (*.sqlite)|*.sqlite";
-                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    SQLiteConnection.CreateFile(dialog.FileName);
-                    //TODO: remove the message box when the newly generated database is shown and selected in main tree view automatically
-                    AddDatabaseSchemaToTreeView(dialog.FileName);
-                }
-            }
         }
 
         private void OpenDatabaseFile(object sender, RoutedEventArgs e)

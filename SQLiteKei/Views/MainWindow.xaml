@@ -9,7 +9,6 @@
         Title="SQLite Kei" 
         Width="1024" Height="768" MinWidth="900" MinHeight="700"
         WindowState="Maximized">
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"></RowDefinition>
@@ -20,6 +19,7 @@
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
                     <MenuItem Header="_Open Database" Click="OpenDatabaseFile"/>
+                    <MenuItem Header="_Create Database" Click="CreateNewDatabase"/>
                     <Separator />
                     <MenuItem Header="_Exit" Click="MenuItem_Exit_Click"/>
                 </MenuItem>
@@ -34,7 +34,7 @@
         </DockPanel>
         <DockPanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Button x:Name="Button_OpenDatabase" Content="*" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="OpenDatabaseFile"/>
-            <Button x:Name="Button_NewDatabase" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="Button_NewDatabase_Click"/>
+            <Button x:Name="Button_NewDatabase" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="CreateNewDatabase"/>
             <Button x:Name="Button_RemoveDatabase" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="Button_RemoveDatabase_Click"/>
             <Button x:Name="Button_DeleteDatabase" Content="x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0"/>
         </DockPanel>
