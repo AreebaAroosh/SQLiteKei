@@ -7,23 +7,35 @@
         mc:Ignorable="d"
         Title="About" Height="178.776" Width="265.714"
         ResizeMode="NoResize" FontSize="10.667" FontFamily="Arial"
-        Icon="../Resources/Icons/Logo_32x32.png">
+        Icon="../Resources/Icons/Logo_32x32.png"
+        Background="#2D2D30">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Label x:Name="VersionLabel" Grid.Row="0" Content="Version Placeholder" HorizontalAlignment="Left" Margin="53,15,0,0" VerticalAlignment="Top" Width="136" Height="24"/>
-        <Label x:Name="SoftwareTitle" Grid.Row="0" Content="SQLite Kei Alpha" HorizontalAlignment="Left" Margin="52,3,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <TextBlock Grid.Row="0" Margin="57,39,80,0">           
+        <Label x:Name="SoftwareTitle" Grid.Row="0" Content="SQLite Kei Alpha" Foreground="#EEE" HorizontalAlignment="Left" Margin="52,3,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="VersionLabel" Grid.Row="0" Content="Version Unknown" Foreground="#EEE" HorizontalAlignment="Left" Margin="53,15,0,0" VerticalAlignment="Top" Width="136" Height="24"/>
+        <TextBlock Grid.Row="0" Margin="57,39,80,0">
+            <TextBlock.Resources>
+                <Style x:Key="{x:Type Hyperlink}" TargetType="{x:Type Hyperlink}">
+                    <Setter Property="Foreground" Value="#ABC"/>
+                    <Setter Property="TextDecorations" Value="Underline"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="#DDD" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Resources>
             <Hyperlink NavigateUri="https://github.com/shaezonai/SQLiteKei" RequestNavigate="CheckoutOnGithub">
                 Check out on Github
             </Hyperlink>
         </TextBlock>
         <Image x:Name="image" Source="../Resources/Icons/Logo_64x64.png"  Grid.Row="0" HorizontalAlignment="Left" Height="47" Margin="5,6,0,0"  VerticalAlignment="Top" Width="47" Grid.RowSpan="2"/>
-        <Border Grid.Row="1" BorderThickness="1" BorderBrush="Black" Margin="5, 10, 5, 5">
+        <Border Grid.Row="1" BorderThickness="1" BorderBrush="#3F3F46" Margin="5, 10, 5, 5">
             <ScrollViewer Height="Auto" VerticalScrollBarVisibility="Auto">
-                <TextBlock x:Name="LibraryReferenceTextBlock" HorizontalAlignment="Stretch"  TextWrapping="Wrap" VerticalAlignment="Stretch" Margin="0, 0, 0, 0"/>
+                <TextBlock x:Name="LibraryReferenceTextBlock" Foreground="#EEE" HorizontalAlignment="Stretch"  TextWrapping="Wrap" VerticalAlignment="Stretch" Padding="5, 5, 2, 5"/>
             </ScrollViewer>
         </Border>
 
