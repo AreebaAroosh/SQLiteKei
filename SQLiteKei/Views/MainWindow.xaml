@@ -11,9 +11,9 @@
         WindowState="Maximized">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"></RowDefinition>
-            <RowDefinition Height="30"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0" HorizontalAlignment="Stretch" LastChildFill="False" VerticalAlignment="Stretch">
             <Menu DockPanel.Dock="Top">
@@ -49,21 +49,21 @@
             <TreeView x:Name="DBTreeView" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding TreeViewItems, ElementName=Window}">
                 <TreeView.Resources>
                     <HierarchicalDataTemplate DataType="{x:Type Model:DatabaseItem}" ItemsSource="{Binding Items}">
-                        <TextBlock Text="{Binding Name}"></TextBlock>
+                        <TextBlock Text="{Binding Name}" ToolTip="{Binding FilePath}" />
                     </HierarchicalDataTemplate>
                     <HierarchicalDataTemplate DataType="{x:Type Model:FolderItem}" ItemsSource="{Binding Items}">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Name}"></TextBlock>
-                            <TextBlock Text=" ("></TextBlock>
-                            <TextBlock Text="{Binding Items.Count}"></TextBlock>
-                            <TextBlock Text=")"></TextBlock>
+                            <TextBlock Text="{Binding Name}" />
+                            <TextBlock Text=" (" />
+                            <TextBlock Text="{Binding Items.Count}" />
+                            <TextBlock Text=")" />
                         </StackPanel>
                     </HierarchicalDataTemplate>
                     <DataTemplate DataType="{x:Type Model:TableItem}">
-                        <TextBlock Text="{Binding Path=Name}"></TextBlock>
+                        <TextBlock Text="{Binding Path=Name}" />
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type Model:IndexItem}">
-                        <TextBlock Text="{Binding Path=Name}"></TextBlock>
+                        <TextBlock Text="{Binding Path=Name}" />
                     </DataTemplate>
                 </TreeView.Resources>
             </TreeView>
