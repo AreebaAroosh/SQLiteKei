@@ -29,7 +29,8 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
 
                 var databaseItem = new DatabaseItem()
                 {
-                    Name = Path.GetFileNameWithoutExtension(databasePath)
+                    Name = Path.GetFileNameWithoutExtension(databasePath),
+                    FilePath = databasePath
                 };
 
                 FolderItem tableFolder = MapTables(connection.GetSchema("Tables"));

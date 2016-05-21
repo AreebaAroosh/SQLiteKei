@@ -37,6 +37,8 @@
             <Button x:Name="Button_NewDatabase" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="CreateNewDatabase"/>
             <Button x:Name="Button_RemoveDatabase" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="Button_RemoveDatabase_Click"/>
             <Button x:Name="Button_DeleteDatabase" Content="x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0"/>
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="5, 5, 0, 0" />
+            <Button x:Name="Button_CreateQuery" Content="x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0"/>
         </DockPanel>
         <Grid Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <Grid.ColumnDefinitions>
@@ -66,6 +68,14 @@
                 </TreeView.Resources>
             </TreeView>
             <GridSplitter Grid.Column="1" Width="10" ResizeBehavior="PreviousAndNext"/>
+            <TabControl x:Name="MainTabControl" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <TabItem Header="TabItem">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+                <TabItem Header="TabItem">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+            </TabControl>
         </Grid>
     </Grid>
 </Window>
