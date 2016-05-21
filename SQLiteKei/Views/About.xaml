@@ -6,25 +6,26 @@
         xmlns:local="clr-namespace:SQLiteKei.Views"
         mc:Ignorable="d"
         Title="About" Height="178.776" Width="265.714"
-        ResizeMode="NoResize" FontSize="10.667" FontFamily="Arial">
+        ResizeMode="NoResize" FontSize="10.667" FontFamily="Arial"
+        Icon="../Resources/Icons/Logo_32x32.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Label x:Name="VersionLabel" Grid.Row="0" Content="Version Placeholder" HorizontalAlignment="Left" Margin="51,18,0,0" VerticalAlignment="Top" Width="136" Height="24"/>
-        <Label x:Name="SoftwareTitle" Grid.Row="0" Content="SQLite Kei Alpha" HorizontalAlignment="Left" Margin="50,6,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Rectangle Fill="#FFF4F4F5" Grid.Row="0" HorizontalAlignment="Left" Height="39" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="35"/>
-        <Label x:Name="label" Grid.Row="0" Content="Icon" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" FontSize="8"/>
+        <Label x:Name="VersionLabel" Grid.Row="0" Content="Version Placeholder" HorizontalAlignment="Left" Margin="53,15,0,0" VerticalAlignment="Top" Width="136" Height="24"/>
+        <Label x:Name="SoftwareTitle" Grid.Row="0" Content="SQLite Kei Alpha" HorizontalAlignment="Left" Margin="52,3,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <TextBlock Grid.Row="0" Margin="57,39,80,0">           
             <Hyperlink NavigateUri="https://github.com/shaezonai/SQLiteKei" RequestNavigate="CheckoutOnGithub">
                 Check out on Github
             </Hyperlink>
         </TextBlock>
+        <Image x:Name="image" Source="../Resources/Icons/Logo_64x64.png"  Grid.Row="0" HorizontalAlignment="Left" Height="47" Margin="5,6,0,0"  VerticalAlignment="Top" Width="47" Grid.RowSpan="2"/>
         <Border Grid.Row="1" BorderThickness="1" BorderBrush="Black" Margin="5, 10, 5, 5">
             <ScrollViewer Height="Auto" VerticalScrollBarVisibility="Auto">
                 <TextBlock x:Name="LibraryReferenceTextBlock" HorizontalAlignment="Stretch"  TextWrapping="Wrap" VerticalAlignment="Stretch" Margin="0, 0, 0, 0"/>
             </ScrollViewer>
         </Border>
+
     </Grid>
 </Window>
