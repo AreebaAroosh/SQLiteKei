@@ -2,13 +2,13 @@
 
 namespace SQLiteKei.ViewModels.DBTreeView.Base
 {
-    public abstract class DirectoryItem : TreeViewItem
+    public abstract class DirectoryItem : TreeItem
     {
-        public List<TreeViewItem> Items { get; set; }
+        public List<TreeItem> Items { get; set; }
 
         public DirectoryItem()
         {
-            Items = new List<TreeViewItem>();
+            Items = new List<TreeItem>();
         }
     }
 }

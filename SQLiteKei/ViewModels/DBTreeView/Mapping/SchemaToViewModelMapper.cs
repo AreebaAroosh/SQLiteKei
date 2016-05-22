@@ -39,6 +39,8 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
                 databaseItem.Items.Add(tableFolder);
                 databaseItem.Items.Add(indexFolder);
 
+                databaseItem.NumberOfTables = tableFolder.Items.Count;
+
                 return databaseItem;
             }
         }
@@ -46,13 +48,18 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
         private FolderItem MapTables(DataTable schema)
         {
             var tables = schema.AsEnumerable();
-            IEnumerable tableNames = tables.Select(x => x.ItemArray[2]);
+
+            var tableViewItems = tables.Select(x => new TableItem
+            {
+                Name = x.ItemArray[2].ToString(),
+                TableCreateStatement = x.ItemArray[6].ToString()
+            });
 
             var tableFolder = new FolderItem { Name = "Tables" };
 
-            foreach (string tableName in tableNames)
+            foreach (var item in tableViewItems)
             {
-                tableFolder.Items.Add(new TableItem { Name = tableName });
+                tableFolder.Items.Add(item);
             }
 
             return tableFolder;

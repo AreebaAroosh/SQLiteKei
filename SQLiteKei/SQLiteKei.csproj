@@ -92,6 +92,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Helpers\DatabaseTabGenerator.cs" />
     <Compile Include="ViewModels\DBTreeView\Base\DirectoryItem.cs" />
     <Compile Include="ViewModels\DBTreeView\Base\TreeViewItem.cs" />
     <Compile Include="ViewModels\DBTreeView\DatabaseItem.cs" />

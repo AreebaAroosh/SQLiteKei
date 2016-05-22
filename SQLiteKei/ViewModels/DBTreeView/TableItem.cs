@@ -2,7 +2,8 @@
 
 namespace SQLiteKei.ViewModels.DBTreeView
 {
-    public class TableItem : TreeViewItem
+    public class TableItem : TreeItem
     {
+        public string TableCreateStatement { get; set; }
     }
 }

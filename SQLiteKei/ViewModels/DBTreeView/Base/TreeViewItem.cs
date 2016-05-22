@@ -1,6 +1,6 @@
 ﻿namespace SQLiteKei.ViewModels.DBTreeView.Base
 {
-    public abstract class TreeViewItem
+    public abstract class TreeItem
     {
         public string Name { get; set; }
     }

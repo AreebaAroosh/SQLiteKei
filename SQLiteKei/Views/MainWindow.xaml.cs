@@ -1,5 +1,6 @@
 ﻿#region usings
 
+using SQLiteKei.Helpers;
 using SQLiteKei.ViewModels.DBTreeView;
 using SQLiteKei.ViewModels.DBTreeView.Base;
 using SQLiteKei.ViewModels.DBTreeView.Mapping;
@@ -9,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data.SQLite;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Forms;
 
 #endregion
@@ -20,13 +22,13 @@ namespace SQLiteKei
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        private ObservableCollection<TreeViewItem> treeViewItems;
-        public ObservableCollection<TreeViewItem> TreeViewItems
+        private ObservableCollection<TreeItem> treeViewItems;
+        public ObservableCollection<TreeItem> TreeViewItems
         {
             get
             {
                 if(treeViewItems == null)
-                    treeViewItems = new ObservableCollection<TreeViewItem>();
+                    treeViewItems = new ObservableCollection<TreeItem>();
                 return treeViewItems;
             }
             set
@@ -92,6 +94,25 @@ namespace SQLiteKei
             DatabaseItem databaseItem = schemaMapper.MapSchemaToViewModel(databasePath);
 
             TreeViewItems.Add(databaseItem);
+        }
+
+        private void DBTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            ResetTabControl();
+            var currentSelection = (TreeItem)DBTreeView.SelectedItem;
+
+            var tabs = DatabaseTabGenerator.GenerateTabsFor(currentSelection);
+
+            foreach (TabItem tab in tabs)
+                MainTabControl.Items.Add(tab);    
+        }
+
+        private void ResetTabControl()
+        {
+            var openTabs = MainTabControl.Items.Count;
+
+            for (int i = openTabs-1; i >= 0; i--)
+                MainTabControl.Items.RemoveAt(i);
         }
 
         #region INotifyPropertyChanged Members

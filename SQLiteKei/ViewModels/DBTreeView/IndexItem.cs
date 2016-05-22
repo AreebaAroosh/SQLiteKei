@@ -2,7 +2,7 @@
 
 namespace SQLiteKei.ViewModels.DBTreeView
 {
-    public class IndexItem : TreeViewItem
+    public class IndexItem : TreeItem
     {
     }
 }

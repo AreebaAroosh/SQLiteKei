@@ -20,8 +20,8 @@
         <DockPanel Grid.Row="0" HorizontalAlignment="Stretch" LastChildFill="False" VerticalAlignment="Stretch">
             <Menu DockPanel.Dock="Top" Background="#2D2D30" Foreground="#EEEEEE">
                 <MenuItem Header="_File" Background="#2D2D30">
+                    <MenuItem Header="_New Database" Click="CreateNewDatabase" Background="#2D2D30"/>
                     <MenuItem Header="_Open Database" Click="OpenDatabaseFile" Background="#2D2D30"/>
-                    <MenuItem Header="_Create Database" Click="CreateNewDatabase" Background="#2D2D30"/>
                     <Separator Background="#2D2D30"/>
                     <MenuItem Header="_Exit" Click="MenuItem_Exit_Click" Background="#2D2D30"/>
                 </MenuItem>
@@ -49,7 +49,11 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Border Grid.Column="0" BorderThickness="1" BorderBrush="#3F3F46">
-            <TreeView x:Name="DBTreeView" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding TreeViewItems, ElementName=Window}">
+            <TreeView x:Name="DBTreeView" 
+                      Grid.Column="0" 
+                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                      SelectedItemChanged="DBTreeView_SelectedItemChanged"
+                      ItemsSource="{Binding TreeViewItems, ElementName=Window}">
                 <TreeView.Resources>
                     <HierarchicalDataTemplate DataType="{x:Type Model:DatabaseItem}" ItemsSource="{Binding Items}">
                         <TextBlock Text="{Binding Name}" ToolTip="{Binding FilePath}" />
@@ -73,9 +77,14 @@
             </Border>
             <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" ResizeBehavior="PreviousAndNext" Background="#3F3F46"/>
             <TabControl x:Name="MainTabControl" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <TabItem Header="Test">
-
-                </TabItem>
+                <TabItem Header="Test" />
+                <TabItem Header="Test" />
+                <TabItem Header="Test" />
+                <TabItem Header="Test" />
+                <TabItem Header="Test" />
+                <TabItem Header="Test" />
+                <TabItem Header="Test" />
+                <TabItem Header="Test" />
             </TabControl>
         </Grid>
     </Grid>
