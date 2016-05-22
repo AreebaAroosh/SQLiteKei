@@ -80,6 +80,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="UserControls\DatabaseGeneralTabContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\About.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -93,6 +97,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helpers\DatabaseTabGenerator.cs" />
+    <Compile Include="UserControls\DatabaseGeneralTabContent.xaml.cs">
+      <DependentUpon>DatabaseGeneralTabContent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\DBTreeView\Base\DirectoryItem.cs" />
     <Compile Include="ViewModels\DBTreeView\Base\TreeViewItem.cs" />
     <Compile Include="ViewModels\DBTreeView\DatabaseItem.cs" />

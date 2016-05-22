@@ -77,14 +77,7 @@
             </Border>
             <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" ResizeBehavior="PreviousAndNext" Background="#3F3F46"/>
             <TabControl x:Name="MainTabControl" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <TabItem Header="Test" />
-                <TabItem Header="Test" />
-                <TabItem Header="Test" />
-                <TabItem Header="Test" />
-                <TabItem Header="Test" />
-                <TabItem Header="Test" />
-                <TabItem Header="Test" />
-                <TabItem Header="Test" />
+                <TabItem Header="General" />
             </TabControl>
         </Grid>
     </Grid>

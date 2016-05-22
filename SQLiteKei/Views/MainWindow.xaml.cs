@@ -104,7 +104,9 @@ namespace SQLiteKei
             var tabs = DatabaseTabGenerator.GenerateTabsFor(currentSelection);
 
             foreach (TabItem tab in tabs)
-                MainTabControl.Items.Add(tab);    
+                MainTabControl.Items.Add(tab);
+
+            MainTabControl.SelectedIndex = 0;
         }
 
         private void ResetTabControl()

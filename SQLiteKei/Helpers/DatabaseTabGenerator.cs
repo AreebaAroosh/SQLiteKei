@@ -6,6 +6,7 @@ using SQLiteKei.ViewModels.DBTreeView.Base;
 using System.Collections.Generic;
 using System.Windows.Controls;
 using System;
+using SQLiteKei.UserControls;
 
 #endregion
 
@@ -47,6 +48,7 @@ namespace SQLiteKei.Helpers
             var tabs = new List<TabItem>();
 
             TabItem generalTab = new TabItem() { Header = "General" };
+            generalTab.Content = new DatabaseGeneralTabContent();
 
             tabs.Add(generalTab);
 
