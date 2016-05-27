@@ -96,11 +96,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataHandling\CreateCommandBuilder.cs" />
-    <Compile Include="DataHandling\DataType.cs" />
-    <Compile Include="DataHandling\DbCommandBuilder.cs" />
-    <Compile Include="DataHandling\SelectCommandBuilder.cs" />
-    <Compile Include="Exceptions\DataHandling\QueryBuilderException.cs" />
+    <Compile Include="Queries\Builders\CreateQueryBuilder.cs" />
+    <Compile Include="Queries\Enums\DataType.cs" />
+    <Compile Include="Queries\Builders\QueryBuilder.cs" />
+    <Compile Include="Queries\Builders\SelectQueryBuilder.cs" />
+    <Compile Include="Exceptions\Queries\QueryBuilderException.cs" />
     <Compile Include="Helpers\DatabaseTabGenerator.cs" />
     <Compile Include="UserControls\DatabaseGeneralTabContent.xaml.cs">
       <DependentUpon>DatabaseGeneralTabContent.xaml</DependentUpon>

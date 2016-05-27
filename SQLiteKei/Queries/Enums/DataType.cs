@@ -1,4 +1,4 @@
-﻿namespace SQLiteKei.DataHandling
+﻿namespace SQLiteKei.Queries.Enums
 {
     public enum DataType
     {

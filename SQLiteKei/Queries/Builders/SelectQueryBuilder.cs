@@ -6,18 +6,18 @@ using System.Data.Common;
 
 #endregion
 
-namespace SQLiteKei.DataHandling
+namespace SQLiteKei.DataHandling.Queries.Builders
 {
-    public class SelectCommandBuilder : DbCommandBuilder
+    public class SelectQueryBuilder : QueryBuilder
     {
         private string select;
 
-        public SelectCommandBuilder(string select)
+        public SelectQueryBuilder(string select)
         {
             this.select = select;
         }
 
-        public SelectCommandBuilder From(string tableName)
+        public SelectQueryBuilder From(string tableName)
         {
             table = tableName;
             return this;
