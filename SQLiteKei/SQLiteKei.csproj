@@ -97,6 +97,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Queries\Builders\CreateQueryBuilder.cs" />
+    <Compile Include="Queries\Data\ColumnData.cs" />
     <Compile Include="Queries\Enums\DataType.cs" />
     <Compile Include="Queries\Builders\QueryBuilder.cs" />
     <Compile Include="Queries\Builders\SelectQueryBuilder.cs" />

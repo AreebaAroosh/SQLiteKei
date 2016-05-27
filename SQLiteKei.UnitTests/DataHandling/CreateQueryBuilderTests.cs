@@ -2,8 +2,9 @@
 
 using NUnit.Framework;
 
-using SQLiteKei.DataHandling;
-using SQLiteKei.Exceptions.DataHandling;
+using SQLiteKei.Exceptions.Queries;
+using SQLiteKei.Queries.Builders;
+using SQLiteKei.Queries.Enums;
 
 #endregion
 

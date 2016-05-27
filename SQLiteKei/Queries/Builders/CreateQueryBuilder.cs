@@ -1,11 +1,12 @@
 ﻿#region usings
 
-using SQLiteKei.Exceptions.DataHandling;
+using SQLiteKei.Exceptions.Queries;
+using SQLiteKei.Queries.Data;
 using SQLiteKei.Queries.Enums;
 
 using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 #endregion
 
@@ -13,39 +14,55 @@ namespace SQLiteKei.Queries.Builders
 {
     public class CreateQueryBuilder : QueryBuilder
     {
-        private List<string> Columns { get; set; } 
+        private List<ColumnData> Columns { get; set; } 
 
         public CreateQueryBuilder(string table)
         {
             this.table = table;
-            Columns = new List<string>();
+            Columns = new List<ColumnData>();
         }
 
         public CreateQueryBuilder AddColumn(string columnName, DataType dataType, bool isPrimary = false, bool isNullable = false)
         {
             if(string.IsNullOrWhiteSpace(columnName))
             {
-                throw new QueryBuilderException("Table could not be created. One or more column names were null or empty.");
+                throw new QueryBuilderException("Create query could not be built. A provided column name was null or empty.");
             }
 
-            var cleanColumnName = Regex.Replace(columnName, @"\s+", "");
-            var column = new StringBuilder(cleanColumnName + " " + dataType);
+            CheckIfColumnAlreadyAdded(columnName);
 
-            if (isPrimary)
-                column.Append(" PRIMARY KEY");
+            var columnData = new ColumnData
+            {
+                ColumnName = columnName,
+                DataType = dataType,
+                IsPrimary = isPrimary,
+                IsNullable = isNullable
+            };
 
-            if (!isNullable || isPrimary)
-                column.Append(" NOT NULL");
-
-            Columns.Add(column.ToString());
+            Columns.Add(columnData);
             return this;
+        }
+
+        private void CheckIfColumnAlreadyAdded(string columnName)
+        {
+            var result = Columns.Find(c => c.ColumnName.Equals(columnName));
+
+            if(result != null)
+            {
+                throw new QueryBuilderException("Create query could not be built. A column has was provided multiple times.");
+            }
         }
 
         public override string Build()
         {
             if(string.IsNullOrWhiteSpace(table))
             {
-                throw new QueryBuilderException("Table could not be created. An invalid table name has been provided.");
+                throw new QueryBuilderException("Create query could not be built. An empty or invalid table name has been provided.");
+            }
+
+            if(!Columns.Any())
+            {
+                throw new QueryBuilderException("Create query could not be built. No columns were provided.");
             }
 
             string columns = string.Join(",\n", Columns);

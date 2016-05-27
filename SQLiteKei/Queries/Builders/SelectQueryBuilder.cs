@@ -2,11 +2,9 @@
 
 using System;
 
-using System.Data.Common;
-
 #endregion
 
-namespace SQLiteKei.DataHandling.Queries.Builders
+namespace SQLiteKei.Queries.Builders
 {
     public class SelectQueryBuilder : QueryBuilder
     {

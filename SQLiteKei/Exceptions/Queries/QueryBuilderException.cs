@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SQLiteKei.Exceptions.DataHandling
+namespace SQLiteKei.Exceptions.Queries
 {
     public class QueryBuilderException : Exception
     {

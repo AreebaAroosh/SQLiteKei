@@ -4,8 +4,6 @@
     {
         protected string table;
 
-        protected string where;
-
         public static SelectQueryBuilder Select(string select)
         {
             return new SelectQueryBuilder(select);
