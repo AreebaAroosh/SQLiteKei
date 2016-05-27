@@ -1,5 +1,8 @@
 ﻿namespace SQLiteKei.Queries.Builders
 {
+    /// <summary>
+    /// Allows to build SQL query strings 
+    /// </summary>
     public abstract class QueryBuilder
     {
         protected string table;

@@ -5,7 +5,6 @@ using SQLiteKei.Queries.Data;
 using SQLiteKei.Queries.Enums;
 
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using System.Linq;
 
 #endregion
@@ -14,7 +13,9 @@ namespace SQLiteKei.Queries.Builders
 {
     public class CreateQueryBuilder : QueryBuilder
     {
-        private List<ColumnData> Columns { get; set; } 
+        private List<ColumnData> Columns { get; set; }
+
+        private bool primaryKeyAdded;
 
         public CreateQueryBuilder(string table)
         {
@@ -26,10 +27,18 @@ namespace SQLiteKei.Queries.Builders
         {
             if(string.IsNullOrWhiteSpace(columnName))
             {
-                throw new QueryBuilderException("Create query could not be built. A provided column name was null or empty.");
+                throw new CreateQueryBuilderException("A provided column name was null or empty.");
             }
 
             CheckIfColumnAlreadyAdded(columnName);
+
+            if(isPrimary)
+            {
+                if (primaryKeyAdded)
+                    throw new CreateQueryBuilderException("Multiple primary keys were defined.");
+
+                primaryKeyAdded = true;
+            }
 
             var columnData = new ColumnData
             {
@@ -49,7 +58,7 @@ namespace SQLiteKei.Queries.Builders
 
             if(result != null)
             {
-                throw new QueryBuilderException("Create query could not be built. A column has was provided multiple times.");
+                throw new CreateQueryBuilderException("A column has was provided multiple times.");
             }
         }
 
@@ -57,12 +66,12 @@ namespace SQLiteKei.Queries.Builders
         {
             if(string.IsNullOrWhiteSpace(table))
             {
-                throw new QueryBuilderException("Create query could not be built. An empty or invalid table name has been provided.");
+                throw new CreateQueryBuilderException("An empty or invalid table name has been provided.");
             }
 
             if(!Columns.Any())
             {
-                throw new QueryBuilderException("Create query could not be built. No columns were provided.");
+                throw new CreateQueryBuilderException("No columns were provided.");
             }
 
             string columns = string.Join(",\n", Columns);

@@ -8,7 +8,7 @@ using SQLiteKei.Queries.Enums;
 
 #endregion
 
-namespace SQLiteKei.UnitTests.DataHandling
+namespace SQLiteKei.UnitTests.Queries
 {
     [TestFixture]
     public class CreateQueryBuilderTests
@@ -16,7 +16,7 @@ namespace SQLiteKei.UnitTests.DataHandling
         [Test]
         public void Build_WithValidData_ReturnsValidCommand()
         {
-            const string EXPECTED_COMMAND = "CREATE TABLE Table\n(\nColumn1 Integer PRIMARY KEY NOT NULL,\nColumn2 Text NOT NULL\n);";
+            const string EXPECTED_QUERY = "CREATE TABLE Table\n(\nColumn1 Integer PRIMARY KEY NOT NULL,\nColumn2 Text NOT NULL\n);";
 
             var result = QueryBuilder
                 .Create("Table")
@@ -24,13 +24,13 @@ namespace SQLiteKei.UnitTests.DataHandling
                 .AddColumn("Column2", DataType.Text)
                 .Build();
 
-            Assert.AreEqual(EXPECTED_COMMAND, result);
+            Assert.AreEqual(EXPECTED_QUERY, result);
         }
 
         [Test]
         public void Build_WithNulledTableName_ThrowsException()
         {
-            Assert.Throws(typeof(QueryBuilderException),
+            Assert.Throws(typeof(CreateQueryBuilderException),
                 () => QueryBuilder.Create(null)
                 .AddColumn("Column", DataType.Bool)
                 .Build());
@@ -39,7 +39,7 @@ namespace SQLiteKei.UnitTests.DataHandling
         [Test]
         public void Build_WithEmptyTableName_ThrowsException()
         {
-            Assert.Throws(typeof(QueryBuilderException),
+            Assert.Throws(typeof(CreateQueryBuilderException),
                 () => QueryBuilder.Create(string.Empty)
                 .AddColumn("Column", DataType.Bool)
                 .Build());
@@ -48,7 +48,7 @@ namespace SQLiteKei.UnitTests.DataHandling
         [Test]
         public void Build_WithWhitespacedTableName_ThrowsException()
         {
-            Assert.Throws(typeof(QueryBuilderException),
+            Assert.Throws(typeof(CreateQueryBuilderException),
                 () => QueryBuilder.Create("  ")
                 .AddColumn("Column", DataType.Bool)
                 .Build());
@@ -57,7 +57,7 @@ namespace SQLiteKei.UnitTests.DataHandling
         [Test]
         public void Build_WithoutColumn_ThrowsException()
         {
-            Assert.Throws(typeof(QueryBuilderException),
+            Assert.Throws(typeof(CreateQueryBuilderException),
                 () => QueryBuilder.Create("Table")
                 .Build());
         }
@@ -65,7 +65,7 @@ namespace SQLiteKei.UnitTests.DataHandling
         [Test]
         public void Build_WithColumnsWithTheSameName_ThrowsException()
         {
-            Assert.Throws(typeof(QueryBuilderException),
+            Assert.Throws(typeof(CreateQueryBuilderException),
                 () => QueryBuilder.Create("Table")
                 .AddColumn("Column", DataType.Bool)
                 .AddColumn("Column", DataType.Blob)
@@ -75,17 +75,17 @@ namespace SQLiteKei.UnitTests.DataHandling
         [Test]
         public void Build_WithMultiplePrimaryKeys_ThrowsException()
         {
-            Assert.Throws(typeof(QueryBuilderException),
+            Assert.Throws(typeof(CreateQueryBuilderException),
                 () => QueryBuilder.Create("Table")
-                .AddColumn("Column", DataType.Bool)
-                .AddColumn("Column", DataType.Blob)
+                .AddColumn("Column", DataType.Bool, true)
+                .AddColumn("Column1", DataType.Blob, true)
                 .Build());
         }
 
         [Test]
         public void AddColumn_WithEmptyColumnName_ThrowsException()
         {
-            Assert.Throws(typeof(QueryBuilderException),
+            Assert.Throws(typeof(CreateQueryBuilderException),
                 () => QueryBuilder.Create("Table")
                 .AddColumn(null, DataType.Bool));
         }
@@ -93,7 +93,7 @@ namespace SQLiteKei.UnitTests.DataHandling
         [Test]
         public void AddColumn_WithNulledColumnName_ThrowsException()
         {
-            Assert.Throws(typeof(QueryBuilderException),
+            Assert.Throws(typeof(CreateQueryBuilderException),
                 () => QueryBuilder.Create("Table")
                 .AddColumn(string.Empty, DataType.Bool));
         }
@@ -101,7 +101,7 @@ namespace SQLiteKei.UnitTests.DataHandling
         [Test]
         public void AddColumn_WithWhitespacedColumnName_ThrowsException()
         {
-            Assert.Throws(typeof(QueryBuilderException),
+            Assert.Throws(typeof(CreateQueryBuilderException),
                 () => QueryBuilder.Create("Table")
                 .AddColumn("  ", DataType.Bool));
         }

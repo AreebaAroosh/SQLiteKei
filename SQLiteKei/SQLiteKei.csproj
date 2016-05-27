@@ -101,7 +101,7 @@
     <Compile Include="Queries\Enums\DataType.cs" />
     <Compile Include="Queries\Builders\QueryBuilder.cs" />
     <Compile Include="Queries\Builders\SelectQueryBuilder.cs" />
-    <Compile Include="Exceptions\Queries\QueryBuilderException.cs" />
+    <Compile Include="Exceptions\Queries\CreateQueryBuilderException.cs" />
     <Compile Include="Helpers\DatabaseTabGenerator.cs" />
     <Compile Include="UserControls\DatabaseGeneralTabContent.xaml.cs">
       <DependentUpon>DatabaseGeneralTabContent.xaml</DependentUpon>
