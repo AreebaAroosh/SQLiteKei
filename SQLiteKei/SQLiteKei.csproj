@@ -100,6 +100,7 @@
     <Compile Include="DataHandling\DataType.cs" />
     <Compile Include="DataHandling\DbCommandBuilder.cs" />
     <Compile Include="DataHandling\SelectCommandBuilder.cs" />
+    <Compile Include="Exceptions\DataHandling\QueryBuilderException.cs" />
     <Compile Include="Helpers\DatabaseTabGenerator.cs" />
     <Compile Include="UserControls\DatabaseGeneralTabContent.xaml.cs">
       <DependentUpon>DatabaseGeneralTabContent.xaml</DependentUpon>
