@@ -27,19 +27,19 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
                 connection.ConnectionString = string.Format("Data Source={0}", databasePath);               
                 connection.Open();
 
-                var databaseItem = new DatabaseItem()
-                {
-                    Name = Path.GetFileNameWithoutExtension(databasePath),
-                    FilePath = databasePath
-                };
-
                 FolderItem tableFolder = MapTables(connection.GetSchema("Tables"));
                 FolderItem indexFolder = MapIndexes(connection.GetSchema("Indexes"));
 
+                var databaseItem = new DatabaseItem()
+                {
+                    DisplayName = Path.GetFileNameWithoutExtension(databasePath),
+                    FilePath = databasePath,
+                    Name = connection.Database,
+                    NumberOfTables = tableFolder.Items.Count
+                };
+
                 databaseItem.Items.Add(tableFolder);
                 databaseItem.Items.Add(indexFolder);
-
-                databaseItem.NumberOfTables = tableFolder.Items.Count;
 
                 return databaseItem;
             }
@@ -51,11 +51,11 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
 
             var tableViewItems = tables.Select(x => new TableItem
             {
-                Name = x.ItemArray[2].ToString(),
+                DisplayName = x.ItemArray[2].ToString(),
                 TableCreateStatement = x.ItemArray[6].ToString()
             });
 
-            var tableFolder = new FolderItem { Name = "Tables" };
+            var tableFolder = new FolderItem { DisplayName = "Tables" };
 
             foreach (var item in tableViewItems)
             {
@@ -70,11 +70,11 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
             var indexes = schema.AsEnumerable();
             IEnumerable indexNames = indexes.Select(x => x.ItemArray[5]);
 
-            var indexFolder = new FolderItem { Name = "Indexes" };
+            var indexFolder = new FolderItem { DisplayName = "Indexes" };
 
             foreach (string indexName in indexNames)
             {
-                indexFolder.Items.Add(new IndexItem { Name = indexName });
+                indexFolder.Items.Add(new IndexItem { DisplayName = indexName });
             }
 
             return indexFolder;
