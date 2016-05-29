@@ -9,6 +9,7 @@ using SQLiteKei.Views;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data.SQLite;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
@@ -107,6 +108,26 @@ namespace SQLiteKei
                 MainTabControl.Items.Add(tab);
 
             MainTabControl.SelectedIndex = 0;
+        }
+
+        private void Button_DeleteDatabase_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = DBTreeView.SelectedItem as DatabaseItem;
+
+            if(selectedItem != null)
+            {
+                var message = "Do you really want to delete this database? Warning: this will delete the database from your file system.";
+                var result = System.Windows.MessageBox.Show(message, "Database Deletion", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    if (!File.Exists(selectedItem.FilePath))
+                        throw new FileNotFoundException("Database file could not be found.");
+
+                    File.Delete(selectedItem.FilePath);
+                    TreeViewItems.Remove(selectedItem);
+                }
+            }
         }
 
         private void ResetTabControl()
