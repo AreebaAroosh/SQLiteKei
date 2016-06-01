@@ -8,30 +8,36 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <UserControl.Resources>
+        <Style x:Key="SelectableLabelTextbox" TargetType="TextBox">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="IsReadOnly" Value="True" />
+            <Setter Property="Padding" Value="3" />
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition MinHeight="50"></RowDefinition>
+            <RowDefinition MinHeight="50" Height="Auto"></RowDefinition>
             <RowDefinition MinHeight="50"></RowDefinition>
         </Grid.RowDefinitions>
         
-        <GroupBox Grid.Row="0" Header="About" Margin="5" HorizontalAlignment="Stretch" Height="Auto">
+        <GroupBox Grid.Row="0" Header="About" Margin="5" Width="Auto" Height="Auto">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="25"></RowDefinition>
-                    <RowDefinition Height="25"></RowDefinition>
-                    <RowDefinition Height="25"></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Label Grid.Column="0" Grid.Row="0" FontWeight="Bold" Content="Database:" ></Label>
-                <Label Grid.Row="0" Grid.Column="1" Content="{Binding ElementName=Control, Path=DatabaseInfo.Name}"></Label>
-                <Label Grid.Row="1" Content="Database Path:"></Label>
-                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=Control, Path=DatabaseInfo.FilePath}"></TextBlock>
+                <TextBox Grid.Row="0" Grid.Column="0" Style="{StaticResource SelectableLabelTextbox}" Text="Database Name:" />
+                <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource SelectableLabelTextbox}" Text="{Binding ElementName=Control, Path=DatabaseInfo.Name}" />
+                <TextBox Grid.Row="1" Grid.Column="0" Style="{StaticResource SelectableLabelTextbox}" Text="Database Path:" />
+                <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource SelectableLabelTextbox}"
+                         Text="{Binding ElementName=Control, Path=DatabaseInfo.FilePath, Mode=OneWay}"/>
             </Grid>
         </GroupBox>
         <GroupBox Grid.Row="1" Header="Tables" Margin="5, 0, 5, 5" HorizontalAlignment="Stretch"/>
