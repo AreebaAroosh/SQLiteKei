@@ -1,6 +1,9 @@
 ﻿#region usings
 
+using SQLiteKei.Queries.Builders;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.IO;
@@ -14,6 +17,8 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
     /// </summary>
     internal class SchemaToViewModelMapper
     {
+        private DbConnection connection;
+
         /// <summary>
         /// Maps the provided database to a hierarchical ViewModel structure with a DatabaseItem as its root.
         /// </summary>
@@ -21,39 +26,40 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
         /// <returns></returns>
         public DatabaseItem MapSchemaToViewModel(string databasePath)
         {
-            var factory = DbProviderFactories.GetFactory("System.Data.SQLite");
-            using (var connection = factory.CreateConnection())
+            InitializeConnection(databasePath);
+
+            FolderItem tableFolder = MapTables();
+            FolderItem indexFolder = MapIndexes();
+
+            var databaseItem = new DatabaseItem()
             {
-                connection.ConnectionString = string.Format("Data Source={0}", databasePath);               
-                connection.Open();
+                DisplayName = Path.GetFileNameWithoutExtension(databasePath),
+                FilePath = databasePath,
+                Name = connection.Database,
+                NumberOfTables = tableFolder.Items.Count
+            };
 
-                FolderItem tableFolder = MapTables(connection.GetSchema("Tables"));
-                FolderItem indexFolder = MapIndexes(connection.GetSchema("Indexes"));
+            databaseItem.Items.Add(tableFolder);
+            databaseItem.Items.Add(indexFolder);
 
-                var databaseItem = new DatabaseItem()
-                {
-                    DisplayName = Path.GetFileNameWithoutExtension(databasePath),
-                    FilePath = databasePath,
-                    Name = connection.Database,
-                    NumberOfTables = tableFolder.Items.Count
-                };
+            connection.Dispose();
 
-                databaseItem.Items.Add(tableFolder);
-                databaseItem.Items.Add(indexFolder);
-
-                return databaseItem;
-            }
+            return databaseItem;
         }
 
-        private FolderItem MapTables(DataTable schema)
+        private void InitializeConnection(string databasePath)
         {
-            var tables = schema.AsEnumerable();
+            var factory = DbProviderFactories.GetFactory("System.Data.SQLite");
+            connection = factory.CreateConnection();
 
-            var tableViewItems = tables.Select(x => new TableItem
-            {
-                DisplayName = x.ItemArray[2].ToString(),
-                TableCreateStatement = x.ItemArray[6].ToString()
-            });
+            connection.ConnectionString = string.Format("Data Source={0}", databasePath);
+            connection.Open();
+        }
+
+        private FolderItem MapTables()
+        {
+            var tables = connection.GetSchema("Tables").AsEnumerable();
+            List<TableItem> tableViewItems = GenerateTableItemsFrom(tables);
 
             var tableFolder = new FolderItem { DisplayName = "Tables" };
 
@@ -65,9 +71,34 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
             return tableFolder;
         }
 
-        private FolderItem MapIndexes(DataTable schema)
+        private List<TableItem> GenerateTableItemsFrom(EnumerableRowCollection<DataRow> tables)
         {
-            var indexes = schema.AsEnumerable();
+            var tableViewItems = new List<TableItem>();
+
+            foreach (var table in tables)
+            {
+                var command = connection.CreateCommand();
+                command.CommandText = QueryBuilder
+                    .Select("count(*)")
+                    .From(table.ItemArray[2].ToString())
+                    .Build(); 
+
+                var result = command.ExecuteScalar();
+
+                tableViewItems.Add(new TableItem
+                {
+                    DisplayName = table.ItemArray[2].ToString(),
+                    TableCreateStatement = table.ItemArray[6].ToString(),
+                    NumberOfRows = Convert.ToInt32(result)
+                });
+            }
+
+            return tableViewItems;
+        }
+
+        private FolderItem MapIndexes()
+        {
+            var indexes = connection.GetSchema("Indexes").AsEnumerable();
             IEnumerable indexNames = indexes.Select(x => x.ItemArray[5]);
 
             var indexFolder = new FolderItem { DisplayName = "Indexes" };
