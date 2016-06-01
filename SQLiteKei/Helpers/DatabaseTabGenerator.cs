@@ -30,12 +30,11 @@ namespace SQLiteKei.Helpers
 
             if (treeItem.GetType() == typeof(DatabaseItem))
                 return DatabaseTabs(treeItem);
-            else if (treeItem.GetType() == typeof(TableItem))
+            if (treeItem.GetType() == typeof(TableItem))
                 return TableTabs(treeItem);
-            else if (treeItem.GetType() == typeof(IndexItem))
+            if (treeItem.GetType() == typeof(IndexItem))
                 return IndexTabs(treeItem);
-            else
-                return DefaultTabs();
+            return DefaultTabs();
         }
 
         private static List<TabItem> DefaultTabs()
@@ -60,8 +59,11 @@ namespace SQLiteKei.Helpers
 
             var tabs = new List<TabItem>();
 
-            TabItem generalTab = new TabItem() { Header = "General" };
-            generalTab.Content = new DatabaseGeneralTabContent();
+            var generalTab = new TabItem
+            {
+                Header = databaseItem.DisplayName,
+                Content = new DatabaseGeneralTabContent {DatabaseInfo = databaseItem}
+            };
 
             tabs.Add(generalTab);
 
