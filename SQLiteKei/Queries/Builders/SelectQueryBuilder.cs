@@ -1,10 +1,4 @@
-﻿#region usings
-
-using System;
-
-#endregion
-
-namespace SQLiteKei.Queries.Builders
+﻿namespace SQLiteKei.Queries.Builders
 {
     public class SelectQueryBuilder : QueryBuilder
     {
@@ -23,7 +17,7 @@ namespace SQLiteKei.Queries.Builders
 
         public override string Build()
         {
-            throw new NotImplementedException();
+            return string.Format("SELECT {0} FROM {1}", select, table);
         }
     }
 }
