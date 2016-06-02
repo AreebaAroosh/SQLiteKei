@@ -3,12 +3,11 @@
 using SQLiteKei.UserControls;
 using SQLiteKei.ViewModels.DBTreeView;
 using SQLiteKei.ViewModels.DBTreeView.Base;
+using SQLiteKei.ViewModels.MainTabControl.Mapping;
 
 using System.Collections.Generic;
 using System.Windows.Controls;
 using System;
-using SQLiteKei.ViewModels.MainTabControl;
-using SQLiteKei.ViewModels.MainTabControl.Mapping;
 
 #endregion
 
@@ -51,7 +50,15 @@ namespace SQLiteKei.Helpers
 
         private static List<TabItem> TableTabs(TableItem tableItem)
         {
-            throw new NotImplementedException();
+            //TODO var mapper = new TreeItemToDataItemMapper();
+
+            var generalTab = new TabItem
+            {
+                Header = string.Format("Table {0}", tableItem.DisplayName),
+                Content = new TableGeneralTabContent()
+            };
+
+            return new List<TabItem> { generalTab };
         }
 
         private static List<TabItem> DatabaseTabs(DatabaseItem databaseItem)
