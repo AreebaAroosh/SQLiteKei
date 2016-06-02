@@ -8,14 +8,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-    <UserControl.Resources>
-        <Style x:Key="SelectableLabelTextbox" TargetType="TextBox">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="IsReadOnly" Value="True" />
-            <Setter Property="Padding" Value="3" />
-        </Style>
-    </UserControl.Resources>
     <Grid DataContext="{Binding ElementName=Control}">
         <Grid.RowDefinitions>
             <RowDefinition MinHeight="50" Height="Auto"></RowDefinition>
@@ -34,14 +26,14 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBox Grid.Row="0" Grid.Column="0" Style="{StaticResource SelectableLabelTextbox}" FontWeight="Bold" Text="Database Name:" />
-                <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource SelectableLabelTextbox}" Text="{Binding DatabaseInfo.Name}" />
-                <TextBox Grid.Row="1" Grid.Column="0" Style="{StaticResource SelectableLabelTextbox}" FontWeight="Bold" Text="Database Path:" />
-                <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource SelectableLabelTextbox}" Text="{Binding Path=DatabaseInfo.FilePath}"/>
-                <TextBox Grid.Row="0" Grid.Column="2" Style="{StaticResource SelectableLabelTextbox}" FontWeight="Bold" Text="Number of Tables:" />
-                <TextBox Grid.Row="0" Grid.Column="3" Style="{StaticResource SelectableLabelTextbox}" Text="{Binding DatabaseInfo.NumberOfTables}" />
-                <TextBox Grid.Row="1" Grid.Column="2" Style="{StaticResource SelectableLabelTextbox}" FontWeight="Bold" Text="Number of Records:" />
-                <TextBox Grid.Row="1" Grid.Column="3" Style="{StaticResource SelectableLabelTextbox}" Text="{Binding Path=DatabaseInfo.NumberOfRecords}"/>
+                <TextBox Grid.Row="0" Grid.Column="0" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="Database Name:" />
+                <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding DatabaseInfo.Name}" />
+                <TextBox Grid.Row="1" Grid.Column="0" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="Database Path:" />
+                <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding Path=DatabaseInfo.FilePath}"/>
+                <TextBox Grid.Row="0" Grid.Column="2" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="Number of Tables:" />
+                <TextBox Grid.Row="0" Grid.Column="3" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding DatabaseInfo.NumberOfTables}" />
+                <TextBox Grid.Row="1" Grid.Column="2" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="Number of Records:" />
+                <TextBox Grid.Row="1" Grid.Column="3" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding Path=DatabaseInfo.NumberOfRecords}"/>
             </Grid>
         </GroupBox>
         <GroupBox Grid.Row="1" Header="Tables" Margin="5, 0, 5, 5" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="Auto">
