@@ -16,7 +16,7 @@
             <Setter Property="Padding" Value="3" />
         </Style>
     </UserControl.Resources>
-    <Grid>
+    <Grid DataContext="{Binding ElementName=Control}">
         <Grid.RowDefinitions>
             <RowDefinition MinHeight="50" Height="Auto"></RowDefinition>
             <RowDefinition MinHeight="50"></RowDefinition>
@@ -27,19 +27,36 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBox Grid.Row="0" Grid.Column="0" Style="{StaticResource SelectableLabelTextbox}" Text="Database Name:" />
-                <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource SelectableLabelTextbox}" Text="{Binding ElementName=Control, Path=DatabaseInfo.Name}" />
-                <TextBox Grid.Row="1" Grid.Column="0" Style="{StaticResource SelectableLabelTextbox}" Text="Database Path:" />
-                <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource SelectableLabelTextbox}"
-                         Text="{Binding ElementName=Control, Path=DatabaseInfo.FilePath, Mode=OneWay}"/>
+                <TextBox Grid.Row="0" Grid.Column="0" Style="{StaticResource SelectableLabelTextbox}" FontWeight="Bold" Text="Database Name:" />
+                <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource SelectableLabelTextbox}" Text="{Binding DatabaseInfo.Name}" />
+                <TextBox Grid.Row="1" Grid.Column="0" Style="{StaticResource SelectableLabelTextbox}" FontWeight="Bold" Text="Database Path:" />
+                <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource SelectableLabelTextbox}" Text="{Binding Path=DatabaseInfo.FilePath}"/>
+                <TextBox Grid.Row="0" Grid.Column="2" Style="{StaticResource SelectableLabelTextbox}" FontWeight="Bold" Text="Number of Tables:" />
+                <TextBox Grid.Row="0" Grid.Column="3" Style="{StaticResource SelectableLabelTextbox}" Text="{Binding DatabaseInfo.NumberOfTables}" />
+                <TextBox Grid.Row="1" Grid.Column="2" Style="{StaticResource SelectableLabelTextbox}" FontWeight="Bold" Text="Number of Records:" />
+                <TextBox Grid.Row="1" Grid.Column="3" Style="{StaticResource SelectableLabelTextbox}" Text="{Binding Path=DatabaseInfo.NumberOfRecords}"/>
             </Grid>
         </GroupBox>
-        <GroupBox Grid.Row="1" Header="Tables" Margin="5, 0, 5, 5" HorizontalAlignment="Stretch"/>
+        <GroupBox Grid.Row="1" Header="Tables" Margin="5, 0, 5, 5" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="Auto">
+            <Grid>
+            <DataGrid x:Name="TableDataGrid" Grid.Column = "0" HorizontalAlignment="Left" Margin="5" ItemsSource="{Binding DatabaseInfo.TableOverviewData}" VerticalAlignment="Top"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True" HeadersVisibility="Column">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Columns" Binding="{Binding ColumnCount}"/>
+                    <DataGridTextColumn Header="Records" Binding="{Binding RowCount}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Label x:Name="NoTablesFoundLabel" Content="No tables found" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="DemiBold"/>
+            </Grid>
+        </GroupBox>
     </Grid>
 </UserControl>

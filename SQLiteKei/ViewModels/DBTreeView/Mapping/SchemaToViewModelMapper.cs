@@ -1,5 +1,6 @@
 ﻿#region usings
 
+using System.Data.SQLite;
 using SQLiteKei.Queries.Builders;
 using System;
 using System.Collections;
@@ -59,6 +60,8 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
         private FolderItem MapTables()
         {
             var tables = connection.GetSchema("Tables").AsEnumerable();
+            
+
             List<TableItem> tableViewItems = GenerateTableItemsFrom(tables);
 
             var tableFolder = new FolderItem { DisplayName = "Tables" };
@@ -77,23 +80,48 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
 
             foreach (var table in tables)
             {
-                var command = connection.CreateCommand();
-                command.CommandText = QueryBuilder
-                    .Select("count(*)")
-                    .From(table.ItemArray[2].ToString())
-                    .Build(); 
-
-                var result = command.ExecuteScalar();
+                var tableName = table.ItemArray[2].ToString();
 
                 tableViewItems.Add(new TableItem
                 {
-                    DisplayName = table.ItemArray[2].ToString(),
+                    DisplayName = tableName,
                     TableCreateStatement = table.ItemArray[6].ToString(),
-                    NumberOfRows = Convert.ToInt32(result)
+                    RowCount = GetRowCountFor(tableName),
+                    ColumnCount = GetColumnCountFor(tableName)
                 });
             }
 
             return tableViewItems;
+        }
+
+        private int GetRowCountFor(string tableName)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = QueryBuilder
+                .Select("count(*)")
+                .From(tableName)
+                .Build();
+
+                return Convert.ToInt32(command.ExecuteScalar());
+            }
+        }
+
+        /// <summary>
+        /// This method sends a PRAGMA with the provided table name, executes a reader, loads the result to a datatable and returns the row count.
+        /// </summary>
+        /// <param name="tableName">Name of the table.</param>
+        /// <returns></returns>
+        private int GetColumnCountFor(string tableName)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "PRAGMA table_info(" + tableName + ");";
+
+                var resultTable = new DataTable();
+                resultTable.Load(command.ExecuteReader());
+                return resultTable.Rows.Count;
+            }
         }
 
         private FolderItem MapIndexes()

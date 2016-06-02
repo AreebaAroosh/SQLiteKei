@@ -7,7 +7,8 @@ using SQLiteKei.ViewModels.DBTreeView.Base;
 using System.Collections.Generic;
 using System.Windows.Controls;
 using System;
-
+using SQLiteKei.ViewModels.MainTabControl;
+using SQLiteKei.ViewModels.MainTabControl.Mapping;
 
 #endregion
 
@@ -29,11 +30,11 @@ namespace SQLiteKei.Helpers
                 return DefaultTabs();
 
             if (treeItem.GetType() == typeof(DatabaseItem))
-                return DatabaseTabs(treeItem);
+                return DatabaseTabs((DatabaseItem)treeItem);
             if (treeItem.GetType() == typeof(TableItem))
-                return TableTabs(treeItem);
+                return TableTabs((TableItem)treeItem);
             if (treeItem.GetType() == typeof(IndexItem))
-                return IndexTabs(treeItem);
+                return IndexTabs((IndexItem)treeItem);
             return DefaultTabs();
         }
 
@@ -43,31 +44,30 @@ namespace SQLiteKei.Helpers
             //throw new NotImplementedException();
         }
 
-        private static List<TabItem> IndexTabs(TreeItem treeItem)
+        private static List<TabItem> IndexTabs(IndexItem indexItem)
         {
             throw new NotImplementedException();
         }
 
-        private static List<TabItem> TableTabs(TreeItem treeItem)
+        private static List<TabItem> TableTabs(TableItem tableItem)
         {
             throw new NotImplementedException();
         }
 
-        private static List<TabItem> DatabaseTabs(TreeItem treeItem)
+        private static List<TabItem> DatabaseTabs(DatabaseItem databaseItem)
         {
-            var databaseItem = treeItem as DatabaseItem;
-
-            var tabs = new List<TabItem>();
+            var mapper = new TreeItemToDataItemMapper();
 
             var generalTab = new TabItem
             {
                 Header = databaseItem.DisplayName,
-                Content = new DatabaseGeneralTabContent {DatabaseInfo = databaseItem}
+                Content = new DatabaseGeneralTabContent
+                {
+                    DatabaseInfo = mapper.MapToGeneralDatabaseDataItem(databaseItem) 
+                }
             };
 
-            tabs.Add(generalTab);
-
-            return tabs;
+            return new List<TabItem> { generalTab };
         }
     }
 }

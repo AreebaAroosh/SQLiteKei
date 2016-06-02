@@ -6,6 +6,8 @@ namespace SQLiteKei.ViewModels.DBTreeView
     {
         public string TableCreateStatement { get; set; }
 
-        public int NumberOfRows { get; set; }
+        public int RowCount { get; set; }
+
+        public int ColumnCount { get; set; }
     }
 }

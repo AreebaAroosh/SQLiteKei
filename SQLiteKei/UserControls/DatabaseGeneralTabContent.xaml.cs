@@ -1,6 +1,13 @@
-﻿using System.ComponentModel;
-using SQLiteKei.ViewModels.DBTreeView;
+﻿#region usings
+
+using System.ComponentModel;
+using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
+
+using SQLiteKei.ViewModels.MainTabControl.Databases;
+
+#endregion
 
 namespace SQLiteKei.UserControls
 {
@@ -9,12 +16,27 @@ namespace SQLiteKei.UserControls
     /// </summary>
     public partial class DatabaseGeneralTabContent : UserControl, INotifyPropertyChanged
     {
-        private DatabaseItem databaseInfo;
+        private GeneralDatabaseDataItem databaseInfo;
 
-        public DatabaseItem DatabaseInfo
+        public GeneralDatabaseDataItem DatabaseInfo
         {
             get { return databaseInfo; }
-            set { databaseInfo = value; NotifyPropertyChanged("DatabaseInfo"); }
+            set
+            {
+                databaseInfo = value;
+                if (databaseInfo.TableOverviewData.Any())
+                {
+                    TableDataGrid.Visibility = Visibility.Visible;
+                    NoTablesFoundLabel.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    NoTablesFoundLabel.Visibility = Visibility.Visible;
+                    TableDataGrid.Visibility = Visibility.Hidden;
+                }
+                NotifyPropertyChanged("DatabaseInfo");
+
+            }
         }
 
         public DatabaseGeneralTabContent()
