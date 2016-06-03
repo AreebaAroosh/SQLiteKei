@@ -22,7 +22,7 @@ namespace SQLiteKei.ViewModels.MainTabControl.Mapping
                 NumberOfTables = databaseItem.NumberOfTables,
             };
 
-            var tableItems = databaseItem.Items.Single(x => x.DisplayName == "Tables") as FolderItem;
+            var tableItems = databaseItem.Items.Single(x => x.DisplayName == "Tables") as TableFolderItem;
 
             foreach (TableItem table in tableItems.Items)
             {

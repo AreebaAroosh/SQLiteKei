@@ -119,6 +119,7 @@
     <Compile Include="ViewModels\DBTreeView\FolderItem.cs" />
     <Compile Include="ViewModels\DBTreeView\IndexItem.cs" />
     <Compile Include="ViewModels\DBTreeView\Mapping\SchemaToViewModelMapper.cs" />
+    <Compile Include="ViewModels\DBTreeView\TableFolderItem.cs" />
     <Compile Include="ViewModels\DBTreeView\TableItem.cs" />
     <Compile Include="ViewModels\MainTabControl\Databases\GeneralDatabaseDataItem.cs" />
     <Compile Include="ViewModels\MainTabControl\Mapping\TreeItemToDataItemMapper.cs" />

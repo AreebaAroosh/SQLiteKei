@@ -1,5 +1,7 @@
 ﻿#region usings
 
+using System.Windows.Input;
+using System.Windows.Media;
 using SQLiteKei.Helpers;
 using SQLiteKei.ViewModels.DBTreeView;
 using SQLiteKei.ViewModels.DBTreeView.Base;
@@ -69,7 +71,7 @@ namespace SQLiteKei
             }
         }
 
-        private void Button_RemoveDatabase_Click(object sender, RoutedEventArgs e)
+        private void RemoveDatabase(object sender, RoutedEventArgs e)
         {
             var selectedItem = DBTreeView.SelectedItem as DatabaseItem;
 
@@ -110,7 +112,7 @@ namespace SQLiteKei
             MainTabControl.SelectedIndex = 0;
         }
 
-        private void Button_DeleteDatabase_Click(object sender, RoutedEventArgs e)
+        private void DeleteDatabase(object sender, RoutedEventArgs e)
         {
             var selectedItem = DBTreeView.SelectedItem as DatabaseItem;
 
@@ -136,7 +138,38 @@ namespace SQLiteKei
 
             for (int i = openTabs-1; i >= 0; i--)
                 MainTabControl.Items.RemoveAt(i);
+
+            var defaultTabs = DatabaseTabGenerator.GenerateTabsFor(null);
+
+            foreach (TabItem tab in defaultTabs)
+                MainTabControl.Items.Add(tab);
+
+            MainTabControl.SelectedIndex = 0;
         }
+
+        #region TreeViewRightClickEvent
+        /// <summary>
+        /// Method that is used to make sure a tree view element is selected on a right click event before the context menu is opened.
+        /// </summary>
+        private void TreeViewRightMouseButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            TreeViewItem treeViewItem = VisualUpwardSearch(e.OriginalSource as DependencyObject);
+
+            if (treeViewItem != null)
+            {
+                treeViewItem.Focus();
+                e.Handled = true;
+            }
+        }
+
+        static TreeViewItem VisualUpwardSearch(DependencyObject source)
+        {
+            while (source != null && !(source is TreeViewItem))
+                source = VisualTreeHelper.GetParent(source);
+
+            return source as TreeViewItem;
+        }
+        #endregion
 
         #region INotifyPropertyChanged Members
         public event PropertyChangedEventHandler PropertyChanged;

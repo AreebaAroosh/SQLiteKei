@@ -29,7 +29,7 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
         {
             InitializeConnection(databasePath);
 
-            FolderItem tableFolder = MapTables();
+            TableFolderItem tableFolder = MapTables();
             FolderItem indexFolder = MapIndexes();
 
             var databaseItem = new DatabaseItem()
@@ -57,14 +57,14 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
             connection.Open();
         }
 
-        private FolderItem MapTables()
+        private TableFolderItem MapTables()
         {
             var tables = connection.GetSchema("Tables").AsEnumerable();
             
 
             List<TableItem> tableViewItems = GenerateTableItemsFrom(tables);
 
-            var tableFolder = new FolderItem { DisplayName = "Tables" };
+            var tableFolder = new TableFolderItem { DisplayName = "Tables" };
 
             foreach (var item in tableViewItems)
             {
