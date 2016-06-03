@@ -1,4 +1,10 @@
-﻿using SQLiteKei.ViewModels.DBTreeView.Base;
+﻿#region usings
+
+using SQLiteKei.ViewModels.DBTreeView.Base;
+
+using System.Collections.Generic;
+
+#endregion
 
 namespace SQLiteKei.ViewModels.DBTreeView
 {
@@ -9,5 +15,7 @@ namespace SQLiteKei.ViewModels.DBTreeView
         public int RowCount { get; set; }
 
         public int ColumnCount { get; set; }
+
+        public List<ColumnItem> Columns { get; set; }
     }
 }

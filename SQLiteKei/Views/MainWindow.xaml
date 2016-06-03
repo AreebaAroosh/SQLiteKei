@@ -87,7 +87,7 @@
                                 </StackPanel.ContextMenu>
                             </StackPanel>
                         </HierarchicalDataTemplate>
-                    <DataTemplate DataType="{x:Type model:TableItem}">
+                    <HierarchicalDataTemplate DataType="{x:Type model:TableItem}" ItemsSource="{Binding Columns}">
                        <TextBlock Text="{Binding Path=DisplayName}" >
                            <TextBlock.ContextMenu>
                                <ContextMenu>
@@ -100,11 +100,14 @@
                                 </ContextMenu>
                            </TextBlock.ContextMenu>
                        </TextBlock>
-                    </DataTemplate>
+                    </HierarchicalDataTemplate>
                     <DataTemplate DataType="{x:Type model:IndexItem}">
                         <TextBlock Text="{Binding Path=DisplayName}" />
                     </DataTemplate>
-                </TreeView.Resources>
+                    <DataTemplate DataType="{x:Type model:ColumnItem}">
+                        <TextBlock Text="{Binding Path=DisplayName}" />
+                    </DataTemplate>
+                    </TreeView.Resources>
                 <TreeView.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Open..." Click="OpenDatabaseFile" />

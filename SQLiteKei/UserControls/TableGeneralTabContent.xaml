@@ -37,12 +37,16 @@
         </GroupBox>
         <GroupBox Grid.Row="1" Header="Columns" Margin="5, 0, 5, 5" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="Auto">
             <Grid>
-                <DataGrid x:Name="ColumnDataGrid" Grid.Column = "0" Margin="5" ItemsSource="{Binding DatabaseInfo.TableOverviewData}" 
+                <DataGrid x:Name="ColumnDataGrid" Grid.Column = "0" Margin="5" ItemsSource="{Binding TableInfo.ColumnData}" 
                       HorizontalAlignment="Stretch" VerticalAlignment="Top"
                       AutoGenerateColumns="False"
                       IsReadOnly="True" HeadersVisibility="Column">
                     <DataGrid.Columns>
-                        
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="Data Type" Binding="{Binding DataType}"/>
+                        <DataGridTextColumn Header="Primary" Binding="{Binding IsPrimary}"/>
+                        <DataGridTextColumn Header="NotNull" Binding="{Binding IsNotNullable}"/>
+                        <DataGridTextColumn Header="Default" Binding="{Binding DefaultValue}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <Label x:Name="NoColumnsFoundLabel" Content="No columns found" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="DemiBold"/>

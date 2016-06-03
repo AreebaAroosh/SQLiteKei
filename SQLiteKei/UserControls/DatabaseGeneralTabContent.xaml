@@ -13,7 +13,6 @@
             <RowDefinition MinHeight="50" Height="Auto"></RowDefinition>
             <RowDefinition MinHeight="50"></RowDefinition>
         </Grid.RowDefinitions>
-        
         <GroupBox Grid.Row="0" Header="About" Margin="5" Width="Auto" Height="Auto">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -30,9 +29,9 @@
                 <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding DatabaseInfo.Name}" />
                 <TextBox Grid.Row="1" Grid.Column="0" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="Database Path:" />
                 <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding DatabaseInfo.FilePath}"/>
-                <TextBox Grid.Row="0" Grid.Column="2" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="Number of Tables:" />
+                <TextBox Grid.Row="0" Grid.Column="2" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="Tables:" />
                 <TextBox Grid.Row="0" Grid.Column="3" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding DatabaseInfo.TableCount}" />
-                <TextBox Grid.Row="1" Grid.Column="2" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="Number of Records:" />
+                <TextBox Grid.Row="1" Grid.Column="2" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="Records:" />
                 <TextBox Grid.Row="1" Grid.Column="3" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding DatabaseInfo.RowCount}"/>
             </Grid>
         </GroupBox>

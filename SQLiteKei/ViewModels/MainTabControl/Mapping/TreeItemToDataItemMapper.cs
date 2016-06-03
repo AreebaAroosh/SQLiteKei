@@ -51,6 +51,17 @@ namespace SQLiteKei.ViewModels.MainTabControl.Mapping
                 TableCreateStatement = tableItem.TableCreateStatement
             };
 
+            foreach(ColumnItem column in tableItem.Columns)
+            {
+                tableDataItem.ColumnData.Add(new ColumnOverviewDataItem
+                {
+                    Name = column.DisplayName,
+                    DataType = column.DataType,
+                    IsNotNullable = column.IsNotNullable,
+                    IsPrimary = column.IsPrimary,
+                    DefaultValue = column.DefaultValue
+                });
+            }
             return tableDataItem;
         }
     }

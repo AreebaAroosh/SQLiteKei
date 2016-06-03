@@ -1,9 +1,9 @@
-﻿namespace SQLiteKei.ViewModels.MainTabControl.Tables
-{
-    public class ColumnOverviewDataItem
-    {
-        public string Name { get; set; }
+﻿using SQLiteKei.ViewModels.DBTreeView.Base;
 
+namespace SQLiteKei.ViewModels.DBTreeView
+{
+    public class ColumnItem : TreeItem
+    {
         public string DataType { get; set; }
 
         public bool IsNotNullable { get; set; }

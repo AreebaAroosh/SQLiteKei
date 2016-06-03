@@ -81,16 +81,44 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
             {
                 var tableName = table.ItemArray[2].ToString();
 
+                List<ColumnItem> columns = MapColumnsFor(tableName);
+
                 tableViewItems.Add(new TableItem
                 {
                     DisplayName = tableName,
                     TableCreateStatement = table.ItemArray[6].ToString(),
                     RowCount = GetRowCountFor(tableName),
-                    ColumnCount = GetColumnCountFor(tableName)
+                    ColumnCount = columns.Count,
+                    Columns = columns
                 });
             }
 
             return tableViewItems;
+        }
+
+        private List<ColumnItem> MapColumnsFor(string tableName)
+        {
+            var columnItems = new List<ColumnItem>();
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "PRAGMA table_info(" + tableName + ");";
+
+                var resultTable = new DataTable();
+                resultTable.Load(command.ExecuteReader());
+
+                foreach(DataRow row in resultTable.Rows)
+                {
+                    columnItems.Add(new ColumnItem
+                    {
+                        DisplayName = (string)row.ItemArray[1],
+                        DataType = (string)row.ItemArray[2],
+                        IsNotNullable = Convert.ToBoolean(row.ItemArray[3]),
+                        DefaultValue = row.ItemArray[4],
+                        IsPrimary = Convert.ToBoolean(row.ItemArray[5])
+                    });
+                }
+            }
+            return columnItems;
         }
 
         private int GetRowCountFor(string tableName)
@@ -103,23 +131,6 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
                 .Build();
 
                 return Convert.ToInt32(command.ExecuteScalar());
-            }
-        }
-
-        /// <summary>
-        /// This method sends a PRAGMA with the provided table name, executes a reader, loads the result to a datatable and returns the row count.
-        /// </summary>
-        /// <param name="tableName">Name of the table.</param>
-        /// <returns></returns>
-        private int GetColumnCountFor(string tableName)
-        {
-            using (var command = connection.CreateCommand())
-            {
-                command.CommandText = "PRAGMA table_info(" + tableName + ");";
-
-                var resultTable = new DataTable();
-                resultTable.Load(command.ExecuteReader());
-                return resultTable.Rows.Count;
             }
         }
 
