@@ -61,7 +61,13 @@ namespace SQLiteKei.Helpers
                 }
             };
 
-            return new List<TabItem> { generalTab };
+            var recordsTab = new TabItem
+            {
+                Header = "Records",
+                Content = new TableRecordsTabContent(mapper.MapToTableRecordsDataItem(tableItem))
+            };
+
+            return new List<TabItem> { generalTab, recordsTab };
         }
 
         private static List<TabItem> GenerateDatabaseTabs(DatabaseItem databaseItem)

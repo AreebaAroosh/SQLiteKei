@@ -1,7 +1,7 @@
 ﻿#region usings
 
-using System.Data.SQLite;
 using SQLiteKei.Queries.Builders;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,6 +20,8 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
     {
         private DbConnection connection;
 
+        private string databasePath;
+
         /// <summary>
         /// Maps the provided database to a hierarchical ViewModel structure with a DatabaseItem as its root.
         /// </summary>
@@ -27,6 +29,7 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
         /// <returns></returns>
         public DatabaseItem MapSchemaToViewModel(string databasePath)
         {
+            this.databasePath = databasePath;
             InitializeConnection(databasePath);
 
             TableFolderItem tableFolder = MapTables();
@@ -88,6 +91,7 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
                     DisplayName = tableName,
                     TableCreateStatement = table.ItemArray[6].ToString(),
                     RowCount = GetRowCountFor(tableName),
+                    DatabasePath = databasePath,
                     ColumnCount = columns.Count,
                     Columns = columns
                 });

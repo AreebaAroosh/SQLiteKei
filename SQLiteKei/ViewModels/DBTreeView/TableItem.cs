@@ -16,6 +16,8 @@ namespace SQLiteKei.ViewModels.DBTreeView
 
         public int ColumnCount { get; set; }
 
+        public string DatabasePath { get; set; }
+
         public List<ColumnItem> Columns { get; set; }
     }
 }

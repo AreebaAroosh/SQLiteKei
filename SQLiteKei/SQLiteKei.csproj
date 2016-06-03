@@ -88,6 +88,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\TableRecordsTabContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\About.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -113,6 +117,9 @@
     <Compile Include="UserControls\TableGeneralTabContent.xaml.cs">
       <DependentUpon>TableGeneralTabContent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\TableRecordsTabContent.xaml.cs">
+      <DependentUpon>TableRecordsTabContent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\DBTreeView\Base\DirectoryItem.cs" />
     <Compile Include="ViewModels\DBTreeView\Base\TreeViewItem.cs" />
     <Compile Include="ViewModels\DBTreeView\ColumnItem.cs" />
@@ -127,6 +134,7 @@
     <Compile Include="ViewModels\MainTabControl\Databases\TableOverviewDataItem.cs" />
     <Compile Include="ViewModels\MainTabControl\Tables\ColumnOverviewDataItem.cs" />
     <Compile Include="ViewModels\MainTabControl\Tables\GeneralTableDataItem.cs" />
+    <Compile Include="ViewModels\MainTabControl\Tables\TableRecordsDataItem.cs" />
     <Compile Include="Views\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
