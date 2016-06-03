@@ -6,5 +6,47 @@
              xmlns:local="clr-namespace:SQLiteKei.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid/>
+    <Grid DataContext="{Binding ElementName=Control}">
+        <Grid.RowDefinitions>
+            <RowDefinition MinHeight="50" Height="Auto"></RowDefinition>
+            <RowDefinition MinHeight="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" Header="About" Margin="5" Width="Auto" Height="Auto">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBox Grid.Row="0" Grid.Column="0" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="Table Name:" />
+                <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding TableInfo.Name}" />
+                <TextBox Grid.Row="1" Grid.Column="0" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="Number of Columns:" />
+                <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding TableInfo.ColumnCount}"/>
+                <TextBox Grid.Row="1" Grid.Column="2" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="Number of Records:" />
+                <TextBox Grid.Row="1" Grid.Column="3" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding TableInfo.RowCount}"/>
+                <TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Style="{StaticResource SelectableLabelTextBox}" FontWeight="DemiBold" Text="Statement used to create this table" />
+                <TextBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding TableInfo.TableCreateStatement}"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="1" Header="Columns" Margin="5, 0, 5, 5" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="Auto">
+            <Grid>
+                <DataGrid x:Name="ColumnDataGrid" Grid.Column = "0" Margin="5" ItemsSource="{Binding DatabaseInfo.TableOverviewData}" 
+                      HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True" HeadersVisibility="Column">
+                    <DataGrid.Columns>
+                        
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Label x:Name="NoColumnsFoundLabel" Content="No columns found" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="DemiBold"/>
+            </Grid>
+        </GroupBox>
+    </Grid>
 </UserControl>

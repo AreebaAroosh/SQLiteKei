@@ -26,42 +26,45 @@ namespace SQLiteKei.Helpers
         public static List<TabItem> GenerateTabsFor(TreeItem treeItem)
         {
             if (treeItem == null)
-                return DefaultTabs();
+                return GenerateDefaultTabs();
 
             if (treeItem.GetType() == typeof(DatabaseItem))
-                return DatabaseTabs((DatabaseItem)treeItem);
+                return GenerateDatabaseTabs((DatabaseItem)treeItem);
             if (treeItem.GetType() == typeof(TableItem))
-                return TableTabs((TableItem)treeItem);
+                return GenerateTableTabs((TableItem)treeItem);
             if (treeItem.GetType() == typeof(IndexItem))
-                return IndexTabs((IndexItem)treeItem);
-            return DefaultTabs();
+                return GenerateIndexTabs((IndexItem)treeItem);
+            return GenerateDefaultTabs();
         }
 
-        private static List<TabItem> DefaultTabs()
+        private static List<TabItem> GenerateDefaultTabs()
         {
             return new List<TabItem>();
             //throw new NotImplementedException();
         }
 
-        private static List<TabItem> IndexTabs(IndexItem indexItem)
+        private static List<TabItem> GenerateIndexTabs(IndexItem indexItem)
         {
             throw new NotImplementedException();
         }
 
-        private static List<TabItem> TableTabs(TableItem tableItem)
+        private static List<TabItem> GenerateTableTabs(TableItem tableItem)
         {
-            //TODO var mapper = new TreeItemToDataItemMapper();
+            var mapper = new TreeItemToDataItemMapper();
 
             var generalTab = new TabItem
             {
                 Header = string.Format("Table {0}", tableItem.DisplayName),
-                Content = new TableGeneralTabContent()
+                Content = new TableGeneralTabContent
+                {
+                    TableInfo = mapper.MapToGeneralTableDataItem(tableItem)
+                }
             };
 
             return new List<TabItem> { generalTab };
         }
 
-        private static List<TabItem> DatabaseTabs(DatabaseItem databaseItem)
+        private static List<TabItem> GenerateDatabaseTabs(DatabaseItem databaseItem)
         {
             var mapper = new TreeItemToDataItemMapper();
 

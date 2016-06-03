@@ -4,6 +4,7 @@ using System.Linq;
 
 using SQLiteKei.ViewModels.DBTreeView;
 using SQLiteKei.ViewModels.MainTabControl.Databases;
+using SQLiteKei.ViewModels.MainTabControl.Tables;
 
 #endregion
 
@@ -19,7 +20,7 @@ namespace SQLiteKei.ViewModels.MainTabControl.Mapping
                 DisplayName = databaseItem.DisplayName,
                 Name = databaseItem.Name,
                 FilePath = databaseItem.FilePath,
-                NumberOfTables = databaseItem.NumberOfTables,
+                TableCount = databaseItem.NumberOfTables,
             };
 
             var tableItems = databaseItem.Items.Single(x => x.DisplayName == "Tables") as TableFolderItem;
@@ -33,11 +34,24 @@ namespace SQLiteKei.ViewModels.MainTabControl.Mapping
                     RowCount = table.RowCount
                 };
 
-                databaseDataItem.NumberOfRecords += tableDataItem.RowCount;
+                databaseDataItem.RowCount += tableDataItem.RowCount;
                 databaseDataItem.TableOverviewData.Add(tableDataItem);
             }
 
             return databaseDataItem;
+        }
+
+        public GeneralTableDataItem MapToGeneralTableDataItem(TableItem tableItem)
+        {
+            var tableDataItem = new GeneralTableDataItem
+            {
+                Name = tableItem.DisplayName,
+                ColumnCount = tableItem.ColumnCount,
+                RowCount = tableItem.RowCount,
+                TableCreateStatement = tableItem.TableCreateStatement
+            };
+
+            return tableDataItem;
         }
     }
 }

@@ -1,11 +1,11 @@
 ﻿#region usings
 
+using SQLiteKei.ViewModels.MainTabControl.Databases;
+
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-
-using SQLiteKei.ViewModels.MainTabControl.Databases;
 
 #endregion
 
@@ -34,9 +34,7 @@ namespace SQLiteKei.UserControls
                     NoTablesFoundLabel.Visibility = Visibility.Visible;
                     TableDataGrid.Visibility = Visibility.Hidden;
                 }
-                NotifyPropertyChanged("DatabaseInfo");
-
-            }
+                NotifyPropertyChanged("DatabaseInfo");            }
         }
 
         public DatabaseGeneralTabContent()

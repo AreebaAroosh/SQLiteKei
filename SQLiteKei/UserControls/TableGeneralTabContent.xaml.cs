@@ -1,28 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#region usings 
+
+using SQLiteKei.ViewModels.MainTabControl.Tables;
+
+using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
+#endregion
 
 namespace SQLiteKei.UserControls
 {
     /// <summary>
     /// Interaction logic for TableGeneralTabContent.xaml
     /// </summary>
-    public partial class TableGeneralTabContent : UserControl
+    public partial class TableGeneralTabContent : UserControl, INotifyPropertyChanged
     {
+        private GeneralTableDataItem tableInfo;
+
+        public GeneralTableDataItem TableInfo
+        {
+            get { return tableInfo; }
+            set
+            {
+                tableInfo = value;
+                if (tableInfo.ColumnData.Any())
+                {
+                    ColumnDataGrid.Visibility = Visibility.Visible;
+                    NoColumnsFoundLabel.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    NoColumnsFoundLabel.Visibility = Visibility.Visible;
+                    ColumnDataGrid.Visibility = Visibility.Hidden;
+                }
+                NotifyPropertyChanged("TableInfo");
+            }
+        }
+
         public TableGeneralTabContent()
         {
             InitializeComponent();
         }
+
+        #region INotifyPropertyChanged Members
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged(string property)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(property));
+            }
+        }
+        #endregion
     }
 }

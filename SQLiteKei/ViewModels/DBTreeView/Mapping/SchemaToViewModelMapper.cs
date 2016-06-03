@@ -60,7 +60,6 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
         private TableFolderItem MapTables()
         {
             var tables = connection.GetSchema("Tables").AsEnumerable();
-            
 
             List<TableItem> tableViewItems = GenerateTableItemsFrom(tables);
 

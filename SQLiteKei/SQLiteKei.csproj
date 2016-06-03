@@ -124,6 +124,8 @@
     <Compile Include="ViewModels\MainTabControl\Databases\GeneralDatabaseDataItem.cs" />
     <Compile Include="ViewModels\MainTabControl\Mapping\TreeItemToDataItemMapper.cs" />
     <Compile Include="ViewModels\MainTabControl\Databases\TableOverviewDataItem.cs" />
+    <Compile Include="ViewModels\MainTabControl\Tables\ColumnOverviewDataItem.cs" />
+    <Compile Include="ViewModels\MainTabControl\Tables\GeneralTableDataItem.cs" />
     <Compile Include="Views\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
@@ -162,7 +164,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\MainTabControl\Indexes\" />
-    <Folder Include="ViewModels\MainTabControl\Tables\" />
     <Folder Include="ViewModels\MainTabControl\Views\" />
   </ItemGroup>
   <ItemGroup>

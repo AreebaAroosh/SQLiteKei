@@ -18,9 +18,9 @@ namespace SQLiteKei.ViewModels.MainTabControl.Databases
 
         public string FilePath { get; set; }
 
-        public int NumberOfTables { get; set; }
+        public int TableCount { get; set; }
 
-        public double NumberOfRecords { get; set; }
+        public double RowCount { get; set; }
 
         public List<TableOverviewDataItem> TableOverviewData { get; set; }
     }
