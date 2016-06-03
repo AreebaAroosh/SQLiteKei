@@ -5,8 +5,8 @@ using System.Linq;
 using SQLiteKei.ViewModels.DBTreeView;
 using SQLiteKei.ViewModels.MainTabControl.Databases;
 using SQLiteKei.ViewModels.MainTabControl.Tables;
+
 using System.Collections.Generic;
-using System;
 
 #endregion
 
@@ -39,7 +39,6 @@ namespace SQLiteKei.ViewModels.MainTabControl.Mapping
                 databaseDataItem.RowCount += tableDataItem.RowCount;
                 databaseDataItem.TableOverviewData.Add(tableDataItem);
             }
-
             return databaseDataItem;
         }
 
@@ -86,11 +85,6 @@ namespace SQLiteKei.ViewModels.MainTabControl.Mapping
                 TableName = tableItem.DisplayName,
                 DatabasePath = tableItem.DatabasePath
             };
-
-            List<ColumnDataItem> columnDataItems = MapColumns(tableItem.Columns);
-
-            foreach (var columnDataItem in columnDataItems)
-                recordsDataItem.Columns.Add(columnDataItem);
 
             return recordsDataItem;
         }
