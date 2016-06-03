@@ -9,13 +9,13 @@ namespace SQLiteKei.ViewModels.MainTabControl.Tables
     {
         public TableRecordsDataItem()
         {
-            Columns = new List<ColumnOverviewDataItem>();
+            Columns = new List<ColumnDataItem>();
         }
 
         public string DatabasePath { get; set; }
 
         public string TableName { get; set; }
 
-        public List<ColumnOverviewDataItem> Columns { get; set; }
+        public List<ColumnDataItem> Columns { get; set; }
     }
 }

@@ -53,7 +53,7 @@ namespace SQLiteKei.ViewModels.MainTabControl.Mapping
                 TableCreateStatement = tableItem.TableCreateStatement
             };
 
-            List<ColumnOverviewDataItem> columnDataItems = MapColumns(tableItem.Columns);
+            List<ColumnDataItem> columnDataItems = MapColumns(tableItem.Columns);
 
             foreach (var columnDataItem in columnDataItems)
                 tableDataItem.ColumnData.Add(columnDataItem);
@@ -61,13 +61,13 @@ namespace SQLiteKei.ViewModels.MainTabControl.Mapping
             return tableDataItem;
         }
 
-        private List<ColumnOverviewDataItem> MapColumns(List<ColumnItem> columns)
+        private List<ColumnDataItem> MapColumns(List<ColumnItem> columns)
         {
-            var columnDataItems = new List<ColumnOverviewDataItem>();
+            var columnDataItems = new List<ColumnDataItem>();
 
             foreach (ColumnItem column in columns)
             {
-                columnDataItems.Add(new ColumnOverviewDataItem
+                columnDataItems.Add(new ColumnDataItem
                 {
                     Name = column.DisplayName,
                     DataType = column.DataType,
@@ -87,7 +87,7 @@ namespace SQLiteKei.ViewModels.MainTabControl.Mapping
                 DatabasePath = tableItem.DatabasePath
             };
 
-            List<ColumnOverviewDataItem> columnDataItems = MapColumns(tableItem.Columns);
+            List<ColumnDataItem> columnDataItems = MapColumns(tableItem.Columns);
 
             foreach (var columnDataItem in columnDataItems)
                 recordsDataItem.Columns.Add(columnDataItem);

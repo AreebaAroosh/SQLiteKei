@@ -1,6 +1,6 @@
 ﻿namespace SQLiteKei.ViewModels.MainTabControl.Tables
 {
-    public class ColumnOverviewDataItem
+    public class ColumnDataItem
     {
         public string Name { get; set; }
 

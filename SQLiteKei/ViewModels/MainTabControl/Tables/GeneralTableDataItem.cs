@@ -6,7 +6,7 @@ namespace SQLiteKei.ViewModels.MainTabControl.Tables
     {
         public GeneralTableDataItem()
         {
-            ColumnData = new List<ColumnOverviewDataItem>();
+            ColumnData = new List<ColumnDataItem>();
         }
 
         public string Name { get; set; }
@@ -17,6 +17,6 @@ namespace SQLiteKei.ViewModels.MainTabControl.Tables
 
         public double RowCount { get; set; }
 
-        public List<ColumnOverviewDataItem> ColumnData { get; set; }
+        public List<ColumnDataItem> ColumnData { get; set; }
     }
 }

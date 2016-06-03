@@ -132,7 +132,7 @@
     <Compile Include="ViewModels\MainTabControl\Databases\GeneralDatabaseDataItem.cs" />
     <Compile Include="ViewModels\MainTabControl\Mapping\TreeItemToDataItemMapper.cs" />
     <Compile Include="ViewModels\MainTabControl\Databases\TableOverviewDataItem.cs" />
-    <Compile Include="ViewModels\MainTabControl\Tables\ColumnOverviewDataItem.cs" />
+    <Compile Include="ViewModels\MainTabControl\Tables\ColumnDataItem.cs" />
     <Compile Include="ViewModels\MainTabControl\Tables\GeneralTableDataItem.cs" />
     <Compile Include="ViewModels\MainTabControl\Tables\TableRecordsDataItem.cs" />
     <Compile Include="Views\About.xaml.cs">
