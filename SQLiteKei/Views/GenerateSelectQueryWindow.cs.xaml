@@ -8,12 +8,12 @@
         mc:Ignorable="d"
         Title="Create Select Query" 
         Icon="../Resources/Icons/Logo_32x32.png"
-        Height="300" Width="350"
+        Height="300" Width="400"
         MinHeight="300" MinWidth="300">
     <Grid DataContext="{Binding ElementName=Control, Path=ViewModel}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="26"></RowDefinition>
+            <RowDefinition Height="24"></RowDefinition>
         </Grid.RowDefinitions>
         <TabControl x:Name="tabControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <TabItem Header="Select">
@@ -24,7 +24,7 @@
                                 <DockPanel>
                                     <CheckBox IsChecked="{Binding IsSelected}" Margin="5 0" VerticalAlignment="Center" />
                                     <TextBlock Text="{Binding ColumnName}" TextTrimming="CharacterEllipsis" ToolTip="{Binding ColumnName}" 
-                                               Width="75" VerticalAlignment="Center"  />
+                                               Width="100" VerticalAlignment="Center"  />
                                     <Label Content="AS" FontWeight="DemiBold" />
                                     <TextBox Text="{Binding Alias}" HorizontalAlignment="Stretch"></TextBox>
                                 </DockPanel>

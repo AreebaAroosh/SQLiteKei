@@ -5,6 +5,8 @@ using SQLiteKei.ViewModels.SelectQueryCreationWindow;
 using System.ComponentModel;
 using System.Windows;
 
+using SQLiteKei.DataAccess.Database;
+
 #endregion
 
 namespace SQLiteKei.Views
@@ -25,33 +27,28 @@ namespace SQLiteKei.Views
         {
             InitializeComponent();
 
-            ViewModel = new SelectQueryCreateViewModel(tableName);
+            ViewModel = GenerateViewModelFromTableName(tableName);
+        }
 
-            ViewModel.Columns.Add(new ColumnSelectItem
-            {
-                ColumnName = "Name",
-                IsSelected = true
-            });
-            ViewModel.Columns.Add(new ColumnSelectItem
-            {
-                ColumnName = "Name2",
-                IsSelected = true
-            });
+        private SelectQueryCreateViewModel GenerateViewModelFromTableName(string tableName)
+        {
+            var viewModel = new SelectQueryCreateViewModel(tableName);
 
-            ViewModel.Columns.Add(new ColumnSelectItem
-            {
-                ColumnName = "ActuallyPrettyLongColumnName",
-                IsSelected = true
-            });
+            var databasePath = Application.Current.Properties["CurrentDatabase"].ToString();
+            var databaseHandler = new DatabaseHandler(databasePath);
 
-            for(int i = 0; i <= 15;i++)
+            var columns = databaseHandler.GetColumns(tableName);
+
+            foreach(var column in columns)
             {
-                ViewModel.Columns.Add(new ColumnSelectItem
+                viewModel.Columns.Add(new ColumnSelectItem
                 {
-                    ColumnName = "Column" + i,
+                    ColumnName = column.Name,
                     IsSelected = true
                 });
             }
+
+            return viewModel;
         }
 
         private void Execute(object sender, RoutedEventArgs e)
