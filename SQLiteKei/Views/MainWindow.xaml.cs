@@ -115,7 +115,7 @@ namespace SQLiteKei
         private void SetGlobalDatabaseString()
         {
             var currentSelection = (TreeItem)DBTreeView.SelectedItem;
-            Database.DatabasePath = currentSelection.DatabasePath;
+            System.Windows.Application.Current.Properties["CurrentDatabase"] = currentSelection.DatabasePath;
         }
 
         private void DeleteDatabase(object sender, RoutedEventArgs e)
