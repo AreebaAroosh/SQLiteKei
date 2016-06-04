@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SQLiteKei.Views"
         xmlns:viewmodel="clr-namespace:SQLiteKei.ViewModels.SelectQueryCreationWindow"
         mc:Ignorable="d"
-        Title="Create Select Query" Height="300" Width="300"
+        Title="Create Select Query" Height="300" Width="350"
         MinHeight="300" MinWidth="300">
     <Grid DataContext="{Binding ElementName=Control, Path=ViewModel}">
         <Grid.RowDefinitions>
@@ -15,18 +15,21 @@
         </Grid.RowDefinitions>
         <TabControl x:Name="tabControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <TabItem Header="Select">
-                <ItemsControl ItemsSource="{Binding Columns}">
-                    <ItemsControl.Resources>
-                        <DataTemplate DataType="{x:Type viewmodel:ColumnSelectItem}">
-                            <StackPanel Orientation="Horizontal">
-                                <CheckBox IsChecked="{Binding IsSelected}" VerticalAlignment="Center"></CheckBox>
-                                <TextBlock Text="{Binding ColumnName}" VerticalAlignment="Center"></TextBlock>
-                                <Label Content="AS"></Label>
-                                <TextBox Text="{Binding Alias}"></TextBox>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ItemsControl.Resources>
-                </ItemsControl>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ItemsControl ItemsSource="{Binding Columns}">
+                        <ItemsControl.Resources>
+                            <DataTemplate DataType="{x:Type viewmodel:ColumnSelectItem}">
+                                <DockPanel>
+                                    <CheckBox IsChecked="{Binding IsSelected}" Margin="5 0" VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding ColumnName}" TextTrimming="CharacterEllipsis" ToolTip="{Binding ColumnName}" 
+                                               Width="75" VerticalAlignment="Center"  />
+                                    <Label Content="AS" FontWeight="DemiBold" />
+                                    <TextBox Text="{Binding Alias}" HorizontalAlignment="Stretch"></TextBox>
+                                </DockPanel>
+                            </DataTemplate>
+                        </ItemsControl.Resources>
+                    </ItemsControl>
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="Where">
             </TabItem>
@@ -36,7 +39,7 @@
         </TabControl>
         <StackPanel Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft">
             <Button Content="Cancel" Margin="3 2" IsCancel="True"></Button>
-            <Button Content="Execute" Margin="3,2" VerticalAlignment="Top" Click="Execute"></Button>
+            <Button Content="Execute" Margin="3,2" Click="Execute"></Button>
         </StackPanel>
     </Grid>
 </Window>

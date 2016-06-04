@@ -6,8 +6,8 @@ using System.Windows.Controls;
 using System;
 using System.Data.Common;
 using System.Data;
-using SQLiteKei.Queries.Builders;
 using System.Text.RegularExpressions;
+
 using SQLiteKei.Views;
 
 #endregion
@@ -40,6 +40,7 @@ namespace SQLiteKei.UserControls
 
         private void Execute(string selectQuery)
         {
+            //TODO move this method's logic to other class class
             try
             {
                 var factory = DbProviderFactories.GetFactory("System.Data.SQLite");
