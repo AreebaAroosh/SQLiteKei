@@ -1,6 +1,10 @@
-﻿using System;
+﻿#region usings
+
+using System;
 using System.Collections.Generic;
 using System.Text;
+
+#endregion
 
 namespace SQLiteKei.Queries.Builders
 {
@@ -35,7 +39,6 @@ namespace SQLiteKei.Queries.Builders
         public SelectQueryBuilder AddSelect(string select, string alias)
         {
             selects.Add(select, alias);
-
             return this;
         }
 
@@ -50,26 +53,31 @@ namespace SQLiteKei.Queries.Builders
             throw new NotImplementedException();
         }
 
-
         public override string Build()
         {
-            List<string> selectsAndAliases = new List<string>();
+            var combinedSelect = GenerateCombinedSelect();
 
-            foreach(var select in selects)
+            return string.Format("SELECT {0}\nFROM {1}", combinedSelect, table);
+        }
+
+        private string GenerateCombinedSelect()
+        {
+            var selectsAndAliases = new List<string>();
+
+            foreach (var select in selects)
             {
                 var stringBuilder = new StringBuilder(select.Key);
 
-                if(!string.IsNullOrWhiteSpace(select.Value))
+                if (!string.IsNullOrWhiteSpace(select.Value))
                 {
                     stringBuilder.Append(" AS ");
                     stringBuilder.Append(select.Value);
                 }
-                
+
                 selectsAndAliases.Add(stringBuilder.ToString());
             }
-                
-            var combinedSelect = string.Join(", ", selectsAndAliases);
-            return string.Format("SELECT {0}\nFROM {1}", combinedSelect, table);
+
+            return string.Join(", ", selectsAndAliases);
         }
     }
 }
