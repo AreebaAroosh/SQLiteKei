@@ -1,5 +1,6 @@
 ﻿#region usings
 
+using SQLiteKei.DataAccess.Database;
 using SQLiteKei.DataAccess.QueryBuilders;
 
 using System;
@@ -8,6 +9,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.IO;
+using System.Linq;
+using System.Windows;
 
 #endregion
 
@@ -20,8 +23,6 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
     {
         private DbConnection connection;
 
-        private string databasePath;
-
         /// <summary>
         /// Maps the provided database to a hierarchical ViewModel structure with a DatabaseItem as its root.
         /// </summary>
@@ -29,7 +30,7 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
         /// <returns></returns>
         public DatabaseItem MapSchemaToViewModel(string databasePath)
         {
-            this.databasePath = databasePath;
+            Application.Current.Properties["CurrentDatabase"] = databasePath;
             InitializeConnection(databasePath);
 
             TableFolderItem tableFolder = MapTables();
@@ -91,7 +92,7 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
                     DisplayName = tableName,
                     TableCreateStatement = table.ItemArray[6].ToString(),
                     RowCount = GetRowCountFor(tableName),
-                    DatabasePath = databasePath,
+                    DatabasePath = Application.Current.Properties["CurrentDatabase"].ToString(),
                     ColumnCount = columns.Count,
                     Columns = columns
                 });
@@ -103,25 +104,25 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
         private List<ColumnItem> MapColumnsFor(string tableName)
         {
             var columnItems = new List<ColumnItem>();
-            using (var command = connection.CreateCommand())
+
+            var databasePath = Application.Current.Properties["CurrentDatabase"].ToString();
+            var databaseHandler = new DatabaseHandler(databasePath);
+
+            var columns = databaseHandler.GetColumns(tableName);
+
+            foreach(var column in columns)
             {
-                command.CommandText = "PRAGMA table_info(" + tableName + ");";
-
-                var resultTable = new DataTable();
-                resultTable.Load(command.ExecuteReader());
-
-                foreach(DataRow row in resultTable.Rows)
+                columnItems.Add(new ColumnItem
                 {
-                    columnItems.Add(new ColumnItem
-                    {
-                        DisplayName = (string)row.ItemArray[1],
-                        DataType = (string)row.ItemArray[2],
-                        IsNotNullable = Convert.ToBoolean(row.ItemArray[3]),
-                        DefaultValue = row.ItemArray[4],
-                        IsPrimary = Convert.ToBoolean(row.ItemArray[5])
-                    });
-                }
+                    DisplayName = column.Name,
+                    DatabasePath = databasePath,
+                    DataType = column.Type,
+                    DefaultValue = column.DefaultValue,
+                    IsNotNullable = column.IsNotNullable,
+                    IsPrimary = column.IsPrimary
+                });
             }
+
             return columnItems;
         }
 

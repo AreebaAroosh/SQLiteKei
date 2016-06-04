@@ -34,6 +34,10 @@
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="Where">
+                <Label>Under Construction</Label>
+                
+            </TabItem>
+            <TabItem Header="Options">
             </TabItem>
             <TabItem Header="ResultQuery">
                 <TextBox IsReadOnly="True" Text="{Binding SelectQuery}" TextWrapping="Wrap"></TextBox>

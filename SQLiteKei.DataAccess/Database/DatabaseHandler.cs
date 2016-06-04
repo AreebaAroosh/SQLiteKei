@@ -32,6 +32,11 @@ namespace SQLiteKei.DataAccess.Database
             connection.Open();
         }
 
+        /// <summary>
+        /// Gets the column meta data for the specified table.
+        /// </summary>
+        /// <param name="tableName">Name of the table.</param>
+        /// <returns></returns>
         public List<Column> GetColumns(string tableName)
         {
             var columns = new List<Column>();
@@ -59,6 +64,7 @@ namespace SQLiteKei.DataAccess.Database
 
             return columns;
         }
+
+
     }
 }
-
