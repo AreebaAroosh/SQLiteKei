@@ -12,8 +12,6 @@ namespace SQLiteKei.ViewModels.DBTreeView
         /// </value>
         public string Name { get; set; }
 
-        public string FilePath { get; set; }
-
         public int NumberOfTables { get; set; }
     }
 }

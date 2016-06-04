@@ -37,6 +37,21 @@ namespace SQLiteKei.Views
                 ColumnName = "Name2",
                 IsSelected = true
             });
+
+            ViewModel.Columns.Add(new ColumnSelectItem
+            {
+                ColumnName = "ActuallyPrettyLongColumnName",
+                IsSelected = true
+            });
+
+            for(int i = 0; i <= 15;i++)
+            {
+                ViewModel.Columns.Add(new ColumnSelectItem
+                {
+                    ColumnName = "Column" + i,
+                    IsSelected = true
+                });
+            }
         }
 
         private void Execute(object sender, RoutedEventArgs e)

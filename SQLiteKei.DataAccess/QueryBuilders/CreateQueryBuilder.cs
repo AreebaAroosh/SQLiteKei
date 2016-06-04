@@ -1,15 +1,15 @@
 ﻿#region usings
 
-using SQLiteKei.Exceptions.Queries;
-using SQLiteKei.Queries.Data;
-using SQLiteKei.Queries.Enums;
+using SQLiteKei.DataAccess.Exceptions;
+using SQLiteKei.DataAccess.QueryBuilders.Data;
+using SQLiteKei.DataAccess.QueryBuilders.Enums;
 
 using System.Collections.Generic;
 using System.Linq;
 
 #endregion
 
-namespace SQLiteKei.Queries.Builders
+namespace SQLiteKei.DataAccess.QueryBuilders
 {
     public class CreateQueryBuilder : QueryBuilder
     {

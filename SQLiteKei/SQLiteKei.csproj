@@ -108,12 +108,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Queries\Builders\CreateQueryBuilder.cs" />
-    <Compile Include="Queries\Data\ColumnData.cs" />
-    <Compile Include="Queries\Enums\DataType.cs" />
-    <Compile Include="Queries\Builders\QueryBuilder.cs" />
-    <Compile Include="Queries\Builders\SelectQueryBuilder.cs" />
-    <Compile Include="Exceptions\Queries\CreateQueryBuilderException.cs" />
     <Compile Include="Helpers\DatabaseTabGenerator.cs" />
     <Compile Include="UserControls\DatabaseGeneralTabContent.xaml.cs">
       <DependentUpon>DatabaseGeneralTabContent.xaml</DependentUpon>
@@ -190,6 +184,12 @@
     <Resource Include="Resources\Icons\Logo_256x256.png" />
     <Resource Include="Resources\Icons\Logo_32x32.png" />
     <Resource Include="Resources\Icons\Logo_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SQLiteKei.DataAccess\SQLiteKei.DataAccess.csproj">
+      <Project>{ecfe5e99-4122-4170-a95d-38be00509e0c}</Project>
+      <Name>SQLiteKei.DataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.101.0\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.101.0\build\net451\System.Data.SQLite.Core.targets')" />

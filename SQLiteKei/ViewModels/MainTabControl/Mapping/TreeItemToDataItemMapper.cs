@@ -21,7 +21,7 @@ namespace SQLiteKei.ViewModels.MainTabControl.Mapping
             {
                 DisplayName = databaseItem.DisplayName,
                 Name = databaseItem.Name,
-                FilePath = databaseItem.FilePath,
+                FilePath = databaseItem.DatabasePath,
                 TableCount = databaseItem.NumberOfTables,
             };
 

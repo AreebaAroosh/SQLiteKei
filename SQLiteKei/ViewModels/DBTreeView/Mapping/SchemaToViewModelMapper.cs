@@ -1,6 +1,6 @@
 ﻿#region usings
 
-using SQLiteKei.Queries.Builders;
+using SQLiteKei.DataAccess.QueryBuilders;
 
 using System;
 using System.Collections;
@@ -38,7 +38,7 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
             var databaseItem = new DatabaseItem()
             {
                 DisplayName = Path.GetFileNameWithoutExtension(databasePath),
-                FilePath = databasePath,
+                DatabasePath = databasePath,
                 Name = connection.Database,
                 NumberOfTables = tableFolder.Items.Count
             };

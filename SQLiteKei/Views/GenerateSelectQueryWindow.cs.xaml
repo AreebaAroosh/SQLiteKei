@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:SQLiteKei.Views"
         xmlns:viewmodel="clr-namespace:SQLiteKei.ViewModels.SelectQueryCreationWindow"
         mc:Ignorable="d"
-        Title="Create Select Query" Height="300" Width="350"
+        Title="Create Select Query" 
+        Icon="../Resources/Icons/Logo_32x32.png"
+        Height="300" Width="350"
         MinHeight="300" MinWidth="300">
     <Grid DataContext="{Binding ElementName=Control, Path=ViewModel}">
         <Grid.RowDefinitions>
@@ -34,7 +36,7 @@
             <TabItem Header="Where">
             </TabItem>
             <TabItem Header="ResultQuery">
-                <TextBox IsReadOnly="True" Text="{Binding SelectQuery}"></TextBox>
+                <TextBox IsReadOnly="True" Text="{Binding SelectQuery}" TextWrapping="Wrap"></TextBox>
             </TabItem>
         </TabControl>
         <StackPanel Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft">

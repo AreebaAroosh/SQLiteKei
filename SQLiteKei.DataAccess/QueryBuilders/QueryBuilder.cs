@@ -1,4 +1,4 @@
-﻿namespace SQLiteKei.Queries.Builders
+﻿namespace SQLiteKei.DataAccess.QueryBuilders
 {
     /// <summary>
     /// Allows to build SQL query strings 

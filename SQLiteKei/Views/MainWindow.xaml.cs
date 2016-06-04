@@ -1,7 +1,6 @@
 ﻿#region usings
 
-using System.Windows.Input;
-using System.Windows.Media;
+using SQLiteKei.DataAccess.Database;
 using SQLiteKei.Helpers;
 using SQLiteKei.ViewModels.DBTreeView;
 using SQLiteKei.ViewModels.DBTreeView.Base;
@@ -15,6 +14,8 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using System.Windows.Input;
+using System.Windows.Media;
 
 #endregion
 
@@ -101,13 +102,20 @@ namespace SQLiteKei
 
         private void DBTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
+            SetGlobalDatabaseString();
             ResetTabControl();
-            var currentSelection = (TreeItem)DBTreeView.SelectedItem;
 
+            var currentSelection = (TreeItem)DBTreeView.SelectedItem;
             var tabs = DatabaseTabGenerator.GenerateTabsFor(currentSelection);
 
             foreach (TabItem tab in tabs)
                 MainTabControl.Items.Add(tab);
+        }
+
+        private void SetGlobalDatabaseString()
+        {
+            var currentSelection = (TreeItem)DBTreeView.SelectedItem;
+            Database.DatabasePath = currentSelection.DatabasePath;
         }
 
         private void DeleteDatabase(object sender, RoutedEventArgs e)
@@ -121,10 +129,10 @@ namespace SQLiteKei
 
                 if (result == MessageBoxResult.Yes)
                 {
-                    if (!File.Exists(selectedItem.FilePath))
+                    if (!File.Exists(selectedItem.DatabasePath))
                         throw new FileNotFoundException("Database file could not be found.");
 
-                    File.Delete(selectedItem.FilePath);
+                    File.Delete(selectedItem.DatabasePath);
                     TreeViewItems.Remove(selectedItem);
                 }
             }

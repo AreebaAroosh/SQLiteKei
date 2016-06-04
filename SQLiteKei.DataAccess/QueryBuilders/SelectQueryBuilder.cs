@@ -6,7 +6,7 @@ using System.Text;
 
 #endregion
 
-namespace SQLiteKei.Queries.Builders
+namespace SQLiteKei.DataAccess.QueryBuilders
 {
     public class SelectQueryBuilder : QueryBuilder
     {

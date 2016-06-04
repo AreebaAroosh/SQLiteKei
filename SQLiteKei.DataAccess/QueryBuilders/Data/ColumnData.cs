@@ -1,13 +1,13 @@
 ﻿#region usings
 
-using SQLiteKei.Queries.Enums;
+using SQLiteKei.DataAccess.QueryBuilders.Enums;
 
 using System.Text;
 using System.Text.RegularExpressions;
 
 #endregion
 
-namespace SQLiteKei.Queries.Data
+namespace SQLiteKei.DataAccess.QueryBuilders.Data
 {
     /// <summary>
     /// Data that is used by the CreateQueryBuilder to create the column creation statements.

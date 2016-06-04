@@ -2,7 +2,7 @@
 
 using NUnit.Framework;
 
-using SQLiteKei.Queries.Builders;
+using SQLiteKei.DataAccess.QueryBuilders;
 
 #endregion
 
