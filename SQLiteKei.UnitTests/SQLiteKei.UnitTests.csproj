@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Queries\CreateQueryBuilderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\SelectQueryBuilderTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SQLiteKei\SQLiteKei.csproj">

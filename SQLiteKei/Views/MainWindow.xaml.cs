@@ -108,8 +108,6 @@ namespace SQLiteKei
 
             foreach (TabItem tab in tabs)
                 MainTabControl.Items.Add(tab);
-
-            MainTabControl.SelectedIndex = 0;
         }
 
         private void DeleteDatabase(object sender, RoutedEventArgs e)

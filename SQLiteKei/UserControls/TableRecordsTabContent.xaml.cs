@@ -8,6 +8,7 @@ using System.Data.Common;
 using System.Data;
 using SQLiteKei.Queries.Builders;
 using System.Text.RegularExpressions;
+using SQLiteKei.Views;
 
 #endregion
 
@@ -28,8 +29,17 @@ namespace SQLiteKei.UserControls
 
         private void ExecuteSelect(object sender, System.Windows.RoutedEventArgs e)
         {
-            StatusBar.Text = string.Empty;
+            var createSelectWindow = new GenerateSelectQueryWindow(TableInfo.TableName);
 
+            if(createSelectWindow.ShowDialog().Value == true)
+            {
+                StatusBar.Text = string.Empty;
+                Execute(createSelectWindow.ViewModel.SelectQuery);
+            }
+        }
+
+        private void Execute(string selectQuery)
+        {
             try
             {
                 var factory = DbProviderFactories.GetFactory("System.Data.SQLite");
@@ -40,9 +50,7 @@ namespace SQLiteKei.UserControls
 
                     using (var command = connection.CreateCommand())
                     {
-                        command.CommandText = QueryBuilder.Select(SelectTextBox.Text)
-                            .From(TableInfo.TableName)
-                            .Build();
+                        command.CommandText = selectQuery;
 
                         var resultTable = new DataTable();
                         resultTable.Load(command.ExecuteReader());
@@ -53,7 +61,7 @@ namespace SQLiteKei.UserControls
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 var oneLineMessage = Regex.Replace(ex.Message, @"\n", " ");
                 oneLineMessage = Regex.Replace(oneLineMessage, @"\t|\r", "");

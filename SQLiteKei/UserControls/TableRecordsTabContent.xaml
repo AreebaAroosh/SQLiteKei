@@ -14,7 +14,6 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Button x:Name="SelectButton" Content="Select" Width="50" HorizontalAlignment="Left" Click="ExecuteSelect" />
-            <TextBox x:Name="SelectTextBox" Width="70" HorizontalAlignment="Left" />
         </StackPanel>
         <DataGrid x:Name="RecordsDataGrid" Grid.Row="1" HeadersVisibility="Column">
         </DataGrid>

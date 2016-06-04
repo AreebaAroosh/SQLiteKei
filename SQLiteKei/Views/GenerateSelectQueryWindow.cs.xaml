@@ -1,0 +1,42 @@
+﻿<Window x:Name="Control" x:Class="SQLiteKei.Views.GenerateSelectQueryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SQLiteKei.Views"
+        xmlns:viewmodel="clr-namespace:SQLiteKei.ViewModels.SelectQueryCreationWindow"
+        mc:Ignorable="d"
+        Title="Create Select Query" Height="300" Width="300"
+        MinHeight="300" MinWidth="300">
+    <Grid DataContext="{Binding ElementName=Control, Path=ViewModel}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="26"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TabControl x:Name="tabControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <TabItem Header="Select">
+                <ItemsControl ItemsSource="{Binding Columns}">
+                    <ItemsControl.Resources>
+                        <DataTemplate DataType="{x:Type viewmodel:ColumnSelectItem}">
+                            <StackPanel Orientation="Horizontal">
+                                <CheckBox IsChecked="{Binding IsSelected}" VerticalAlignment="Center"></CheckBox>
+                                <TextBlock Text="{Binding ColumnName}" VerticalAlignment="Center"></TextBlock>
+                                <Label Content="AS"></Label>
+                                <TextBox Text="{Binding Alias}"></TextBox>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.Resources>
+                </ItemsControl>
+            </TabItem>
+            <TabItem Header="Where">
+            </TabItem>
+            <TabItem Header="ResultQuery">
+                <TextBox IsReadOnly="True" Text="{Binding SelectQuery}"></TextBox>
+            </TabItem>
+        </TabControl>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Button Content="Cancel" Margin="3 2" IsCancel="True"></Button>
+            <Button Content="Execute" Margin="3,2" VerticalAlignment="Top" Click="Execute"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -96,6 +96,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\GenerateSelectQueryWindow.cs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -135,8 +139,13 @@
     <Compile Include="ViewModels\MainTabControl\Tables\ColumnDataItem.cs" />
     <Compile Include="ViewModels\MainTabControl\Tables\GeneralTableDataItem.cs" />
     <Compile Include="ViewModels\MainTabControl\Tables\TableRecordsDataItem.cs" />
+    <Compile Include="ViewModels\SelectQueryCreationWindow\ColumnSelectItem.cs" />
+    <Compile Include="ViewModels\SelectQueryCreationWindow\SelectQueryCreateViewModel.cs" />
     <Compile Include="Views\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GenerateSelectQueryWindow.cs.xaml.cs">
+      <DependentUpon>GenerateSelectQueryWindow.cs.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
