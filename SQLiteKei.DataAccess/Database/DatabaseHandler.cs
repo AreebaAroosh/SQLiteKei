@@ -1,6 +1,7 @@
 ﻿#region usings
 
 using SQLiteKei.DataAccess.Models;
+using SQLiteKei.DataAccess.QueryBuilders;
 
 using System;
 using System.Collections.Generic;
@@ -61,10 +62,20 @@ namespace SQLiteKei.DataAccess.Database
                     });
                 }
             }
-
             return columns;
         }
 
-
+        /// <summary>
+        /// Drops the specified table from the given database. Sends a plain command to the database without any further error handling.
+        /// </summary>
+        /// <param name="tableName">Name of the table.</param>
+        public void DropTable(string tableName)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = QueryBuilder.Drop(tableName).Build();
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }
