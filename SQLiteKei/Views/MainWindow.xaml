@@ -15,6 +15,7 @@
             <RowDefinition Height="20" />
             <RowDefinition Height="30" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="25" />
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0" HorizontalAlignment="Stretch" LastChildFill="False" VerticalAlignment="Stretch">
             <Menu DockPanel.Dock="Top" Background="#2D2D30" Foreground="#EEEEEE">
@@ -139,5 +140,10 @@
                 <TabItem Header="General" />
             </TabControl>
         </Grid>
+        <StatusBar Grid.Row="3">
+            <StatusBarItem>
+                <TextBlock x:Name="StatusBarInfo" FontWeight="DemiBold"></TextBlock>
+            </StatusBarItem>
+        </StatusBar>
     </Grid>
 </Window>
