@@ -43,7 +43,7 @@
         </DockPanel>
         <Grid Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" MinWidth="75" MaxWidth="250" />
+                <ColumnDefinition Width="250" MinWidth="100" MaxWidth="350" />
                 <ColumnDefinition Width="2" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
