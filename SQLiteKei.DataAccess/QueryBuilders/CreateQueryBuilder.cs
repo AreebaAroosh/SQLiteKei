@@ -11,8 +11,10 @@ using System.Linq;
 
 namespace SQLiteKei.DataAccess.QueryBuilders
 {
-    public class CreateQueryBuilder : QueryBuilder
+    public class CreateQueryBuilder
     {
+        private string table; 
+
         private List<ColumnData> Columns { get; set; }
 
         private bool primaryKeyAdded;
@@ -62,7 +64,7 @@ namespace SQLiteKei.DataAccess.QueryBuilders
             }
         }
 
-        public override string Build()
+        public string Build()
         {
             if(string.IsNullOrWhiteSpace(table))
             {

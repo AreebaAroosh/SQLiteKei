@@ -5,8 +5,6 @@
     /// </summary>
     public abstract class QueryBuilder
     {
-        protected string table;
-
         public static SelectQueryBuilder Select()
         {
             return new SelectQueryBuilder();
@@ -25,6 +23,11 @@
         public static CreateQueryBuilder Create(string tableName)
         {
             return new CreateQueryBuilder(tableName);
+        }
+
+        public static DropQueryBuilder Drop(string tableName)
+        {
+            return new DropQueryBuilder(tableName);
         }
 
         public abstract string Build();

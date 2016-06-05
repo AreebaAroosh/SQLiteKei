@@ -46,6 +46,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryBuilders\CreateQueryBuilder.cs" />
     <Compile Include="QueryBuilders\Data\ColumnData.cs" />
+    <Compile Include="QueryBuilders\DropQueryBuilder.cs" />
     <Compile Include="QueryBuilders\Enums\DataType.cs" />
     <Compile Include="QueryBuilders\QueryBuilder.cs" />
     <Compile Include="QueryBuilders\SelectQueryBuilder.cs" />

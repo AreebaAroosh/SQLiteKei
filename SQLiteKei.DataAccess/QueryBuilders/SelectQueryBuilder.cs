@@ -8,8 +8,10 @@ using System.Text;
 
 namespace SQLiteKei.DataAccess.QueryBuilders
 {
-    public class SelectQueryBuilder : QueryBuilder
+    public class SelectQueryBuilder
     {
+        private string table;
+
         private Dictionary<string, string> selects;
 
         public SelectQueryBuilder()
@@ -53,7 +55,7 @@ namespace SQLiteKei.DataAccess.QueryBuilders
             throw new NotImplementedException();
         }
 
-        public override string Build()
+        public string Build()
         {
             var combinedSelect = GenerateCombinedSelect();
 
