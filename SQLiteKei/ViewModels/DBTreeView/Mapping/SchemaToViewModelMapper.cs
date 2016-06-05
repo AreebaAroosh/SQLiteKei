@@ -23,6 +23,8 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
     {
         private DbConnection connection;
 
+        private string databasePath;
+
         /// <summary>
         /// Maps the provided database to a hierarchical ViewModel structure with a DatabaseItem as its root.
         /// </summary>
@@ -31,10 +33,12 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
         public DatabaseItem MapSchemaToViewModel(string databasePath)
         {
             Application.Current.Properties["CurrentDatabase"] = databasePath;
+            this.databasePath = databasePath;
             InitializeConnection(databasePath);
 
             TableFolderItem tableFolder = MapTables();
             FolderItem indexFolder = MapIndexes();
+            FolderItem triggerFolder = MapTriggers();
 
             var databaseItem = new DatabaseItem()
             {
@@ -46,6 +50,7 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
 
             databaseItem.Items.Add(tableFolder);
             databaseItem.Items.Add(indexFolder);
+            databaseItem.Items.Add(triggerFolder);
 
             connection.Dispose();
 
@@ -92,7 +97,7 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
                     DisplayName = tableName,
                     TableCreateStatement = table.ItemArray[6].ToString(),
                     RowCount = GetRowCountFor(tableName),
-                    DatabasePath = Application.Current.Properties["CurrentDatabase"].ToString(),
+                    DatabasePath = databasePath,
                     ColumnCount = columns.Count,
                     Columns = columns
                 });
@@ -103,14 +108,12 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
 
         private List<ColumnItem> MapColumnsFor(string tableName)
         {
-            var columnItems = new List<ColumnItem>();
-
-            var databasePath = Application.Current.Properties["CurrentDatabase"].ToString();
             var databaseHandler = new DatabaseHandler(databasePath);
-
             var columns = databaseHandler.GetColumns(tableName);
 
-            foreach(var column in columns)
+            var columnItems = new List<ColumnItem>();
+
+            foreach (var column in columns)
             {
                 columnItems.Add(new ColumnItem
                 {
@@ -152,6 +155,25 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
             }
 
             return indexFolder;
+        }
+
+        private FolderItem MapTriggers()
+        {
+            var triggers = connection.GetSchema("Triggers").AsEnumerable();
+            IEnumerable triggerNames = triggers.Select(x => x.ItemArray[3]);
+
+            var triggerFolder = new FolderItem { DisplayName = "Triggers" };
+
+            foreach (string triggerName in triggerNames)
+            {
+                triggerFolder.Items.Add(new TriggerItem
+                {
+                    DisplayName = triggerName,
+                    DatabasePath = databasePath
+                });
+            }
+
+            return triggerFolder;
         }
     }
 }

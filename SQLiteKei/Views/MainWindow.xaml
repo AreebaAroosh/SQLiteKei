@@ -48,73 +48,82 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Border Grid.Column="0" BorderThickness="1" BorderBrush="#3F3F46">
-            <TreeView x:Name="DBTreeView" 
-                      Grid.Column="0" 
-                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                      SelectedItemChanged="DBTreeView_SelectedItemChanged"
-                      ItemsSource="{Binding TreeViewItems, ElementName=Window}"
-                      MouseRightButtonDown="TreeViewRightMouseButtonDown">
-                <TreeView.Resources>
-                    <HierarchicalDataTemplate DataType="{x:Type model:DatabaseItem}" ItemsSource="{Binding Items}">
-                        <TextBlock Text="{Binding DisplayName}" ToolTip="{Binding FilePath}">
-                            <TextBlock.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="Remove" Click="RemoveDatabase" />
-                                    <MenuItem Header="Rename" />
-                                    <MenuItem Header="Delete" Click="DeleteDatabase" />
-                                </ContextMenu>
-                            </TextBlock.ContextMenu>
-                        </TextBlock>
-                    </HierarchicalDataTemplate>
-                    <HierarchicalDataTemplate DataType="{x:Type model:FolderItem}" ItemsSource="{Binding Items}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding DisplayName}" />
-                            <TextBlock Text=" (" />
-                            <TextBlock Text="{Binding Items.Count}" />
-                            <TextBlock Text=")" />
-                        </StackPanel>
-                    </HierarchicalDataTemplate>
-                    <HierarchicalDataTemplate DataType="{x:Type model:TableFolderItem}" ItemsSource="{Binding Items}">
+                <TreeView x:Name="DBTreeView" 
+                          Grid.Column="0" 
+                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                          SelectedItemChanged="DBTreeView_SelectedItemChanged"
+                          ItemsSource="{Binding TreeViewItems, ElementName=Window}"
+                          MouseRightButtonDown="TreeViewRightMouseButtonDown">
+                    <TreeView.Resources>
+                        <HierarchicalDataTemplate DataType="{x:Type model:DatabaseItem}" ItemsSource="{Binding Items}">
+                            <TextBlock Text="{Binding DisplayName}" ToolTip="{Binding FilePath}">
+                                <TextBlock.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Remove" Click="RemoveDatabase" />
+                                        <MenuItem Header="Rename" />
+                                        <MenuItem Header="Delete" Click="DeleteDatabase" />
+                                    </ContextMenu>
+                                </TextBlock.ContextMenu>
+                            </TextBlock>
+                        </HierarchicalDataTemplate>
+                        <HierarchicalDataTemplate DataType="{x:Type model:FolderItem}" ItemsSource="{Binding Items}">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding DisplayName}" />
                                 <TextBlock Text=" (" />
                                 <TextBlock Text="{Binding Items.Count}" />
                                 <TextBlock Text=")" />
-                                <StackPanel.ContextMenu>
-                                    <ContextMenu>
-                                        <MenuItem Header="Add Table"/>
-                                    </ContextMenu>
-                                </StackPanel.ContextMenu>
                             </StackPanel>
                         </HierarchicalDataTemplate>
-                    <HierarchicalDataTemplate DataType="{x:Type model:TableItem}" ItemsSource="{Binding Columns}">
-                       <TextBlock Text="{Binding Path=DisplayName}" >
-                           <TextBlock.ContextMenu>
-                               <ContextMenu>
-                                    <MenuItem Header="Select"></MenuItem>
-                                    <MenuItem Header="Insert"></MenuItem>
-                                    <MenuItem Header="Update"></MenuItem>
-                                    <MenuItem Header="Delete"></MenuItem>
-                                    <Separator/>
-                                    <MenuItem Header="Remove Table"></MenuItem>
-                                </ContextMenu>
-                           </TextBlock.ContextMenu>
-                       </TextBlock>
-                    </HierarchicalDataTemplate>
-                    <DataTemplate DataType="{x:Type model:IndexItem}">
-                        <TextBlock Text="{Binding Path=DisplayName}" />
-                    </DataTemplate>
-                    <DataTemplate DataType="{x:Type model:ColumnItem}">
-                        <TextBlock Text="{Binding Path=DisplayName}" />
-                    </DataTemplate>
+                        <HierarchicalDataTemplate DataType="{x:Type model:TableFolderItem}" ItemsSource="{Binding Items}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding DisplayName}" />
+                                    <TextBlock Text=" (" />
+                                    <TextBlock Text="{Binding Items.Count}" />
+                                    <TextBlock Text=")" />
+                                    <StackPanel.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="Add Table"/>
+                                        </ContextMenu>
+                                    </StackPanel.ContextMenu>
+                                </StackPanel>
+                            </HierarchicalDataTemplate>
+                        <HierarchicalDataTemplate DataType="{x:Type model:TableItem}" ItemsSource="{Binding Columns}">
+                           <TextBlock Text="{Binding Path=DisplayName}" >
+                               <TextBlock.ContextMenu>
+                                   <ContextMenu>
+                                        <MenuItem Header="Select"></MenuItem>
+                                        <MenuItem Header="Insert"></MenuItem>
+                                        <MenuItem Header="Update"></MenuItem>
+                                        <MenuItem Header="Delete"></MenuItem>
+                                        <Separator/>
+                                        <MenuItem Header="Remove Table"></MenuItem>
+                                    </ContextMenu>
+                               </TextBlock.ContextMenu>
+                           </TextBlock>
+                        </HierarchicalDataTemplate>
+                        <DataTemplate DataType="{x:Type model:IndexItem}">
+                            <TextBlock Text="{Binding Path=DisplayName}" />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type model:TriggerItem}">
+                                <TextBlock Text="{Binding Path=DisplayName}">
+                                    <TextBlock.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="Remove Trigger"></MenuItem>
+                                        </ContextMenu>
+                                    </TextBlock.ContextMenu>
+                                </TextBlock>
+                            </DataTemplate>
+                        <DataTemplate DataType="{x:Type model:ColumnItem}">
+                            <TextBlock Text="{Binding Path=DisplayName}" />
+                        </DataTemplate>
                     </TreeView.Resources>
-                <TreeView.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Header="Open..." Click="OpenDatabaseFile" />
-                        <MenuItem Header="New Database" Click="CreateNewDatabase" />
-                    </ContextMenu>
-                </TreeView.ContextMenu>
-            </TreeView>
+                    <TreeView.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Open..." Click="OpenDatabaseFile" />
+                            <MenuItem Header="New Database" Click="CreateNewDatabase" />
+                        </ContextMenu>
+                    </TreeView.ContextMenu>
+                </TreeView>
             </Border>
             <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" ResizeBehavior="PreviousAndNext" Background="#3F3F46"/>
             <TabControl x:Name="MainTabControl" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
