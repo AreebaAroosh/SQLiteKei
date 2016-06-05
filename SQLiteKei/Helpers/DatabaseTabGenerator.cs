@@ -40,7 +40,6 @@ namespace SQLiteKei.Helpers
         private static List<TabItem> GenerateDefaultTabs()
         {
             return new List<TabItem>();
-            //throw new NotImplementedException();
         }
 
         private static List<TabItem> GenerateIndexTabs(IndexItem indexItem)

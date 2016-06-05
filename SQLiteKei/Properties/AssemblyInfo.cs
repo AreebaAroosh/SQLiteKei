@@ -55,3 +55,5 @@ using System.Windows;
 [assembly: AssemblyFileVersion("0.2")]
 [assembly: InternalsVisibleTo("SQLiteKei.IntegrationTests")]
 [assembly: InternalsVisibleTo("SQLiteKei.UnitTests")]
+
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]
