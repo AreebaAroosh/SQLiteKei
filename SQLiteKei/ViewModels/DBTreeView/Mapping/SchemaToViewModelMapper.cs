@@ -37,6 +37,7 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
             InitializeConnection(databasePath);
 
             TableFolderItem tableFolder = MapTables();
+            FolderItem viewFolder = MapViews();
             FolderItem indexFolder = MapIndexes();
             FolderItem triggerFolder = MapTriggers();
 
@@ -49,6 +50,7 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
             };
 
             databaseItem.Items.Add(tableFolder);
+            databaseItem.Items.Add(viewFolder);
             databaseItem.Items.Add(indexFolder);
             databaseItem.Items.Add(triggerFolder);
 
@@ -174,6 +176,25 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
             }
 
             return triggerFolder;
+        }
+
+        private FolderItem MapViews()
+        {
+            var views = connection.GetSchema("Views").AsEnumerable();
+            IEnumerable viewNames = views.Select(x => x.ItemArray[2]);
+
+            var viewFolder = new FolderItem { DisplayName = "Views" };
+
+            foreach (string viewName in viewNames)
+            {
+                viewFolder.Items.Add(new ViewItem
+                {
+                    DisplayName = viewName,
+                    DatabasePath = databasePath
+                });
+            }
+
+            return viewFolder;
         }
     }
 }

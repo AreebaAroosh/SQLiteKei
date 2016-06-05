@@ -105,14 +105,23 @@
                             <TextBlock Text="{Binding Path=DisplayName}" />
                         </DataTemplate>
                         <DataTemplate DataType="{x:Type model:TriggerItem}">
-                                <TextBlock Text="{Binding Path=DisplayName}">
-                                    <TextBlock.ContextMenu>
-                                        <ContextMenu>
-                                            <MenuItem Header="Remove Trigger"></MenuItem>
-                                        </ContextMenu>
-                                    </TextBlock.ContextMenu>
-                                </TextBlock>
-                            </DataTemplate>
+                            <TextBlock Text="{Binding Path=DisplayName}">
+                                <TextBlock.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Remove Trigger"></MenuItem>
+                                    </ContextMenu>
+                                </TextBlock.ContextMenu>
+                            </TextBlock>
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type model:ViewItem}">
+                            <TextBlock Text="{Binding Path=DisplayName}">
+                                <TextBlock.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Remove View"></MenuItem>
+                                    </ContextMenu>
+                                </TextBlock.ContextMenu>
+                            </TextBlock>
+                        </DataTemplate>
                         <DataTemplate DataType="{x:Type model:ColumnItem}">
                             <TextBlock Text="{Binding Path=DisplayName}" />
                         </DataTemplate>

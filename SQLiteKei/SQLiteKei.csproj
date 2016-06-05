@@ -128,6 +128,7 @@
     <Compile Include="ViewModels\DBTreeView\TableFolderItem.cs" />
     <Compile Include="ViewModels\DBTreeView\TableItem.cs" />
     <Compile Include="ViewModels\DBTreeView\TriggerItem.cs" />
+    <Compile Include="ViewModels\DBTreeView\ViewItem.cs" />
     <Compile Include="ViewModels\MainTabControl\Databases\GeneralDatabaseDataItem.cs" />
     <Compile Include="ViewModels\MainTabControl\Mapping\TreeItemToDataItemMapper.cs" />
     <Compile Include="ViewModels\MainTabControl\Databases\TableOverviewDataItem.cs" />
