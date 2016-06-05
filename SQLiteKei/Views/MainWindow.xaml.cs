@@ -6,7 +6,7 @@ using SQLiteKei.ViewModels.DBTreeView;
 using SQLiteKei.ViewModels.DBTreeView.Base;
 using SQLiteKei.ViewModels.DBTreeView.Mapping;
 using SQLiteKei.Views;
-
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data.SQLite;
@@ -80,7 +80,7 @@ namespace SQLiteKei
                 TreeViewItems.Remove(selectedItem);
         }
 
-        private void OpenDatabaseFile(object sender, RoutedEventArgs e)
+        private void OpenDatabase(object sender, RoutedEventArgs e)
         {
             using (var dialog = new OpenFileDialog())
             {
@@ -114,8 +114,11 @@ namespace SQLiteKei
 
         private void SetGlobalDatabaseString()
         {
-            var currentSelection = (TreeItem)DBTreeView.SelectedItem;
-            System.Windows.Application.Current.Properties["CurrentDatabase"] = currentSelection.DatabasePath;
+            if(DBTreeView.SelectedItem != null)
+            {
+                var currentSelection = (TreeItem)DBTreeView.SelectedItem;
+                System.Windows.Application.Current.Properties["CurrentDatabase"] = currentSelection.DatabasePath;
+            }
         }
 
         private void DeleteDatabase(object sender, RoutedEventArgs e)
@@ -151,6 +154,35 @@ namespace SQLiteKei
                 MainTabControl.Items.Add(tab);
 
             MainTabControl.SelectedIndex = 0;
+        }
+
+        private void DeleteTable(object sender, RoutedEventArgs e)
+        {
+            var tableItem = DBTreeView.SelectedItem as TableItem;
+
+            if(tableItem != null)
+            {
+                var databasePath = System.Windows.Application.Current.Properties["CurrentDatabase"].ToString();
+                var databaseHandler = new DatabaseHandler(databasePath);
+
+                var message = string.Format("Do you really want to delete the table '{0}' permanently?", tableItem.DisplayName);
+                var result = System.Windows.MessageBox.Show(message, "Delete Table", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if(result == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        databaseHandler.DropTable(tableItem.DisplayName);
+                        ResetTabControl();
+                        TreeViewHelper.RemoveItemFromHierarchy(TreeViewItems, tableItem);
+                    }
+                    catch (Exception ex)
+                    {
+                        var statusInfo = ex.Message.Replace("SQL logic error or missing database\r\n", "SQL-Error - ");
+                        StatusBarInfo.Text = statusInfo;
+                    }
+                }
+            }
         }
 
         #region TreeViewRightClickEvent

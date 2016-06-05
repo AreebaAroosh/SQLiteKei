@@ -21,7 +21,7 @@
             <Menu DockPanel.Dock="Top" Background="#2D2D30" Foreground="#EEEEEE">
                 <MenuItem Header="_File" Background="#2D2D30">
                     <MenuItem Header="_New Database" Click="CreateNewDatabase" Background="#2D2D30"/>
-                    <MenuItem Header="_Open Database" Click="OpenDatabaseFile" Background="#2D2D30"/>
+                    <MenuItem Header="_Open Database" Click="OpenDatabase" Background="#2D2D30"/>
                     <Separator Background="#2D2D30"/>
                     <MenuItem Header="_Exit" Click="MenuItem_Exit_Click" Background="#2D2D30"/>
                 </MenuItem>
@@ -36,7 +36,7 @@
         </DockPanel>
         <DockPanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Button x:Name="ButtonNewDatabase" Content="*" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="CreateNewDatabase" ToolTip="New Database"/>
-            <Button x:Name="ButtonOpenDatabase" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="OpenDatabaseFile" ToolTip="Open Database"/>
+            <Button x:Name="ButtonOpenDatabase" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="OpenDatabase" ToolTip="Open Database"/>
             <Button x:Name="ButtonRemoveDatabase" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="RemoveDatabase" ToolTip="Remove Database"/>
             <Button x:Name="ButtonDeleteDatabase" Content="x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="DeleteDatabase" ToolTip="Delete Database"/>
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="5, 5, 0, 0" />
@@ -97,7 +97,7 @@
                                         <MenuItem Header="Update"></MenuItem>
                                         <MenuItem Header="Delete"></MenuItem>
                                         <Separator/>
-                                        <MenuItem Header="Remove Table"></MenuItem>
+                                        <MenuItem Header="Remove Table" Click="DeleteTable"></MenuItem>
                                     </ContextMenu>
                                </TextBlock.ContextMenu>
                            </TextBlock>
@@ -129,7 +129,7 @@
                     </TreeView.Resources>
                     <TreeView.ContextMenu>
                         <ContextMenu>
-                            <MenuItem Header="Open..." Click="OpenDatabaseFile" />
+                            <MenuItem Header="Open..." Click="OpenDatabase" />
                             <MenuItem Header="New Database" Click="CreateNewDatabase" />
                         </ContextMenu>
                     </TreeView.ContextMenu>
