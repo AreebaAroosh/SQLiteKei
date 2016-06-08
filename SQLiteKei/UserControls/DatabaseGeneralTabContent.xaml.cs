@@ -1,13 +1,9 @@
-﻿#region usings
-
-using SQLiteKei.ViewModels.MainTabControl.Databases;
+﻿using SQLiteKei.ViewModels.MainTabControl.Databases;
 
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-
-#endregion
 
 namespace SQLiteKei.UserControls
 {

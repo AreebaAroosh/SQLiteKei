@@ -93,11 +93,11 @@ namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
         /// <returns></returns>
         private bool DetermineIfSelectCanBeWildcard()
         {
-            var hasUnselectedColumns = Columns.Where(c => !c.IsSelected).Any();
+            var hasUnselectedColumns = Columns.Any(c => !c.IsSelected);
             var hasAliases = false;
 
             if (!hasUnselectedColumns)
-                hasAliases = Columns.Where(c => !string.IsNullOrWhiteSpace(c.Alias)).Any();
+                hasAliases = Columns.Any(c => !string.IsNullOrWhiteSpace(c.Alias));
 
             return !hasUnselectedColumns && !hasAliases;
         }

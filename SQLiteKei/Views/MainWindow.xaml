@@ -57,7 +57,7 @@
                           MouseRightButtonDown="TreeViewRightMouseButtonDown">
                     <TreeView.Resources>
                         <HierarchicalDataTemplate DataType="{x:Type model:DatabaseItem}" ItemsSource="{Binding Items}">
-                            <TextBlock Text="{Binding DisplayName}" ToolTip="{Binding FilePath}">
+                            <TextBlock Text="{Binding DisplayName}" ToolTip="{Binding DatabasePath}">
                                 <TextBlock.ContextMenu>
                                     <ContextMenu>
                                         <MenuItem Header="Remove" Click="RemoveDatabase" />

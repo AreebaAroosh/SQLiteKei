@@ -1,6 +1,4 @@
-﻿#region usings
-
-using SQLiteKei.DataAccess.Exceptions;
+﻿using SQLiteKei.DataAccess.Exceptions;
 using SQLiteKei.DataAccess.Models;
 using SQLiteKei.DataAccess.QueryBuilders;
 
@@ -8,8 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
-
-#endregion
 
 namespace SQLiteKei.DataAccess.Database
 {
@@ -79,6 +75,11 @@ namespace SQLiteKei.DataAccess.Database
             }
         }
 
+        /// <summary>
+        /// Gets the row count for the specified table.
+        /// </summary>
+        /// <param name="tableName">Name of the table.</param>
+        /// <returns></returns>
         public long GetRowCount(string tableName)
         {
             using (var command = connection.CreateCommand())
@@ -92,6 +93,12 @@ namespace SQLiteKei.DataAccess.Database
             }
         }
 
+        /// <summary>
+        /// Gets the create statement for the specified table.
+        /// </summary>
+        /// <param name="tableName">Name of the table.</param>
+        /// <returns></returns>
+        /// <exception cref="TableNotFoundException">Could not find table: {tableName}</exception>
         public string GetCreateStatement(string tableName)
         {
             var tables = connection.GetSchema("Tables").AsEnumerable();
@@ -104,7 +111,79 @@ namespace SQLiteKei.DataAccess.Database
                 }
             }
 
+            //TODO write integration test for this case
             throw new TableNotFoundException("Could not find table: " + tableName);
+        }
+
+        public IEnumerable<Table> GetTables()
+        {
+            var dataRows = GetSchema("Tables");
+            var tables = new List<Table>();
+
+            foreach (var row in dataRows)
+            {
+                tables.Add(new Table
+                {
+                    DatabaseName = row.ItemArray[0].ToString(),
+                    Name = row.ItemArray[2].ToString(),
+                    CreateStatement = row.ItemArray[6].ToString(),
+                });
+            }
+
+            return tables;
+        }
+
+        public IEnumerable<View> GetViews()
+        {
+            var dataRows = GetSchema("Views");
+            var views = new List<View>();
+
+            foreach (var row in dataRows)
+            {
+                views.Add(new View
+                {
+                    Name = row.ItemArray[2].ToString()
+                });
+            }
+
+            return views;
+        }
+
+        public IEnumerable<Index> GetIndexes()
+        {
+            var dataRows = GetSchema("Indexes");
+            var indexes = new List<Index>();
+
+            foreach (var row in dataRows)
+            {
+                indexes.Add(new Index
+                {
+                    Name = row.ItemArray[5].ToString()
+                });
+            }
+
+            return indexes;
+        }
+
+        public IEnumerable<Trigger> GetTriggers()
+        {
+            var dataRows = GetSchema("Triggers");
+            var triggers = new List<Trigger>();
+
+            foreach (var row in dataRows)
+            {
+                triggers.Add(new Trigger
+                {
+                    Name = row.ItemArray[2].ToString()
+                });
+            }
+
+            return triggers;
+        }
+
+        private EnumerableRowCollection<DataRow> GetSchema(string collectionName)
+        {
+            return connection.GetSchema(collectionName).AsEnumerable();
         }
     }
 }

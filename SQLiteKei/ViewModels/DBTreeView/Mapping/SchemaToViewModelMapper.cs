@@ -1,6 +1,7 @@
 ﻿#region usings
 
 using SQLiteKei.DataAccess.Database;
+using SQLiteKei.DataAccess.Models;
 using SQLiteKei.DataAccess.QueryBuilders;
 
 using System;
@@ -21,9 +22,9 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
     /// </summary>
     internal class SchemaToViewModelMapper
     {
-        private DbConnection connection;
-
         private string databasePath;
+
+        private DatabaseHandler dbHandler;
 
         /// <summary>
         /// Maps the provided database to a hierarchical ViewModel structure with a DatabaseItem as its root.
@@ -34,7 +35,8 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
         {
             Application.Current.Properties["CurrentDatabase"] = databasePath;
             this.databasePath = databasePath;
-            InitializeConnection(databasePath);
+            dbHandler = new DatabaseHandler(databasePath);
+
 
             TableFolderItem tableFolder = MapTables();
             FolderItem viewFolder = MapViews();
@@ -44,9 +46,7 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
             var databaseItem = new DatabaseItem()
             {
                 DisplayName = Path.GetFileNameWithoutExtension(databasePath),
-                DatabasePath = databasePath,
-                Name = connection.Database,
-                NumberOfTables = tableFolder.Items.Count
+                DatabasePath = databasePath
             };
 
             databaseItem.Items.Add(tableFolder);
@@ -54,25 +54,12 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
             databaseItem.Items.Add(indexFolder);
             databaseItem.Items.Add(triggerFolder);
 
-            connection.Dispose();
-
             return databaseItem;
-        }
-
-        private void InitializeConnection(string databasePath)
-        {
-            var factory = DbProviderFactories.GetFactory("System.Data.SQLite");
-            connection = factory.CreateConnection();
-
-            connection.ConnectionString = string.Format("Data Source={0}", databasePath);
-            connection.Open();
         }
 
         private TableFolderItem MapTables()
         {
-            var tables = connection.GetSchema("Tables").AsEnumerable();
-
-            List<TableItem> tableViewItems = GenerateTableItemsFrom(tables);
+            List<TableItem> tableViewItems = GenerateTableItems();
 
             var tableFolder = new TableFolderItem { DisplayName = "Tables" };
 
@@ -84,24 +71,19 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
             return tableFolder;
         }
 
-        private List<TableItem> GenerateTableItemsFrom(EnumerableRowCollection<DataRow> tables)
+        private List<TableItem> GenerateTableItems()
         {
+            var tables = dbHandler.GetTables();
             var tableViewItems = new List<TableItem>();
 
             foreach (var table in tables)
             {
-                var tableName = table.ItemArray[2].ToString();
-
-                List<ColumnItem> columns = MapColumnsFor(tableName);
+                List<ColumnItem> columns = MapColumnsFor(table.Name);
 
                 tableViewItems.Add(new TableItem
                 {
-                    DisplayName = tableName,
-                    TableCreateStatement = table.ItemArray[6].ToString(),
-                    RowCount = GetRowCountFor(tableName),
-                    DatabasePath = databasePath,
-                    ColumnCount = columns.Count,
-                    Columns = columns
+                    DisplayName = table.Name,
+                    DatabasePath = databasePath
                 });
             }
 
@@ -127,23 +109,11 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
             return columnItems;
         }
 
-        private int GetRowCountFor(string tableName)
-        {
-            using (var command = connection.CreateCommand())
-            {
-                command.CommandText = QueryBuilder
-                .Select("count(*)")
-                .From(tableName)
-                .Build();
-
-                return Convert.ToInt32(command.ExecuteScalar());
-            }
-        }
-
         private FolderItem MapIndexes()
         {
-            var indexes = connection.GetSchema("Indexes").AsEnumerable();
-            IEnumerable indexNames = indexes.Select(x => x.ItemArray[5]);
+            var indexes = dbHandler.GetIndexes();
+
+            IEnumerable indexNames = indexes.Select(x => x.Name);
 
             var indexFolder = new FolderItem { DisplayName = "Indexes" };
 
@@ -157,8 +127,8 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
 
         private FolderItem MapTriggers()
         {
-            var triggers = connection.GetSchema("Triggers").AsEnumerable();
-            IEnumerable triggerNames = triggers.Select(x => x.ItemArray[3]);
+            var triggers = dbHandler.GetTriggers();
+            IEnumerable triggerNames = triggers.Select(x => x.Name);
 
             var triggerFolder = new FolderItem { DisplayName = "Triggers" };
 
@@ -176,8 +146,8 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
 
         private FolderItem MapViews()
         {
-            var views = connection.GetSchema("Views").AsEnumerable();
-            IEnumerable viewNames = views.Select(x => x.ItemArray[2]);
+            var views = dbHandler.GetViews();
+            IEnumerable viewNames = views.Select(x => x.Name);
 
             var viewFolder = new FolderItem { DisplayName = "Views" };
 

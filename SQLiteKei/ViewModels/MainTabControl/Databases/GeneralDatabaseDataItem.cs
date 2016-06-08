@@ -7,7 +7,7 @@ namespace SQLiteKei.ViewModels.MainTabControl.Databases
     /// </summary>
     public class GeneralDatabaseDataItem
     {
-        public GeneralDatabaseDataItem()
+        public GeneralDatabaseDataItem(string databasePath)
         {
             TableOverviewData = new List<TableOverviewDataItem>();
         }

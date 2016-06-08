@@ -1,12 +1,13 @@
 ﻿using SQLiteKei.UserControls;
 using SQLiteKei.ViewModels.DBTreeView;
 using SQLiteKei.ViewModels.DBTreeView.Base;
-using SQLiteKei.ViewModels.MainTabControl.Mapping;
+using SQLiteKei.ViewModels.MainTabControl.Databases;
 using SQLiteKei.ViewModels.MainTabControl.Tables;
 
 using System.Collections.Generic;
 using System.Windows.Controls;
 using System;
+
 
 namespace SQLiteKei.Helpers
 {
@@ -39,15 +40,22 @@ namespace SQLiteKei.Helpers
             return new List<TabItem>();
         }
 
-        private static List<TabItem> GenerateIndexTabs(IndexItem indexItem)
+        private static List<TabItem> GenerateDatabaseTabs(DatabaseItem databaseItem)
         {
-            throw new NotImplementedException();
+            var generalTab = new TabItem
+            {
+                Header = databaseItem.DisplayName,
+                Content = new DatabaseGeneralTabContent
+                {
+                    DatabaseInfo = new GeneralDatabaseDataItem(databaseItem.DatabasePath)
+                }
+            };
+
+            return new List<TabItem> { generalTab };
         }
 
         private static List<TabItem> GenerateTableTabs(TableItem tableItem)
         {
-            var mapper = new TreeItemToDataItemMapper();
-
             var generalTab = new TabItem
             {
                 Header = string.Format("Table {0}", tableItem.DisplayName),
@@ -69,20 +77,11 @@ namespace SQLiteKei.Helpers
             return new List<TabItem> { generalTab, recordsTab };
         }
 
-        private static List<TabItem> GenerateDatabaseTabs(DatabaseItem databaseItem)
+        private static List<TabItem> GenerateIndexTabs(IndexItem indexItem)
         {
-            var mapper = new TreeItemToDataItemMapper();
-
-            var generalTab = new TabItem
-            {
-                Header = databaseItem.DisplayName,
-                Content = new DatabaseGeneralTabContent
-                {
-                    DatabaseInfo = mapper.MapToGeneralDatabaseDataItem(databaseItem) 
-                }
-            };
-
-            return new List<TabItem> { generalTab };
+            throw new NotImplementedException();
         }
+
+
     }
 }
