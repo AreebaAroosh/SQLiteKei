@@ -42,7 +42,6 @@ namespace SQLiteKei.DataAccess.QueryBuilders
         public SelectQueryBuilder AddSelect(string select)
         {
             selects.Add(select, string.Empty);
-
             return this;
         }
 
@@ -87,26 +86,26 @@ namespace SQLiteKei.DataAccess.QueryBuilders
             if(string.IsNullOrWhiteSpace(table))
                 throw new SelectQueryBuilderException("No table has been defined.");
 
-            string finalSelect;
-
-            if (selects.Any())
-                finalSelect = GenerateCombinedSelect();
-            else
-                finalSelect = "*";
+            string finalSelect = GetFinalSelect();
 
             var resultString = string.Format("SELECT {0}\nFROM {1}", finalSelect, table);
 
             if (whereClauses.Any())
             {
-                var combinedWhereClauses = string.Join(" ", whereClauses);
-                resultString = string.Format("{0} WHERE {1}", resultString, combinedWhereClauses);
+                var combinedWhereClauses = string.Join("\n", whereClauses);
+                resultString = string.Format("{0}\nWHERE {1}", resultString, combinedWhereClauses);
             }
 
             return resultString;
         }
 
-        private string GenerateCombinedSelect()
+        private string GetFinalSelect()
         {
+            if (!selects.Any())
+            {
+                return "*";
+            }
+
             var selectsAndAliases = new List<string>();
 
             foreach (var select in selects)

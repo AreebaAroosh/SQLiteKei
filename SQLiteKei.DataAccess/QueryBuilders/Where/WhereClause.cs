@@ -28,26 +28,73 @@ namespace SQLiteKei.DataAccess.QueryBuilders.Where
 
         public ConditionalQueryBuilder IsGreaterThan(object value)
         {
+            resultString.Append(" > ");
+            resultString.Append(value);
+
+            queryBuilder.AddWhereClause(resultString.ToString());
+            return queryBuilder;
+        }
+
+        public ConditionalQueryBuilder IsGreaterThanOrEqual(object value)
+        {
+            resultString.Append(" >= ");
+            resultString.Append(value);
+
+            queryBuilder.AddWhereClause(resultString.ToString());
             return queryBuilder;
         }
 
         public ConditionalQueryBuilder IsLessThan(object value)
         {
+            resultString.Append(" < ");
+            resultString.Append(value);
+
+            queryBuilder.AddWhereClause(resultString.ToString());
             return queryBuilder;
         }
 
-        public ConditionalQueryBuilder IsLike(object value)
+        public ConditionalQueryBuilder IsLessThanOrEqual(object value)
         {
+            resultString.Append(" <= ");
+            resultString.Append(value);
+
+            queryBuilder.AddWhereClause(resultString.ToString());
             return queryBuilder;
         }
 
-        public ConditionalQueryBuilder Contains(string text)
+        public ConditionalQueryBuilder IsLike(string pattern)
         {
+            resultString.Append(" LIKE ");
+            resultString.Append("'" + pattern + "'");
+
+            queryBuilder.AddWhereClause(resultString.ToString());
             return queryBuilder;
         }
 
-        public ConditionalQueryBuilder IsBetween(object from, object to)
+        public ConditionalQueryBuilder Contains(object value)
         {
+            resultString.Append(" LIKE ");
+            resultString.Append("'%" + value + "%'");
+
+            queryBuilder.AddWhereClause(resultString.ToString());
+            return queryBuilder;
+        }
+
+        public ConditionalQueryBuilder BeginsWith(object value)
+        {
+            resultString.Append(" LIKE ");
+            resultString.Append("'" + value + "%'");
+
+            queryBuilder.AddWhereClause(resultString.ToString());
+            return queryBuilder;
+        }
+
+        public ConditionalQueryBuilder EndsWith(object value)
+        {
+            resultString.Append(" LIKE ");
+            resultString.Append("'%" + value + "'");
+
+            queryBuilder.AddWhereClause(resultString.ToString());
             return queryBuilder;
         }
     }
