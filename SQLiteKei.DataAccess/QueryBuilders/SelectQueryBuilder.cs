@@ -1,34 +1,42 @@
 ﻿#region usings
 
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using SQLiteKei.DataAccess.Exceptions;
+using SQLiteKei.DataAccess.QueryBuilders.Base;
+using SQLiteKei.DataAccess.QueryBuilders.Where;
 
 #endregion
 
 namespace SQLiteKei.DataAccess.QueryBuilders
 {
-    public class SelectQueryBuilder
+    public class SelectQueryBuilder : ConditionalQueryBuilder
     {
         private string table;
 
         private Dictionary<string, string> selects;
 
+        private List<string> whereClauses; 
+
         public SelectQueryBuilder()
         {
             selects = new Dictionary<string, string>();
+            whereClauses = new List<string>();
         }
 
         public SelectQueryBuilder(string select)
         {
             selects = new Dictionary<string, string>();
             selects.Add(select, string.Empty);
+            whereClauses = new List<string>();
         }
 
         public SelectQueryBuilder(string select, string alias)
         {
             selects = new Dictionary<string, string>();
             selects.Add(select, alias);
+            whereClauses = new List<string>();
         }
 
         public SelectQueryBuilder AddSelect(string select)
@@ -50,16 +58,51 @@ namespace SQLiteKei.DataAccess.QueryBuilders
             return this;
         }
 
-        public SelectQueryBuilder AddWhere(string where)
+        public override WhereClause Where(string columnName)
         {
-            throw new NotImplementedException();
+            if(whereClauses.Any())
+                throw new SelectQueryBuilderException("More than one where statement has been defined. "
+                                                      + "You should use the And or Or methods for more than one where clause.");
+
+            return new WhereClause(this, columnName);
         }
 
-        public string Build()
+        public override WhereClause Or(string columnName)
         {
-            var combinedSelect = GenerateCombinedSelect();
+            return new OrWhereClause(this, columnName);
+        }
 
-            return string.Format("SELECT {0}\nFROM {1}", combinedSelect, table);
+        public override WhereClause And(string columnName)
+        {
+            return new AndWhereClause(this, columnName);
+        }
+
+        internal override void AddWhereClause(string where)
+        {
+            whereClauses.Add(where);
+        }
+
+        public override string Build()
+        {
+            if(string.IsNullOrWhiteSpace(table))
+                throw new SelectQueryBuilderException("No table has been defined.");
+
+            string finalSelect;
+
+            if (selects.Any())
+                finalSelect = GenerateCombinedSelect();
+            else
+                finalSelect = "*";
+
+            var resultString = string.Format("SELECT {0}\nFROM {1}", finalSelect, table);
+
+            if (whereClauses.Any())
+            {
+                var combinedWhereClauses = string.Join(" ", whereClauses);
+                resultString = string.Format("{0} WHERE {1}", resultString, combinedWhereClauses);
+            }
+
+            return resultString;
         }
 
         private string GenerateCombinedSelect()

@@ -42,14 +42,20 @@
   <ItemGroup>
     <Compile Include="Database\DatabaseHandler.cs" />
     <Compile Include="Exceptions\CreateQueryBuilderException.cs" />
+    <Compile Include="Exceptions\SelectQueryBuilderException.cs" />
     <Compile Include="Models\Column.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryBuilders\Base\ConditionalQueryBuilder.cs" />
+    <Compile Include="QueryBuilders\Base\QueryBuilderBase.cs" />
     <Compile Include="QueryBuilders\CreateQueryBuilder.cs" />
     <Compile Include="QueryBuilders\Data\ColumnData.cs" />
     <Compile Include="QueryBuilders\DropQueryBuilder.cs" />
     <Compile Include="QueryBuilders\Enums\DataType.cs" />
     <Compile Include="QueryBuilders\QueryBuilder.cs" />
     <Compile Include="QueryBuilders\SelectQueryBuilder.cs" />
+    <Compile Include="QueryBuilders\Where\AndWhereClause.cs" />
+    <Compile Include="QueryBuilders\Where\OrWhereClause.cs" />
+    <Compile Include="QueryBuilders\Where\WhereClause.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

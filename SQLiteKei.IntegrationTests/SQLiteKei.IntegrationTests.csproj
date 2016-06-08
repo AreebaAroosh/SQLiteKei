@@ -57,6 +57,16 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SQLiteKei.DataAccess\SQLiteKei.DataAccess.csproj">
+      <Project>{ecfe5e99-4122-4170-a95d-38be00509e0c}</Project>
+      <Name>SQLiteKei.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SQLiteKei\SQLiteKei.csproj">
+      <Project>{6810210e-7314-43e2-baaa-ad2500a06c8e}</Project>
+      <Name>SQLiteKei</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.101.0\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.101.0\build\net451\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
