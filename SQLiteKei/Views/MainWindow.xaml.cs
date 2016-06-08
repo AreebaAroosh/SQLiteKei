@@ -85,7 +85,7 @@ namespace SQLiteKei
         {
             using (var dialog = new OpenFileDialog())
             {
-                dialog.Filter = "SQLite (*.sqlite)|*.sqlite";
+                dialog.Filter = "Database Files (*.sqlite, *.db)|*.sqlite; *db; |All Files |*.*";
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     AddDatabaseSchemaToTreeView(dialog.FileName);
