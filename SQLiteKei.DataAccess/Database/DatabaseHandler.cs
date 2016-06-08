@@ -1,5 +1,6 @@
 ﻿#region usings
 
+using SQLiteKei.DataAccess.Exceptions;
 using SQLiteKei.DataAccess.Models;
 using SQLiteKei.DataAccess.QueryBuilders;
 
@@ -55,7 +56,7 @@ namespace SQLiteKei.DataAccess.Database
                     {
                         Id = Convert.ToInt32(row.ItemArray[0]),
                         Name = (string)row.ItemArray[1],
-                        Type = (string)row.ItemArray[2],
+                        DataType = (string)row.ItemArray[2],
                         IsNotNullable = Convert.ToBoolean(row.ItemArray[3]),
                         DefaultValue = row.ItemArray[4],
                         IsPrimary = Convert.ToBoolean(row.ItemArray[5])
@@ -76,6 +77,34 @@ namespace SQLiteKei.DataAccess.Database
                 command.CommandText = QueryBuilder.Drop(tableName).Build();
                 command.ExecuteNonQuery();
             }
+        }
+
+        public long GetRowCount(string tableName)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = QueryBuilder
+                .Select("count(*)")
+                .From(tableName)
+                .Build();
+
+                return Convert.ToInt64(command.ExecuteScalar());
+            }
+        }
+
+        public string GetCreateStatement(string tableName)
+        {
+            var tables = connection.GetSchema("Tables").AsEnumerable();
+
+            foreach(var table in tables)
+            {
+                if (table.ItemArray[2].Equals(tableName))
+                {
+                    return table.ItemArray[6].ToString();
+                }
+            }
+
+            throw new TableNotFoundException("Could not find table: " + tableName);
         }
     }
 }

@@ -120,11 +120,7 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
                 columnItems.Add(new ColumnItem
                 {
                     DisplayName = column.Name,
-                    DatabasePath = databasePath,
-                    DataType = column.Type,
-                    DefaultValue = column.DefaultValue,
-                    IsNotNullable = column.IsNotNullable,
-                    IsPrimary = column.IsPrimary
+                    DatabasePath = databasePath
                 });
             }
 

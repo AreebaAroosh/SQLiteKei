@@ -1,15 +1,12 @@
-﻿#region usings
-
-using SQLiteKei.UserControls;
+﻿using SQLiteKei.UserControls;
 using SQLiteKei.ViewModels.DBTreeView;
 using SQLiteKei.ViewModels.DBTreeView.Base;
 using SQLiteKei.ViewModels.MainTabControl.Mapping;
+using SQLiteKei.ViewModels.MainTabControl.Tables;
 
 using System.Collections.Generic;
 using System.Windows.Controls;
 using System;
-
-#endregion
 
 namespace SQLiteKei.Helpers
 {
@@ -56,14 +53,17 @@ namespace SQLiteKei.Helpers
                 Header = string.Format("Table {0}", tableItem.DisplayName),
                 Content = new TableGeneralTabContent
                 {
-                    TableInfo = mapper.MapToGeneralTableDataItem(tableItem)
+                    TableInfo = new GeneralTableDataItem(tableItem.DisplayName)
                 }
             };
 
             var recordsTab = new TabItem
             {
                 Header = "Records",
-                Content = new TableRecordsTabContent(mapper.MapToTableRecordsDataItem(tableItem))
+                Content = new TableRecordsTabContent
+                {
+                    TableInfo = new  TableRecordsDataItem(tableItem.DisplayName)
+                }
             };
 
             return new List<TabItem> { generalTab, recordsTab };

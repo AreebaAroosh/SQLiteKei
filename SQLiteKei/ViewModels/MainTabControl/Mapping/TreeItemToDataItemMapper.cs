@@ -6,7 +6,7 @@ using SQLiteKei.ViewModels.DBTreeView;
 using SQLiteKei.ViewModels.MainTabControl.Databases;
 using SQLiteKei.ViewModels.MainTabControl.Tables;
 
-using System.Collections.Generic;
+using System;
 
 #endregion
 
@@ -42,51 +42,29 @@ namespace SQLiteKei.ViewModels.MainTabControl.Mapping
             return databaseDataItem;
         }
 
+        [Obsolete]
         public GeneralTableDataItem MapToGeneralTableDataItem(TableItem tableItem)
         {
-            var tableDataItem = new GeneralTableDataItem
-            {
-                Name = tableItem.DisplayName,
-                ColumnCount = tableItem.ColumnCount,
-                RowCount = tableItem.RowCount,
-                TableCreateStatement = tableItem.TableCreateStatement
-            };
-
-            List<ColumnDataItem> columnDataItems = MapColumns(tableItem.Columns);
-
-            foreach (var columnDataItem in columnDataItems)
-                tableDataItem.ColumnData.Add(columnDataItem);
-
-            return tableDataItem;
+            //var tableDataItem = new GeneralTableDataItem
+            //{
+            //    Name = tableItem.DisplayName,
+            //    ColumnCount = tableItem.ColumnCount,
+            //    RowCount = tableItem.RowCount,
+            //    TableCreateStatement = tableItem.TableCreateStatement
+            //};
+            return null;
+            //return tableDataItem;
         }
 
-        private List<ColumnDataItem> MapColumns(List<ColumnItem> columns)
-        {
-            var columnDataItems = new List<ColumnDataItem>();
-
-            foreach (ColumnItem column in columns)
-            {
-                columnDataItems.Add(new ColumnDataItem
-                {
-                    Name = column.DisplayName,
-                    DataType = column.DataType,
-                    IsNotNullable = column.IsNotNullable,
-                    IsPrimary = column.IsPrimary,
-                    DefaultValue = column.DefaultValue
-                });
-            }
-            return columnDataItems;
-        }
-
+        [Obsolete]
         public TableRecordsDataItem MapToTableRecordsDataItem(TableItem tableItem)
         {
-            var recordsDataItem = new TableRecordsDataItem
-            {
-                TableName = tableItem.DisplayName,
-                DatabasePath = tableItem.DatabasePath
-            };
-
-            return recordsDataItem;
+            //var recordsDataItem = new TableRecordsDataItem
+            //{
+            //    TableName = tableItem.DisplayName,
+            //};
+            return null;
+            //return recordsDataItem;
         }
     }
 }

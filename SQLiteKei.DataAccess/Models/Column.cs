@@ -6,7 +6,7 @@
 
         public string Name { get; set; }
 
-        public string Type { get; set; }
+        public string DataType { get; set; }
 
         public bool IsNotNullable { get; set; }
 

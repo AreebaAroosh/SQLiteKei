@@ -8,8 +8,8 @@
 
         public bool IsNotNullable { get; set; }
 
-        public bool IsPrimary { get; set; }
-
         public object DefaultValue { get; set; }
+
+        public bool IsPrimary { get; set; }
     }
 }

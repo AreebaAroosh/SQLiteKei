@@ -43,7 +43,9 @@
     <Compile Include="Database\DatabaseHandler.cs" />
     <Compile Include="Exceptions\CreateQueryBuilderException.cs" />
     <Compile Include="Exceptions\SelectQueryBuilderException.cs" />
+    <Compile Include="Exceptions\TableNotFoundException.cs" />
     <Compile Include="Models\Column.cs" />
+    <Compile Include="Models\Table.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryBuilders\Base\ConditionalQueryBuilder.cs" />
     <Compile Include="QueryBuilders\Base\QueryBuilderBase.cs" />

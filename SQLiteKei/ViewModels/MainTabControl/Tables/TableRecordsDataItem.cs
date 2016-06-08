@@ -5,7 +5,10 @@
     /// </summary>
     public class TableRecordsDataItem
     {
-        public string DatabasePath { get; set; }
+        public TableRecordsDataItem(string tableName)
+        {
+            TableName = tableName;
+        }
 
         public string TableName { get; set; }
     }

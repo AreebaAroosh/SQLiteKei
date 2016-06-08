@@ -1,16 +1,12 @@
-﻿#region usings
-
-using SQLiteKei.ViewModels.MainTabControl.Tables;
+﻿using SQLiteKei.ViewModels.MainTabControl.Tables;
+using SQLiteKei.Views;
 
 using System.Windows.Controls;
 using System;
 using System.Data.Common;
 using System.Data;
 using System.Text.RegularExpressions;
-
-using SQLiteKei.Views;
-
-#endregion
+using System.Windows;
 
 namespace SQLiteKei.UserControls
 {
@@ -19,12 +15,11 @@ namespace SQLiteKei.UserControls
     /// </summary>
     public partial class TableRecordsTabContent : UserControl
     {
-        private TableRecordsDataItem TableInfo { get; set; }
+        public TableRecordsDataItem TableInfo { get; set; }
 
-        public TableRecordsTabContent(TableRecordsDataItem tableInfo)
+        public TableRecordsTabContent()
         {
             InitializeComponent();
-            TableInfo = tableInfo;
         }
 
         private void ExecuteSelect(object sender, System.Windows.RoutedEventArgs e)
@@ -46,7 +41,7 @@ namespace SQLiteKei.UserControls
                 var factory = DbProviderFactories.GetFactory("System.Data.SQLite");
                 using (var connection = factory.CreateConnection())
                 {
-                    connection.ConnectionString = string.Format("Data Source={0}", TableInfo.DatabasePath);
+                    connection.ConnectionString = string.Format("Data Source={0}", Application.Current.Properties["CurrentDatabase"]);
                     connection.Open();
 
                     using (var command = connection.CreateCommand())
