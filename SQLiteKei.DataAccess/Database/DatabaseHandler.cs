@@ -30,6 +30,11 @@ namespace SQLiteKei.DataAccess.Database
             connection.Open();
         }
 
+        public string GetDatabaseName()
+        {
+            return connection.Database;
+        }
+
         /// <summary>
         /// Gets the column meta data for the specified table.
         /// </summary>

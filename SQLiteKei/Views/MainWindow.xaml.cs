@@ -1,6 +1,4 @@
-﻿#region usings
-
-using SQLiteKei.DataAccess.Database;
+﻿using SQLiteKei.DataAccess.Database;
 using SQLiteKei.Helpers;
 using SQLiteKei.ViewModels.DBTreeView;
 using SQLiteKei.ViewModels.DBTreeView.Base;
@@ -17,8 +15,6 @@ using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
-
-#endregion
 
 namespace SQLiteKei
 {

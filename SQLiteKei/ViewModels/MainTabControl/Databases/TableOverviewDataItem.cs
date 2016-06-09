@@ -7,7 +7,7 @@
     {
         public string Name { get; set; }
 
-        public int RowCount { get; set; }
+        public long RowCount { get; set; }
 
         public int ColumnCount { get; set; }
     }
