@@ -99,7 +99,11 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
 
             foreach (string indexName in indexNames)
             {
-                indexFolder.Items.Add(new IndexItem { DisplayName = indexName });
+                indexFolder.Items.Add(new IndexItem
+                {
+                    DisplayName = indexName,
+                    DatabasePath = databasePath
+                });
             }
 
             return indexFolder;

@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data.SQLite;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
@@ -84,7 +85,8 @@ namespace SQLiteKei
                 dialog.Filter = "Database Files (*.sqlite, *.db)|*.sqlite; *db; |All Files |*.*";
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    AddDatabaseSchemaToTreeView(dialog.FileName);
+                    if(!TreeViewItems.Any(x => x.DatabasePath.Equals(dialog.FileName)))
+                        AddDatabaseSchemaToTreeView(dialog.FileName);
                 }
             }
         }
