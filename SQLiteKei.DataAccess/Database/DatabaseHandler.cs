@@ -12,7 +12,7 @@ namespace SQLiteKei.DataAccess.Database
     /// <summary>
     /// A class used for calls to the given SQLite database.
     /// </summary>
-    public class DatabaseHandler
+    public partial class DatabaseHandler
     {
         private DbConnection connection;
 

@@ -11,9 +11,9 @@ namespace SQLiteKei.Views.UserControls
     /// </summary>
     public partial class TableGeneralTabContent : UserControl, INotifyPropertyChanged
     {
-        private GeneralTableDataItem tableInfo;
+        private GeneralTableViewModel tableInfo;
 
-        public GeneralTableDataItem TableInfo
+        public GeneralTableViewModel TableInfo
         {
             get { return tableInfo; }
             set

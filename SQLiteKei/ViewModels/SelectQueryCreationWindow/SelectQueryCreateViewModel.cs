@@ -13,7 +13,7 @@ namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
 {
     public class SelectQueryCreateViewModel : INotifyPropertyChanged
     {
-        private string tableName;
+        private readonly string tableName;
 
         public ObservableCollection<ColumnSelectItem> Columns { get; set; }
 

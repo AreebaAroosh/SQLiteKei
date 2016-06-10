@@ -61,7 +61,7 @@ namespace SQLiteKei.Helpers
                 Header = string.Format("Table {0}", tableItem.DisplayName),
                 Content = new TableGeneralTabContent
                 {
-                    TableInfo = new GeneralTableDataItem(tableItem.DisplayName)
+                    TableInfo = new GeneralTableViewModel(tableItem.DisplayName)
                 }
             };
 

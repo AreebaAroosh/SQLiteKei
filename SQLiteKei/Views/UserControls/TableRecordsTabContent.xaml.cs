@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Data;
-using System.Data.Common;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
+using SQLiteKei.DataAccess.Database;
 using SQLiteKei.ViewModels.MainTabControl.Tables;
 
 namespace SQLiteKei.Views.UserControls
@@ -21,7 +20,7 @@ namespace SQLiteKei.Views.UserControls
             InitializeComponent();
         }
 
-        private void ExecuteSelect(object sender, System.Windows.RoutedEventArgs e)
+        private void ExecuteSelect(object sender, RoutedEventArgs e)
         {
             var createSelectWindow = new GenerateSelectQueryWindow(TableInfo.TableName);
 
@@ -34,27 +33,13 @@ namespace SQLiteKei.Views.UserControls
 
         private void Execute(string selectQuery)
         {
-            //TODO move this method's logic to other class class
             try
             {
-                var factory = DbProviderFactories.GetFactory("System.Data.SQLite");
-                using (var connection = factory.CreateConnection())
-                {
-                    connection.ConnectionString = string.Format("Data Source={0}", Application.Current.Properties["CurrentDatabase"]);
-                    connection.Open();
+                var dbHandler = new DatabaseHandler(Application.Current.Properties["CurrentDatabase"].ToString());
+                var resultTable = dbHandler.ExecuteReader(selectQuery);
 
-                    using (var command = connection.CreateCommand())
-                    {
-                        command.CommandText = selectQuery;
-
-                        var resultTable = new DataTable();
-                        resultTable.Load(command.ExecuteReader());
-
-                        RecordsDataGrid.ItemsSource = resultTable.DefaultView;
-
-                        StatusBar.Text = string.Format("Rows returned: {0}", resultTable.Rows.Count);
-                    }
-                }
+                RecordsDataGrid.ItemsSource = resultTable.DefaultView;
+                StatusBar.Text = string.Format("Rows returned: {0}", resultTable.Rows.Count);       
             }
             catch (Exception ex)
             {

@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\DatabaseHandler.Commands.cs" />
     <Compile Include="Database\DatabaseHandler.cs" />
     <Compile Include="Exceptions\CreateQueryBuilderException.cs" />
     <Compile Include="Exceptions\SelectQueryBuilderException.cs" />

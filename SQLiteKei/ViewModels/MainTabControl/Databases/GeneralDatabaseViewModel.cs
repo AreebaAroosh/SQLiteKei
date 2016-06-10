@@ -13,7 +13,7 @@ namespace SQLiteKei.ViewModels.MainTabControl.Databases
     {
         public GeneralDatabaseViewModel(string databasePath)
         {
-            TableOverviewData = new List<TableOverviewViewModel>();
+            TableOverviewData = new List<TableOverviewDataItem>();
             FilePath = databasePath;
 
             Initialize();
@@ -29,7 +29,7 @@ namespace SQLiteKei.ViewModels.MainTabControl.Databases
 
         public long RowCount { get; set; }
 
-        public List<TableOverviewViewModel> TableOverviewData { get; set; }
+        public List<TableOverviewDataItem> TableOverviewData { get; set; }
 
         private void Initialize()
         {
@@ -47,7 +47,7 @@ namespace SQLiteKei.ViewModels.MainTabControl.Databases
 
                 var columns = dbHandler.GetColumns(table.Name);
 
-                TableOverviewData.Add(new TableOverviewViewModel
+                TableOverviewData.Add(new TableOverviewDataItem
                 {
                     ColumnCount = columns.Count,
                     Name = table.Name,

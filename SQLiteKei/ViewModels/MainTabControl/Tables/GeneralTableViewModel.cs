@@ -6,9 +6,9 @@ using System.Windows;
 
 namespace SQLiteKei.ViewModels.MainTabControl.Tables
 {
-    public class GeneralTableDataItem
+    public class GeneralTableViewModel
     {
-        public GeneralTableDataItem(string tableName)
+        public GeneralTableViewModel(string tableName)
         {
             ColumnData = new List<ColumnDataItem>();
             TableName = tableName;
