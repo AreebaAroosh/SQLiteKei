@@ -1,11 +1,10 @@
-﻿using SQLiteKei.ViewModels.MainTabControl.Tables;
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using SQLiteKei.ViewModels.MainTabControl.Tables;
 
-namespace SQLiteKei.UserControls
+namespace SQLiteKei.Views.UserControls
 {
     /// <summary>
     /// Interaction logic for TableGeneralTabContent.xaml

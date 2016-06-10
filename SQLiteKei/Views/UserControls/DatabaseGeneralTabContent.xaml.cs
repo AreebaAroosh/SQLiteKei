@@ -1,20 +1,19 @@
-﻿using SQLiteKei.ViewModels.MainTabControl.Databases;
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using SQLiteKei.ViewModels.MainTabControl.Databases;
 
-namespace SQLiteKei.UserControls
+namespace SQLiteKei.Views.UserControls
 {
     /// <summary>
     /// Interaction logic for DatabaseGeneralTabContent.xaml
     /// </summary>
     public partial class DatabaseGeneralTabContent : UserControl, INotifyPropertyChanged
     {
-        private GeneralDatabaseDataItem databaseInfo;
+        private GeneralDatabaseViewModel databaseInfo;
 
-        public GeneralDatabaseDataItem DatabaseInfo
+        public GeneralDatabaseViewModel DatabaseInfo
         {
             get { return databaseInfo; }
             set

@@ -1,5 +1,4 @@
-﻿using SQLiteKei.UserControls;
-using SQLiteKei.ViewModels.DBTreeView;
+﻿using SQLiteKei.ViewModels.DBTreeView;
 using SQLiteKei.ViewModels.DBTreeView.Base;
 using SQLiteKei.ViewModels.MainTabControl.Databases;
 using SQLiteKei.ViewModels.MainTabControl.Tables;
@@ -7,6 +6,7 @@ using SQLiteKei.ViewModels.MainTabControl.Tables;
 using System.Collections.Generic;
 using System.Windows.Controls;
 using System;
+using SQLiteKei.Views.UserControls;
 
 
 namespace SQLiteKei.Helpers
@@ -47,7 +47,7 @@ namespace SQLiteKei.Helpers
                 Header = databaseItem.DisplayName,
                 Content = new DatabaseGeneralTabContent
                 {
-                    DatabaseInfo = new GeneralDatabaseDataItem(databaseItem.DatabasePath)
+                    DatabaseInfo = new GeneralDatabaseViewModel(databaseItem.DatabasePath)
                 }
             };
 

@@ -3,7 +3,7 @@
     /// <summary>
     /// A ViewModel that is used in the main tab view to display general table data when a database item is selected.
     /// </summary>
-    public class TableOverviewDataItem
+    public class TableOverviewViewModel
     {
         public string Name { get; set; }
 

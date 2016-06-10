@@ -9,11 +9,11 @@ namespace SQLiteKei.ViewModels.MainTabControl.Databases
     /// <summary>
     /// A ViewModel that is used in the main tab view to display data when a database is selected.
     /// </summary>
-    public class GeneralDatabaseDataItem
+    public class GeneralDatabaseViewModel
     {
-        public GeneralDatabaseDataItem(string databasePath)
+        public GeneralDatabaseViewModel(string databasePath)
         {
-            TableOverviewData = new List<TableOverviewDataItem>();
+            TableOverviewData = new List<TableOverviewViewModel>();
             FilePath = databasePath;
 
             Initialize();
@@ -29,7 +29,7 @@ namespace SQLiteKei.ViewModels.MainTabControl.Databases
 
         public long RowCount { get; set; }
 
-        public List<TableOverviewDataItem> TableOverviewData { get; set; }
+        public List<TableOverviewViewModel> TableOverviewData { get; set; }
 
         private void Initialize()
         {
@@ -47,7 +47,7 @@ namespace SQLiteKei.ViewModels.MainTabControl.Databases
 
                 var columns = dbHandler.GetColumns(table.Name);
 
-                TableOverviewData.Add(new TableOverviewDataItem
+                TableOverviewData.Add(new TableOverviewViewModel
                 {
                     ColumnCount = columns.Count,
                     Name = table.Name,

@@ -1,14 +1,13 @@
-﻿using SQLiteKei.ViewModels.MainTabControl.Tables;
-using SQLiteKei.Views;
-
-using System.Windows.Controls;
-using System;
-using System.Data.Common;
+﻿using System;
 using System.Data;
+using System.Data.Common;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
 
-namespace SQLiteKei.UserControls
+using SQLiteKei.ViewModels.MainTabControl.Tables;
+
+namespace SQLiteKei.Views.UserControls
 {
     /// <summary>
     /// Interaction logic for TableRecordsTabContent.xaml
@@ -26,7 +25,7 @@ namespace SQLiteKei.UserControls
         {
             var createSelectWindow = new GenerateSelectQueryWindow(TableInfo.TableName);
 
-            if(createSelectWindow.ShowDialog().Value == true)
+            if(createSelectWindow.ShowDialog().Value)
             {
                 StatusBar.Text = string.Empty;
                 Execute(createSelectWindow.ViewModel.SelectQuery);
