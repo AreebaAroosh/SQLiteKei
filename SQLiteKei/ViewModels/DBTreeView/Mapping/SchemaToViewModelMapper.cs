@@ -78,8 +78,6 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
 
             foreach (var table in tables)
             {
-                List<ColumnItem> columns = MapColumnsFor(table.Name);
-
                 tableViewItems.Add(new TableItem
                 {
                     DisplayName = table.Name,
@@ -90,24 +88,6 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
             return tableViewItems;
         }
 
-        private List<ColumnItem> MapColumnsFor(string tableName)
-        {
-            var databaseHandler = new DatabaseHandler(databasePath);
-            var columns = databaseHandler.GetColumns(tableName);
-
-            var columnItems = new List<ColumnItem>();
-
-            foreach (var column in columns)
-            {
-                columnItems.Add(new ColumnItem
-                {
-                    DisplayName = column.Name,
-                    DatabasePath = databasePath
-                });
-            }
-
-            return columnItems;
-        }
 
         private FolderItem MapIndexes()
         {

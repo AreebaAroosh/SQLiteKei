@@ -123,9 +123,6 @@
                                 </TextBlock.ContextMenu>
                             </TextBlock>
                         </DataTemplate>
-                        <DataTemplate DataType="{x:Type model:ColumnItem}">
-                            <TextBlock Text="{Binding Path=DisplayName}" />
-                        </DataTemplate>
                     </TreeView.Resources>
                     <TreeView.ContextMenu>
                         <ContextMenu>
