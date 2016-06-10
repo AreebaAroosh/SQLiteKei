@@ -17,9 +17,9 @@ namespace SQLiteKei.Helpers
         /// <param name="treeItem">The tree item.</param>
         public static void RemoveItemFromHierarchy(ICollection<TreeItem> treeItems, TreeItem treeItem)
         {
-            foreach(var item in treeItems)
+            foreach (var item in treeItems)
             {
-                if(item == treeItem)
+                if (item == treeItem)
                 {
                     treeItems.Remove(item);
                     break;
@@ -27,7 +27,7 @@ namespace SQLiteKei.Helpers
 
                 var directory = item as DirectoryItem;
 
-                if(directory != null && directory.Items.Any())
+                if (directory != null && directory.Items.Any())
                 {
                     RemoveItemFromHierarchy(directory.Items, treeItem);
                 }

@@ -2,6 +2,9 @@
 
 namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
 {
+    /// <summary>
+    /// A view model that is used to represent a build a user's select statement.
+    /// </summary>
     public class ColumnSelectItem : INotifyPropertyChanged
     {
         public string ColumnName { get; set; }

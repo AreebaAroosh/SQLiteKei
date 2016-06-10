@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+
 using SQLiteKei.ViewModels.MainTabControl.Databases;
 
 namespace SQLiteKei.Views.UserControls
@@ -19,6 +20,7 @@ namespace SQLiteKei.Views.UserControls
             set
             {
                 databaseInfo = value;
+
                 if (databaseInfo.TableOverviewData.Any())
                 {
                     TableDataGrid.Visibility = Visibility.Visible;
@@ -29,7 +31,9 @@ namespace SQLiteKei.Views.UserControls
                     NoTablesFoundLabel.Visibility = Visibility.Visible;
                     TableDataGrid.Visibility = Visibility.Hidden;
                 }
-                NotifyPropertyChanged("DatabaseInfo");            }
+
+                NotifyPropertyChanged("DatabaseInfo");
+            }
         }
 
         public DatabaseGeneralTabContent()

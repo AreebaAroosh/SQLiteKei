@@ -1,10 +1,6 @@
-﻿#region using
-
-using log4net;
+﻿using log4net;
 
 using System.Runtime.CompilerServices;
-
-#endregion
 
 namespace SQLiteKei.Helpers
 {

@@ -117,7 +117,7 @@ namespace SQLiteKei.DataAccess.Database
             }
 
             //TODO write integration test for this case
-            throw new TableNotFoundException("Could not find table: " + tableName);
+            throw new TableNotFoundException(tableName);
         }
 
         public IEnumerable<Table> GetTables()

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+
 using SQLiteKei.ViewModels.MainTabControl.Tables;
 
 namespace SQLiteKei.Views.UserControls

@@ -70,7 +70,7 @@ namespace SQLiteKei.Helpers
                 Header = "Records",
                 Content = new TableRecordsTabContent
                 {
-                    TableInfo = new  TableRecordsDataItem(tableItem.DisplayName)
+                    TableInfo = new TableRecordsDataItem(tableItem.DisplayName)
                 }
             };
 
@@ -81,7 +81,5 @@ namespace SQLiteKei.Helpers
         {
             throw new NotImplementedException();
         }
-
-
     }
 }

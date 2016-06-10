@@ -1,16 +1,15 @@
-﻿#region usings
-
-using SQLiteKei.DataAccess.QueryBuilders;
+﻿using SQLiteKei.DataAccess.QueryBuilders;
 
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 
-#endregion
-
 namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
 {
+    /// <summary>
+    /// The main ViewModel for the GenerateSelectQuery window
+    /// </summary>
     public class SelectQueryCreateViewModel : INotifyPropertyChanged
     {
         private readonly string tableName;

@@ -22,7 +22,7 @@ namespace SQLiteKei.ViewModels.MainTabControl.Tables
 
         public int ColumnCount { get; set; }
 
-        public double RowCount { get; set; }
+        public long RowCount { get; set; }
 
         public List<ColumnDataItem> ColumnData { get; set; }
 

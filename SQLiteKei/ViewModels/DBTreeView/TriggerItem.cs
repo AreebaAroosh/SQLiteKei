@@ -2,7 +2,10 @@
 
 namespace SQLiteKei.ViewModels.DBTreeView
 {
-    class TriggerItem : TreeItem
+    /// <summary>
+    /// A tree item representing a database trigger.
+    /// </summary>
+    public class TriggerItem : TreeItem
     {
     }
 }
