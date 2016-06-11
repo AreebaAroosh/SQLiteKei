@@ -43,7 +43,6 @@
                                     <CheckBox IsChecked="{Binding IsOrClause}" Margin="5 0" VerticalAlignment="Center" />
                                     <TextBlock Text="{Binding ColumnName}" TextTrimming="CharacterEllipsis" ToolTip="{Binding ColumnName}" 
                                                Width="100" VerticalAlignment="Center"  />
-                                    <Label Content="AS" FontWeight="DemiBold" />
                                     <TextBox Text="{Binding Alias}" HorizontalAlignment="Stretch"></TextBox>
                                 </DockPanel>
                             </DataTemplate>

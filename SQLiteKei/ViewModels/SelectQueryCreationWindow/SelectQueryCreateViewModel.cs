@@ -1,9 +1,13 @@
 ﻿using SQLiteKei.DataAccess.QueryBuilders;
 using SQLiteKei.ViewModels.Base;
+
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
+using System;
+using System.Windows;
+using SQLiteKei.DataAccess.Database;
 
 namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
 {
@@ -30,24 +34,56 @@ namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
         public SelectQueryCreateViewModel(string tableName)
         {
             this.tableName = tableName;
+            Initialize();
 
+        }
+
+        private void Initialize()
+        {
             Selects = new ObservableCollection<SelectItem>();
+            WhereClauses = new ObservableCollection<WhereItem>();
+
             Selects.CollectionChanged += CollectionContentChanged;
+            WhereClauses.CollectionChanged += CollectionContentChanged;
+
+            InitializeItems();
             UpdateSelectQuery();
+        }
+
+        private void InitializeItems()
+        {
+            var databasePath = ((App)Application.Current).CurrentDatabase;
+            var databaseHandler = new DatabaseHandler(databasePath);
+
+            var columns = databaseHandler.GetColumns(tableName);
+
+            foreach (var column in columns)
+            {
+                Selects.Add(new SelectItem
+                {
+                    ColumnName = column.Name,
+                    IsSelected = true
+                });
+
+                WhereClauses.Add(new WhereItem
+                {
+                    ColumnName = column.Name
+                });
+            }
         }
 
         private void CollectionContentChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.Action == NotifyCollectionChangedAction.Remove)
             {
-                foreach (SelectItem item in e.OldItems)
+                foreach (NotifyingItem item in e.OldItems)
                 {
                     item.PropertyChanged -= CollectionItemPropertyChanged;
                 }
             }
             else if (e.Action == NotifyCollectionChangedAction.Add)
             {
-                foreach (SelectItem item in e.NewItems)
+                foreach (NotifyingItem item in e.NewItems)
                 {
                     item.PropertyChanged += CollectionItemPropertyChanged;
                 }
@@ -83,7 +119,11 @@ namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
                             selectQueryBuilder.AddSelect(select.ColumnName, select.Alias);
                     }
                 }
-            }                
+            } 
+            foreach(var where in WhereClauses)
+            {
+
+            }               
                 
             SelectQuery = selectQueryBuilder.From(tableName).Build();
         }
