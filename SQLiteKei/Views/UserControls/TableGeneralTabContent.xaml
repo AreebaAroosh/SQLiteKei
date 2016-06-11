@@ -11,28 +11,28 @@
             <RowDefinition MinHeight="50"></RowDefinition>
         </Grid.RowDefinitions>
         <GroupBox Grid.Row="0" Header="About" Margin="5" Width="Auto" Height="Auto">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                </Grid.RowDefinitions>
-                <TextBox Grid.Row="0" Grid.Column="0" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="Table Name:" />
-                <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding TableInfo.TableName}" />
-                <TextBox Grid.Row="1" Grid.Column="0" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="Number of Columns:" />
-                <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding TableInfo.ColumnCount}"/>
-                <TextBox Grid.Row="1" Grid.Column="2" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="Number of Records:" />
-                <TextBox Grid.Row="1" Grid.Column="3" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding TableInfo.RowCount}"/>
-                <TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Style="{StaticResource SelectableLabelTextBox}" FontWeight="DemiBold" Text="Statement used to create this table" />
-                <TextBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding TableInfo.TableCreateStatement}"/>
-            </Grid>
+            <StackPanel Orientation="Vertical">
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBox Grid.Row="0" Grid.Column="0" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="Table Name:" />
+                    <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding TableInfo.TableName}" />
+                    <TextBox Grid.Row="1" Grid.Column="0" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="Number of Columns:" />
+                    <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding TableInfo.ColumnCount}"/>
+                    <TextBox Grid.Row="1" Grid.Column="2" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="Number of Records:" />
+                    <TextBox Grid.Row="1" Grid.Column="3" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding TableInfo.RowCount}"/>
+                </Grid>
+                <TextBox Style="{StaticResource SelectableLabelTextBox}" FontWeight="DemiBold" Text="Statement used to create this table" />
+                <TextBox Style="{StaticResource SelectableLabelTextBox}" Text="{Binding TableInfo.TableCreateStatement}" TextWrapping="Wrap"/>
+            </StackPanel>
         </GroupBox>
         <GroupBox Grid.Row="1" Header="Columns" Margin="5, 0, 5, 5" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="Auto">
             <Grid>
