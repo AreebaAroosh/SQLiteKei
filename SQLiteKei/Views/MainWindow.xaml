@@ -88,7 +88,7 @@
                                     </StackPanel.ContextMenu>
                                 </StackPanel>
                             </HierarchicalDataTemplate>
-                        <HierarchicalDataTemplate DataType="{x:Type model:TableItem}" ItemsSource="{Binding Columns}">
+                        <HierarchicalDataTemplate DataType="{x:Type model:TableItem}">
                            <TextBlock Text="{Binding Path=DisplayName}" >
                                <TextBlock.ContextMenu>
                                    <ContextMenu>

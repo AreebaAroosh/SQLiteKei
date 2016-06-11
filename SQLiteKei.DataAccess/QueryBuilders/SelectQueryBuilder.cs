@@ -14,26 +14,26 @@ namespace SQLiteKei.DataAccess.QueryBuilders
 
         private Dictionary<string, string> selects;
 
-        private List<string> whereClauses; 
+        public List<string> WhereClauses { get; private set; } 
 
         public SelectQueryBuilder()
         {
             selects = new Dictionary<string, string>();
-            whereClauses = new List<string>();
+            WhereClauses = new List<string>();
         }
 
         public SelectQueryBuilder(string select)
         {
             selects = new Dictionary<string, string>();
             selects.Add(select, string.Empty);
-            whereClauses = new List<string>();
+            WhereClauses = new List<string>();
         }
 
         public SelectQueryBuilder(string select, string alias)
         {
             selects = new Dictionary<string, string>();
             selects.Add(select, alias);
-            whereClauses = new List<string>();
+            WhereClauses = new List<string>();
         }
 
         public SelectQueryBuilder AddSelect(string select)
@@ -56,7 +56,7 @@ namespace SQLiteKei.DataAccess.QueryBuilders
 
         public override WhereClause Where(string columnName)
         {
-            if(whereClauses.Any())
+            if(WhereClauses.Any())
                 throw new SelectQueryBuilderException("More than one where statement has been defined. "
                                                       + "You should use the And or Or methods for more than one where clause.");
 
@@ -75,7 +75,7 @@ namespace SQLiteKei.DataAccess.QueryBuilders
 
         internal override void AddWhereClause(string where)
         {
-            whereClauses.Add(where);
+            WhereClauses.Add(where);
         }
 
         public override string Build()
@@ -87,9 +87,9 @@ namespace SQLiteKei.DataAccess.QueryBuilders
 
             var resultString = string.Format("SELECT {0}\nFROM {1}", finalSelect, table);
 
-            if (whereClauses.Any())
+            if (WhereClauses.Any())
             {
-                var combinedWhereClauses = string.Join("\n", whereClauses);
+                var combinedWhereClauses = string.Join("\n", WhereClauses);
                 resultString = string.Format("{0}\nWHERE {1}", resultString, combinedWhereClauses);
             }
 

@@ -8,8 +8,11 @@
         mc:Ignorable="d"
         Title="Create Select Query" 
         Icon="../Resources/Icons/Logo_32x32.png"
-        Height="300" Width="400"
+        Height="350" Width="550"
         MinHeight="300" MinWidth="300">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Window.Resources>
     <Grid DataContext="{Binding ElementName=Control, Path=ViewModel}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
@@ -24,7 +27,7 @@
                                 <DockPanel>
                                     <CheckBox IsChecked="{Binding IsSelected}" Margin="5 0" VerticalAlignment="Center" />
                                     <TextBlock Text="{Binding ColumnName}" TextTrimming="CharacterEllipsis" ToolTip="{Binding ColumnName}" 
-                                               Width="100" VerticalAlignment="Center"  />
+                                               Width="125" VerticalAlignment="Center"  />
                                     <Label Content="AS" FontWeight="DemiBold" />
                                     <TextBox Text="{Binding Alias}" HorizontalAlignment="Stretch"></TextBox>
                                 </DockPanel>
@@ -35,15 +38,24 @@
             </TabItem>
             <TabItem Header="Where">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ItemsControl ItemsSource="{Binding WhereClauses}">
+                    <ItemsControl ItemsSource="{Binding Selects}">
                         <ItemsControl.Resources>
-                            <DataTemplate DataType="{x:Type viewmodel:WhereItem}">
-                                <DockPanel>
-                                    <Label Content="OR" FontWeight="DemiBold" />
-                                    <CheckBox IsChecked="{Binding IsOrClause}" Margin="5 0" VerticalAlignment="Center" />
+                            <DataTemplate DataType="{x:Type viewmodel:SelectItem}">
+                                <DockPanel Visibility="{Binding IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}">
                                     <TextBlock Text="{Binding ColumnName}" TextTrimming="CharacterEllipsis" ToolTip="{Binding ColumnName}" 
-                                               Width="100" VerticalAlignment="Center"  />
-                                    <TextBox Text="{Binding Alias}" HorizontalAlignment="Stretch"></TextBox>
+                                               Width="125" VerticalAlignment="Center"  />
+                                    <ComboBox Width="75" SelectedValue="{Binding CompareType}" SelectedValuePath="Content">
+                                        <ComboBoxItem Content="="  IsSelected="True" />
+                                        <ComboBoxItem Content=">" />
+                                        <ComboBoxItem Content=">=" />
+                                        <ComboBoxItem Content="&lt;" />
+                                        <ComboBoxItem Content="&lt;=" />
+                                        <ComboBoxItem Content="Like" />
+                                        <ComboBoxItem Content="Contains" />
+                                        <ComboBoxItem Content="Begins with" />
+                                        <ComboBoxItem Content="Ends with" />
+                                    </ComboBox>
+                                    <TextBox Text="{Binding CompareValue}" HorizontalAlignment="Stretch"></TextBox>
                                 </DockPanel>
                             </DataTemplate>
                         </ItemsControl.Resources>
@@ -51,6 +63,7 @@
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="Options">
+                <Label Content="Coming Soon"></Label>
             </TabItem>
             <TabItem Header="ResultQuery">
                 <TextBox IsReadOnly="True" Text="{Binding SelectQuery}" TextWrapping="Wrap"></TextBox>

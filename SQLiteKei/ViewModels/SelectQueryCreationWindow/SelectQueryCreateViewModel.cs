@@ -1,13 +1,15 @@
-﻿using SQLiteKei.DataAccess.QueryBuilders;
+﻿using SQLiteKei.DataAccess.Database;
+using SQLiteKei.DataAccess.QueryBuilders;
+using SQLiteKei.DataAccess.QueryBuilders.Where;
+using SQLiteKei.DataAccess.QueryBuilders.Base;
 using SQLiteKei.ViewModels.Base;
 
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
-using System;
 using System.Windows;
-using SQLiteKei.DataAccess.Database;
+using System;
 
 namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
 {
@@ -18,11 +20,9 @@ namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
     {
         private readonly string tableName;
 
+        private SelectQueryBuilder selectQueryBuilder;
+
         public ObservableCollection<SelectItem> Selects { get; set; }
-
-        public ObservableCollection<WhereItem> WhereClauses { get; set; }
-
-        public string TableName { get; set; }
 
         private string selectQuery;
         public string SelectQuery
@@ -41,10 +41,7 @@ namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
         private void Initialize()
         {
             Selects = new ObservableCollection<SelectItem>();
-            WhereClauses = new ObservableCollection<WhereItem>();
-
             Selects.CollectionChanged += CollectionContentChanged;
-            WhereClauses.CollectionChanged += CollectionContentChanged;
 
             InitializeItems();
             UpdateSelectQuery();
@@ -63,11 +60,6 @@ namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
                 {
                     ColumnName = column.Name,
                     IsSelected = true
-                });
-
-                WhereClauses.Add(new WhereItem
-                {
-                    ColumnName = column.Name
                 });
             }
         }
@@ -99,7 +91,7 @@ namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
 
         private void UpdateSelectQuery()
         {
-            SelectQueryBuilder selectQueryBuilder = QueryBuilder.Select();
+            selectQueryBuilder = new SelectQueryBuilder();
 
             var canBeWildcard = DetermineIfSelectCanBeWildcard();
 
@@ -119,12 +111,9 @@ namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
                             selectQueryBuilder.AddSelect(select.ColumnName, select.Alias);
                     }
                 }
-            } 
-            foreach(var where in WhereClauses)
-            {
+            }
 
-            }               
-                
+            AddWhereClauses();
             SelectQuery = selectQueryBuilder.From(tableName).Build();
         }
 
@@ -141,6 +130,51 @@ namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
                 hasAliases = Selects.Any(c => !string.IsNullOrWhiteSpace(c.Alias));
 
             return !hasUnselectedColumns && !hasAliases;
+        }
+
+        private void AddWhereClauses()
+        {
+            foreach (var select in Selects)
+            {
+                if (!string.IsNullOrWhiteSpace(select.CompareValue))
+                {
+                    WhereClause where;
+
+                    if (selectQueryBuilder.WhereClauses.Any())
+                        where = selectQueryBuilder.And(select.ColumnName);
+                    else
+                        where = selectQueryBuilder.Where(select.ColumnName);
+
+                    selectQueryBuilder = AddClause(where, select.CompareType, select.CompareValue) as SelectQueryBuilder;
+                }
+            }
+        }
+
+        private ConditionalQueryBuilder AddClause(WhereClause clause, string compareType, string compareValue)
+        {
+            switch(compareType)
+            {
+                case "=":
+                    return clause.Is(compareValue);
+                case ">":
+                    return clause.IsGreaterThan(compareValue);
+                case ">=":
+                    return clause.IsGreaterThanOrEqual(compareValue);
+                case "&lt;":
+                    return clause.IsLessThan(compareValue);
+                case "&lt;=":
+                    return clause.IsLessThanOrEqual(compareValue);
+                case "Like":
+                    return clause.IsLike(compareValue);
+                case "Contains":
+                    return clause.Contains(compareValue);
+                case "Begins with":
+                    return clause.BeginsWith(compareValue);
+                case "Ends with":
+                    return clause.EndsWith(compareValue);
+                default:
+                    throw new NotImplementedException();
+            }
         }
     }
 }

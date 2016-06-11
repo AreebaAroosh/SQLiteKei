@@ -21,6 +21,20 @@ namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
         {
             get { return isSelected; }
             set { isSelected = value; NotifyPropertyChanged("IsSelected"); }
-        }  
+        }
+
+        private string compareType;
+        public string CompareType
+        {
+            get { return compareType; }
+            set { compareType = value; NotifyPropertyChanged("CompareType"); }
+        }
+
+        private string compareValue;
+        public string CompareValue
+        {
+            get { return compareValue; }
+            set { compareValue = value; NotifyPropertyChanged("CompareValue"); }
+        }
     }
 }
