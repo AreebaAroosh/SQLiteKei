@@ -70,7 +70,7 @@ namespace SQLiteKei
             }
         }
 
-        private void RemoveDatabase(object sender, RoutedEventArgs e)
+        private void CloseDatabase(object sender, RoutedEventArgs e)
         {
             var selectedItem = DBTreeView.SelectedItem as DatabaseItem;
 

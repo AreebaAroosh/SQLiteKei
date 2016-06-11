@@ -37,7 +37,7 @@
         <DockPanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Button x:Name="ButtonNewDatabase" Content="*" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="CreateNewDatabase" ToolTip="New Database"/>
             <Button x:Name="ButtonOpenDatabase" Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="OpenDatabase" ToolTip="Open Database"/>
-            <Button x:Name="ButtonRemoveDatabase" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="RemoveDatabase" ToolTip="Remove Database"/>
+            <Button x:Name="ButtonCloseDatabase" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="CloseDatabase" ToolTip="Close Database"/>
             <Button x:Name="ButtonDeleteDatabase" Content="x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="DeleteDatabase" ToolTip="Delete Database"/>
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="5, 5, 0, 0" />
             <Button x:Name="Button_CreateQuery" Content="x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0"/>
@@ -60,8 +60,9 @@
                             <TextBlock Text="{Binding DisplayName}" ToolTip="{Binding DatabasePath}">
                                 <TextBlock.ContextMenu>
                                     <ContextMenu>
-                                        <MenuItem Header="Remove" Click="RemoveDatabase" />
+                                        <MenuItem Header="Close" Click="CloseDatabase" />
                                         <MenuItem Header="Rename" />
+                                        <Separator/>
                                         <MenuItem Header="Delete" Click="DeleteDatabase" />
                                     </ContextMenu>
                                 </TextBlock.ContextMenu>
@@ -91,12 +92,7 @@
                         <HierarchicalDataTemplate DataType="{x:Type model:TableItem}">
                            <TextBlock Text="{Binding Path=DisplayName}" >
                                <TextBlock.ContextMenu>
-                                   <ContextMenu>
-                                        <MenuItem Header="Select"></MenuItem>
-                                        <MenuItem Header="Insert"></MenuItem>
-                                        <MenuItem Header="Update"></MenuItem>
-                                        <MenuItem Header="Delete"></MenuItem>
-                                        <Separator/>
+                                    <ContextMenu>
                                         <MenuItem Header="Remove Table" Click="DeleteTable"></MenuItem>
                                     </ContextMenu>
                                </TextBlock.ContextMenu>
