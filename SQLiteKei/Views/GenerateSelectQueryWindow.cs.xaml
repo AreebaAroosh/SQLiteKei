@@ -18,9 +18,9 @@
         <TabControl x:Name="tabControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <TabItem Header="Select">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ItemsControl ItemsSource="{Binding Columns}">
+                    <ItemsControl ItemsSource="{Binding Selects}">
                         <ItemsControl.Resources>
-                            <DataTemplate DataType="{x:Type viewmodel:ColumnSelectItem}">
+                            <DataTemplate DataType="{x:Type viewmodel:SelectItem}">
                                 <DockPanel>
                                     <CheckBox IsChecked="{Binding IsSelected}" Margin="5 0" VerticalAlignment="Center" />
                                     <TextBlock Text="{Binding ColumnName}" TextTrimming="CharacterEllipsis" ToolTip="{Binding ColumnName}" 
@@ -34,8 +34,22 @@
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="Where">
-                <Label>Under Construction</Label>
-                
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ItemsControl ItemsSource="{Binding WhereClauses}">
+                        <ItemsControl.Resources>
+                            <DataTemplate DataType="{x:Type viewmodel:WhereItem}">
+                                <DockPanel>
+                                    <Label Content="OR" FontWeight="DemiBold" />
+                                    <CheckBox IsChecked="{Binding IsOrClause}" Margin="5 0" VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding ColumnName}" TextTrimming="CharacterEllipsis" ToolTip="{Binding ColumnName}" 
+                                               Width="100" VerticalAlignment="Center"  />
+                                    <Label Content="AS" FontWeight="DemiBold" />
+                                    <TextBox Text="{Binding Alias}" HorizontalAlignment="Stretch"></TextBox>
+                                </DockPanel>
+                            </DataTemplate>
+                        </ItemsControl.Resources>
+                    </ItemsControl>
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="Options">
             </TabItem>

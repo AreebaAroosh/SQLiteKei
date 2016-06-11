@@ -1,19 +1,10 @@
-﻿#region usings
+﻿using SQLiteKei.DataAccess.Database;
 
-using SQLiteKei.DataAccess.Database;
-using SQLiteKei.DataAccess.Models;
-using SQLiteKei.DataAccess.QueryBuilders;
-
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Common;
 using System.IO;
 using System.Linq;
-using System.Windows;
-
-#endregion
 
 namespace SQLiteKei.ViewModels.DBTreeView.Mapping
 {

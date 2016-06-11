@@ -1,11 +1,11 @@
-﻿using System.ComponentModel;
+﻿using SQLiteKei.ViewModels.Base;
 
 namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
 {
     /// <summary>
     /// A view model that is used to represent a build a user's select statement.
     /// </summary>
-    public class ColumnSelectItem : INotifyPropertyChanged
+    public class SelectItem : NotifyingItem
     {
         public string ColumnName { get; set; }
 
@@ -21,16 +21,6 @@ namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
         {
             get { return isSelected; }
             set { isSelected = value; NotifyPropertyChanged("IsSelected"); }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged(string property)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(property));
-            }
-        }
+        }  
     }
 }

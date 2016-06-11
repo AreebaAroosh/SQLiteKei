@@ -41,7 +41,7 @@ namespace SQLiteKei.Views
 
             foreach(var column in columns)
             {
-                viewModel.Columns.Add(new ColumnSelectItem
+                viewModel.Selects.Add(new SelectItem
                 {
                     ColumnName = column.Name,
                     IsSelected = true

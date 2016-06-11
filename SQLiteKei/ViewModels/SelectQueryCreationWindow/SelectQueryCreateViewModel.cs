@@ -1,5 +1,5 @@
 ﻿using SQLiteKei.DataAccess.QueryBuilders;
-
+using SQLiteKei.ViewModels.Base;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -10,11 +10,13 @@ namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
     /// <summary>
     /// The main ViewModel for the GenerateSelectQuery window
     /// </summary>
-    public class SelectQueryCreateViewModel : INotifyPropertyChanged
+    public class SelectQueryCreateViewModel : NotifyingItem
     {
         private readonly string tableName;
 
-        public ObservableCollection<ColumnSelectItem> Columns { get; set; }
+        public ObservableCollection<SelectItem> Selects { get; set; }
+
+        public ObservableCollection<WhereItem> WhereClauses { get; set; }
 
         public string TableName { get; set; }
 
@@ -29,8 +31,8 @@ namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
         {
             this.tableName = tableName;
 
-            Columns = new ObservableCollection<ColumnSelectItem>();
-            Columns.CollectionChanged += CollectionContentChanged;
+            Selects = new ObservableCollection<SelectItem>();
+            Selects.CollectionChanged += CollectionContentChanged;
             UpdateSelectQuery();
         }
 
@@ -38,14 +40,14 @@ namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
         {
             if (e.Action == NotifyCollectionChangedAction.Remove)
             {
-                foreach (ColumnSelectItem item in e.OldItems)
+                foreach (SelectItem item in e.OldItems)
                 {
                     item.PropertyChanged -= CollectionItemPropertyChanged;
                 }
             }
             else if (e.Action == NotifyCollectionChangedAction.Add)
             {
-                foreach (ColumnSelectItem item in e.NewItems)
+                foreach (SelectItem item in e.NewItems)
                 {
                     item.PropertyChanged += CollectionItemPropertyChanged;
                 }
@@ -71,14 +73,14 @@ namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
             }
             else
             {
-                foreach (var column in Columns)
+                foreach (var select in Selects)
                 {
-                    if (column.IsSelected)
+                    if (select.IsSelected)
                     {
-                        if (string.IsNullOrWhiteSpace(column.Alias))
-                            selectQueryBuilder.AddSelect(column.ColumnName);
+                        if (string.IsNullOrWhiteSpace(select.Alias))
+                            selectQueryBuilder.AddSelect(select.ColumnName);
                         else
-                            selectQueryBuilder.AddSelect(column.ColumnName, column.Alias);
+                            selectQueryBuilder.AddSelect(select.ColumnName, select.Alias);
                     }
                 }
             }                
@@ -92,25 +94,13 @@ namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
         /// <returns></returns>
         private bool DetermineIfSelectCanBeWildcard()
         {
-            var hasUnselectedColumns = Columns.Any(c => !c.IsSelected);
+            var hasUnselectedColumns = Selects.Any(c => !c.IsSelected);
             var hasAliases = false;
 
             if (!hasUnselectedColumns)
-                hasAliases = Columns.Any(c => !string.IsNullOrWhiteSpace(c.Alias));
+                hasAliases = Selects.Any(c => !string.IsNullOrWhiteSpace(c.Alias));
 
             return !hasUnselectedColumns && !hasAliases;
         }
-
-        #region INotifyPropertyChanged Members
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged(string property)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(property));
-            }
-        }
-        #endregion
     }
 }

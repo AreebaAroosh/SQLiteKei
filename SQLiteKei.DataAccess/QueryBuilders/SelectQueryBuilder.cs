@@ -1,13 +1,10 @@
-﻿#region usings
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 using SQLiteKei.DataAccess.Exceptions;
 using SQLiteKei.DataAccess.QueryBuilders.Base;
 using SQLiteKei.DataAccess.QueryBuilders.Where;
-
-#endregion
 
 namespace SQLiteKei.DataAccess.QueryBuilders
 {
