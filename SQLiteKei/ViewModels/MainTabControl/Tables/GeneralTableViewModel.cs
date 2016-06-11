@@ -28,7 +28,7 @@ namespace SQLiteKei.ViewModels.MainTabControl.Tables
 
         private void Initialize()
         {
-            var dbHandler = new DatabaseHandler(Application.Current.Properties["CurrentDatabase"].ToString());
+            var dbHandler = new DatabaseHandler(((App)Application.Current).CurrentDatabase);
 
             TableCreateStatement = dbHandler.GetCreateStatement(TableName);
             RowCount = dbHandler.GetRowCount(TableName);

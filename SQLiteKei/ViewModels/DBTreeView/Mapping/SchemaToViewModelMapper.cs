@@ -33,10 +33,8 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
         /// <returns></returns>
         public DatabaseItem MapSchemaToViewModel(string databasePath)
         {
-            Application.Current.Properties["CurrentDatabase"] = databasePath;
             this.databasePath = databasePath;
             dbHandler = new DatabaseHandler(databasePath);
-
 
             TableFolderItem tableFolder = MapTables();
             FolderItem viewFolder = MapViews();

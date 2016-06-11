@@ -35,7 +35,8 @@ namespace SQLiteKei.Views.UserControls
         {
             try
             {
-                var dbHandler = new DatabaseHandler(Application.Current.Properties["CurrentDatabase"].ToString());
+                var dbPath = ((App)Application.Current).CurrentDatabase;
+                var dbHandler = new DatabaseHandler(dbPath);
                 var resultTable = dbHandler.ExecuteReader(selectQuery);
 
                 RecordsDataGrid.ItemsSource = resultTable.DefaultView;

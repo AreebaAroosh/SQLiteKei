@@ -116,7 +116,7 @@ namespace SQLiteKei
             if(DBTreeView.SelectedItem != null)
             {
                 var currentSelection = (TreeItem)DBTreeView.SelectedItem;
-                System.Windows.Application.Current.Properties["CurrentDatabase"] = currentSelection.DatabasePath;
+                (System.Windows.Application.Current as App).CurrentDatabase = currentSelection.DatabasePath;
             }
         }
 
@@ -161,7 +161,7 @@ namespace SQLiteKei
 
             if(tableItem != null)
             {
-                var databasePath = System.Windows.Application.Current.Properties["CurrentDatabase"].ToString();
+                var databasePath = ((App)System.Windows.Application.Current).CurrentDatabase;
                 var databaseHandler = new DatabaseHandler(databasePath);
 
                 var message = string.Format("Do you really want to delete the table '{0}' permanently?", tableItem.DisplayName);

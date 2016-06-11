@@ -34,7 +34,7 @@ namespace SQLiteKei.Views
         {
             var viewModel = new SelectQueryCreateViewModel(tableName);
 
-            var databasePath = Application.Current.Properties["CurrentDatabase"].ToString();
+            var databasePath = ((App)Application.Current).CurrentDatabase;
             var databaseHandler = new DatabaseHandler(databasePath);
 
             var columns = databaseHandler.GetColumns(tableName);
