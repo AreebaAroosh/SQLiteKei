@@ -114,6 +114,7 @@
     </Compile>
     <Compile Include="Helpers\DatabaseTabGenerator.cs" />
     <Compile Include="Helpers\LogHelper.cs" />
+    <Compile Include="Helpers\TreeSaveHelper.cs" />
     <Compile Include="Helpers\TreeViewHelper.cs" />
     <Compile Include="ViewModels\Base\NotifyingItem.cs" />
     <Compile Include="Views\UserControls\DatabaseGeneralTabContent.xaml.cs">
