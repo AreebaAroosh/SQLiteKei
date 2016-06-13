@@ -1,13 +1,11 @@
-﻿using System;
+﻿using SQLiteKei.ViewModels.DBTreeView.Base;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using SQLiteKei.ViewModels.DBTreeView;
-using SQLiteKei.ViewModels.DBTreeView.Base;
-
 using System.Collections.ObjectModel;
 using System.IO;
-
 using System.Xml.Serialization;
 
 namespace SQLiteKei.Helpers
@@ -16,40 +14,41 @@ namespace SQLiteKei.Helpers
     {
         public static void SaveTree(ObservableCollection<TreeItem> tree, string filePath)
         {
-           
-
-            XmlSerializer xs = new XmlSerializer(typeof (ObservableCollection<TreeItem>),
-                new[] {typeof (DatabaseItem), typeof (FolderItem), typeof (TableItem)});
-            //using (StreamWriter wr = new StreamWriter("test.xml"))
-            //{
-            //    xs.Serialize(wr, hierarchy);
-            //}
-
-            using (StreamReader sr = new StreamReader("test.xml"))
+            var xmlSerializer = InitSerializer();
+            
+            using (var streamWriter = new StreamWriter(filePath))
             {
-                var x = new ObservableCollection<TreeItem>();
-
-                x = xs.Deserialize(sr) as ObservableCollection<TreeItem>;
+                xmlSerializer.Serialize(streamWriter, tree);
             }
         }
 
-        public static void LoadTree(string filePath)
+        public static ObservableCollection<TreeItem> LoadTree(string filePath)
         {
-            var t = InitSerializer();
+            if (!File.Exists(filePath))
+            {
+                return new ObservableCollection<TreeItem>();
+            }
+
+            var xmlSerializer = InitSerializer();
+
+            using (var streamReader = new StreamReader(filePath))
+            {
+                return xmlSerializer.Deserialize(streamReader) as ObservableCollection<TreeItem>;
+            }
         }
 
         private static XmlSerializer InitSerializer()
         {
-            List<Type> types = new List<Type>();
+            var types = new List<Type>();
 
-            // Get all inheriting types of TreeItem
+            // Get all inheriting types of TreeItem so that the whole tree can be serialized
             foreach (Type type in Assembly.GetAssembly(typeof (TreeItem)).GetTypes()
                 .Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf((typeof (TreeItem)))))
             {
                 types.Add(type);
             }
-            
-            return new XmlSerializer(typeof(TreeItem), types.ToArray());
+
+            return new XmlSerializer(typeof(ObservableCollection<TreeItem>), types.ToArray());
         }
     }
 }

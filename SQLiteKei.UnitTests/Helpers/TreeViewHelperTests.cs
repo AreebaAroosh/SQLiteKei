@@ -1,6 +1,5 @@
-﻿#region usings
+﻿using NUnit.Framework;
 
-using NUnit.Framework;
 using SQLiteKei.Helpers;
 using SQLiteKei.ViewModels.DBTreeView;
 using SQLiteKei.ViewModels.DBTreeView.Base;
@@ -8,8 +7,6 @@ using SQLiteKei.ViewModels.DBTreeView.Base;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-
-#endregion
 
 namespace SQLiteKei.UnitTests.Helpers
 {
