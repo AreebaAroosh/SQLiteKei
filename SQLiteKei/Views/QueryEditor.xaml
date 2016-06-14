@@ -1,0 +1,44 @@
+﻿<Window x:Name="Window" x:Class="SQLiteKei.Views.QueryEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SQLiteKei.Views"
+        xmlns:model="clr-namespace:SQLiteKei.ViewModels.QueryEditorWindow"
+        mc:Ignorable="d"
+        Title="Query Editor"
+        Icon="../Resources/Icons/Logo_32x32.png"
+        Height="500" Width="400" MinHeight="500" MinWidth="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="2" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Height="25">
+            <Label Content="Database"></Label>
+            <ComboBox x:Name="DatabaseComboBox" Width="150" Height="20" ItemsSource="{Binding Databases}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate DataType="{x:Type model:DatabaseSelectItem}">
+                        <TextBlock Text="{Binding DatabaseName}" VerticalAlignment="Center" ToolTip="{Binding DatabasePath}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+        <TextBox Grid.Row="1" VerticalAlignment="Stretch" Text="{Binding SqlStatement}" TextWrapping="Wrap" Margin="5 0 5 5"></TextBox>
+        <GridSplitter Grid.Row="2" HorizontalAlignment="Stretch" ResizeDirection="Rows" ResizeBehavior="PreviousAndNext" Background="#3F3F46"/>
+        <DataGrid x:Name="QueryGrid" Grid.Row="3" HeadersVisibility="Column"></DataGrid>
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Margin="3 2" Content="Execute" Click="Execute" />
+            <TextBox Grid.Column="1" IsReadOnly="True" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding StatusInfo}"></TextBox>
+            <Button Grid.Column="2" Margin="3 2" Content="Cancel" IsCancel="True" />
+        </Grid>
+    </Grid>
+</Window>

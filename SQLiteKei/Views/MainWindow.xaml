@@ -26,6 +26,7 @@
                     <MenuItem Header="_Exit" Click="MenuItem_Exit_Click" Background="#2D2D30"/>
                 </MenuItem>
                 <MenuItem Header="_Tools">
+                    <MenuItem Header="_Query Editor" Click="OpenQueryEditor" Background="#2D2D30"/>
                     <MenuItem Header="_Preferences" Background="#2D2D30"/>
                 </MenuItem>
                 <MenuItem Header="_Help">
@@ -40,7 +41,7 @@
             <Button x:Name="ButtonCloseDatabase" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="CloseDatabase" ToolTip="Close Database"/>
             <Button x:Name="ButtonDeleteDatabase" Content="x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="DeleteDatabase" ToolTip="Delete Database"/>
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="5, 5, 0, 0" />
-            <Button x:Name="Button_CreateQuery" Content="x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0"/>
+            <Button x:Name="Button_CreateQuery" Content="x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="OpenQueryEditor" ToolTip="Write SQL Statement"/>
         </DockPanel>
         <Grid Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <Grid.ColumnDefinitions>

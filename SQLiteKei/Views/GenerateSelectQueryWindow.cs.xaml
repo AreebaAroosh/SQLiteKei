@@ -71,7 +71,7 @@
         </TabControl>
         <StackPanel Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft">
             <Button Content="Cancel" Margin="3 2" IsCancel="True"></Button>
-            <Button Content="Execute" Margin="3,2" Click="Execute"></Button>
+            <Button Content="Execute" Margin="3 2" Click="Execute"></Button>
         </StackPanel>
     </Grid>
 </Window>

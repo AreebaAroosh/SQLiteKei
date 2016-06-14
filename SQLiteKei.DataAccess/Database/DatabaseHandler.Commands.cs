@@ -21,5 +21,22 @@ namespace SQLiteKei.DataAccess.Database
                 return resultTable;
             } 
         }
+
+        /// <summary>
+        /// Executes the given SQL as a non query and returns the number of rows affected.
+        /// </summary>
+        /// <param name="sql">The SQL.</param>
+        /// <returns></returns>
+        public int ExecuteNonQuery(string sql)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = sql;
+
+                var result = command.ExecuteNonQuery();
+
+                return result;
+            }
+        }
     }
 }

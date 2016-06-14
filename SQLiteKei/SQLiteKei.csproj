@@ -84,6 +84,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\QueryEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\UserControls\DatabaseGeneralTabContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -117,6 +121,11 @@
     <Compile Include="Helpers\TreeSaveHelper.cs" />
     <Compile Include="Helpers\TreeViewHelper.cs" />
     <Compile Include="ViewModels\Base\NotifyingItem.cs" />
+    <Compile Include="ViewModels\QueryEditorWindow\DatabaseSelectItem.cs" />
+    <Compile Include="ViewModels\QueryEditorWindow\QueryEditorViewModel.cs" />
+    <Compile Include="Views\QueryEditor.xaml.cs">
+      <DependentUpon>QueryEditor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControls\DatabaseGeneralTabContent.xaml.cs">
       <DependentUpon>DatabaseGeneralTabContent.xaml</DependentUpon>
     </Compile>

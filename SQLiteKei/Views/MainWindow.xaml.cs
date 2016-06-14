@@ -6,6 +6,7 @@ using SQLiteKei.ViewModels.DBTreeView.Mapping;
 using SQLiteKei.Views;
 
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data.SQLite;
@@ -54,6 +55,11 @@ namespace SQLiteKei
         private void MenuItem_About_Click(object sender, RoutedEventArgs e)
         {
             new About().ShowDialog();
+        }
+
+        private void OpenQueryEditor(object sender, RoutedEventArgs e)
+        {
+            new QueryEditor(TreeViewItems).ShowDialog();
         }
 
         private void CreateNewDatabase(object sender, RoutedEventArgs e)
@@ -160,8 +166,6 @@ namespace SQLiteKei
 
             if(tableItem != null)
             {
-                
-
                 var message = string.Format("Do you really want to delete the table '{0}' permanently?", tableItem.DisplayName);
                 var result = System.Windows.MessageBox.Show(message, "Delete Table", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
