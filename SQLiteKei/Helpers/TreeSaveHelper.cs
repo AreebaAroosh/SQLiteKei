@@ -1,9 +1,9 @@
 ﻿using SQLiteKei.ViewModels.DBTreeView.Base;
+using SQLiteKei.ViewModels.DBTreeView.Mapping;
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Xml.Serialization;
@@ -22,11 +22,12 @@ namespace SQLiteKei.Helpers
                 Directory.CreateDirectory(targetDirectory);
             }
 
-            var xmlSerializer = InitSerializer();
+            var rootItemDatabasePaths = tree.Select(x => x.DatabasePath).ToList();
+            var xmlSerializer = new XmlSerializer(typeof(List<string>));
 
             using (var streamWriter = new StreamWriter(targetPath))
             {
-                xmlSerializer.Serialize(streamWriter, tree);
+                xmlSerializer.Serialize(streamWriter, rootItemDatabasePaths);
             }
         }
 
@@ -39,26 +40,25 @@ namespace SQLiteKei.Helpers
                 return new ObservableCollection<TreeItem>();
             }
 
-            var xmlSerializer = InitSerializer();
+            var xmlSerializer = new XmlSerializer(typeof(List<string>));
+
+            var resultCollection = new ObservableCollection<TreeItem>();
 
             using (var streamReader = new StreamReader(targetPath))
             {
-                return xmlSerializer.Deserialize(streamReader) as ObservableCollection<TreeItem>;
-            }
-        }
-
-        private static XmlSerializer InitSerializer()
-        {
-            var types = new List<Type>();
-
-            // Get all inheriting types of TreeItem so that the whole tree can be serialized
-            foreach (Type type in Assembly.GetAssembly(typeof (TreeItem)).GetTypes()
-                .Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf((typeof (TreeItem)))))
-            {
-                types.Add(type);
+                var databasePaths = xmlSerializer.Deserialize(streamReader) as List<string>;
+                var schemaMapper = new SchemaToViewModelMapper();
+                foreach (var path in databasePaths)
+                {
+                    if (File.Exists(path))
+                    {
+                        var rootItem = schemaMapper.MapSchemaToViewModel(path);
+                        resultCollection.Add(rootItem);
+                    }
+                }
             }
 
-            return new XmlSerializer(typeof(ObservableCollection<TreeItem>), types.ToArray());
+            return resultCollection;
         }
 
         private static string GetSaveLocationPath()

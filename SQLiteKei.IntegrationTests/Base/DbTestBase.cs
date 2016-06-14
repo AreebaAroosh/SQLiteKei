@@ -8,11 +8,11 @@ namespace SQLiteKei.IntegrationTests.Base
 {
     public class DbTestBase
     {
-        private const string TESTDIRECTORY = @"C:\Test";
+        protected const string TESTDIRECTORY = @"C:\Test";
 
-        private const string FILENAME = "TestDb";
+        protected const string DATABASEFILENAME = "TestDb";
 
-        private string targetFilePath;
+        protected string targetDatabaseFilePath;
 
         [OneTimeSetUp]
         public void CreateDatabase()
@@ -24,8 +24,8 @@ namespace SQLiteKei.IntegrationTests.Base
 
             Directory.CreateDirectory(TESTDIRECTORY);
 
-            targetFilePath = Path.Combine(TESTDIRECTORY, FILENAME);
-            SQLiteConnection.CreateFile(targetFilePath);
+            targetDatabaseFilePath = Path.Combine(TESTDIRECTORY, DATABASEFILENAME);
+            SQLiteConnection.CreateFile(targetDatabaseFilePath);
         }
 
         [SetUp]
@@ -34,7 +34,7 @@ namespace SQLiteKei.IntegrationTests.Base
             var factory = DbProviderFactories.GetFactory("System.Data.SQLite");
             using (var connection = factory.CreateConnection())
             {
-                connection.ConnectionString = string.Format("Data Source={0}", targetFilePath);
+                connection.ConnectionString = string.Format("Data Source={0}", targetDatabaseFilePath);
                 connection.Open();
 
                 for (var i = 1; i <= 10; i++)

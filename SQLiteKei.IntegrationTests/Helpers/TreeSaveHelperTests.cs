@@ -6,13 +6,14 @@ using System.Linq;
 using NUnit.Framework;
 
 using SQLiteKei.Helpers;
+using SQLiteKei.IntegrationTests.Base;
 using SQLiteKei.ViewModels.DBTreeView;
 using SQLiteKei.ViewModels.DBTreeView.Base;
 
 namespace SQLiteKei.IntegrationTests.Helpers
 {
     [TestFixture]
-    public class TreeSaveHelperTests
+    public class TreeSaveHelperTests : DbTestBase
     {
         private string expectedLocation;
 
@@ -30,11 +31,11 @@ namespace SQLiteKei.IntegrationTests.Helpers
             {
                 new DatabaseItem
                 {
-                    DisplayName = "Database",
-                    DatabasePath = "DatabasePath",
+                    DisplayName = DATABASEFILENAME,
+                    DatabasePath = targetDatabaseFilePath,
                     Items = new ObservableCollection<TreeItem>
                     {
-                        new TableFolderItem()
+                        new TableFolderItem
                         {
                             DisplayName = "Folder",
                             DatabasePath = "DatabasePath",
@@ -78,12 +79,6 @@ namespace SQLiteKei.IntegrationTests.Helpers
 
             Assert.AreEqual(firstTreeItem.DisplayName, firstLoadedTreeItem.DisplayName);
             Assert.AreEqual(firstTreeItem.DatabasePath, firstLoadedTreeItem.DatabasePath);
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            ClearRoamingDirectory();
         }
 
         private void ClearRoamingDirectory()

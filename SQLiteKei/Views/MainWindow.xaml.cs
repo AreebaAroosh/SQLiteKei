@@ -42,21 +42,8 @@ namespace SQLiteKei
 
         public MainWindow()
         {
-            InitializeTreeView();
+            TreeViewItems = TreeSaveHelper.LoadTree();
             InitializeComponent();
-        }
-
-        private void InitializeTreeView()
-        {
-            var tree = TreeSaveHelper.LoadTree();
-            var itemsToRemove = tree.Where(rootItem => !File.Exists(rootItem.DatabasePath));
-
-            foreach (var item in itemsToRemove)
-            {
-                tree.Remove(item);
-            }
-
-            TreeViewItems = tree;
         }
 
         private void MenuItem_Exit_Click(object sender, RoutedEventArgs e)
