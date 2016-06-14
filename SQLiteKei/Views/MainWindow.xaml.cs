@@ -22,7 +22,7 @@ namespace SQLiteKei
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : INotifyPropertyChanged
     {
         private ObservableCollection<TreeItem> treeViewItems;
         public ObservableCollection<TreeItem> TreeViewItems
@@ -42,8 +42,9 @@ namespace SQLiteKei
 
         public MainWindow()
         {
+            TreeViewItems = TreeSaveHelper.LoadTree();
             InitializeComponent();
-            System.Windows.Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
+            
         }
 
         private void MenuItem_Exit_Click(object sender, RoutedEventArgs e)
@@ -182,6 +183,11 @@ namespace SQLiteKei
                     }
                 }
             }
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            TreeSaveHelper.SaveTree(TreeViewItems);
         }
 
         #region TreeViewRightClickEvent

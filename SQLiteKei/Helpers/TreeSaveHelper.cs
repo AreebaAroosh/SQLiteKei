@@ -12,26 +12,36 @@ namespace SQLiteKei.Helpers
 {
     public static class TreeSaveHelper
     {
-        public static void SaveTree(ObservableCollection<TreeItem> tree, string filePath)
+        public static void SaveTree(ObservableCollection<TreeItem> tree)
         {
+            var targetPath = GetSaveLocationPath();
+            var targetDirectory = Path.GetDirectoryName(targetPath);
+
+            if (!Directory.Exists(targetDirectory))
+            {
+                Directory.CreateDirectory(targetDirectory);
+            }
+
             var xmlSerializer = InitSerializer();
-            
-            using (var streamWriter = new StreamWriter(filePath))
+
+            using (var streamWriter = new StreamWriter(targetPath))
             {
                 xmlSerializer.Serialize(streamWriter, tree);
             }
         }
 
-        public static ObservableCollection<TreeItem> LoadTree(string filePath)
+        public static ObservableCollection<TreeItem> LoadTree()
         {
-            if (!File.Exists(filePath))
+            var targetPath = GetSaveLocationPath();
+
+            if (!File.Exists(targetPath))
             {
                 return new ObservableCollection<TreeItem>();
             }
 
             var xmlSerializer = InitSerializer();
 
-            using (var streamReader = new StreamReader(filePath))
+            using (var streamReader = new StreamReader(targetPath))
             {
                 return xmlSerializer.Deserialize(streamReader) as ObservableCollection<TreeItem>;
             }
@@ -49,6 +59,13 @@ namespace SQLiteKei.Helpers
             }
 
             return new XmlSerializer(typeof(ObservableCollection<TreeItem>), types.ToArray());
+        }
+
+        private static string GetSaveLocationPath()
+        {
+            var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+
+            return Path.Combine(roamingDirectory, "SQLiteKei", "TreeView.xml");;
         }
     }
 }

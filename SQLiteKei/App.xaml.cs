@@ -1,12 +1,9 @@
-﻿using System.ComponentModel;
-using System.Windows;
-
-namespace SQLiteKei
+﻿namespace SQLiteKei
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App
     {
         private string currentDatabase { get; set; }
         public string CurrentDatabase
@@ -14,6 +11,5 @@ namespace SQLiteKei
             get { return currentDatabase; }
             set { currentDatabase = value; }
         }
-
     }
 }
