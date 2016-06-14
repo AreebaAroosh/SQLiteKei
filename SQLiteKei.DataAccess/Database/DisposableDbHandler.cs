@@ -3,6 +3,9 @@ using System.Data.Common;
 
 namespace SQLiteKei.DataAccess.Database
 {
+    /// <summary>
+    /// The base class for DbHandlers which implements IDisposable and provides a DbConnection for the specified sqlite database.
+    /// </summary>
     public abstract class DisposableDbHandler : IDisposable
     {
         protected DbConnection connection;
