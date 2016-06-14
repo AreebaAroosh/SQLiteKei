@@ -28,16 +28,17 @@ namespace SQLiteKei.ViewModels.MainTabControl.Tables
 
         private void Initialize()
         {
-            var dbHandler = new DatabaseHandler(((App)Application.Current).CurrentDatabase);
-
-            TableCreateStatement = dbHandler.GetCreateStatement(TableName);
-            RowCount = dbHandler.GetRowCount(TableName);
-            var columns = dbHandler.GetColumns(TableName);
-            ColumnCount = columns.Count;
-
-            foreach(var column in columns)
+            using (var dbHandler = new TableHandler(((App) Application.Current).CurrentDatabase))
             {
-                ColumnData.Add(MapToColumnData(column));
+                TableCreateStatement = dbHandler.GetCreateStatement(TableName);
+                RowCount = dbHandler.GetRowCount(TableName);
+                var columns = dbHandler.GetColumns(TableName);
+                ColumnCount = columns.Count;
+
+                foreach (var column in columns)
+                {
+                    ColumnData.Add(MapToColumnData(column));
+                }
             }
         }
 

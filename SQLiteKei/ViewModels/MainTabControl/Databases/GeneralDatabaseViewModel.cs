@@ -33,26 +33,29 @@ namespace SQLiteKei.ViewModels.MainTabControl.Databases
 
         private void Initialize()
         {
-            var dbHandler = new DatabaseHandler(FilePath);
-            var tables = dbHandler.GetTables();
-
-            Name = dbHandler.GetDatabaseName();
-            DisplayName = Path.GetFileNameWithoutExtension(FilePath);
-            TableCount = tables.Count();
-
-            foreach (var table in tables)
+            using (var dbHandler = new DatabaseHandler(FilePath))
+            using (var tableHandler = new TableHandler(FilePath))
             {
-                var tableRowCount = dbHandler.GetRowCount(table.Name);
-                RowCount += tableRowCount;
+                var tables = dbHandler.GetTables();
 
-                var columns = dbHandler.GetColumns(table.Name);
+                Name = dbHandler.GetDatabaseName();
+                DisplayName = Path.GetFileNameWithoutExtension(FilePath);
+                TableCount = tables.Count();
 
-                TableOverviewData.Add(new TableOverviewDataItem
+                foreach (var table in tables)
                 {
-                    ColumnCount = columns.Count,
-                    Name = table.Name,
-                    RowCount = tableRowCount
-                });
+                    var tableRowCount = tableHandler.GetRowCount(table.Name);
+                    RowCount += tableRowCount;
+
+                    var columns = tableHandler.GetColumns(table.Name);
+
+                    TableOverviewData.Add(new TableOverviewDataItem
+                    {
+                        ColumnCount = columns.Count,
+                        Name = table.Name,
+                        RowCount = tableRowCount
+                    });
+                }
             }
         }
     }

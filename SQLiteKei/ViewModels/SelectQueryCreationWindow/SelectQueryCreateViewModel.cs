@@ -35,7 +35,6 @@ namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
         {
             this.tableName = tableName;
             Initialize();
-
         }
 
         private void Initialize()
@@ -50,17 +49,18 @@ namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
         private void InitializeItems()
         {
             var databasePath = ((App)Application.Current).CurrentDatabase;
-            var databaseHandler = new DatabaseHandler(databasePath);
-
-            var columns = databaseHandler.GetColumns(tableName);
-
-            foreach (var column in columns)
+            using (var databaseHandler = new TableHandler(databasePath))
             {
-                Selects.Add(new SelectItem
+                var columns = databaseHandler.GetColumns(tableName);
+
+                foreach (var column in columns)
                 {
-                    ColumnName = column.Name,
-                    IsSelected = true
-                });
+                    Selects.Add(new SelectItem
+                    {
+                        ColumnName = column.Name,
+                        IsSelected = true
+                    });
+                }
             }
         }
 

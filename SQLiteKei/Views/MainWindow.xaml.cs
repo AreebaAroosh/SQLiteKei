@@ -173,8 +173,7 @@ namespace SQLiteKei
 
             if(tableItem != null)
             {
-                var databasePath = ((App)System.Windows.Application.Current).CurrentDatabase;
-                var databaseHandler = new DatabaseHandler(databasePath);
+                
 
                 var message = string.Format("Do you really want to delete the table '{0}' permanently?", tableItem.DisplayName);
                 var result = System.Windows.MessageBox.Show(message, "Delete Table", MessageBoxButton.YesNo, MessageBoxImage.Warning);
@@ -183,9 +182,13 @@ namespace SQLiteKei
                 {
                     try
                     {
-                        databaseHandler.DropTable(tableItem.DisplayName);
-                        ResetTabControl();
-                        TreeViewHelper.RemoveItemFromHierarchy(TreeViewItems, tableItem);
+                        var databasePath = ((App)System.Windows.Application.Current).CurrentDatabase;
+                        using (var databaseHandler = new TableHandler(databasePath))
+                        {
+                            databaseHandler.DropTable(tableItem.DisplayName);
+                            ResetTabControl();
+                            TreeViewHelper.RemoveItemFromHierarchy(TreeViewItems, tableItem);
+                        }
                     }
                     catch (Exception ex)
                     {
