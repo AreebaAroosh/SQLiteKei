@@ -115,6 +115,24 @@ namespace SQLiteKei.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ContextMenuItem_DeleteTrigger.
+        /// </summary>
+        public static string ContextMenuItem_DeleteTrigger {
+            get {
+                return ResourceManager.GetString("ContextMenuItem_DeleteTrigger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ContextMenuItem_DeleteView.
+        /// </summary>
+        public static string ContextMenuItem_DeleteView {
+            get {
+                return ResourceManager.GetString("ContextMenuItem_DeleteView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ContextMenuItem_NewDatabase.
         /// </summary>
         public static string ContextMenuItem_NewDatabase {
@@ -147,6 +165,78 @@ namespace SQLiteKei.Properties {
         public static string ContextMenuItem_RenameDatabase {
             get {
                 return ResourceManager.GetString("ContextMenuItem_RenameDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DatabaseGeneralTab_DatabaseName.
+        /// </summary>
+        public static string DatabaseGeneralTab_DatabaseName {
+            get {
+                return ResourceManager.GetString("DatabaseGeneralTab_DatabaseName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DatabaseGeneralTab_DatabasePath.
+        /// </summary>
+        public static string DatabaseGeneralTab_DatabasePath {
+            get {
+                return ResourceManager.GetString("DatabaseGeneralTab_DatabasePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DatabaseGeneralTab_NoTablesFound.
+        /// </summary>
+        public static string DatabaseGeneralTab_NoTablesFound {
+            get {
+                return ResourceManager.GetString("DatabaseGeneralTab_NoTablesFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DatabaseGeneralTab_Records.
+        /// </summary>
+        public static string DatabaseGeneralTab_Records {
+            get {
+                return ResourceManager.GetString("DatabaseGeneralTab_Records", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DatabaseGeneralTab_TableColumns.
+        /// </summary>
+        public static string DatabaseGeneralTab_TableColumns {
+            get {
+                return ResourceManager.GetString("DatabaseGeneralTab_TableColumns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DatabaseGeneralTab_TableName.
+        /// </summary>
+        public static string DatabaseGeneralTab_TableName {
+            get {
+                return ResourceManager.GetString("DatabaseGeneralTab_TableName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DatabaseGeneralTab_TableRecords.
+        /// </summary>
+        public static string DatabaseGeneralTab_TableRecords {
+            get {
+                return ResourceManager.GetString("DatabaseGeneralTab_TableRecords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DatabaseGeneralTab_Tables.
+        /// </summary>
+        public static string DatabaseGeneralTab_Tables {
+            get {
+                return ResourceManager.GetString("DatabaseGeneralTab_Tables", resourceCulture);
             }
         }
         
@@ -241,6 +331,42 @@ namespace SQLiteKei.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to MessageBox_DatabaseDeleteWarning.
+        /// </summary>
+        public static string MessageBox_DatabaseDeleteWarning {
+            get {
+                return ResourceManager.GetString("MessageBox_DatabaseDeleteWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MessageBox_TableDeleteWarning.
+        /// </summary>
+        public static string MessageBox_TableDeleteWarning {
+            get {
+                return ResourceManager.GetString("MessageBox_TableDeleteWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MessaxeBoxTitle_DatabaseDeletion.
+        /// </summary>
+        public static string MessageBoxTitle_DatabaseDeletion {
+            get {
+                return ResourceManager.GetString("MessageBoxTitle_DatabaseDeletion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MessageBoxTitle_TableDeletion.
+        /// </summary>
+        public static string MessageBoxTitle_TableDeletion {
+            get {
+                return ResourceManager.GetString("MessageBoxTitle_TableDeletion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to QueryEditor_Label_Database.
         /// </summary>
         public static string QueryEditor_Label_Database {
@@ -286,6 +412,15 @@ namespace SQLiteKei.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to TabContent_GroupBoxHeader_Columns.
+        /// </summary>
+        public static string TabContent_GroupBoxHeader_Tables {
+            get {
+                return ResourceManager.GetString("TabContent_GroupBoxHeader_Tables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TabHeader_General.
         /// </summary>
         public static string TabHeader_General {
@@ -309,6 +444,78 @@ namespace SQLiteKei.Properties {
         public static string TabHeader_TableRecords {
             get {
                 return ResourceManager.GetString("TabHeader_TableRecords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TableGeneralTab_ColumnName.
+        /// </summary>
+        public static string TableGeneralTab_ColumnName {
+            get {
+                return ResourceManager.GetString("TableGeneralTab_ColumnName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TableGeneralTab_Columns.
+        /// </summary>
+        public static string TableGeneralTab_Columns {
+            get {
+                return ResourceManager.GetString("TableGeneralTab_Columns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TableGeneralTab_DataType.
+        /// </summary>
+        public static string TableGeneralTab_DataType {
+            get {
+                return ResourceManager.GetString("TableGeneralTab_DataType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TableGeneralTab_Default.
+        /// </summary>
+        public static string TableGeneralTab_Default {
+            get {
+                return ResourceManager.GetString("TableGeneralTab_Default", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TableGeneralTab_NoColumnsFound.
+        /// </summary>
+        public static string TableGeneralTab_NoColumnsFound {
+            get {
+                return ResourceManager.GetString("TableGeneralTab_NoColumnsFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TableGeneralTab_Records.
+        /// </summary>
+        public static string TableGeneralTab_Records {
+            get {
+                return ResourceManager.GetString("TableGeneralTab_Records", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TableGeneralTab_TableCreateStatement.
+        /// </summary>
+        public static string TableGeneralTab_TableCreateStatement {
+            get {
+                return ResourceManager.GetString("TableGeneralTab_TableCreateStatement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TableGeneralTab_TableName.
+        /// </summary>
+        public static string TableGeneralTab_TableName {
+            get {
+                return ResourceManager.GetString("TableGeneralTab_TableName", resourceCulture);
             }
         }
         

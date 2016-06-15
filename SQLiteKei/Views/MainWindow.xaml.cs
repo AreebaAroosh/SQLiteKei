@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using SQLiteKei.DataAccess.Database;
+﻿using SQLiteKei.DataAccess.Database;
 using SQLiteKei.Helpers;
 using SQLiteKei.ViewModels.DBTreeView;
 using SQLiteKei.ViewModels.DBTreeView.Base;
@@ -7,7 +6,6 @@ using SQLiteKei.ViewModels.DBTreeView.Mapping;
 using SQLiteKei.Views;
 
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data.SQLite;
@@ -132,8 +130,8 @@ namespace SQLiteKei
 
             if(selectedItem != null)
             {
-                var message = "Do you really want to delete this database? Warning: this will delete the database from your file system.";
-                var result = System.Windows.MessageBox.Show(message, "Database Deletion", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                var message = LanguageHelper.GetLocalizedString("MessageBox_DatabaseDeleteWarning", selectedItem.DisplayName);
+                var result = System.Windows.MessageBox.Show(message, LanguageHelper.GetLocalizedString("MessageBoxTitle_DatabaseDeletion"), MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
                 if (result == MessageBoxResult.Yes)
                 {
@@ -167,8 +165,8 @@ namespace SQLiteKei
 
             if(tableItem != null)
             {
-                var message = string.Format("Do you really want to delete the table '{0}' permanently?", tableItem.DisplayName);
-                var result = System.Windows.MessageBox.Show(message, "Delete Table", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                var message = LanguageHelper.GetLocalizedString("MessageBox_TableDeleteWarning", tableItem.DisplayName);
+                var result = System.Windows.MessageBox.Show(message, LanguageHelper.GetLocalizedString("MessageBoxTitle_TableDeletion"), MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
                 if(result == MessageBoxResult.Yes)
                 {

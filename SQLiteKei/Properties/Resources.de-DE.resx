@@ -133,19 +133,49 @@
     <value>Löschen</value>
   </data>
   <data name="ContextMenuItem_DeleteTable" xml:space="preserve">
-    <value>Tabelle entfernen</value>
+    <value>Tabelle löschen</value>
+  </data>
+  <data name="ContextMenuItem_DeleteTrigger" xml:space="preserve">
+    <value>Trigger löschen</value>
+  </data>
+  <data name="ContextMenuItem_DeleteView" xml:space="preserve">
+    <value>View löschen</value>
   </data>
   <data name="ContextMenuItem_NewDatabase" xml:space="preserve">
     <value>Neu</value>
   </data>
   <data name="ContextMenuItem_NewTable" xml:space="preserve">
-    <value>Tabelle hinzufügen</value>
+    <value>Neue Tabelle</value>
   </data>
   <data name="ContextMenuItem_OpenDatabase" xml:space="preserve">
     <value>Öffnen</value>
   </data>
   <data name="ContextMenuItem_RenameDatabase" xml:space="preserve">
     <value>Umbenennen</value>
+  </data>
+  <data name="DatabaseGeneralTab_DatabaseName" xml:space="preserve">
+    <value>Datenbankname:</value>
+  </data>
+  <data name="DatabaseGeneralTab_DatabasePath" xml:space="preserve">
+    <value>Datenbankpfad:</value>
+  </data>
+  <data name="DatabaseGeneralTab_NoTablesFound" xml:space="preserve">
+    <value>Es wurden keine Tabellen gefunden</value>
+  </data>
+  <data name="DatabaseGeneralTab_Records" xml:space="preserve">
+    <value>Datensätze:</value>
+  </data>
+  <data name="DatabaseGeneralTab_TableColumns" xml:space="preserve">
+    <value>Spalten</value>
+  </data>
+  <data name="DatabaseGeneralTab_TableName" xml:space="preserve">
+    <value>Tabelle</value>
+  </data>
+  <data name="DatabaseGeneralTab_TableRecords" xml:space="preserve">
+    <value>Datensätze</value>
+  </data>
+  <data name="DatabaseGeneralTab_Tables" xml:space="preserve">
+    <value>Tabellen:</value>
   </data>
   <data name="MenuItemHeader_About" xml:space="preserve">
     <value>Über</value>
@@ -166,19 +196,31 @@
     <value>Neue Datenbank</value>
   </data>
   <data name="MenuItemHeader_OpenDatabase" xml:space="preserve">
-    <value>MenuItemHeader_OpenDatabase</value>
+    <value>Datenbank öffnen...</value>
   </data>
   <data name="MenuItemHeader_Preferences" xml:space="preserve">
-    <value>MenuItemHeader_Preferences</value>
+    <value>Optionen</value>
   </data>
   <data name="MenuItemHeader_QueryEditor" xml:space="preserve">
-    <value>MenuItemHeader_QueryEditor</value>
+    <value>Query-Editor</value>
   </data>
   <data name="MenuItemHeader_Tools" xml:space="preserve">
-    <value>MenuItemHeader_Tools</value>
+    <value>Tools</value>
+  </data>
+  <data name="MessageBoxTitle_DatabaseDeletion" xml:space="preserve">
+    <value>Datenbanklöschung</value>
+  </data>
+  <data name="MessageBoxTitle_TableDeletion" xml:space="preserve">
+    <value>Tabelle löschen</value>
+  </data>
+  <data name="MessageBox_DatabaseDeleteWarning" xml:space="preserve">
+    <value>Wollen Sie die Datenbank '{0}' wirklich löschen? Achtung: dies wird die Datenbank von Ihrem Dateisystem entfernen!</value>
+  </data>
+  <data name="MessageBox_TableDeleteWarning" xml:space="preserve">
+    <value>Wollen Sie die Tabelle '{0}' wirklich löschen?</value>
   </data>
   <data name="QueryEditor_Label_Database" xml:space="preserve">
-    <value>QueryEditor_Label_Database</value>
+    <value>Datenbank</value>
   </data>
   <data name="SelectQueryCreator_TabHeader_Options" xml:space="preserve">
     <value>Optionen</value>
@@ -192,6 +234,9 @@
   <data name="TabContent_GroupBoxHeader_Columns" xml:space="preserve">
     <value>Spalten</value>
   </data>
+  <data name="TabContent_GroupBoxHeader_Tables" xml:space="preserve">
+    <value>Tabellen</value>
+  </data>
   <data name="TabHeader_General" xml:space="preserve">
     <value>Allgemein</value>
   </data>
@@ -199,7 +244,31 @@
     <value>Tabelle {0}</value>
   </data>
   <data name="TabHeader_TableRecords" xml:space="preserve">
-    <value>Einträge</value>
+    <value>Datensätze</value>
+  </data>
+  <data name="TableGeneralTab_ColumnName" xml:space="preserve">
+    <value>Spalte</value>
+  </data>
+  <data name="TableGeneralTab_Columns" xml:space="preserve">
+    <value>Anzahl Spalten:</value>
+  </data>
+  <data name="TableGeneralTab_DataType" xml:space="preserve">
+    <value>Datentyp</value>
+  </data>
+  <data name="TableGeneralTab_Default" xml:space="preserve">
+    <value>Standardwert</value>
+  </data>
+  <data name="TableGeneralTab_NoColumnsFound" xml:space="preserve">
+    <value>Es wurden keine Spalten gefunden</value>
+  </data>
+  <data name="TableGeneralTab_Records" xml:space="preserve">
+    <value>Anzahl Datensätze:</value>
+  </data>
+  <data name="TableGeneralTab_TableCreateStatement" xml:space="preserve">
+    <value>Statement zum Erstellen dieser Tabelle</value>
+  </data>
+  <data name="TableGeneralTab_TableName" xml:space="preserve">
+    <value>Tabellenname:</value>
   </data>
   <data name="Tooltip_CloseDatabase" xml:space="preserve">
     <value>Datenbank trennen</value>
@@ -223,6 +292,6 @@
     <value>Query-Editor</value>
   </data>
   <data name="WindowTitle_SelectQueryCreator" xml:space="preserve">
-    <value>Select-Statement erstellen</value>
+    <value>SELECT-Statement erstellen</value>
   </data>
 </root>

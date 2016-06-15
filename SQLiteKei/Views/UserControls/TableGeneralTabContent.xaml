@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:localization="clr-namespace:SQLiteKei.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid DataContext="{Binding ElementName=Control}">
@@ -10,7 +11,7 @@
             <RowDefinition MinHeight="50" Height="Auto"></RowDefinition>
             <RowDefinition MinHeight="50"></RowDefinition>
         </Grid.RowDefinitions>
-        <GroupBox Grid.Row="0" Header="About" Margin="5" Width="Auto" Height="Auto">
+        <GroupBox Grid.Row="0" Header="{x:Static localization:Resources.TabContent_GroupBoxHeader_About}" Margin="5" Width="Auto" Height="Auto">
             <StackPanel Orientation="Vertical">
                 <Grid HorizontalAlignment="Stretch">
                     <Grid.ColumnDefinitions>
@@ -23,18 +24,18 @@
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <TextBox Grid.Row="0" Grid.Column="0" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="Table Name:" />
+                    <TextBox Grid.Row="0" Grid.Column="0" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="{x:Static localization:Resources.TableGeneralTab_TableName}"/>
                     <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding TableInfo.TableName}" />
-                    <TextBox Grid.Row="1" Grid.Column="0" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="Number of Columns:" />
+                    <TextBox Grid.Row="1" Grid.Column="0" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="{x:Static localization:Resources.TableGeneralTab_Columns}" />
                     <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding TableInfo.ColumnCount}"/>
-                    <TextBox Grid.Row="1" Grid.Column="2" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="Number of Records:" />
+                    <TextBox Grid.Row="1" Grid.Column="2" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="{x:Static localization:Resources.TableGeneralTab_Records}" />
                     <TextBox Grid.Row="1" Grid.Column="3" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding TableInfo.RowCount}"/>
                 </Grid>
-                <TextBox Style="{StaticResource SelectableLabelTextBox}" FontWeight="DemiBold" Text="Statement used to create this table" />
+                <TextBox Style="{StaticResource SelectableLabelTextBox}" FontWeight="DemiBold" Text="{x:Static localization:Resources.TableGeneralTab_TableCreateStatement}" />
                 <TextBox Style="{StaticResource SelectableLabelTextBox}" Text="{Binding TableInfo.TableCreateStatement}" TextWrapping="Wrap"/>
             </StackPanel>
         </GroupBox>
-        <GroupBox Grid.Row="1" Header="Columns" Margin="5, 0, 5, 5" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="Auto">
+        <GroupBox Grid.Row="1" Header="{x:Static localization:Resources.TabContent_GroupBoxHeader_Columns}" Margin="5, 0, 5, 5" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="Auto">
             <Grid>
                 <DataGrid x:Name="ColumnDataGrid" Grid.Column = "0" Margin="5" ItemsSource="{Binding TableInfo.ColumnData}" 
                       HorizontalAlignment="Stretch" VerticalAlignment="Top"
@@ -48,7 +49,7 @@
                         <DataGridTextColumn Header="Default" Binding="{Binding DefaultValue}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
-                <Label x:Name="NoColumnsFoundLabel" Content="No columns found" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="DemiBold"/>
+                <Label x:Name="NoColumnsFoundLabel" Content="{x:Static localization:Resources.TableGeneralTab_NoColumnsFound}" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="DemiBold"/>
             </Grid>
         </GroupBox>
     </Grid>

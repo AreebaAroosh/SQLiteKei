@@ -118,111 +118,180 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About_CheckOutOnGithub" xml:space="preserve">
-    <value>About_CheckOutOnGithub</value>
+    <value>Visit on Github</value>
   </data>
   <data name="ButtonText_Cancel" xml:space="preserve">
-    <value>ButtonText_Cancel</value>
+    <value>Cancel</value>
   </data>
   <data name="ButtonText_Execute" xml:space="preserve">
-    <value>ButtonText_Execute</value>
+    <value>Execute</value>
   </data>
   <data name="ContextMenuItem_CloseDatabase" xml:space="preserve">
-    <value>ContextMenuItem_CloseDatabase</value>
+    <value>Close</value>
   </data>
   <data name="ContextMenuItem_DeleteDatabase" xml:space="preserve">
-    <value>ContextMenuItem_DeleteDatabase</value>
+    <value>Delete</value>
   </data>
   <data name="ContextMenuItem_DeleteTable" xml:space="preserve">
-    <value>ContextMenuItem_DeleteTable</value>
+    <value>Delete Table</value>
+  </data>
+  <data name="ContextMenuItem_DeleteTrigger" xml:space="preserve">
+    <value>Delete Trigger</value>
+  </data>
+  <data name="ContextMenuItem_DeleteView" xml:space="preserve">
+    <value>Delete View</value>
   </data>
   <data name="ContextMenuItem_NewDatabase" xml:space="preserve">
-    <value>ContextMenuItem_NewDatabase</value>
+    <value>New</value>
   </data>
   <data name="ContextMenuItem_NewTable" xml:space="preserve">
-    <value>ContextMenuItem_NewTable</value>
+    <value>Create Table</value>
   </data>
   <data name="ContextMenuItem_OpenDatabase" xml:space="preserve">
-    <value>ContextMenuItem_OpenDatabase</value>
+    <value>Open...</value>
   </data>
   <data name="ContextMenuItem_RenameDatabase" xml:space="preserve">
-    <value>ContextMenuItem_RenameDatabase</value>
+    <value>Rename</value>
+  </data>
+  <data name="DatabaseGeneralTab_DatabaseName" xml:space="preserve">
+    <value>Database Name:</value>
+  </data>
+  <data name="DatabaseGeneralTab_DatabasePath" xml:space="preserve">
+    <value>Database Path:</value>
+  </data>
+  <data name="DatabaseGeneralTab_NoTablesFound" xml:space="preserve">
+    <value>No tables found</value>
+  </data>
+  <data name="DatabaseGeneralTab_Records" xml:space="preserve">
+    <value>Records:</value>
+  </data>
+  <data name="DatabaseGeneralTab_TableColumns" xml:space="preserve">
+    <value>Columns</value>
+  </data>
+  <data name="DatabaseGeneralTab_TableName" xml:space="preserve">
+    <value>Table</value>
+  </data>
+  <data name="DatabaseGeneralTab_TableRecords" xml:space="preserve">
+    <value>Records</value>
+  </data>
+  <data name="DatabaseGeneralTab_Tables" xml:space="preserve">
+    <value>Tables:</value>
   </data>
   <data name="MenuItemHeader_About" xml:space="preserve">
-    <value>MenuItemHeader_About</value>
+    <value>About</value>
   </data>
   <data name="MenuItemHeader_Documentation" xml:space="preserve">
-    <value>MenuItemHeader_Documentation</value>
+    <value>Documentation</value>
   </data>
   <data name="MenuItemHeader_Exit" xml:space="preserve">
-    <value>MenuItemHeader_Exit</value>
+    <value>Exit</value>
   </data>
   <data name="MenuItemHeader_File" xml:space="preserve">
-    <value>MenuItemHeader_File</value>
+    <value>File</value>
   </data>
   <data name="MenuItemHeader_Help" xml:space="preserve">
-    <value>MenuItemHeader_Help</value>
+    <value>Help</value>
   </data>
   <data name="MenuItemHeader_NewDatabase" xml:space="preserve">
-    <value>MenuItemHeader_NewDatabase</value>
+    <value>New </value>
   </data>
   <data name="MenuItemHeader_OpenDatabase" xml:space="preserve">
-    <value>MenuItemHeader_OpenDatabase</value>
+    <value>Open</value>
   </data>
   <data name="MenuItemHeader_Preferences" xml:space="preserve">
-    <value>MenuItemHeader_Preferences</value>
+    <value>Preferences</value>
   </data>
   <data name="MenuItemHeader_QueryEditor" xml:space="preserve">
-    <value>MenuItemHeader_QueryEditor</value>
+    <value>Query Editor</value>
   </data>
   <data name="MenuItemHeader_Tools" xml:space="preserve">
-    <value>MenuItemHeader_Tools</value>
+    <value>Tools</value>
+  </data>
+  <data name="MessageBoxTitle_DatabaseDeletion" xml:space="preserve">
+    <value>Database Deletion</value>
+  </data>
+  <data name="MessageBoxTitle_TableDeletion" xml:space="preserve">
+    <value>Delete Table</value>
+  </data>
+  <data name="MessageBox_DatabaseDeleteWarning" xml:space="preserve">
+    <value>Do you really want to delete the database '{0}'? Warning: this will delete the database from your file system!</value>
+  </data>
+  <data name="MessageBox_TableDeleteWarning" xml:space="preserve">
+    <value>Do you really want to delete the table '{0}'?</value>
   </data>
   <data name="QueryEditor_Label_Database" xml:space="preserve">
-    <value>QueryEditor_Label_Database</value>
+    <value>Database</value>
   </data>
   <data name="SelectQueryCreator_TabHeader_Options" xml:space="preserve">
-    <value>SelectQueryCreator_TabHeader_Options</value>
+    <value>Options</value>
   </data>
   <data name="SelectQueryCreator_TabHeader_ResultQuery" xml:space="preserve">
-    <value>SelectQueryCreator_TabHeader_ResultQuery</value>
+    <value>Result Query</value>
   </data>
   <data name="TabContent_GroupBoxHeader_About" xml:space="preserve">
-    <value>TabContent_GroupBoxHeader_About</value>
+    <value>About</value>
   </data>
   <data name="TabContent_GroupBoxHeader_Columns" xml:space="preserve">
-    <value>TabContent_GroupBoxHeader_Columns</value>
+    <value>Columns</value>
+  </data>
+  <data name="TabContent_GroupBoxHeader_Tables" xml:space="preserve">
+    <value>Tables</value>
   </data>
   <data name="TabHeader_General" xml:space="preserve">
-    <value>TabHeader_General</value>
+    <value>General</value>
   </data>
   <data name="TabHeader_GeneralTable" xml:space="preserve">
-    <value>TabHeader_GeneralTable</value>
+    <value>Table {0}</value>
   </data>
   <data name="TabHeader_TableRecords" xml:space="preserve">
-    <value>TabHeader_TableRecords</value>
+    <value>Records</value>
+  </data>
+  <data name="TableGeneralTab_ColumnName" xml:space="preserve">
+    <value>Column</value>
+  </data>
+  <data name="TableGeneralTab_Columns" xml:space="preserve">
+    <value>Number of Columns:</value>
+  </data>
+  <data name="TableGeneralTab_DataType" xml:space="preserve">
+    <value>Data Type</value>
+  </data>
+  <data name="TableGeneralTab_Default" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="TableGeneralTab_NoColumnsFound" xml:space="preserve">
+    <value>No columns found</value>
+  </data>
+  <data name="TableGeneralTab_Records" xml:space="preserve">
+    <value>Number of Records:</value>
+  </data>
+  <data name="TableGeneralTab_TableCreateStatement" xml:space="preserve">
+    <value>SQL statement used to create this table</value>
+  </data>
+  <data name="TableGeneralTab_TableName" xml:space="preserve">
+    <value>Table Name:</value>
   </data>
   <data name="Tooltip_CloseDatabase" xml:space="preserve">
-    <value>Tooltip_CloseDatabase</value>
+    <value>Close Database</value>
   </data>
   <data name="Tooltip_DeleteDatabase" xml:space="preserve">
-    <value>Tooltip_DeleteDatabase</value>
+    <value>Delete Database</value>
   </data>
   <data name="Tooltip_NewDatabase" xml:space="preserve">
-    <value>Tooltip_NewDatabase</value>
+    <value>Create new Database</value>
   </data>
   <data name="Tooltip_OpenDatabase" xml:space="preserve">
-    <value>Tooltip_OpenDatabase</value>
+    <value>Open Database</value>
   </data>
   <data name="Tooltip_WriteSQLStatement" xml:space="preserve">
-    <value>Tooltip_WriteSQLStatement</value>
+    <value>Create SQL Statement</value>
   </data>
   <data name="WindowTitle_About" xml:space="preserve">
-    <value>WindowTitle_About</value>
+    <value>About</value>
   </data>
   <data name="WindowTitle_QueryEditor" xml:space="preserve">
-    <value>WindowTitle_QueryEditor</value>
+    <value>Query Editor</value>
   </data>
   <data name="WindowTitle_SelectQueryCreator" xml:space="preserve">
-    <value>WindowTitle_SelectQueryCreator</value>
+    <value>Create SELECT Statement</value>
   </data>
 </root>

@@ -135,6 +135,12 @@
   <data name="ContextMenuItem_DeleteTable" xml:space="preserve">
     <value>ContextMenuItem_DeleteTable</value>
   </data>
+  <data name="ContextMenuItem_DeleteTrigger" xml:space="preserve">
+    <value>ContextMenuItem_DeleteTrigger</value>
+  </data>
+  <data name="ContextMenuItem_DeleteView" xml:space="preserve">
+    <value>ContextMenuItem_DeleteView</value>
+  </data>
   <data name="ContextMenuItem_NewDatabase" xml:space="preserve">
     <value>ContextMenuItem_NewDatabase</value>
   </data>
@@ -146,6 +152,30 @@
   </data>
   <data name="ContextMenuItem_RenameDatabase" xml:space="preserve">
     <value>ContextMenuItem_RenameDatabase</value>
+  </data>
+  <data name="DatabaseGeneralTab_DatabaseName" xml:space="preserve">
+    <value>DatabaseGeneralTab_DatabaseName</value>
+  </data>
+  <data name="DatabaseGeneralTab_DatabasePath" xml:space="preserve">
+    <value>DatabaseGeneralTab_DatabasePath</value>
+  </data>
+  <data name="DatabaseGeneralTab_NoTablesFound" xml:space="preserve">
+    <value>DatabaseGeneralTab_NoTablesFound</value>
+  </data>
+  <data name="DatabaseGeneralTab_Records" xml:space="preserve">
+    <value>DatabaseGeneralTab_Records</value>
+  </data>
+  <data name="DatabaseGeneralTab_TableColumns" xml:space="preserve">
+    <value>DatabaseGeneralTab_TableColumns</value>
+  </data>
+  <data name="DatabaseGeneralTab_TableName" xml:space="preserve">
+    <value>DatabaseGeneralTab_TableName</value>
+  </data>
+  <data name="DatabaseGeneralTab_TableRecords" xml:space="preserve">
+    <value>DatabaseGeneralTab_TableRecords</value>
+  </data>
+  <data name="DatabaseGeneralTab_Tables" xml:space="preserve">
+    <value>DatabaseGeneralTab_Tables</value>
   </data>
   <data name="MenuItemHeader_About" xml:space="preserve">
     <value>MenuItemHeader_About</value>
@@ -177,6 +207,18 @@
   <data name="MenuItemHeader_Tools" xml:space="preserve">
     <value>MenuItemHeader_Tools</value>
   </data>
+  <data name="MessageBoxTitle_DatabaseDeletion" xml:space="preserve">
+    <value>MessaxeBoxTitle_DatabaseDeletion</value>
+  </data>
+  <data name="MessageBoxTitle_TableDeletion" xml:space="preserve">
+    <value>MessageBoxTitle_TableDeletion</value>
+  </data>
+  <data name="MessageBox_DatabaseDeleteWarning" xml:space="preserve">
+    <value>MessageBox_DatabaseDeleteWarning</value>
+  </data>
+  <data name="MessageBox_TableDeleteWarning" xml:space="preserve">
+    <value>MessageBox_TableDeleteWarning</value>
+  </data>
   <data name="QueryEditor_Label_Database" xml:space="preserve">
     <value>QueryEditor_Label_Database</value>
   </data>
@@ -192,6 +234,9 @@
   <data name="TabContent_GroupBoxHeader_Columns" xml:space="preserve">
     <value>TabContent_GroupBoxHeader_Columns</value>
   </data>
+  <data name="TabContent_GroupBoxHeader_Tables" xml:space="preserve">
+    <value>TabContent_GroupBoxHeader_Columns</value>
+  </data>
   <data name="TabHeader_General" xml:space="preserve">
     <value>TabHeader_General</value>
   </data>
@@ -200,6 +245,30 @@
   </data>
   <data name="TabHeader_TableRecords" xml:space="preserve">
     <value>TabHeader_TableRecords</value>
+  </data>
+  <data name="TableGeneralTab_ColumnName" xml:space="preserve">
+    <value>TableGeneralTab_ColumnName</value>
+  </data>
+  <data name="TableGeneralTab_Columns" xml:space="preserve">
+    <value>TableGeneralTab_Columns</value>
+  </data>
+  <data name="TableGeneralTab_DataType" xml:space="preserve">
+    <value>TableGeneralTab_DataType</value>
+  </data>
+  <data name="TableGeneralTab_Default" xml:space="preserve">
+    <value>TableGeneralTab_Default</value>
+  </data>
+  <data name="TableGeneralTab_NoColumnsFound" xml:space="preserve">
+    <value>TableGeneralTab_NoColumnsFound</value>
+  </data>
+  <data name="TableGeneralTab_Records" xml:space="preserve">
+    <value>TableGeneralTab_Records</value>
+  </data>
+  <data name="TableGeneralTab_TableCreateStatement" xml:space="preserve">
+    <value>TableGeneralTab_TableCreateStatement</value>
+  </data>
+  <data name="TableGeneralTab_TableName" xml:space="preserve">
+    <value>TableGeneralTab_TableName</value>
   </data>
   <data name="Tooltip_CloseDatabase" xml:space="preserve">
     <value>Tooltip_CloseDatabase</value>

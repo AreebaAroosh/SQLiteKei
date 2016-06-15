@@ -58,7 +58,7 @@ namespace SQLiteKei.Helpers
         {
             var generalTab = new TabItem
             {
-                Header = string.Format("Table {0}", tableItem.DisplayName),
+                Header = LanguageHelper.GetLocalizedString("TabHeader_GeneralTable", tableItem.DisplayName),
                 Content = new TableGeneralTabContent
                 {
                     TableInfo = new GeneralTableViewModel(tableItem.DisplayName)
@@ -67,7 +67,7 @@ namespace SQLiteKei.Helpers
 
             var recordsTab = new TabItem
             {
-                Header = "Records",
+                Header = LanguageHelper.GetLocalizedString("TabHeader_TableRecords"),
                 Content = new TableRecordsTabContent
                 {
                     TableInfo = new TableRecordsDataItem(tableItem.DisplayName)

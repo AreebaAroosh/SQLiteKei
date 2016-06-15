@@ -3,10 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SQLiteKei.Views"
+        xmlns:localization="clr-namespace:SQLiteKei.Properties"
         xmlns:model="clr-namespace:SQLiteKei.ViewModels.QueryEditorWindow"
         mc:Ignorable="d"
-        Title="Query Editor"
+        Title="{x:Static localization:Resources.WindowTitle_QueryEditor}"
         Icon="../Resources/Icons/Logo_32x32.png"
         Height="500" Width="400" MinHeight="500" MinWidth="400">
     <Grid>
@@ -18,7 +18,7 @@
             <RowDefinition Height="25" />
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" Height="25">
-            <Label Content="Database"></Label>
+            <Label Content="{x:Static localization:Resources.QueryEditor_Label_Database}" />
             <ComboBox x:Name="DatabaseComboBox" Width="150" Height="20" ItemsSource="{Binding Databases}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate DataType="{x:Type model:DatabaseSelectItem}">
@@ -36,9 +36,9 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Margin="3 2" Content="Execute" Click="Execute" />
-            <TextBox Grid.Column="1" IsReadOnly="True" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding StatusInfo}"></TextBox>
-            <Button Grid.Column="2" Margin="3 2" Content="Cancel" IsCancel="True" />
+            <Button Grid.Column="0" Margin="3 2" Content="{x:Static localization:Resources.ButtonText_Execute}" Click="Execute" />
+            <TextBox Grid.Column="1" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding StatusInfo}"></TextBox>
+            <Button Grid.Column="2" Margin="3 2" Content="{x:Static localization:Resources.ButtonText_Cancel}" IsCancel="True" />
         </Grid>
     </Grid>
 </Window>
