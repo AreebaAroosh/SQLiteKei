@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:model="clr-namespace:SQLiteKei.ViewModels.DBTreeView" 
+        xmlns:localization="clr-namespace:SQLiteKei.Properties"
         mc:Ignorable="d"
         Title="SQLite Kei" 
         Icon="../Resources/Icons/Logo_32x32.png"
@@ -19,7 +20,7 @@
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0" HorizontalAlignment="Stretch" LastChildFill="False" VerticalAlignment="Stretch">
             <Menu DockPanel.Dock="Top" Background="#2D2D30" Foreground="#EEEEEE">
-                <MenuItem Header="_File" Background="#2D2D30">
+                <MenuItem Header="{x:Static localization:Resources.MenuItemHeader_File}" Background="#2D2D30">
                     <MenuItem Header="_New Database" Click="CreateNewDatabase" Background="#2D2D30"/>
                     <MenuItem Header="_Open Database" Click="OpenDatabase" Background="#2D2D30"/>
                     <Separator Background="#2D2D30"/>

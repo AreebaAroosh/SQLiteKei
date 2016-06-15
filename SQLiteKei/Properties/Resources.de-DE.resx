@@ -118,52 +118,52 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About_CheckOutOnGithub" xml:space="preserve">
-    <value>About_CheckOutOnGithub</value>
+    <value>Auf Github</value>
   </data>
   <data name="ButtonText_Cancel" xml:space="preserve">
-    <value>ButtonText_Cancel</value>
+    <value>Abbrechen</value>
   </data>
   <data name="ButtonText_Execute" xml:space="preserve">
-    <value>ButtonText_Execute</value>
+    <value>Ausführen</value>
   </data>
   <data name="ContextMenuItem_CloseDatabase" xml:space="preserve">
-    <value>ContextMenuItem_CloseDatabase</value>
+    <value>Trennen</value>
   </data>
   <data name="ContextMenuItem_DeleteDatabase" xml:space="preserve">
-    <value>ContextMenuItem_DeleteDatabase</value>
+    <value>Löschen</value>
   </data>
   <data name="ContextMenuItem_DeleteTable" xml:space="preserve">
-    <value>ContextMenuItem_DeleteTable</value>
+    <value>Tabelle entfernen</value>
   </data>
   <data name="ContextMenuItem_NewDatabase" xml:space="preserve">
-    <value>ContextMenuItem_NewDatabase</value>
+    <value>Neu</value>
   </data>
   <data name="ContextMenuItem_NewTable" xml:space="preserve">
-    <value>ContextMenuItem_NewTable</value>
+    <value>Tabelle hinzufügen</value>
   </data>
   <data name="ContextMenuItem_OpenDatabase" xml:space="preserve">
-    <value>ContextMenuItem_OpenDatabase</value>
+    <value>Öffnen</value>
   </data>
   <data name="ContextMenuItem_RenameDatabase" xml:space="preserve">
-    <value>ContextMenuItem_RenameDatabase</value>
+    <value>Umbenennen</value>
   </data>
   <data name="MenuItemHeader_About" xml:space="preserve">
-    <value>MenuItemHeader_About</value>
+    <value>Über</value>
   </data>
   <data name="MenuItemHeader_Documentation" xml:space="preserve">
-    <value>MenuItemHeader_Documentation</value>
+    <value>Dokumentation</value>
   </data>
   <data name="MenuItemHeader_Exit" xml:space="preserve">
-    <value>MenuItemHeader_Exit</value>
+    <value>Beenden</value>
   </data>
   <data name="MenuItemHeader_File" xml:space="preserve">
-    <value>MenuItemHeader_File</value>
+    <value>Datei</value>
   </data>
   <data name="MenuItemHeader_Help" xml:space="preserve">
-    <value>MenuItemHeader_Help</value>
+    <value>Hilfe</value>
   </data>
   <data name="MenuItemHeader_NewDatabase" xml:space="preserve">
-    <value>MenuItemHeader_NewDatabase</value>
+    <value>Neue Datenbank</value>
   </data>
   <data name="MenuItemHeader_OpenDatabase" xml:space="preserve">
     <value>MenuItemHeader_OpenDatabase</value>
@@ -181,48 +181,48 @@
     <value>QueryEditor_Label_Database</value>
   </data>
   <data name="SelectQueryCreator_TabHeader_Options" xml:space="preserve">
-    <value>SelectQueryCreator_TabHeader_Options</value>
+    <value>Optionen</value>
   </data>
   <data name="SelectQueryCreator_TabHeader_ResultQuery" xml:space="preserve">
-    <value>SelectQueryCreator_TabHeader_ResultQuery</value>
+    <value>SQL-Ausgabe</value>
   </data>
   <data name="TabContent_GroupBoxHeader_About" xml:space="preserve">
-    <value>TabContent_GroupBoxHeader_About</value>
+    <value>Über</value>
   </data>
   <data name="TabContent_GroupBoxHeader_Columns" xml:space="preserve">
-    <value>TabContent_GroupBoxHeader_Columns</value>
+    <value>Spalten</value>
   </data>
   <data name="TabHeader_General" xml:space="preserve">
-    <value>TabHeader_General</value>
+    <value>Allgemein</value>
   </data>
   <data name="TabHeader_GeneralTable" xml:space="preserve">
-    <value>TabHeader_GeneralTable</value>
+    <value>Tabelle {0}</value>
   </data>
   <data name="TabHeader_TableRecords" xml:space="preserve">
-    <value>TabHeader_TableRecords</value>
+    <value>Einträge</value>
   </data>
   <data name="Tooltip_CloseDatabase" xml:space="preserve">
-    <value>Tooltip_CloseDatabase</value>
+    <value>Datenbank trennen</value>
   </data>
   <data name="Tooltip_DeleteDatabase" xml:space="preserve">
-    <value>Tooltip_DeleteDatabase</value>
+    <value>Datenbank löschen</value>
   </data>
   <data name="Tooltip_NewDatabase" xml:space="preserve">
-    <value>Tooltip_NewDatabase</value>
+    <value>Neue Datenbank erstellen</value>
   </data>
   <data name="Tooltip_OpenDatabase" xml:space="preserve">
-    <value>Tooltip_OpenDatabase</value>
+    <value>Datenbank öffnen</value>
   </data>
   <data name="Tooltip_WriteSQLStatement" xml:space="preserve">
-    <value>Tooltip_WriteSQLStatement</value>
+    <value>SQL Statement erstellen</value>
   </data>
   <data name="WindowTitle_About" xml:space="preserve">
-    <value>WindowTitle_About</value>
+    <value>Über</value>
   </data>
   <data name="WindowTitle_QueryEditor" xml:space="preserve">
-    <value>WindowTitle_QueryEditor</value>
+    <value>Query-Editor</value>
   </data>
   <data name="WindowTitle_SelectQueryCreator" xml:space="preserve">
-    <value>WindowTitle_SelectQueryCreator</value>
+    <value>Select-Statement erstellen</value>
   </data>
 </root>

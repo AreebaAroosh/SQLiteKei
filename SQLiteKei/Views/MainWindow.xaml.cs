@@ -1,4 +1,5 @@
-﻿using SQLiteKei.DataAccess.Database;
+﻿using System.Globalization;
+using SQLiteKei.DataAccess.Database;
 using SQLiteKei.Helpers;
 using SQLiteKei.ViewModels.DBTreeView;
 using SQLiteKei.ViewModels.DBTreeView.Base;
