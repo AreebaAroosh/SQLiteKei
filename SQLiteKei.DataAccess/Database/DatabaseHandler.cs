@@ -2,6 +2,7 @@
 
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SQLite;
 
 namespace SQLiteKei.DataAccess.Database
 {
@@ -10,6 +11,11 @@ namespace SQLiteKei.DataAccess.Database
     /// </summary>
     public partial class DatabaseHandler : DisposableDbHandler
     {
+        public static void CreateDatabase(string filePath)
+        {
+            SQLiteConnection.CreateFile(filePath);
+        }
+
         public DatabaseHandler(string databasePath) : base(databasePath)
         {
         }

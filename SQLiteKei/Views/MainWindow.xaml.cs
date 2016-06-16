@@ -8,7 +8,6 @@ using SQLiteKei.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Data.SQLite;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -68,7 +67,7 @@ namespace SQLiteKei
                 dialog.Filter = "SQLite (*.sqlite)|*.sqlite";
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    SQLiteConnection.CreateFile(dialog.FileName);
+                    DatabaseHandler.CreateDatabase(dialog.FileName);
                     AddDatabaseSchemaToTreeView(dialog.FileName);
                 }
             }
