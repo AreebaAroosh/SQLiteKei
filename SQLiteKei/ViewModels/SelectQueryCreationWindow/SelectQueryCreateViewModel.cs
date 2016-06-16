@@ -48,7 +48,7 @@ namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
 
         private void InitializeItems()
         {
-            var databasePath = ((App)Application.Current).CurrentDatabase;
+            var databasePath = Properties.Settings.Default.CurrentDatabase;
             using (var databaseHandler = new TableHandler(databasePath))
             {
                 var columns = databaseHandler.GetColumns(tableName);

@@ -120,7 +120,7 @@ namespace SQLiteKei
             if(DBTreeView.SelectedItem != null)
             {
                 var currentSelection = (TreeItem)DBTreeView.SelectedItem;
-                (System.Windows.Application.Current as App).CurrentDatabase = currentSelection.DatabasePath;
+                Properties.Settings.Default.CurrentDatabase = currentSelection.DatabasePath;
             }
         }
 

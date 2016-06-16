@@ -35,7 +35,7 @@ namespace SQLiteKei.Views.UserControls
         {
             try
             {
-                var dbPath = ((App)Application.Current).CurrentDatabase;
+                var dbPath = Properties.Settings.Default.CurrentDatabase;
                 var dbHandler = new DatabaseHandler(dbPath);
                 var resultTable = dbHandler.ExecuteReader(selectQuery);
 
