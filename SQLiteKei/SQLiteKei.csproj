@@ -117,7 +117,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helpers\DatabaseTabGenerator.cs" />
-    <Compile Include="Helpers\LanguageHelper.cs" />
+    <Compile Include="Helpers\LocalisationHelper.cs" />
     <Compile Include="Helpers\LogHelper.cs" />
     <Compile Include="Helpers\TreeSaveHelper.cs" />
     <Compile Include="Helpers\TreeViewHelper.cs" />

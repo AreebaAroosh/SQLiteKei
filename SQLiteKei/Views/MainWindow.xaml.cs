@@ -130,8 +130,8 @@ namespace SQLiteKei
 
             if(selectedItem != null)
             {
-                var message = LanguageHelper.GetLocalizedString("MessageBox_DatabaseDeleteWarning", selectedItem.DisplayName);
-                var result = System.Windows.MessageBox.Show(message, LanguageHelper.GetLocalizedString("MessageBoxTitle_DatabaseDeletion"), MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                var message = LocalisationHelper.GetString("MessageBox_DatabaseDeleteWarning", selectedItem.DisplayName);
+                var result = System.Windows.MessageBox.Show(message, LocalisationHelper.GetString("MessageBoxTitle_DatabaseDeletion"), MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
                 if (result == MessageBoxResult.Yes)
                 {
@@ -165,14 +165,14 @@ namespace SQLiteKei
 
             if(tableItem != null)
             {
-                var message = LanguageHelper.GetLocalizedString("MessageBox_TableDeleteWarning", tableItem.DisplayName);
-                var result = System.Windows.MessageBox.Show(message, LanguageHelper.GetLocalizedString("MessageBoxTitle_TableDeletion"), MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                var message = LocalisationHelper.GetString("MessageBox_TableDeleteWarning", tableItem.DisplayName);
+                var result = System.Windows.MessageBox.Show(message, LocalisationHelper.GetString("MessageBoxTitle_TableDeletion"), MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
                 if(result == MessageBoxResult.Yes)
                 {
                     try
                     {
-                        var databasePath = ((App)System.Windows.Application.Current).CurrentDatabase;
+                        var databasePath = Properties.Settings.Default.CurrentDatabase;
                         using (var databaseHandler = new TableHandler(databasePath))
                         {
                             databaseHandler.DropTable(tableItem.DisplayName);
