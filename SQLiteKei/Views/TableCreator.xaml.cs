@@ -1,4 +1,5 @@
 ﻿using SQLiteKei.DataAccess.Database;
+using SQLiteKei.DataAccess.QueryBuilders.Enums;
 using SQLiteKei.ViewModels.Common;
 using SQLiteKei.ViewModels.DBTreeView;
 using SQLiteKei.ViewModels.DBTreeView.Base;
@@ -30,7 +31,14 @@ namespace SQLiteKei.Views
                 });
             }
 
-            viewModel.SqlStatement = "Test";
+            viewModel.ColumnDefinitions.Add(new ColumnCreateItem
+            {
+                ColumnName = "Column",
+                DataType = DataType.Blob,
+                IsNotNull = true,
+                IsPrimary = true,
+                DefaultValue = "abcde"
+            });
 
             DataContext = viewModel;
             InitializeComponent();

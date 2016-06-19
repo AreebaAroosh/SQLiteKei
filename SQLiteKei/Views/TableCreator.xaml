@@ -3,12 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:model="clr-namespace:SQLiteKei.ViewModels.TableCreatorWindow"
         xmlns:cmodel="clr-namespace:SQLiteKei.ViewModels.Common"
         xmlns:local="clr-namespace:SQLiteKei.Views"
         xmlns:localisation="clr-namespace:SQLiteKei.Properties"
         mc:Ignorable="d"
         Title="{x:Static localisation:Resources.WindowTitle_TableCreator}"
-        Height="300" Width="300">
+        MinHeight="400" MinWidth="500"
+        Height="400" Width="500">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25" />
@@ -16,7 +18,7 @@
             <RowDefinition Height="25" />
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" Height="25">
-            <Label Content="{x:Static localisation:Resources.QueryEditor_Label_Database}" />
+            <Label Content="{x:Static localisation:Resources.TableCreator_Label_Database}" />
             <ComboBox x:Name="DatabaseComboBox" Width="150" Height="20" ItemsSource="{Binding Databases}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate DataType="{x:Type cmodel:DatabaseSelectItem}">
@@ -28,6 +30,20 @@
         <TabControl Grid.Row="1">
             <TabItem Header="{x:Static localisation:Resources.TableCreator_TabHeader_Columns}">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ItemsControl ItemsSource="{Binding ColumnDefinitions}">
+                        <ItemsControl.Resources>
+                            <DataTemplate DataType="{x:Type model:ColumnCreateItem}">
+                                <DockPanel>
+                                    <TextBox Text="{Binding ColumnName}" Width="100" VerticalAlignment="Center" />
+                                    <Label Content="PK"/>
+                                    <CheckBox IsChecked="{Binding IsPrimary}" VerticalAlignment="Center" Margin="3 0"/>
+                                    <Label Content="NN"/>
+                                    <CheckBox IsChecked="{Binding IsNotNull}" VerticalAlignment="Center" Margin="3 0"/>
+                                    <TextBox Text="{Binding DefaultValue}" HorizontalAlignment="Stretch"></TextBox>
+                                </DockPanel>
+                            </DataTemplate>
+                        </ItemsControl.Resources>
+                    </ItemsControl>
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="SQL">

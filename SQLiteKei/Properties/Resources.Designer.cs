@@ -457,6 +457,15 @@ namespace SQLiteKei.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to TableCreator_Label_Database.
+        /// </summary>
+        public static string TableCreator_Label_Database {
+            get {
+                return ResourceManager.GetString("TableCreator_Label_Database", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TableCreator_TabHeader_Columns.
         /// </summary>
         public static string TableCreator_TabHeader_Columns {

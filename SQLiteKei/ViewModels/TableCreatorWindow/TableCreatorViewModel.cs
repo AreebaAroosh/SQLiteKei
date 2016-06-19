@@ -2,12 +2,15 @@
 using SQLiteKei.ViewModels.Common;
 
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace SQLiteKei.ViewModels.TableCreatorWindow
 {
     public class TableCreatorViewModel : NotifyingItem
     {
         public List<DatabaseSelectItem> Databases { get; set; }
+
+        public ObservableCollection<ColumnCreateItem> ColumnDefinitions { get; set; }
 
         private string sqlStatement;
         public string SqlStatement
@@ -26,6 +29,7 @@ namespace SQLiteKei.ViewModels.TableCreatorWindow
         public TableCreatorViewModel()
         {
             Databases = new List<DatabaseSelectItem>();
+            ColumnDefinitions = new ObservableCollection<ColumnCreateItem>();
             sqlStatement = string.Empty;
         }
     }

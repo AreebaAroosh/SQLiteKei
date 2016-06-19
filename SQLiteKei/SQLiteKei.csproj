@@ -122,6 +122,7 @@
     <Compile Include="ViewModels\Base\NotifyingItem.cs" />
     <Compile Include="ViewModels\Common\DatabaseSelectItem.cs" />
     <Compile Include="ViewModels\QueryEditorWindow\QueryEditorViewModel.cs" />
+    <Compile Include="ViewModels\TableCreatorWindow\ColumnCreateItem.cs" />
     <Compile Include="ViewModels\TableCreatorWindow\TableCreatorViewModel.cs" />
     <Compile Include="Views\QueryEditor.xaml.cs">
       <DependentUpon>QueryEditor.xaml</DependentUpon>

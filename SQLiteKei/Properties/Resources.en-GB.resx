@@ -249,6 +249,9 @@
   <data name="TabHeader_TableRecords" xml:space="preserve">
     <value>Records</value>
   </data>
+  <data name="TableCreator_Label_Database" xml:space="preserve">
+    <value>Database</value>
+  </data>
   <data name="TableCreator_TabHeader_Columns" xml:space="preserve">
     <value>Columns</value>
   </data>
