@@ -30,6 +30,8 @@ namespace SQLiteKei.Views
                 });
             }
 
+            viewModel.SqlStatement = "Test";
+
             DataContext = viewModel;
             InitializeComponent();
         }

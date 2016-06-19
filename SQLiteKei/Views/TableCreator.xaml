@@ -25,7 +25,16 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
         </StackPanel>
-        <Grid Grid.Row="3">
+        <TabControl Grid.Row="1">
+            <TabItem Header="{x:Static localisation:Resources.TableCreator_TabHeader_Columns}">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="SQL">
+                <TextBox IsReadOnly="True" Text="{Binding SqlStatement}" TextWrapping="Wrap"></TextBox>
+            </TabItem>
+        </TabControl>
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />

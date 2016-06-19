@@ -249,6 +249,9 @@
   <data name="TabHeader_TableRecords" xml:space="preserve">
     <value>Datensätze</value>
   </data>
+  <data name="TableCreator_TabHeader_Columns" xml:space="preserve">
+    <value>Spalten</value>
+  </data>
   <data name="TableGeneralTab_ColumnName" xml:space="preserve">
     <value>Spalte</value>
   </data>

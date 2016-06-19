@@ -457,6 +457,15 @@ namespace SQLiteKei.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to TableCreator_TabHeader_Columns.
+        /// </summary>
+        public static string TableCreator_TabHeader_Columns {
+            get {
+                return ResourceManager.GetString("TableCreator_TabHeader_Columns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TableGeneralTab_ColumnName.
         /// </summary>
         public static string TableGeneralTab_ColumnName {
