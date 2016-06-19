@@ -60,6 +60,11 @@ namespace SQLiteKei
             new QueryEditor(TreeViewItems).ShowDialog();
         }
 
+        private void OpenTableCreator(object sender, RoutedEventArgs e)
+        {
+            new TableCreator(TreeViewItems).ShowDialog();
+        }
+
         private void CreateNewDatabase(object sender, RoutedEventArgs e)
         {
             using (var dialog = new SaveFileDialog())

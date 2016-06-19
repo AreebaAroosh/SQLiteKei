@@ -123,6 +123,9 @@
   <data name="ButtonText_Cancel" xml:space="preserve">
     <value>ButtonText_Cancel</value>
   </data>
+  <data name="ButtonText_Create" xml:space="preserve">
+    <value>ButtonText_Create</value>
+  </data>
   <data name="ButtonText_Execute" xml:space="preserve">
     <value>ButtonText_Execute</value>
   </data>
@@ -293,5 +296,8 @@
   </data>
   <data name="WindowTitle_SelectQueryCreator" xml:space="preserve">
     <value>WindowTitle_SelectQueryCreator</value>
+  </data>
+  <data name="WindowTitle_TableCreator" xml:space="preserve">
+    <value>WindowTitle_TableCreator</value>
   </data>
 </root>

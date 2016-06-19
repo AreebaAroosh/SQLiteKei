@@ -2,7 +2,7 @@
 using SQLiteKei.ViewModels.Common;
 using SQLiteKei.ViewModels.DBTreeView;
 using SQLiteKei.ViewModels.DBTreeView.Base;
-using SQLiteKei.ViewModels.QueryEditorWindow;
+using SQLiteKei.ViewModels.TableCreatorWindow;
 
 using System;
 using System.Collections.Generic;
@@ -11,17 +11,17 @@ using System.Windows;
 namespace SQLiteKei.Views
 {
     /// <summary>
-    /// Interaction logic for QueryEditor.xaml
+    /// Interaction logic for TableCreator.xaml
     /// </summary>
-    public partial class QueryEditor : Window
+    public partial class TableCreator : Window
     {
-        private QueryEditorViewModel viewModel;
+        private TableCreatorViewModel viewModel;
 
-        public QueryEditor(IEnumerable<TreeItem> databases)
+        public TableCreator(IEnumerable<TreeItem> databases)
         {
-            viewModel = new QueryEditorViewModel();
+            viewModel = new TableCreatorViewModel();
 
-            foreach(DatabaseItem database in databases)
+            foreach (DatabaseItem database in databases)
             {
                 viewModel.Databases.Add(new DatabaseSelectItem
                 {
@@ -34,7 +34,7 @@ namespace SQLiteKei.Views
             InitializeComponent();
         }
 
-        private void Execute(object sender, RoutedEventArgs e)
+        private void Create(object sender, RoutedEventArgs e)
         {
             viewModel.StatusInfo = string.Empty;
 
@@ -45,18 +45,9 @@ namespace SQLiteKei.Views
 
                 try
                 {
-                    if (viewModel.SqlStatement.StartsWith("SELECT", StringComparison.CurrentCultureIgnoreCase))
+                    if (viewModel.SqlStatement.StartsWith("CREATE TABLE", StringComparison.CurrentCultureIgnoreCase))
                     {
-                        var queryResult = dbHandler.ExecuteReader(viewModel.SqlStatement);
-
-                        QueryGrid.ItemsSource = queryResult.DefaultView;
-                        viewModel.StatusInfo = string.Format("Rows returned: {0}", queryResult.Rows.Count);
-                    }
-                    else
-                    {
-                        var commandResult = dbHandler.ExecuteNonQuery(viewModel.SqlStatement);
-
-                        viewModel.StatusInfo = string.Format("Rows affected: {0}", commandResult);
+                        var queryResult = dbHandler.ExecuteNonQuery(viewModel.SqlStatement);
                     }
                 }
                 catch (Exception ex)
@@ -64,7 +55,6 @@ namespace SQLiteKei.Views
                     viewModel.StatusInfo = ex.Message.Replace("SQL logic error or missing database\r\n", "SQL-Error - ");
                 }
             }
-                
         }
     }
 }

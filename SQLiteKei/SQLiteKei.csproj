@@ -67,6 +67,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\TableCreator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\UserControls\DatabaseGeneralTabContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -116,10 +120,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Base\NotifyingItem.cs" />
-    <Compile Include="ViewModels\QueryEditorWindow\DatabaseSelectItem.cs" />
+    <Compile Include="ViewModels\Common\DatabaseSelectItem.cs" />
     <Compile Include="ViewModels\QueryEditorWindow\QueryEditorViewModel.cs" />
+    <Compile Include="ViewModels\TableCreatorWindow\TableCreatorViewModel.cs" />
     <Compile Include="Views\QueryEditor.xaml.cs">
       <DependentUpon>QueryEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TableCreator.xaml.cs">
+      <DependentUpon>TableCreator.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\DatabaseGeneralTabContent.xaml.cs">
       <DependentUpon>DatabaseGeneralTabContent.xaml</DependentUpon>

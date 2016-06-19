@@ -3,9 +3,9 @@ using SQLiteKei.ViewModels.Common;
 
 using System.Collections.Generic;
 
-namespace SQLiteKei.ViewModels.QueryEditorWindow
+namespace SQLiteKei.ViewModels.TableCreatorWindow
 {
-    public class QueryEditorViewModel : NotifyingItem
+    public class TableCreatorViewModel : NotifyingItem
     {
         public List<DatabaseSelectItem> Databases { get; set; }
 
@@ -23,7 +23,7 @@ namespace SQLiteKei.ViewModels.QueryEditorWindow
             set { statusInfo = value; NotifyPropertyChanged("StatusInfo"); }
         }
 
-        public QueryEditorViewModel()
+        public TableCreatorViewModel()
         {
             Databases = new List<DatabaseSelectItem>();
             sqlStatement = string.Empty;
