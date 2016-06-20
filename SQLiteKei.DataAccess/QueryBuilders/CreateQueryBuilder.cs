@@ -25,11 +25,11 @@ namespace SQLiteKei.DataAccess.QueryBuilders
             Columns = new List<ColumnData>();
         }
 
-        public CreateQueryBuilder AddColumn(string columnName, DataType dataType, bool isPrimary = false, bool isNullable = false)
+        public CreateQueryBuilder AddColumn(string columnName, DataType dataType, bool isPrimary = false, bool isNotNull = true, object defaultValue = null)
         {
             if(string.IsNullOrWhiteSpace(columnName))
             {
-                throw new CreateQueryBuilderException("A provided column name was null or empty.");
+                throw new ColumnDefinitionException("Invalid column name.");
             }
 
             CheckIfColumnAlreadyAdded(columnName);
@@ -37,7 +37,7 @@ namespace SQLiteKei.DataAccess.QueryBuilders
             if(isPrimary)
             {
                 if (primaryKeyAdded)
-                    throw new CreateQueryBuilderException("Multiple primary keys were defined.");
+                    throw new ColumnDefinitionException("Multiple primary keys defined.");
 
                 primaryKeyAdded = true;
             }
@@ -47,7 +47,7 @@ namespace SQLiteKei.DataAccess.QueryBuilders
                 ColumnName = columnName,
                 DataType = dataType,
                 IsPrimary = isPrimary,
-                IsNullable = isNullable
+                IsNotNull = isNotNull
             };
 
             Columns.Add(columnData);
@@ -60,7 +60,9 @@ namespace SQLiteKei.DataAccess.QueryBuilders
 
             if(result != null)
             {
-                throw new CreateQueryBuilderException("A column has was provided multiple times.");
+                var exceptionMessage =
+                    string.Format("The column with the name '{0}' was defined more than once.", columnName);
+                throw new ColumnDefinitionException(exceptionMessage);
             }
         }
 
@@ -68,12 +70,12 @@ namespace SQLiteKei.DataAccess.QueryBuilders
         {
             if(string.IsNullOrWhiteSpace(table))
             {
-                throw new CreateQueryBuilderException("An empty or invalid table name has been provided.");
+                throw new CreateQueryBuilderException("No valid table name provided.");
             }
 
             if(!Columns.Any())
             {
-                throw new CreateQueryBuilderException("No columns were provided.");
+                throw new ColumnDefinitionException("No columns defined.");
             }
 
             string columns = string.Join(",\n", Columns);

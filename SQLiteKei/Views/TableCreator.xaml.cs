@@ -1,5 +1,7 @@
-﻿using SQLiteKei.DataAccess.Database;
-using SQLiteKei.DataAccess.QueryBuilders.Enums;
+﻿using log4net;
+
+using SQLiteKei.DataAccess.Database;
+using SQLiteKei.Helpers;
 using SQLiteKei.ViewModels.Common;
 using SQLiteKei.ViewModels.DBTreeView;
 using SQLiteKei.ViewModels.DBTreeView.Base;
@@ -16,7 +18,9 @@ namespace SQLiteKei.Views
     /// </summary>
     public partial class TableCreator : Window
     {
-        private TableCreatorViewModel viewModel;
+        private readonly ILog logger = LogHelper.GetLogger();
+
+        private readonly TableCreatorViewModel viewModel;
 
         public TableCreator(IEnumerable<TreeItem> databases)
         {
@@ -31,15 +35,6 @@ namespace SQLiteKei.Views
                 });
             }
 
-            viewModel.ColumnDefinitions.Add(new ColumnCreateItem
-            {
-                ColumnName = "Column",
-                DataType = DataType.Blob,
-                IsNotNull = true,
-                IsPrimary = true,
-                DefaultValue = "abcde"
-            });
-
             DataContext = viewModel;
             InitializeComponent();
         }
@@ -47,6 +42,12 @@ namespace SQLiteKei.Views
         private void Create(object sender, RoutedEventArgs e)
         {
             viewModel.StatusInfo = string.Empty;
+
+            if (DatabaseComboBox.SelectedItem == null)
+            {
+                viewModel.StatusInfo = LocalisationHelper.GetString("TableCreator_NoDatabaseSelected");
+                return;
+            } 
 
             if (!string.IsNullOrEmpty(viewModel.SqlStatement))
             {
@@ -57,14 +58,21 @@ namespace SQLiteKei.Views
                 {
                     if (viewModel.SqlStatement.StartsWith("CREATE TABLE", StringComparison.CurrentCultureIgnoreCase))
                     {
-                        var queryResult = dbHandler.ExecuteNonQuery(viewModel.SqlStatement);
+                        dbHandler.ExecuteNonQuery(viewModel.SqlStatement);
+                        viewModel.StatusInfo = LocalisationHelper.GetString("TableCreator_TableCreateSuccess");
                     }
                 }
                 catch (Exception ex)
                 {
+                    logger.Error("An error occured when the user tried to create a table from the TableCreator.", ex);
                     viewModel.StatusInfo = ex.Message.Replace("SQL logic error or missing database\r\n", "SQL-Error - ");
                 }
             }
+        }
+
+        private void AddColumn(object sender, RoutedEventArgs e)
+        {
+            viewModel.AddColumnDefinition();
         }
     }
 }

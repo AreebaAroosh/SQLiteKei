@@ -80,8 +80,6 @@ namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
                     item.PropertyChanged += CollectionItemPropertyChanged;
                 }
             }
-
-            UpdateSelectQuery();
         }
 
         private void CollectionItemPropertyChanged(object sender, PropertyChangedEventArgs e)

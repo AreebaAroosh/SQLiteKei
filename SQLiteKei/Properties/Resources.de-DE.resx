@@ -249,11 +249,26 @@
   <data name="TabHeader_TableRecords" xml:space="preserve">
     <value>Datensätze</value>
   </data>
+  <data name="TableCreator_ButtonText_AddColumn" xml:space="preserve">
+    <value>Spalte hinzufügen</value>
+  </data>
   <data name="TableCreator_Label_Database" xml:space="preserve">
     <value>Datenbank</value>
   </data>
+  <data name="TableCreator_Label_Default" xml:space="preserve">
+    <value>Standardwert</value>
+  </data>
+  <data name="TableCreator_Label_TableName" xml:space="preserve">
+    <value>Tabellenname</value>
+  </data>
+  <data name="TableCreator_NoDatabaseSelected" xml:space="preserve">
+    <value>Keine Datenbank ausgewählt</value>
+  </data>
   <data name="TableCreator_TabHeader_Columns" xml:space="preserve">
     <value>Spalten</value>
+  </data>
+  <data name="TableCreator_TableCreateSuccess" xml:space="preserve">
+    <value>Tabelle erfolgreich erzeugt!</value>
   </data>
   <data name="TableGeneralTab_ColumnName" xml:space="preserve">
     <value>Spalte</value>

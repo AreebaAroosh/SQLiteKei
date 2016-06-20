@@ -249,11 +249,26 @@
   <data name="TabHeader_TableRecords" xml:space="preserve">
     <value>Records</value>
   </data>
+  <data name="TableCreator_ButtonText_AddColumn" xml:space="preserve">
+    <value>Add column</value>
+  </data>
   <data name="TableCreator_Label_Database" xml:space="preserve">
     <value>Database</value>
   </data>
+  <data name="TableCreator_Label_Default" xml:space="preserve">
+    <value>Default Value</value>
+  </data>
+  <data name="TableCreator_Label_TableName" xml:space="preserve">
+    <value>Table Name</value>
+  </data>
+  <data name="TableCreator_NoDatabaseSelected" xml:space="preserve">
+    <value>No database selected</value>
+  </data>
   <data name="TableCreator_TabHeader_Columns" xml:space="preserve">
     <value>Columns</value>
+  </data>
+  <data name="TableCreator_TableCreateSuccess" xml:space="preserve">
+    <value>Table created successfully!</value>
   </data>
   <data name="TableGeneralTab_ColumnName" xml:space="preserve">
     <value>Column</value>

@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:localization="clr-namespace:SQLiteKei.Properties"
-        xmlns:model="clr-namespace:SQLiteKei.ViewModels.QueryEditorWindow"
         xmlns:cmodel="clr-namespace:SQLiteKei.ViewModels.Common"
         mc:Ignorable="d"
         Title="{x:Static localization:Resources.WindowTitle_QueryEditor}"

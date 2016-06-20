@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:model="clr-namespace:SQLiteKei.ViewModels.TableCreatorWindow"
         xmlns:cmodel="clr-namespace:SQLiteKei.ViewModels.Common"
-        xmlns:local="clr-namespace:SQLiteKei.Views"
         xmlns:localisation="clr-namespace:SQLiteKei.Properties"
         mc:Ignorable="d"
+        Icon="../Resources/Icons/Logo_32x32.png"
         Title="{x:Static localisation:Resources.WindowTitle_TableCreator}"
         MinHeight="400" MinWidth="500"
-        Height="400" Width="500">
+        Height="400" Width="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25" />
@@ -26,28 +26,35 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
+            <Label Content="{x:Static localisation:Resources.TableCreator_Label_TableName}" />
+            <TextBox Text="{Binding TableName}" Width="125"/>
         </StackPanel>
         <TabControl Grid.Row="1">
             <TabItem Header="{x:Static localisation:Resources.TableCreator_TabHeader_Columns}">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ItemsControl ItemsSource="{Binding ColumnDefinitions}">
-                        <ItemsControl.Resources>
-                            <DataTemplate DataType="{x:Type model:ColumnCreateItem}">
-                                <DockPanel>
-                                    <TextBox Text="{Binding ColumnName}" Width="100" VerticalAlignment="Center" />
-                                    <Label Content="PK"/>
-                                    <CheckBox IsChecked="{Binding IsPrimary}" VerticalAlignment="Center" Margin="3 0"/>
-                                    <Label Content="NN"/>
-                                    <CheckBox IsChecked="{Binding IsNotNull}" VerticalAlignment="Center" Margin="3 0"/>
-                                    <TextBox Text="{Binding DefaultValue}" HorizontalAlignment="Stretch"></TextBox>
-                                </DockPanel>
-                            </DataTemplate>
-                        </ItemsControl.Resources>
-                    </ItemsControl>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding ColumnDefinitions}">
+                            <ItemsControl.Resources>
+                                <DataTemplate DataType="{x:Type model:ColumnDefinitionItem}">
+                                    <DockPanel>
+                                        <TextBox Text="{Binding ColumnName}" Width="175"/>
+                                        <ComboBox SelectedItem="{Binding DataType}" ItemsSource="{Binding DataTypes}" Width="85" VerticalContentAlignment="Center"/>
+                                        <Label Content="PK"/>
+                                        <CheckBox IsChecked="{Binding IsPrimary}" VerticalAlignment="Center" Margin="3 0"/>
+                                        <Label Content="NN"/>
+                                        <CheckBox IsChecked="{Binding IsNotNull}" VerticalAlignment="Center" Margin="3 0"/>
+                                        <Label Content="{x:Static localisation:Resources.TableCreator_Label_Default}"/>
+                                        <TextBox Text="{Binding DefaultValue}" HorizontalAlignment="Stretch"></TextBox>
+                                    </DockPanel>
+                                </DataTemplate>
+                            </ItemsControl.Resources>
+                        </ItemsControl>
+                        <Button Content="{x:Static localisation:Resources.TableCreator_ButtonText_AddColumn}" Click="AddColumn" />
+                    </StackPanel>
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="SQL">
-                <TextBox IsReadOnly="True" Text="{Binding SqlStatement}" TextWrapping="Wrap"></TextBox>
+                <TextBox Text="{Binding SqlStatement}" TextWrapping="Wrap"></TextBox>
             </TabItem>
         </TabControl>
         <Grid Grid.Row="2">
@@ -56,7 +63,8 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Margin="3 2" Content="{x:Static localisation:Resources.ButtonText_Create}" Click="Create" />
+            <Button Grid.Column="0" Margin="3 2" Content="{x:Static localisation:Resources.ButtonText_Create}" 
+                    Click="Create" IsEnabled="{Binding IsValidTableDefinition}"/>
             <TextBox Grid.Column="1" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding StatusInfo}"></TextBox>
             <Button Grid.Column="2" Margin="3 2" Content="{x:Static localisation:Resources.ButtonText_Cancel}" IsCancel="True" />
         </Grid>

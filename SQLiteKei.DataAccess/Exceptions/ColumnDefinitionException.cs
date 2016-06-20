@@ -2,9 +2,9 @@
 
 namespace SQLiteKei.DataAccess.Exceptions
 {
-    public class CreateQueryBuilderException : Exception
+    public class ColumnDefinitionException : Exception
     {
-        public CreateQueryBuilderException(string message)
+        public ColumnDefinitionException(string message)
             : base(message)
         {
         }

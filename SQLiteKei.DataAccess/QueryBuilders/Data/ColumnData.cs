@@ -14,24 +14,13 @@ namespace SQLiteKei.DataAccess.QueryBuilders.Data
     /// </summary>
     public class ColumnData
     {
-        private string columnName; 
-        public string ColumnName
-        {
-            get
-            {
-                return columnName;
-            }
-            set
-            {
-                columnName = Regex.Replace(value, @"\s+", ""); // remove whitespaces
-            }
-        }
+        public string ColumnName { get; set; }
 
         public DataType DataType { get; set; }
 
         public bool IsPrimary { get; set; }
 
-        public bool IsNullable { get; set; }
+        public bool IsNotNull { get; set; }
 
         public override string ToString()
         {
@@ -40,7 +29,7 @@ namespace SQLiteKei.DataAccess.QueryBuilders.Data
             if (IsPrimary)
                 column.Append(" PRIMARY KEY");
 
-            if (!IsNullable || IsPrimary)
+            if (IsNotNull || IsPrimary)
                 column.Append(" NOT NULL");
 
             return column.ToString();

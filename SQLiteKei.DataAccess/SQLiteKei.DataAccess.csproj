@@ -62,6 +62,7 @@
     <Compile Include="Database\DatabaseHandler.cs" />
     <Compile Include="Database\DisposableDbHandler.cs" />
     <Compile Include="Database\TableHandler.cs" />
+    <Compile Include="Exceptions\ColumnDefinitionException.cs" />
     <Compile Include="Exceptions\CreateQueryBuilderException.cs" />
     <Compile Include="Exceptions\SelectQueryBuilderException.cs" />
     <Compile Include="Exceptions\TableNotFoundException.cs" />

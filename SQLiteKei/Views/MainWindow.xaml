@@ -86,7 +86,7 @@
                                     <TextBlock Text=")" />
                                     <StackPanel.ContextMenu>
                                         <ContextMenu>
-                                        <MenuItem Header="{x:Static localization:Resources.ContextMenuItem_NewTable}"/>
+                                        <MenuItem Header="{x:Static localization:Resources.ContextMenuItem_NewTable}" Click="OpenTableCreator"/>
                                         </ContextMenu>
                                     </StackPanel.ContextMenu>
                                 </StackPanel>
