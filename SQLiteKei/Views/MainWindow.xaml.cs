@@ -26,17 +26,8 @@ namespace SQLiteKei
         private ObservableCollection<TreeItem> treeViewItems;
         public ObservableCollection<TreeItem> TreeViewItems
         {
-            get
-            {
-                if(treeViewItems == null)
-                    treeViewItems = new ObservableCollection<TreeItem>();
-                return treeViewItems;
-            }
-            set
-            {
-                treeViewItems = value;
-                NotifyPropertyChanged("TreeViewItems");
-            }
+            get { return treeViewItems; }
+            set { treeViewItems = value; NotifyPropertyChanged("TreeViewItems"); }
         }
 
         public MainWindow()
@@ -63,6 +54,19 @@ namespace SQLiteKei
         private void OpenTableCreator(object sender, RoutedEventArgs e)
         {
             new TableCreator(TreeViewItems).ShowDialog();
+            RefreshTree();
+        }
+
+        private void RefreshTree()
+        {
+            var databasePaths = TreeViewItems.Select(x => x.DatabasePath).ToList();
+            TreeViewItems.Clear();
+
+            var schemaMapper = new SchemaToViewModelMapper();
+            foreach (var path in databasePaths)
+            {
+                TreeViewItems.Add(schemaMapper.MapSchemaToViewModel(path));
+            }
         }
 
         private void CreateNewDatabase(object sender, RoutedEventArgs e)
@@ -137,14 +141,12 @@ namespace SQLiteKei
                 var message = LocalisationHelper.GetString("MessageBox_DatabaseDeleteWarning", selectedItem.DisplayName);
                 var result = System.Windows.MessageBox.Show(message, LocalisationHelper.GetString("MessageBoxTitle_DatabaseDeletion"), MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
-                if (result == MessageBoxResult.Yes)
-                {
-                    if (!File.Exists(selectedItem.DatabasePath))
-                        throw new FileNotFoundException("Database file could not be found.");
+                if (result != MessageBoxResult.Yes) return;
+                if (!File.Exists(selectedItem.DatabasePath))
+                    throw new FileNotFoundException("Database file could not be found.");
 
-                    File.Delete(selectedItem.DatabasePath);
-                    TreeViewItems.Remove(selectedItem);
-                }
+                File.Delete(selectedItem.DatabasePath);
+                TreeViewItems.Remove(selectedItem);
             }
         }
 
@@ -152,10 +154,10 @@ namespace SQLiteKei
         {
             var openTabs = MainTabControl.Items.Count;
 
-            for (int i = openTabs-1; i >= 0; i--)
+            for (var i = openTabs-1; i >= 0; i--)
                 MainTabControl.Items.RemoveAt(i);
 
-            var defaultTabs = DatabaseTabGenerator.GenerateTabsFor(null);
+            var defaultTabs = DatabaseTabGenerator.GenerateDefaultTabs();
 
             foreach (TabItem tab in defaultTabs)
                 MainTabControl.Items.Add(tab);

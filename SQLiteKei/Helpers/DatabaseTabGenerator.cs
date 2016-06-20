@@ -35,7 +35,7 @@ namespace SQLiteKei.Helpers
             return GenerateDefaultTabs();
         }
 
-        private static List<TabItem> GenerateDefaultTabs()
+        public static List<TabItem> GenerateDefaultTabs()
         {
             return new List<TabItem>();
         }

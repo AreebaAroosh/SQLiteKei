@@ -1,11 +1,6 @@
-﻿#region usings
-
-using SQLiteKei.DataAccess.QueryBuilders.Enums;
+﻿using SQLiteKei.DataAccess.QueryBuilders.Enums;
 
 using System.Text;
-using System.Text.RegularExpressions;
-
-#endregion
 
 namespace SQLiteKei.DataAccess.QueryBuilders.Data
 {
