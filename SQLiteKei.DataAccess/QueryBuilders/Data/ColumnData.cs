@@ -17,6 +17,8 @@ namespace SQLiteKei.DataAccess.QueryBuilders.Data
 
         public bool IsNotNull { get; set; }
 
+        public object DefaultValue { get; set; }
+
         public override string ToString()
         {
             var column = new StringBuilder(ColumnName + " " + DataType);
@@ -26,6 +28,9 @@ namespace SQLiteKei.DataAccess.QueryBuilders.Data
 
             if (IsNotNull || IsPrimary)
                 column.Append(" NOT NULL");
+
+            if (DefaultValue != null)
+                column.Append(" DEFAULT '" + DefaultValue + "'");
 
             return column.ToString();
         }

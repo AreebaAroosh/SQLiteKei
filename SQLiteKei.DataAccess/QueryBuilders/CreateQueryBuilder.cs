@@ -47,7 +47,8 @@ namespace SQLiteKei.DataAccess.QueryBuilders
                 ColumnName = columnName,
                 DataType = dataType,
                 IsPrimary = isPrimary,
-                IsNotNull = isNotNull
+                IsNotNull = isNotNull,
+                DefaultValue = defaultValue
             };
 
             Columns.Add(columnData);
