@@ -12,7 +12,7 @@ using SQLiteKei.ViewModels.DBTreeView.Base;
 
 namespace SQLiteKei.IntegrationTests.Helpers
 {
-    [TestFixture]
+    [TestFixture, Explicit]
     public class TreeSaveHelperTests : DbTestBase
     {
         private string expectedLocation;
