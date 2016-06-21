@@ -4,9 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewmodel="clr-namespace:SQLiteKei.ViewModels.SelectQueryCreationWindow"
-        xmlns:localization="clr-namespace:SQLiteKei.Properties"
+        xmlns:localisation="clr-namespace:SQLiteKei.Properties"
         mc:Ignorable="d"
-        Title="{x:Static localization:Resources.WindowTitle_SelectQueryCreator}"
+        Title="{x:Static localisation:Resources.WindowTitle_SelectQueryCreator}"
         Icon="../Resources/Icons/Logo_32x32.png"
         Height="350" Width="550"
         MinHeight="300" MinWidth="300">
@@ -62,16 +62,19 @@
                     </ItemsControl>
                 </ScrollViewer>
             </TabItem>
-            <TabItem Header="{x:Static localization:Resources.SelectQueryCreator_TabHeader_Options}">
+            <TabItem Header="Order">
                 <Label Content="Coming Soon"></Label>
             </TabItem>
-            <TabItem Header="{x:Static localization:Resources.SelectQueryCreator_TabHeader_ResultQuery}">
+            <TabItem Header="Group">
+                <Label Content="Coming Soon"></Label>
+            </TabItem>
+            <TabItem Header="SQL">
                 <TextBox IsReadOnly="True" Text="{Binding SelectQuery}" TextWrapping="Wrap"></TextBox>
             </TabItem>
         </TabControl>
         <StackPanel Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Button Content="{x:Static localization:Resources.ButtonText_Cancel}" Margin="3 2" IsCancel="True"></Button>
-            <Button Content="{x:Static localization:Resources.ButtonText_Execute}" Margin="3 2" Click="Execute"></Button>
+            <Button Content="{x:Static localisation:Resources.ButtonText_Cancel}" Margin="3 2" IsCancel="True"></Button>
+            <Button Content="{x:Static localisation:Resources.ButtonText_Execute}" Margin="3 2" Click="Execute"></Button>
         </StackPanel>
     </Grid>
 </Window>

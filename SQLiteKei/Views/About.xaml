@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:localization="clr-namespace:SQLiteKei.Properties"
+        xmlns:localisation="clr-namespace:SQLiteKei.Properties"
         mc:Ignorable="d"
-        Title="{x:Static localization:Resources.WindowTitle_About}"
+        Title="{x:Static localisation:Resources.WindowTitle_About}"
         Height="178.776" Width="265.714"
         ResizeMode="NoResize" FontSize="10.667" FontFamily="Arial"
         Icon="../Resources/Icons/Logo_32x32.png"
@@ -19,7 +19,7 @@
         <Label x:Name="VersionLabel" Grid.Row="0" Content="Version Unknown" Foreground="#EEE" HorizontalAlignment="Left" Margin="53,15,0,0" VerticalAlignment="Top" Width="136" Height="24"/>
         <TextBlock Grid.Row="0" Margin="57,39,80,0">
             <Hyperlink NavigateUri="https://github.com/shaezonai/SQLiteKei" RequestNavigate="CheckoutOnGithub">
-                <TextBlock Text="{x:Static localization:Resources.About_CheckOutOnGithub}"></TextBlock>
+                <TextBlock Text="{x:Static localisation:Resources.About_CheckOutOnGithub}"></TextBlock>
             </Hyperlink>
         </TextBlock>
         <Image Source="../Resources/Icons/Logo_64x64.png"  Grid.Row="0" HorizontalAlignment="Left" Height="47" Margin="5,6,0,0"  VerticalAlignment="Top" Width="47" Grid.RowSpan="2"/>

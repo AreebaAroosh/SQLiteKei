@@ -385,24 +385,6 @@ namespace SQLiteKei.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SelectQueryCreator_TabHeader_Options.
-        /// </summary>
-        public static string SelectQueryCreator_TabHeader_Options {
-            get {
-                return ResourceManager.GetString("SelectQueryCreator_TabHeader_Options", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SelectQueryCreator_TabHeader_ResultQuery.
-        /// </summary>
-        public static string SelectQueryCreator_TabHeader_ResultQuery {
-            get {
-                return ResourceManager.GetString("SelectQueryCreator_TabHeader_ResultQuery", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to TabContent_GroupBoxHeader_About.
         /// </summary>
         public static string TabContent_GroupBoxHeader_About {

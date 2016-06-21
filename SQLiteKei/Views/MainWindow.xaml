@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:model="clr-namespace:SQLiteKei.ViewModels.DBTreeView" 
-        xmlns:localization="clr-namespace:SQLiteKei.Properties"
+        xmlns:localisation="clr-namespace:SQLiteKei.Properties"
         mc:Ignorable="d"
         Title="SQLite Kei" 
         Icon="../Resources/Icons/Logo_32x32.png"
@@ -20,29 +20,29 @@
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0" HorizontalAlignment="Stretch" LastChildFill="False" VerticalAlignment="Stretch">
             <Menu DockPanel.Dock="Top" Background="#2D2D30" Foreground="#EEEEEE">
-                <MenuItem Header="{x:Static localization:Resources.MenuItemHeader_File}" Background="#2D2D30">
-                    <MenuItem Header="{x:Static localization:Resources.MenuItemHeader_NewDatabase}" Click="CreateNewDatabase" Background="#2D2D30"/>
-                    <MenuItem Header="{x:Static localization:Resources.MenuItemHeader_OpenDatabase}" Click="OpenDatabase" Background="#2D2D30"/>
+                <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_File}" Background="#2D2D30">
+                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_NewDatabase}" Click="CreateNewDatabase" Background="#2D2D30"/>
+                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_OpenDatabase}" Click="OpenDatabase" Background="#2D2D30"/>
                     <Separator Background="#2D2D30"/>
-                    <MenuItem Header="{x:Static localization:Resources.MenuItemHeader_Exit}" Click="MenuItem_Exit_Click" Background="#2D2D30"/>
+                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Exit}" Click="MenuItem_Exit_Click" Background="#2D2D30"/>
                 </MenuItem>
-                <MenuItem Header="{x:Static localization:Resources.MenuItemHeader_Tools}">
-                    <MenuItem Header="{x:Static localization:Resources.MenuItemHeader_QueryEditor}" Click="OpenQueryEditor" Background="#2D2D30"/>
-                    <MenuItem Header="{x:Static localization:Resources.MenuItemHeader_Preferences}" Background="#2D2D30"/>
+                <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Tools}">
+                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_QueryEditor}" Click="OpenQueryEditor" Background="#2D2D30"/>
+                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Preferences}" Background="#2D2D30"/>
                 </MenuItem>
-                <MenuItem Header="{x:Static localization:Resources.MenuItemHeader_Help}">
-                    <MenuItem Header="{x:Static localization:Resources.MenuItemHeader_Documentation}" Background="#2D2D30"/>
-                    <MenuItem Header="{x:Static localization:Resources.MenuItemHeader_About}" Click="MenuItem_About_Click" Background="#2D2D30"/>
+                <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Help}">
+                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Documentation}" Background="#2D2D30"/>
+                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_About}" Click="MenuItem_About_Click" Background="#2D2D30"/>
                 </MenuItem>
             </Menu>
         </DockPanel>
         <DockPanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Button Content="*" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="CreateNewDatabase" ToolTip="{x:Static localization:Resources.Tooltip_NewDatabase}"/>
-            <Button Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="OpenDatabase" ToolTip="{x:Static localization:Resources.Tooltip_OpenDatabase}"/>
-            <Button Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="CloseDatabase" ToolTip="{x:Static localization:Resources.Tooltip_CloseDatabase}"/>
-            <Button Content="x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="DeleteDatabase" ToolTip="{x:Static localization:Resources.Tooltip_DeleteDatabase}"/>
+            <Button Content="*" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="CreateNewDatabase" ToolTip="{x:Static localisation:Resources.Tooltip_NewDatabase}"/>
+            <Button Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="OpenDatabase" ToolTip="{x:Static localisation:Resources.Tooltip_OpenDatabase}"/>
+            <Button Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="CloseDatabase" ToolTip="{x:Static localisation:Resources.Tooltip_CloseDatabase}"/>
+            <Button Content="x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="DeleteDatabase" ToolTip="{x:Static localisation:Resources.Tooltip_DeleteDatabase}"/>
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="5, 5, 0, 0" />
-            <Button Content="x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="OpenQueryEditor" ToolTip="{x:Static localization:Resources.Tooltip_WriteSQLStatement}"/>
+            <Button Content="x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="OpenQueryEditor" ToolTip="{x:Static localisation:Resources.Tooltip_WriteSQLStatement}"/>
             <Button Content="x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="OpenTableCreator" ToolTip="NO TOOLTIP"/>
         </DockPanel>
         <Grid Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
@@ -62,10 +62,10 @@
                             <TextBlock Text="{Binding DisplayName}" ToolTip="{Binding DatabasePath}">
                                 <TextBlock.ContextMenu>
                                     <ContextMenu>
-                                        <MenuItem Header="{x:Static localization:Resources.ContextMenuItem_CloseDatabase}" Click="CloseDatabase" />
-                                        <MenuItem Header="{x:Static localization:Resources.ContextMenuItem_RenameDatabase}" />
+                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_CloseDatabase}" Click="CloseDatabase" />
+                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_RenameDatabase}" />
                                         <Separator/>
-                                        <MenuItem Header="{x:Static localization:Resources.ContextMenuItem_DeleteDatabase}" Click="DeleteDatabase" />
+                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_DeleteDatabase}" Click="DeleteDatabase" />
                                     </ContextMenu>
                                 </TextBlock.ContextMenu>
                             </TextBlock>
@@ -86,7 +86,7 @@
                                     <TextBlock Text=")" />
                                     <StackPanel.ContextMenu>
                                         <ContextMenu>
-                                        <MenuItem Header="{x:Static localization:Resources.ContextMenuItem_NewTable}" Click="OpenTableCreator"/>
+                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_NewTable}" Click="OpenTableCreator"/>
                                         </ContextMenu>
                                     </StackPanel.ContextMenu>
                                 </StackPanel>
@@ -95,7 +95,7 @@
                            <TextBlock Text="{Binding Path=DisplayName}" >
                                <TextBlock.ContextMenu>
                                     <ContextMenu>
-                                        <MenuItem Header="{x:Static localization:Resources.ContextMenuItem_DeleteTable}" Click="DeleteTable"></MenuItem>
+                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_DeleteTable}" Click="DeleteTable"></MenuItem>
                                     </ContextMenu>
                                </TextBlock.ContextMenu>
                            </TextBlock>
@@ -107,7 +107,7 @@
                             <TextBlock Text="{Binding Path=DisplayName}">
                                 <TextBlock.ContextMenu>
                                     <ContextMenu>
-                                        <MenuItem Header="{x:Static localization:Resources.ContextMenuItem_DeleteTrigger}"></MenuItem>
+                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_DeleteTrigger}"></MenuItem>
                                     </ContextMenu>
                                 </TextBlock.ContextMenu>
                             </TextBlock>
@@ -116,7 +116,7 @@
                             <TextBlock Text="{Binding Path=DisplayName}">
                                 <TextBlock.ContextMenu>
                                     <ContextMenu>
-                                        <MenuItem Header="{x:Static localization:Resources.ContextMenuItem_DeleteView}"></MenuItem>
+                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_DeleteView}"></MenuItem>
                                     </ContextMenu>
                                 </TextBlock.ContextMenu>
                             </TextBlock>
@@ -124,8 +124,8 @@
                     </TreeView.Resources>
                     <TreeView.ContextMenu>
                         <ContextMenu>
-                            <MenuItem Header="{x:Static localization:Resources.ContextMenuItem_OpenDatabase}" Click="OpenDatabase" />
-                            <MenuItem Header="{x:Static localization:Resources.ContextMenuItem_NewDatabase}" Click="CreateNewDatabase" />
+                            <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_OpenDatabase}" Click="OpenDatabase" />
+                            <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_NewDatabase}" Click="CreateNewDatabase" />
                         </ContextMenu>
                     </TreeView.ContextMenu>
                 </TreeView>

@@ -225,12 +225,6 @@
   <data name="QueryEditor_Label_Database" xml:space="preserve">
     <value>Database</value>
   </data>
-  <data name="SelectQueryCreator_TabHeader_Options" xml:space="preserve">
-    <value>Options</value>
-  </data>
-  <data name="SelectQueryCreator_TabHeader_ResultQuery" xml:space="preserve">
-    <value>Result Query</value>
-  </data>
   <data name="TabContent_GroupBoxHeader_About" xml:space="preserve">
     <value>About</value>
   </data>
