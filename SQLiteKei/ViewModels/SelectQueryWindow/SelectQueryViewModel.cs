@@ -3,15 +3,15 @@ using SQLiteKei.DataAccess.QueryBuilders;
 using SQLiteKei.DataAccess.QueryBuilders.Where;
 using SQLiteKei.DataAccess.QueryBuilders.Base;
 using SQLiteKei.ViewModels.Base;
+using SQLiteKei.ViewModels.SelectQueryWindow;
 
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
-using System.Windows;
 using System;
 
-namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
+namespace SQLiteKei.ViewModels.SelectQueryWindow
 {
     /// <summary>
     /// The main ViewModel for the GenerateSelectQuery window

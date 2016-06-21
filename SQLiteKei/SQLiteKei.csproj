@@ -87,7 +87,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GenerateSelectQueryWindow.cs.xaml">
+    <Page Include="Views\SelectQueryWindow.cs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -154,13 +154,13 @@
     <Compile Include="ViewModels\MainTabControl\Tables\ColumnDataItem.cs" />
     <Compile Include="ViewModels\MainTabControl\Tables\GeneralTableViewModel.cs" />
     <Compile Include="ViewModels\MainTabControl\Tables\TableRecordsDataItem.cs" />
-    <Compile Include="ViewModels\SelectQueryCreationWindow\SelectItem.cs" />
-    <Compile Include="ViewModels\SelectQueryCreationWindow\SelectQueryCreateViewModel.cs" />
+    <Compile Include="ViewModels\SelectQueryWindow\SelectItem.cs" />
+    <Compile Include="ViewModels\SelectQueryWindow\SelectQueryViewModel.cs" />
     <Compile Include="Views\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GenerateSelectQueryWindow.cs.xaml.cs">
-      <DependentUpon>GenerateSelectQueryWindow.cs.xaml</DependentUpon>
+    <Compile Include="Views\SelectQueryWindow.cs.xaml.cs">
+      <DependentUpon>SelectQueryWindow.cs.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

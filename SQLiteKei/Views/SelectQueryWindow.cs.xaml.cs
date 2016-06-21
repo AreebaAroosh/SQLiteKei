@@ -1,6 +1,6 @@
 ﻿#region usings
 
-using SQLiteKei.ViewModels.SelectQueryCreationWindow;
+using SQLiteKei.ViewModels.SelectQueryWindow;
 
 using System.ComponentModel;
 using System.Windows;
@@ -12,7 +12,7 @@ namespace SQLiteKei.Views
     /// <summary>
     /// Interaction logic for GenerateSelectQueryWindow.xaml
     /// </summary>
-    public partial class GenerateSelectQueryWindow : Window, INotifyPropertyChanged
+    public partial class SelectQueryWindow : Window, INotifyPropertyChanged
     {
         private SelectQueryCreateViewModel viewModel;
         public SelectQueryCreateViewModel ViewModel
@@ -21,7 +21,7 @@ namespace SQLiteKei.Views
             set { viewModel = value; NotifyPropertyChanged("ViewModel"); }
         }
 
-        public GenerateSelectQueryWindow(string tableName)
+        public SelectQueryWindow(string tableName)
         {
             InitializeComponent();
             ViewModel = new SelectQueryCreateViewModel(tableName);

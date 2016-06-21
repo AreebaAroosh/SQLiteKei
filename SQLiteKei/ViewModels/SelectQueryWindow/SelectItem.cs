@@ -1,6 +1,6 @@
 ﻿using SQLiteKei.ViewModels.Base;
 
-namespace SQLiteKei.ViewModels.SelectQueryCreationWindow
+namespace SQLiteKei.ViewModels.SelectQueryWindow
 {
     /// <summary>
     /// A view model that is used to represent a build a user's select statement.

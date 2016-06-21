@@ -22,7 +22,7 @@ namespace SQLiteKei.Views.UserControls
 
         private void ExecuteSelect(object sender, RoutedEventArgs e)
         {
-            var createSelectWindow = new GenerateSelectQueryWindow(TableInfo.TableName);
+            var createSelectWindow = new SelectQueryWindow(TableInfo.TableName);
 
             if(createSelectWindow.ShowDialog().Value)
             {
