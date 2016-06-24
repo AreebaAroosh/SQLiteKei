@@ -22,6 +22,8 @@ namespace SQLiteKei.UnitTests.Queries
                 .From("Table")
                 .Where("Column1").Is(2)
                 .Or("Column2").Is(3)
+                .OrderBy("Column 2", true)
+                .OrderBy("Column 1")
                 .Build();
 
             Assert.AreEqual(EXPECTED_QUERY, result);

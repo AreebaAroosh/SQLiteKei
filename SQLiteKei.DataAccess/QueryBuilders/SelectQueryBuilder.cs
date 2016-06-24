@@ -5,6 +5,7 @@ using System.Text;
 using SQLiteKei.DataAccess.Exceptions;
 using SQLiteKei.DataAccess.QueryBuilders.Base;
 using SQLiteKei.DataAccess.QueryBuilders.Where;
+using SQLiteKei.DataAccess.QueryBuilders.Data;
 
 namespace SQLiteKei.DataAccess.QueryBuilders
 {
@@ -16,10 +17,13 @@ namespace SQLiteKei.DataAccess.QueryBuilders
 
         public List<string> WhereClauses { get; private set; } 
 
+        private List<OrderData> OrderClauses { get; set; }
+
         public SelectQueryBuilder()
         {
             selects = new Dictionary<string, string>();
             WhereClauses = new List<string>();
+            OrderClauses = new List<OrderData>();
         }
 
         public SelectQueryBuilder(string select)
@@ -27,6 +31,7 @@ namespace SQLiteKei.DataAccess.QueryBuilders
             selects = new Dictionary<string, string>();
             selects.Add(select, string.Empty);
             WhereClauses = new List<string>();
+            OrderClauses = new List<OrderData>();
         }
 
         public SelectQueryBuilder(string select, string alias)
@@ -34,6 +39,7 @@ namespace SQLiteKei.DataAccess.QueryBuilders
             selects = new Dictionary<string, string>();
             selects.Add(select, alias);
             WhereClauses = new List<string>();
+            OrderClauses = new List<OrderData>();
         }
 
         public SelectQueryBuilder AddSelect(string select)
@@ -78,6 +84,19 @@ namespace SQLiteKei.DataAccess.QueryBuilders
             WhereClauses.Add(where);
         }
 
+        //TODO Unit tests for this one needed
+        public override SelectQueryBuilder OrderBy(string columnName, bool descending = false)
+        {
+            OrderClauses.Add(new OrderData
+            {
+                ColumnName = columnName,
+                IsDescending = descending
+            });
+
+            return this;
+        }
+
+        //TODO replace string concatination with StringBuilder
         public override string Build()
         {
             if(string.IsNullOrWhiteSpace(table))
@@ -90,7 +109,13 @@ namespace SQLiteKei.DataAccess.QueryBuilders
             if (WhereClauses.Any())
             {
                 var combinedWhereClauses = string.Join("\n", WhereClauses);
-                resultString = string.Format("{0}\nWHERE {1}", resultString, combinedWhereClauses);
+                resultString += string.Format("\nWHERE {0}", combinedWhereClauses);
+            }
+
+            if(OrderClauses.Any())
+            {
+                var combinedOrderClauses = string.Join(", ", OrderClauses.Select(x => x.ToString()));
+                resultString += string.Format("\nORDER BY {0}", combinedOrderClauses);
             }
 
             return resultString;

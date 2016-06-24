@@ -13,7 +13,7 @@
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     </Window.Resources>
-    <Grid DataContext="{Binding ElementName=Control, Path=ViewModel}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="24"></RowDefinition>
@@ -63,10 +63,23 @@
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="Order">
-                <Label Content="Coming Soon"></Label>
-            </TabItem>
-            <TabItem Header="Group">
-                <Label Content="Coming Soon"></Label>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding Orders}">
+                            <ItemsControl.Resources>
+                                <DataTemplate DataType="{x:Type viewmodel:OrderItem}">
+                                    <DockPanel Margin="0 2">
+                                        <ComboBox ItemsSource="{Binding Columns, Mode=OneWay}" SelectedItem="{Binding SelectedColumn}" Width="200"/>
+                                        <CheckBox VerticalAlignment="Center" Margin="5 0" IsChecked="{Binding Descending}">
+                                            <TextBlock Text="DESC" VerticalAlignment="Center"></TextBlock>
+                                        </CheckBox>
+                                    </DockPanel>
+                                </DataTemplate>
+                            </ItemsControl.Resources>
+                        </ItemsControl>
+                        <Button Content="+" Click="AddOrderStatement"/>
+                    </StackPanel>
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="SQL">
                 <TextBox IsReadOnly="True" Text="{Binding SelectQuery}" TextWrapping="Wrap"></TextBox>

@@ -3,7 +3,6 @@ using SQLiteKei.DataAccess.QueryBuilders;
 using SQLiteKei.DataAccess.QueryBuilders.Where;
 using SQLiteKei.DataAccess.QueryBuilders.Base;
 using SQLiteKei.ViewModels.Base;
-using SQLiteKei.ViewModels.SelectQueryWindow;
 
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -16,13 +15,15 @@ namespace SQLiteKei.ViewModels.SelectQueryWindow
     /// <summary>
     /// The main ViewModel for the GenerateSelectQuery window
     /// </summary>
-    public class SelectQueryCreateViewModel : NotifyingItem
+    public class SelectQueryViewModel : NotifyingItem
     {
         private readonly string tableName;
 
         private SelectQueryBuilder selectQueryBuilder;
 
         public ObservableCollection<SelectItem> Selects { get; set; }
+
+        public ObservableCollection<OrderItem> Orders { get; set; }
 
         private string selectQuery;
         public string SelectQuery
@@ -31,7 +32,7 @@ namespace SQLiteKei.ViewModels.SelectQueryWindow
             set { selectQuery = value; NotifyPropertyChanged("SelectQuery"); }
         }
 
-        public SelectQueryCreateViewModel(string tableName)
+        public SelectQueryViewModel(string tableName)
         {
             this.tableName = tableName;
             Initialize();
@@ -41,6 +42,8 @@ namespace SQLiteKei.ViewModels.SelectQueryWindow
         {
             Selects = new ObservableCollection<SelectItem>();
             Selects.CollectionChanged += CollectionContentChanged;
+            Orders = new ObservableCollection<OrderItem>();
+            Orders.CollectionChanged += CollectionContentChanged;
 
             InitializeItems();
             UpdateSelectQuery();
@@ -112,13 +115,13 @@ namespace SQLiteKei.ViewModels.SelectQueryWindow
             }
 
             AddWhereClauses();
+            AddOrderClauses();
             SelectQuery = selectQueryBuilder.From(tableName).Build();
         }
 
         /// <summary>
         /// Determines if select statement can be wildcard. This is the case when all columns are selected and no aliases are defined.
         /// </summary>
-        /// <returns></returns>
         private bool DetermineIfSelectCanBeWildcard()
         {
             var hasUnselectedColumns = Selects.Any(c => !c.IsSelected);
@@ -172,6 +175,32 @@ namespace SQLiteKei.ViewModels.SelectQueryWindow
                     return clause.EndsWith(compareValue);
                 default:
                     throw new NotImplementedException();
+            }
+        }
+
+        private void AddOrderClauses()
+        {
+            foreach(var clause in Orders)
+            {
+                if (!string.IsNullOrEmpty(clause.SelectedColumn))
+                    selectQueryBuilder.OrderBy(clause.SelectedColumn, clause.IsDescending);
+            }
+        }
+
+        internal void AddOrderStatement()
+        {
+            var databasePath = Properties.Settings.Default.CurrentDatabase;
+            using (var databaseHandler = new TableHandler(databasePath))
+            {
+                var orderItem = new OrderItem();
+                var columns = databaseHandler.GetColumns(tableName);
+
+                foreach (var column in columns)
+                {
+                    orderItem.Columns.Add(column.Name);
+                }
+
+                Orders.Add(orderItem);
             }
         }
     }

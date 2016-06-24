@@ -5,6 +5,7 @@ using System.Windows.Controls;
 
 using SQLiteKei.DataAccess.Database;
 using SQLiteKei.ViewModels.MainTabControl.Tables;
+using SQLiteKei.ViewModels.SelectQueryWindow;
 
 namespace SQLiteKei.Views.UserControls
 {
@@ -27,7 +28,8 @@ namespace SQLiteKei.Views.UserControls
             if(createSelectWindow.ShowDialog().Value)
             {
                 StatusBar.Text = string.Empty;
-                Execute(createSelectWindow.ViewModel.SelectQuery);
+                var windowViewModel = createSelectWindow.DataContext as SelectQueryViewModel;
+                Execute(windowViewModel.SelectQuery);
             }
         }
 

@@ -76,6 +76,7 @@
     <Compile Include="QueryBuilders\Base\QueryBuilderBase.cs" />
     <Compile Include="QueryBuilders\CreateQueryBuilder.cs" />
     <Compile Include="QueryBuilders\Data\ColumnData.cs" />
+    <Compile Include="QueryBuilders\Data\OrderData.cs" />
     <Compile Include="QueryBuilders\DropQueryBuilder.cs" />
     <Compile Include="QueryBuilders\Enums\DataType.cs" />
     <Compile Include="QueryBuilders\QueryBuilder.cs" />
