@@ -303,6 +303,9 @@
   <data name="Tooltip_CloseDatabase" xml:space="preserve">
     <value>Tooltip_CloseDatabase</value>
   </data>
+  <data name="Tooltip_CreateTable" xml:space="preserve">
+    <value>Tooltip_CreateTable</value>
+  </data>
   <data name="Tooltip_DeleteDatabase" xml:space="preserve">
     <value>Tooltip_DeleteDatabase</value>
   </data>
@@ -317,6 +320,9 @@
   </data>
   <data name="WindowTitle_About" xml:space="preserve">
     <value>WindowTitle_About</value>
+  </data>
+  <data name="WindowTitle_Preferences" xml:space="preserve">
+    <value>WindowTitle_Preferences</value>
   </data>
   <data name="WindowTitle_QueryEditor" xml:space="preserve">
     <value>WindowTitle_QueryEditor</value>

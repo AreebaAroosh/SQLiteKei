@@ -619,6 +619,15 @@ namespace SQLiteKei.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tooltip_CreateTable.
+        /// </summary>
+        public static string Tooltip_CreateTable {
+            get {
+                return ResourceManager.GetString("Tooltip_CreateTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tooltip_DeleteDatabase.
         /// </summary>
         public static string Tooltip_DeleteDatabase {
@@ -660,6 +669,15 @@ namespace SQLiteKei.Properties {
         public static string WindowTitle_About {
             get {
                 return ResourceManager.GetString("WindowTitle_About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WindowTitle_Preferences.
+        /// </summary>
+        public static string WindowTitle_Preferences {
+            get {
+                return ResourceManager.GetString("WindowTitle_Preferences", resourceCulture);
             }
         }
         

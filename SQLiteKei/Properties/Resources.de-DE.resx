@@ -205,7 +205,7 @@
     <value>Datenbank öffnen...</value>
   </data>
   <data name="MenuItemHeader_Preferences" xml:space="preserve">
-    <value>Optionen</value>
+    <value>Einstellungen</value>
   </data>
   <data name="MenuItemHeader_QueryEditor" xml:space="preserve">
     <value>Query-Editor</value>
@@ -303,6 +303,9 @@
   <data name="Tooltip_CloseDatabase" xml:space="preserve">
     <value>Datenbank trennen</value>
   </data>
+  <data name="Tooltip_CreateTable" xml:space="preserve">
+    <value>Tabelle erzeugen</value>
+  </data>
   <data name="Tooltip_DeleteDatabase" xml:space="preserve">
     <value>Datenbank löschen</value>
   </data>
@@ -317,6 +320,9 @@
   </data>
   <data name="WindowTitle_About" xml:space="preserve">
     <value>Über</value>
+  </data>
+  <data name="WindowTitle_Preferences" xml:space="preserve">
+    <value>Einstellungen</value>
   </data>
   <data name="WindowTitle_QueryEditor" xml:space="preserve">
     <value>Query-Editor</value>
