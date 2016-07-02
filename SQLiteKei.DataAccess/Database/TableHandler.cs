@@ -98,5 +98,10 @@ namespace SQLiteKei.DataAccess.Database
                 command.ExecuteNonQuery();
             }
         } 
+
+        public void EmptyTable(string tableName)
+        {
+
+        }
     }
 }
