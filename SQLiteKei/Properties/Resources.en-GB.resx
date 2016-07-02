@@ -264,6 +264,9 @@
   <data name="TableCreator_TableCreateSuccess" xml:space="preserve">
     <value>Table created successfully!</value>
   </data>
+  <data name="TableGeneralTab_ButtonText_Empty" xml:space="preserve">
+    <value>Empty</value>
+  </data>
   <data name="TableGeneralTab_ColumnName" xml:space="preserve">
     <value>Column</value>
   </data>
