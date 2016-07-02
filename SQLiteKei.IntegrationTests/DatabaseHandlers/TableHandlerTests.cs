@@ -13,6 +13,37 @@ namespace SQLiteKei.IntegrationTests.DatabaseHandlers
     public class TableHandlerTests : DbTestBase
     {
         [Test]
+        public void GetColumns_WithValidTableName_ReturnsCorrectNumberOfColumns()
+        {
+            using (var tableHandler = new TableHandler(targetDatabaseFilePath))
+            {
+                var result = tableHandler.GetColumns("TEST5");
+                Assert.AreEqual(2, result.Count);
+            }
+        }
+
+        [Test]
+        public void GetCreateStatement_ValidTableName_ReturnsValidCreateStatement()
+        {
+            using (var tableHandler = new TableHandler(targetDatabaseFilePath))
+            {
+                var result = tableHandler.GetCreateStatement("TEST10");
+
+                Assert.AreEqual("CREATE TABLE TEST10 (ColumnA10 varchar(10), ColumnB10 int)", result);
+            }
+        }
+
+        [Test]
+        public void GetCreateStatement_WithInvalidTableName_ThrowsException()
+        {
+            using (var tableHandler = new TableHandler(targetDatabaseFilePath))
+            {
+                Assert.Throws(typeof(TableNotFoundException),
+                    () => tableHandler.GetCreateStatement("TABLE_INVALID"));
+            }
+        }
+
+        [Test]
         public void EmptyTable_WithValidTableName_EmptiesTable()
         {
             using (var tableHandler = new TableHandler(targetDatabaseFilePath))
@@ -30,6 +61,8 @@ namespace SQLiteKei.IntegrationTests.DatabaseHandlers
                     var result = Convert.ToInt64(command.ExecuteScalar());
 
                     Assert.AreEqual(0, result);
+
+                    connection.Close();
                 }
             }
         }

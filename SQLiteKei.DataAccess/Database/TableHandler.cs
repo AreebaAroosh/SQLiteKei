@@ -65,7 +65,6 @@ namespace SQLiteKei.DataAccess.Database
                 }
             }
 
-            //TODO write integration test for this case
             throw new TableNotFoundException(tableName);
         }
 
