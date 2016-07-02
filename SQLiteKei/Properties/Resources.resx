@@ -144,6 +144,9 @@
   <data name="ContextMenuItem_DeleteView" xml:space="preserve">
     <value>ContextMenuItem_DeleteView</value>
   </data>
+  <data name="ContextMenuItem_EmptyTable" xml:space="preserve">
+    <value>ContextMenuItem_EmptyTable</value>
+  </data>
   <data name="ContextMenuItem_NewDatabase" xml:space="preserve">
     <value>ContextMenuItem_NewDatabase</value>
   </data>
@@ -213,11 +216,17 @@
   <data name="MessageBoxTitle_DatabaseDeletion" xml:space="preserve">
     <value>MessaxeBoxTitle_DatabaseDeletion</value>
   </data>
+  <data name="MessageBoxTitle_EmptyTable" xml:space="preserve">
+    <value>MessageBoxTitle_EmptyTable</value>
+  </data>
   <data name="MessageBoxTitle_TableDeletion" xml:space="preserve">
     <value>MessageBoxTitle_TableDeletion</value>
   </data>
   <data name="MessageBox_DatabaseDeleteWarning" xml:space="preserve">
     <value>MessageBox_DatabaseDeleteWarning</value>
+  </data>
+  <data name="MessageBox_EmptyTable" xml:space="preserve">
+    <value>MessageBox_EmptyTable</value>
   </data>
   <data name="MessageBox_TableDeleteWarning" xml:space="preserve">
     <value>MessageBox_TableDeleteWarning</value>

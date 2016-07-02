@@ -144,6 +144,9 @@
   <data name="ContextMenuItem_DeleteView" xml:space="preserve">
     <value>Delete View</value>
   </data>
+  <data name="ContextMenuItem_EmptyTable" xml:space="preserve">
+    <value>Empty</value>
+  </data>
   <data name="ContextMenuItem_NewDatabase" xml:space="preserve">
     <value>New</value>
   </data>
@@ -213,11 +216,17 @@
   <data name="MessageBoxTitle_DatabaseDeletion" xml:space="preserve">
     <value>Database Deletion</value>
   </data>
+  <data name="MessageBoxTitle_EmptyTable" xml:space="preserve">
+    <value>Empty Table</value>
+  </data>
   <data name="MessageBoxTitle_TableDeletion" xml:space="preserve">
     <value>Delete Table</value>
   </data>
   <data name="MessageBox_DatabaseDeleteWarning" xml:space="preserve">
     <value>Do you really want to delete the database '{0}'? Warning: this will delete the database from your file system!</value>
+  </data>
+  <data name="MessageBox_EmptyTable" xml:space="preserve">
+    <value>Do you really want to empty the table '{0}'? All entries will be removed.</value>
   </data>
   <data name="MessageBox_TableDeleteWarning" xml:space="preserve">
     <value>Do you really want to delete the table '{0}'?</value>

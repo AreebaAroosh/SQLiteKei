@@ -142,6 +142,15 @@ namespace SQLiteKei.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ContextMenuItem_EmptyTable.
+        /// </summary>
+        public static string ContextMenuItem_EmptyTable {
+            get {
+                return ResourceManager.GetString("ContextMenuItem_EmptyTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ContextMenuItem_NewDatabase.
         /// </summary>
         public static string ContextMenuItem_NewDatabase {
@@ -349,6 +358,15 @@ namespace SQLiteKei.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to MessageBox_EmptyTable.
+        /// </summary>
+        public static string MessageBox_EmptyTable {
+            get {
+                return ResourceManager.GetString("MessageBox_EmptyTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to MessageBox_TableDeleteWarning.
         /// </summary>
         public static string MessageBox_TableDeleteWarning {
@@ -363,6 +381,15 @@ namespace SQLiteKei.Properties {
         public static string MessageBoxTitle_DatabaseDeletion {
             get {
                 return ResourceManager.GetString("MessageBoxTitle_DatabaseDeletion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MessageBoxTitle_EmptyTable.
+        /// </summary>
+        public static string MessageBoxTitle_EmptyTable {
+            get {
+                return ResourceManager.GetString("MessageBoxTitle_EmptyTable", resourceCulture);
             }
         }
         

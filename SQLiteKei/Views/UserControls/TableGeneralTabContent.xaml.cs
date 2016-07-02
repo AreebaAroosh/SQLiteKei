@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 
 using SQLiteKei.ViewModels.MainTabControl.Tables;
+using SQLiteKei.Helpers;
 
 namespace SQLiteKei.Views.UserControls
 {
@@ -37,6 +38,17 @@ namespace SQLiteKei.Views.UserControls
         public TableGeneralTabContent()
         {
             InitializeComponent();
+        }
+
+        private void EmptyTable(object sender, RoutedEventArgs e)
+        {
+            var message = LocalisationHelper.GetString("MessageBox_EmptyTable", tableInfo.TableName);
+            var messageTitle = LocalisationHelper.GetString("MessageBoxTitle_EmptyTable");
+            var result = MessageBox.Show(message, messageTitle, MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result != MessageBoxResult.Yes) return;
+
+            tableInfo.EmptyTable();
         }
 
         #region INotifyPropertyChanged Members

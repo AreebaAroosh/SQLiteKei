@@ -144,6 +144,9 @@
   <data name="ContextMenuItem_DeleteView" xml:space="preserve">
     <value>View löschen</value>
   </data>
+  <data name="ContextMenuItem_EmptyTable" xml:space="preserve">
+    <value>Leeren</value>
+  </data>
   <data name="ContextMenuItem_NewDatabase" xml:space="preserve">
     <value>Neu</value>
   </data>
@@ -213,11 +216,17 @@
   <data name="MessageBoxTitle_DatabaseDeletion" xml:space="preserve">
     <value>Datenbanklöschung</value>
   </data>
+  <data name="MessageBoxTitle_EmptyTable" xml:space="preserve">
+    <value>Tabelle leeren</value>
+  </data>
   <data name="MessageBoxTitle_TableDeletion" xml:space="preserve">
     <value>Tabelle löschen</value>
   </data>
   <data name="MessageBox_DatabaseDeleteWarning" xml:space="preserve">
     <value>Wollen Sie die Datenbank '{0}' wirklich löschen? Achtung: dies wird die Datenbank von Ihrem Dateisystem entfernen!</value>
+  </data>
+  <data name="MessageBox_EmptyTable" xml:space="preserve">
+    <value>Möchten Sie die Tabelle '{0}' wirklich leeren? Hiermit werden alle Einträge aus der Tabelle entfernt.</value>
   </data>
   <data name="MessageBox_TableDeleteWarning" xml:space="preserve">
     <value>Wollen Sie die Tabelle '{0}' wirklich löschen?</value>

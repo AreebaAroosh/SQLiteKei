@@ -1,12 +1,12 @@
 ﻿using SQLiteKei.DataAccess.Database;
 using SQLiteKei.DataAccess.Models;
+using SQLiteKei.ViewModels.Base;
 
 using System.Collections.Generic;
-using System.Windows;
 
 namespace SQLiteKei.ViewModels.MainTabControl.Tables
 {
-    public class GeneralTableViewModel
+    public class GeneralTableViewModel : NotifyingItem
     {
         public GeneralTableViewModel(string tableName)
         {
@@ -22,7 +22,12 @@ namespace SQLiteKei.ViewModels.MainTabControl.Tables
 
         public int ColumnCount { get; set; }
 
-        public long RowCount { get; set; }
+        private long rowCount;
+        public long RowCount
+        {
+            get { return rowCount; }
+            set { rowCount = value; NotifyPropertyChanged("RowCount"); }
+        }
 
         public List<ColumnDataItem> ColumnData { get; set; }
 
@@ -52,6 +57,15 @@ namespace SQLiteKei.ViewModels.MainTabControl.Tables
                 IsPrimary = column.IsPrimary,
                 DefaultValue = column.DefaultValue
             };
+        }
+
+        internal void EmptyTable()
+        {
+            using (var tableHandler = new TableHandler(Properties.Settings.Default.CurrentDatabase))
+            {
+                tableHandler.EmptyTable(TableName);
+                RowCount = 0;
+            }
         }
     }
 }

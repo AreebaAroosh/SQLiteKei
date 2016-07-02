@@ -167,30 +167,48 @@ namespace SQLiteKei
 
         private void DeleteTable(object sender, RoutedEventArgs e)
         {
-            var tableItem = DBTreeView.SelectedItem as TableItem;
+            var tableItem = (TableItem)DBTreeView.SelectedItem;
 
-            if(tableItem != null)
+            var message = LocalisationHelper.GetString("MessageBox_TableDeleteWarning", tableItem.DisplayName);
+            var result = System.Windows.MessageBox.Show(message, LocalisationHelper.GetString("MessageBoxTitle_TableDeletion"), MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result != MessageBoxResult.Yes) return;
+
+            try
             {
-                var message = LocalisationHelper.GetString("MessageBox_TableDeleteWarning", tableItem.DisplayName);
-                var result = System.Windows.MessageBox.Show(message, LocalisationHelper.GetString("MessageBoxTitle_TableDeletion"), MessageBoxButton.YesNo, MessageBoxImage.Warning);
-
-                if(result == MessageBoxResult.Yes)
+                using (var tableHandler = new TableHandler(Properties.Settings.Default.CurrentDatabase))
                 {
-                    try
-                    {
-                        var databasePath = Properties.Settings.Default.CurrentDatabase;
-                        using (var databaseHandler = new TableHandler(databasePath))
-                        {
-                            databaseHandler.DropTable(tableItem.DisplayName);
-                            ResetTabControl();
-                            TreeViewHelper.RemoveItemFromHierarchy(TreeViewItems, tableItem);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        var statusInfo = ex.Message.Replace("SQL logic error or missing database\r\n", "SQL-Error - ");
-                        StatusBarInfo.Text = statusInfo;
-                    }
+                    tableHandler.DropTable(tableItem.DisplayName);
+                    ResetTabControl();
+                    TreeViewHelper.RemoveItemFromHierarchy(TreeViewItems, tableItem);
+                }
+            }
+            catch (Exception ex)
+            {
+                var statusInfo = ex.Message.Replace("SQL logic error or missing database\r\n", "SQL-Error - ");
+                StatusBarInfo.Text = statusInfo;
+            }
+        }
+
+        private void EmptyTable(object sender, RoutedEventArgs e)
+        {
+            TableItem tableItem = (TableItem)DBTreeView.SelectedItem;
+
+            var message = LocalisationHelper.GetString("MessageBox_EmptyTable", tableItem.DisplayName);
+            var messageTitle = LocalisationHelper.GetString("MessageBoxTitle_EmptyTable");
+            var result = System.Windows.MessageBox.Show(message, messageTitle, MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result != MessageBoxResult.Yes) return;
+
+            using (var tableHandler = new TableHandler(Properties.Settings.Default.CurrentDatabase))
+            {
+                try
+                {
+                    tableHandler.EmptyTable(tableItem.DisplayName);
+                }
+                catch(Exception ex)
+                {
+                    StatusBarInfo.Text = ex.Message;
                 }
             }
         }

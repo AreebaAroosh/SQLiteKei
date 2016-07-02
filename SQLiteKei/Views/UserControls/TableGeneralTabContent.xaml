@@ -37,7 +37,7 @@
             </StackPanel>
         </GroupBox>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button Content="Empty" Height="25" Margin="15 0"></Button>
+            <Button Content="Empty" Height="25" Margin="15 0" Click="EmptyTable"></Button>
         </StackPanel>
         <GroupBox Grid.Row="2" Header="{x:Static localisation:Resources.TabContent_GroupBoxHeader_Columns}" Margin="5, 0, 5, 5" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="Auto">
             <Grid>

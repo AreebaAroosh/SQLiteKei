@@ -95,7 +95,9 @@
                            <TextBlock Text="{Binding Path=DisplayName}" >
                                <TextBlock.ContextMenu>
                                     <ContextMenu>
-                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_DeleteTable}" Click="DeleteTable"></MenuItem>
+                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_EmptyTable}" Click="EmptyTable" />
+                                        <Separator />
+                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_DeleteTable}" Click="DeleteTable" />
                                     </ContextMenu>
                                </TextBlock.ContextMenu>
                            </TextBlock>
