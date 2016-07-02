@@ -129,6 +129,9 @@
   <data name="ButtonText_Execute" xml:space="preserve">
     <value>ButtonText_Execute</value>
   </data>
+  <data name="ButtonText_Use" xml:space="preserve">
+    <value>ButtonText_Use</value>
+  </data>
   <data name="ContextMenuItem_CloseDatabase" xml:space="preserve">
     <value>ContextMenuItem_CloseDatabase</value>
   </data>
@@ -230,6 +233,12 @@
   </data>
   <data name="MessageBox_TableDeleteWarning" xml:space="preserve">
     <value>MessageBox_TableDeleteWarning</value>
+  </data>
+  <data name="Preferences_GroupBoxHeader_Languages" xml:space="preserve">
+    <value>Preferences_GroupBoxHeader_Languages</value>
+  </data>
+  <data name="Preferences_GroupBoxHeader_Themes" xml:space="preserve">
+    <value>Preferences_GroupBoxHeader_Themes</value>
   </data>
   <data name="QueryEditor_Label_Database" xml:space="preserve">
     <value>QueryEditor_Label_Database</value>

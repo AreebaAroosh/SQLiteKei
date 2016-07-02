@@ -6,8 +6,19 @@
         xmlns:localisation="clr-namespace:SQLiteKei.Properties"
         mc:Ignorable="d"
         Title="{x:Static localisation:Resources.WindowTitle_Preferences}"
-        Height="300" Width="300">
-    <Grid>
-        
-    </Grid>
+        Icon="../Resources/Icons/Logo_32x32.png"
+        Height="200" Width="250"
+        ResizeMode="NoResize">
+    <DockPanel Margin="6">
+        <GroupBox  DockPanel.Dock="Top" Header="{x:Static localisation:Resources.Preferences_GroupBoxHeader_Languages}">
+            
+        </GroupBox>
+        <GroupBox  DockPanel.Dock="Top" Header="{x:Static localisation:Resources.Preferences_GroupBoxHeader_Themes}">
+
+        </GroupBox>
+        <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="{x:Static localisation:Resources.ButtonText_Use}" Margin="5 0"/>
+            <Button Content="{x:Static localisation:Resources.ButtonText_Cancel}" Margin="5 0" IsCancel="True"/>
+        </StackPanel>
+    </DockPanel>
 </Window>
