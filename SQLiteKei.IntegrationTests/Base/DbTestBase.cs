@@ -46,6 +46,13 @@ namespace SQLiteKei.IntegrationTests.Base
                     var createCommand = connection.CreateCommand();
                     createCommand.CommandText = string.Format("CREATE TABLE TEST{0} (ColumnA{0} varchar({0}), ColumnB{0} int)", i);
                     createCommand.ExecuteNonQuery();
+
+                    for (var j = 1; j <= i; j++)
+                    {
+                        var insertCommand = connection.CreateCommand();
+                        insertCommand.CommandText = string.Format("INSERT INTO TEST{0} VALUES('ENTRY{1}', '{1}')", i, j);
+                        insertCommand.ExecuteNonQuery();
+                    }
                 }
 
                 connection.Close();
