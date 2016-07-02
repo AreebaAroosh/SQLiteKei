@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 
 using SQLiteKei.DataAccess.Database;
+using SQLiteKei.DataAccess.Exceptions;
 using SQLiteKei.IntegrationTests.Base;
 
 using System;
@@ -30,6 +31,16 @@ namespace SQLiteKei.IntegrationTests.DatabaseHandlers
 
                     Assert.AreEqual(0, result);
                 }
+            }
+        }
+
+        [Test]
+        public void EmptyTable_WithInvalidTableName_ThrowsException()
+        {
+            using (var tableHandler = new TableHandler(targetDatabaseFilePath))
+            {
+                Assert.Throws(typeof(TableNotFoundException),
+                    () => tableHandler.EmptyTable("TABLE_INVALID"));
             }
         }
     }

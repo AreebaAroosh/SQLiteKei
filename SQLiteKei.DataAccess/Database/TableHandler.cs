@@ -5,6 +5,7 @@ using SQLiteKei.DataAccess.QueryBuilders;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SQLite;
 
 namespace SQLiteKei.DataAccess.Database
 {
@@ -97,11 +98,31 @@ namespace SQLiteKei.DataAccess.Database
                 command.CommandText = QueryBuilder.Drop(tableName).Build();
                 command.ExecuteNonQuery();
             }
-        } 
+        }
 
+        /// <summary>
+        /// Deletes all rows from the specified table.
+        /// </summary>
+        /// <param name="tableName">Name of the table.</param>
         public void EmptyTable(string tableName)
         {
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = string.Format("DELETE FROM {0}", tableName);
 
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch(SQLiteException ex)
+                {
+                    if(ex.Message.Contains("no such table"))
+                    {
+                        throw new TableNotFoundException(tableName);
+                    }
+                    throw;
+                }
+            }
         }
     }
 }
