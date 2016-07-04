@@ -37,7 +37,7 @@ namespace SQLiteKei.DataAccess.QueryBuilders
             if (isIfExists)
                 stringBuilder.Append(" IF EXISTS");
 
-            stringBuilder.Append(" " + table);
+            stringBuilder.Append(" '" + table + "'");
 
             if (isCascade)
                 stringBuilder.Append(" CASCADE");

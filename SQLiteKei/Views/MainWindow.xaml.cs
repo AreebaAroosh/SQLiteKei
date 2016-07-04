@@ -2,14 +2,11 @@
 using SQLiteKei.Helpers;
 using SQLiteKei.ViewModels.DBTreeView;
 using SQLiteKei.ViewModels.DBTreeView.Base;
-using SQLiteKei.ViewModels.DBTreeView.Mapping;
+using SQLiteKei.ViewModels.MainWindow;
 using SQLiteKei.Views;
 
 using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.IO;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
@@ -21,18 +18,14 @@ namespace SQLiteKei
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : INotifyPropertyChanged
+    public partial class MainWindow
     {
-        private ObservableCollection<TreeItem> treeViewItems;
-        public ObservableCollection<TreeItem> TreeViewItems
-        {
-            get { return treeViewItems; }
-            set { treeViewItems = value; NotifyPropertyChanged("TreeViewItems"); }
-        }
+        private readonly MainWindowViewModel viewModel;
 
         public MainWindow()
         {
-            TreeViewItems = TreeSaveHelper.LoadTree();
+            viewModel = new MainWindowViewModel(new TreeSaveHelper());
+            DataContext = viewModel;
             InitializeComponent();
         }
 
@@ -48,25 +41,13 @@ namespace SQLiteKei
 
         private void OpenQueryEditor(object sender, RoutedEventArgs e)
         {
-            new QueryEditor(TreeViewItems).ShowDialog();
+            new QueryEditor(viewModel.TreeViewItems).ShowDialog();
         }
 
         private void OpenTableCreator(object sender, RoutedEventArgs e)
         {
-            new TableCreator(TreeViewItems).ShowDialog();
-            RefreshTree();
-        }
-
-        private void RefreshTree()
-        {
-            var databasePaths = TreeViewItems.Select(x => x.DatabasePath).ToList();
-            TreeViewItems.Clear();
-
-            var schemaMapper = new SchemaToViewModelMapper();
-            foreach (var path in databasePaths)
-            {
-                TreeViewItems.Add(schemaMapper.MapSchemaToViewModel(path));
-            }
+            new TableCreator(viewModel.TreeViewItems).ShowDialog();
+            viewModel.RefreshTree();
         }
 
         private void CreateNewDatabase(object sender, RoutedEventArgs e)
@@ -77,17 +58,17 @@ namespace SQLiteKei
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     DatabaseHandler.CreateDatabase(dialog.FileName);
-                    AddDatabaseSchemaToTreeView(dialog.FileName);
+                    viewModel.OpenDatabase(dialog.FileName);
                 }
             }
         }
 
         private void CloseDatabase(object sender, RoutedEventArgs e)
         {
-            var selectedItem = DBTreeView.SelectedItem as DatabaseItem;
+            var selectedItem = DBTreeView.SelectedItem as TreeItem;
 
             if (selectedItem != null)
-                TreeViewItems.Remove(selectedItem);
+                viewModel.CloseDatabase(selectedItem.DatabasePath);
         }
 
         private void OpenDatabase(object sender, RoutedEventArgs e)
@@ -97,18 +78,9 @@ namespace SQLiteKei
                 dialog.Filter = "Database Files (*.sqlite, *.db)|*.sqlite; *db; |All Files |*.*";
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    if(!TreeViewItems.Any(x => x.DatabasePath.Equals(dialog.FileName)))
-                        AddDatabaseSchemaToTreeView(dialog.FileName);
+                    viewModel.OpenDatabase(dialog.FileName);
                 }
             }
-        }
-
-        private void AddDatabaseSchemaToTreeView(string databasePath)
-        {
-            var schemaMapper = new SchemaToViewModelMapper();
-            DatabaseItem databaseItem = schemaMapper.MapSchemaToViewModel(databasePath);
-
-            TreeViewItems.Add(databaseItem);
         }
 
         private void DBTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
@@ -146,7 +118,7 @@ namespace SQLiteKei
                     throw new FileNotFoundException("Database file could not be found.");
 
                 File.Delete(selectedItem.DatabasePath);
-                TreeViewItems.Remove(selectedItem);
+                viewModel.CloseDatabase(selectedItem.DatabasePath);
             }
         }
 
@@ -179,8 +151,7 @@ namespace SQLiteKei
                 using (var tableHandler = new TableHandler(Properties.Settings.Default.CurrentDatabase))
                 {
                     tableHandler.DropTable(tableItem.DisplayName);
-                    ResetTabControl();
-                    TreeViewHelper.RemoveItemFromHierarchy(TreeViewItems, tableItem);
+                    viewModel.RemoveItemFromTree(tableItem);
                 }
             }
             catch (Exception ex)
@@ -192,7 +163,7 @@ namespace SQLiteKei
 
         private void EmptyTable(object sender, RoutedEventArgs e)
         {
-            TableItem tableItem = (TableItem)DBTreeView.SelectedItem;
+            var tableItem = (TableItem)DBTreeView.SelectedItem;
 
             var message = LocalisationHelper.GetString("MessageBox_EmptyTable", tableItem.DisplayName);
             var messageTitle = LocalisationHelper.GetString("MessageBoxTitle_EmptyTable");
@@ -215,7 +186,7 @@ namespace SQLiteKei
 
         protected override void OnClosed(EventArgs e)
         {
-            TreeSaveHelper.SaveTree(TreeViewItems);
+            viewModel.SaveTree();
         }
 
         #region TreeViewRightClickEvent
@@ -239,18 +210,6 @@ namespace SQLiteKei
                 source = VisualTreeHelper.GetParent(source);
 
             return source as TreeViewItem;
-        }
-        #endregion
-
-        #region INotifyPropertyChanged Members
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged(string property)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(property));
-            }
         }
         #endregion
     }

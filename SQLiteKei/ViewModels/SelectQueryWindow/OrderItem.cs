@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace SQLiteKei.ViewModels.SelectQueryWindow
 {
-    public class OrderItem : NotifyingItem
+    public class OrderItem : NotifyingModel
     {
         public ObservableCollection<string> Columns { get; set; }
 

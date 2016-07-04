@@ -15,7 +15,7 @@ namespace SQLiteKei.ViewModels.SelectQueryWindow
     /// <summary>
     /// The main ViewModel for the GenerateSelectQuery window
     /// </summary>
-    public class SelectQueryViewModel : NotifyingItem
+    public class SelectQueryViewModel : NotifyingModel
     {
         private readonly string tableName;
 
@@ -71,14 +71,14 @@ namespace SQLiteKei.ViewModels.SelectQueryWindow
         {
             if (e.Action == NotifyCollectionChangedAction.Remove)
             {
-                foreach (NotifyingItem item in e.OldItems)
+                foreach (NotifyingModel item in e.OldItems)
                 {
                     item.PropertyChanged -= CollectionItemPropertyChanged;
                 }
             }
             else if (e.Action == NotifyCollectionChangedAction.Add)
             {
-                foreach (NotifyingItem item in e.NewItems)
+                foreach (NotifyingModel item in e.NewItems)
                 {
                     item.PropertyChanged += CollectionItemPropertyChanged;
                 }

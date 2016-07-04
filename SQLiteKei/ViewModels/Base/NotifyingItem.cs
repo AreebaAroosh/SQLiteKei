@@ -5,7 +5,7 @@ namespace SQLiteKei.ViewModels.Base
     /// <summary>
     /// An object that implements the INotifyPropertyChanged interface
     /// </summary>
-    public abstract class NotifyingItem : INotifyPropertyChanged
+    public abstract class NotifyingModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

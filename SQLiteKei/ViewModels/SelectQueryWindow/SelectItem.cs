@@ -5,7 +5,7 @@ namespace SQLiteKei.ViewModels.SelectQueryWindow
     /// <summary>
     /// A view model that is used to represent a build a user's select statement.
     /// </summary>
-    public class SelectItem : NotifyingItem
+    public class SelectItem : NotifyingModel
     {
         public string ColumnName { get; set; }
 

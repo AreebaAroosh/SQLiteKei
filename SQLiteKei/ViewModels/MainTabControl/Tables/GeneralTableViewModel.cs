@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace SQLiteKei.ViewModels.MainTabControl.Tables
 {
-    public class GeneralTableViewModel : NotifyingItem
+    public class GeneralTableViewModel : NotifyingModel
     {
         public GeneralTableViewModel(string tableName)
         {

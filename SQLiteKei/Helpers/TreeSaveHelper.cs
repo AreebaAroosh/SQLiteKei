@@ -1,4 +1,5 @@
-﻿using SQLiteKei.ViewModels.DBTreeView.Base;
+﻿using SQLiteKei.Helpers.Interfaces;
+using SQLiteKei.ViewModels.DBTreeView.Base;
 using SQLiteKei.ViewModels.DBTreeView.Mapping;
 
 using System;
@@ -10,9 +11,9 @@ using System.Xml.Serialization;
 
 namespace SQLiteKei.Helpers
 {
-    public static class TreeSaveHelper
+    public class TreeSaveHelper : ITreeSaveHelper
     {
-        public static void SaveTree(ObservableCollection<TreeItem> tree)
+        public void Save(ObservableCollection<TreeItem> tree)
         {
             var targetPath = GetSaveLocationPath();
             var targetDirectory = Path.GetDirectoryName(targetPath);
@@ -31,7 +32,7 @@ namespace SQLiteKei.Helpers
             }
         }
 
-        public static ObservableCollection<TreeItem> LoadTree()
+        public ObservableCollection<TreeItem> Load()
         {
             var targetPath = GetSaveLocationPath();
 

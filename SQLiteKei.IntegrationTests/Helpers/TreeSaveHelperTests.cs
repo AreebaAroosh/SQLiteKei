@@ -15,6 +15,8 @@ namespace SQLiteKei.IntegrationTests.Helpers
     [TestFixture, Explicit]
     public class TreeSaveHelperTests : DbTestBase
     {
+        private TreeSaveHelper treeSaveHelper;
+
         private string expectedLocation;
 
         private ObservableCollection<TreeItem> tree;
@@ -22,6 +24,7 @@ namespace SQLiteKei.IntegrationTests.Helpers
         [SetUp]
         public void Setup()
         {
+            treeSaveHelper = new TreeSaveHelper();
             var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             expectedLocation = Path.Combine(roamingDirectory, "SQLiteKei", "TreeView.xml");
 
@@ -56,7 +59,7 @@ namespace SQLiteKei.IntegrationTests.Helpers
         [Test]
         public void SaveTree_WithValidTree_SavesFileInExpectedLocation()
         {
-            TreeSaveHelper.SaveTree(tree);
+            treeSaveHelper.Save(tree);
 
             Assert.IsTrue(File.Exists(expectedLocation));
         }
@@ -64,7 +67,7 @@ namespace SQLiteKei.IntegrationTests.Helpers
         [Test]
         public void LoadTree_WhenFileDoesNotExist_ReturnsEmptyCollection()
         {
-            var tree = TreeSaveHelper.LoadTree();
+            var tree = treeSaveHelper.Load();
 
             Assert.IsTrue(!tree.Any());
         }
@@ -72,8 +75,8 @@ namespace SQLiteKei.IntegrationTests.Helpers
         [Test]
         public void SaveTreeLoadTree_WithValidCollection_SaveAndLoadTreeCorrectly()
         {
-            TreeSaveHelper.SaveTree(tree);
-            var loadedTree = TreeSaveHelper.LoadTree();
+            treeSaveHelper.Save(tree);
+            var loadedTree = treeSaveHelper.Load();
             var firstTreeItem = tree.First();
             var firstLoadedTreeItem = loadedTree.First();
 
