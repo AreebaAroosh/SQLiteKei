@@ -15,15 +15,15 @@ namespace SQLiteKei.UnitTests.Queries
         [Test]
         public void Build_WithValidData_ReturnsValidQuery()
         {
-            const string EXPECTED_QUERY = "SELECT Column1, Column2 AS Alias\nFROM Table\nWHERE Column1 = 2\nOR Column2 = 3";
+            const string EXPECTED_QUERY = "SELECT Column1, Column2 AS Alias\nFROM Table\nWHERE Column1 = 2\nOR Column2 = 3\nORDER BY Column2 DESC, Column1";
 
             var result = QueryBuilder.Select("Column1")
                 .AddSelect("Column2", "Alias")
                 .From("Table")
                 .Where("Column1").Is(2)
                 .Or("Column2").Is(3)
-                .OrderBy("Column 2", true)
-                .OrderBy("Column 1")
+                .OrderBy("Column2", true)
+                .OrderBy("Column1")
                 .Build();
 
             Assert.AreEqual(EXPECTED_QUERY, result);
