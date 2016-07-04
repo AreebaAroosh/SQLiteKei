@@ -26,7 +26,7 @@ namespace SQLiteKei.DataAccess.Database
 
             using (var command = connection.CreateCommand())
             {
-                command.CommandText = "PRAGMA table_info(" + tableName + ");";
+                command.CommandText = "PRAGMA table_info('" + tableName + "');";
 
                 var resultTable = new DataTable();
                 resultTable.Load(command.ExecuteReader());
@@ -79,7 +79,7 @@ namespace SQLiteKei.DataAccess.Database
             {
                 command.CommandText = QueryBuilder
                 .Select("count(*)")
-                .From(tableName)
+                .From("'" + tableName + "'")
                 .Build();
 
                 return Convert.ToInt64(command.ExecuteScalar());
