@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 using SQLiteKei.DataAccess.Database;
 using SQLiteKei.ViewModels.MainTabControl.Tables;
@@ -16,8 +17,12 @@ namespace SQLiteKei.Views.UserControls
     {
         public TableRecordsDataItem TableInfo { get; set; }
 
+        public RecordsTabViewModel ViewModel { get; set; }
+
         public TableRecordsTabContent()
         {
+            ViewModel = new RecordsTabViewModel();
+            DataContext = ViewModel;
             InitializeComponent();
         }
 
@@ -41,14 +46,14 @@ namespace SQLiteKei.Views.UserControls
                 var dbHandler = new DatabaseHandler(dbPath);
                 var resultTable = dbHandler.ExecuteReader(selectQuery);
 
-                RecordsDataGrid.ItemsSource = resultTable.DefaultView;
+                ViewModel.DataGridCollection = new ListCollectionView(resultTable.DefaultView);
                 StatusBar.Text = string.Format("Rows returned: {0}", resultTable.Rows.Count);       
             }
             catch (Exception ex)
             {
                 var oneLineMessage = Regex.Replace(ex.Message, @"\n", " ");
                 oneLineMessage = Regex.Replace(oneLineMessage, @"\t|\r", "");
-                oneLineMessage = oneLineMessage.Replace("SQL logic error or missing database ", "SQL logic error or missing database - ");
+                oneLineMessage = oneLineMessage.Replace("SQL logic error or missing database ", "SQL Error - ");
 
                 StatusBar.Text = oneLineMessage;
             }

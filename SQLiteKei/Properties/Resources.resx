@@ -309,6 +309,9 @@
   <data name="TableGeneralTab_TableName" xml:space="preserve">
     <value>TableGeneralTab_TableName</value>
   </data>
+  <data name="TableRecordsTab_Filter" xml:space="preserve">
+    <value>TableRecordsTab_Filter</value>
+  </data>
   <data name="Tooltip_CloseDatabase" xml:space="preserve">
     <value>Tooltip_CloseDatabase</value>
   </data>
