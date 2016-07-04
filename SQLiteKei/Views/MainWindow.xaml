@@ -55,7 +55,7 @@
                 <TreeView x:Name="DBTreeView" 
                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                           SelectedItemChanged="DBTreeView_SelectedItemChanged"
-                          ItemsSource="{Binding TreeViewItems, ElementName=Window}"
+                          ItemsSource="{Binding TreeViewItems}"
                           MouseRightButtonDown="TreeViewRightMouseButtonDown">
                     <TreeView.Resources>
                         <HierarchicalDataTemplate DataType="{x:Type model:DatabaseItem}" ItemsSource="{Binding Items}">

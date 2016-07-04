@@ -7,7 +7,7 @@ using SQLiteKei.ViewModels.Base;
 
 namespace SQLiteKei.ViewModels.TableCreatorWindow
 {
-    public class ColumnDefinitionItem : NotifyingItem
+    public class ColumnDefinitionItem : NotifyingModel
     {
         private string columnName;
         public string ColumnName

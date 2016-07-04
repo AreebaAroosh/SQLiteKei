@@ -14,7 +14,7 @@ using System.Collections.ObjectModel;
 
 namespace SQLiteKei.ViewModels.TableCreatorWindow
 {
-    public class TableCreatorViewModel : NotifyingItem
+    public class TableCreatorViewModel : NotifyingModel
     {
         public List<DatabaseSelectItem> Databases { get; set; }
 
@@ -68,14 +68,14 @@ namespace SQLiteKei.ViewModels.TableCreatorWindow
         {
             if (e.Action == NotifyCollectionChangedAction.Remove)
             {
-                foreach (NotifyingItem item in e.OldItems)
+                foreach (NotifyingModel item in e.OldItems)
                 {
                     item.PropertyChanged -= CollectionItemPropertyChanged;
                 }
             }
             else if (e.Action == NotifyCollectionChangedAction.Add)
             {
-                foreach (NotifyingItem item in e.NewItems)
+                foreach (NotifyingModel item in e.NewItems)
                 {
                     item.PropertyChanged += CollectionItemPropertyChanged;
                 }

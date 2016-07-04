@@ -1,19 +1,21 @@
-﻿using NUnit.Framework;
+﻿using Moq;
 
-using SQLiteKei.Helpers;
+using NUnit.Framework;
+
+using SQLiteKei.Helpers.Interfaces;
 using SQLiteKei.ViewModels.DBTreeView;
 using SQLiteKei.ViewModels.DBTreeView.Base;
+using SQLiteKei.ViewModels.MainWindow;
 
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace SQLiteKei.UnitTests.Helpers
+namespace SQLiteKei.IntegrationTests.ViewModels
 {
     [TestFixture]
-    public class TreeViewHelperTests
+    public class MainWindowViewModelTests
     {
-        private ICollection<TreeItem> hierarchy;
+        private MainWindowViewModel viewModel;
 
         private TableItem LookupItem;
 
@@ -61,16 +63,21 @@ namespace SQLiteKei.UnitTests.Helpers
                 Items = new ObservableCollection<TreeItem> { ComparisonItem }
             };
 
-            hierarchy = new ObservableCollection<TreeItem>
+            var treeSaveHelperMock = new Mock<ITreeSaveHelper>();
+
+            viewModel = new MainWindowViewModel(treeSaveHelperMock.Object)
             {
-                LookupItemDatabase,
-                new DatabaseItem
+                TreeViewItems = new ObservableCollection<TreeItem>
                 {
-                    DisplayName = "Name",
-                    DatabasePath = "Database2",
-                    Items = new ObservableCollection<TreeItem>
+                    LookupItemDatabase,
+                    new DatabaseItem
                     {
-                       ComparisonItemParent
+                        DisplayName = "Name",
+                        DatabasePath = "Database2",
+                        Items = new ObservableCollection<TreeItem>
+                        {
+                            ComparisonItemParent
+                        }
                     }
                 }
             };
@@ -79,7 +86,7 @@ namespace SQLiteKei.UnitTests.Helpers
         [Test]
         public void RemoveItemFromHierarchy_WithExistingItem_RemovesSpecifiedItem()
         {
-            TreeViewHelper.RemoveItemFromHierarchy(hierarchy, LookupItem);
+            viewModel.RemoveItemFromTree(LookupItem);
 
             var result = LookupItemParent.Items.Any();
             Assert.IsFalse(result);
@@ -88,7 +95,7 @@ namespace SQLiteKei.UnitTests.Helpers
         [Test]
         public void RemoveItemFromHierarchy_WithExistingItem_DoesNotRemoveItemsWithSameNameFromSameDatabase()
         {
-            TreeViewHelper.RemoveItemFromHierarchy(hierarchy, LookupItem);
+            viewModel.RemoveItemFromTree(LookupItem);
 
             var result = LookupItemDatabase.Items.Any();
             Assert.IsTrue(result);
@@ -97,7 +104,7 @@ namespace SQLiteKei.UnitTests.Helpers
         [Test]
         public void RemoveItemFromHierarchy_WithExistingItem_DoesNotRemoveItemsWithSameNameFromOtherDatabase()
         {
-            TreeViewHelper.RemoveItemFromHierarchy(hierarchy, LookupItem);
+            viewModel.RemoveItemFromTree(LookupItem);
 
             var result = ComparisonItemParent.Items.Any();
             Assert.IsTrue(result);

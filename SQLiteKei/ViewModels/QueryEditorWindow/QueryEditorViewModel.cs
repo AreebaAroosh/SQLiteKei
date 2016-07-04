@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace SQLiteKei.ViewModels.QueryEditorWindow
 {
-    public class QueryEditorViewModel : NotifyingItem
+    public class QueryEditorViewModel : NotifyingModel
     {
         public List<DatabaseSelectItem> Databases { get; set; }
 

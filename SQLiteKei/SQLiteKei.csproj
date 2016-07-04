@@ -104,10 +104,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helpers\DatabaseTabGenerator.cs" />
+    <Compile Include="Helpers\Interfaces\ITreeSaveHelper.cs" />
     <Compile Include="Helpers\LocalisationHelper.cs" />
     <Compile Include="Helpers\LogHelper.cs" />
     <Compile Include="Helpers\TreeSaveHelper.cs" />
-    <Compile Include="Helpers\TreeViewHelper.cs" />
     <Compile Include="Properties\Resources.en-GB.Designer.cs">
       <DependentUpon>Resources.en-GB.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -125,6 +125,7 @@
     </Compile>
     <Compile Include="ViewModels\Base\NotifyingItem.cs" />
     <Compile Include="ViewModels\Common\DatabaseSelectItem.cs" />
+    <Compile Include="ViewModels\MainWindow\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\QueryEditorWindow\QueryEditorViewModel.cs" />
     <Compile Include="ViewModels\SelectQueryWindow\OrderItem.cs" />
     <Compile Include="ViewModels\TableCreatorWindow\ColumnDefinitionItem.cs" />
