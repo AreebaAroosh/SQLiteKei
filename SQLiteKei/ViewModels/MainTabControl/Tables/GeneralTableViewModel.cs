@@ -8,19 +8,30 @@ namespace SQLiteKei.ViewModels.MainTabControl.Tables
 {
     public class GeneralTableViewModel : NotifyingModel
     {
-        public GeneralTableViewModel(string tableName)
+        private string tableName;
+        public string TableName
         {
-            ColumnData = new List<ColumnDataItem>();
-            TableName = tableName;
-
-            Initialize();
+            get { return tableName; }
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    try
+                    {
+                        using (var tableHandler = new TableHandler(Properties.Settings.Default.CurrentDatabase))
+                        {
+                            tableHandler.RenameTable(tableName, value);
+                        }
+                        tableName = value;
+                        NotifyPropertyChanged("TableName");
+                    }
+                    catch 
+                    { 
+                        //TODO decide what should happen in this case 
+                    }
+                }
+            }
         }
-
-        public string TableName { get; set; }
-
-        public string TableCreateStatement { get; set; }
-
-        public int ColumnCount { get; set; }
 
         private long rowCount;
         public long RowCount
@@ -29,7 +40,19 @@ namespace SQLiteKei.ViewModels.MainTabControl.Tables
             set { rowCount = value; NotifyPropertyChanged("RowCount"); }
         }
 
+        public int ColumnCount { get; set; }
+
+        public string TableCreateStatement { get; set; }
+
         public List<ColumnDataItem> ColumnData { get; set; }
+
+        public GeneralTableViewModel(string tableName)
+        {
+            ColumnData = new List<ColumnDataItem>();
+            this.tableName = tableName;
+
+            Initialize();
+        }
 
         private void Initialize()
         {

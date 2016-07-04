@@ -88,6 +88,29 @@ namespace SQLiteKei
             }
         }
 
+        private void DeleteDatabase(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = DBTreeView.SelectedItem as DatabaseItem;
+
+            if (selectedItem != null)
+            {
+                var message = LocalisationHelper.GetString("MessageBox_DatabaseDeleteWarning", selectedItem.DisplayName);
+                var result = System.Windows.MessageBox.Show(message, LocalisationHelper.GetString("MessageBoxTitle_DatabaseDeletion"), MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result != MessageBoxResult.Yes) return;
+                if (!File.Exists(selectedItem.DatabasePath))
+                    throw new FileNotFoundException("Database file could not be found.");
+
+                File.Delete(selectedItem.DatabasePath);
+                viewModel.CloseDatabase(selectedItem.DatabasePath);
+            }
+        }
+
+        private void RefreshTree(object sender, RoutedEventArgs e)
+        {
+            viewModel.RefreshTree();
+        }
+
         private void DBTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             SetGlobalDatabaseString();
@@ -106,24 +129,6 @@ namespace SQLiteKei
             {
                 var currentSelection = (TreeItem)DBTreeView.SelectedItem;
                 Properties.Settings.Default.CurrentDatabase = currentSelection.DatabasePath;
-            }
-        }
-
-        private void DeleteDatabase(object sender, RoutedEventArgs e)
-        {
-            var selectedItem = DBTreeView.SelectedItem as DatabaseItem;
-
-            if(selectedItem != null)
-            {
-                var message = LocalisationHelper.GetString("MessageBox_DatabaseDeleteWarning", selectedItem.DisplayName);
-                var result = System.Windows.MessageBox.Show(message, LocalisationHelper.GetString("MessageBoxTitle_DatabaseDeletion"), MessageBoxButton.YesNo, MessageBoxImage.Warning);
-
-                if (result != MessageBoxResult.Yes) return;
-                if (!File.Exists(selectedItem.DatabasePath))
-                    throw new FileNotFoundException("Database file could not be found.");
-
-                File.Delete(selectedItem.DatabasePath);
-                viewModel.CloseDatabase(selectedItem.DatabasePath);
             }
         }
 

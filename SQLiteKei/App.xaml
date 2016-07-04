@@ -9,6 +9,7 @@
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="IsReadOnly" Value="True" />
             <Setter Property="Padding" Value="3" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
         </Style>
         <Style x:Key="SelectableStatusBar" TargetType="TextBox">
             <Setter Property="Background" Value="Transparent" />

@@ -41,6 +41,7 @@
             <Button Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="OpenDatabase" ToolTip="{x:Static localisation:Resources.Tooltip_OpenDatabase}"/>
             <Button Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="CloseDatabase" ToolTip="{x:Static localisation:Resources.Tooltip_CloseDatabase}"/>
             <Button Content="x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="DeleteDatabase" ToolTip="{x:Static localisation:Resources.Tooltip_DeleteDatabase}"/>
+            <Button Content="O" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="RefreshTree" ToolTip="NO TOOLTIP"/>
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="5, 5, 0, 0" />
             <Button Content="x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="OpenQueryEditor" ToolTip="{x:Static localisation:Resources.Tooltip_WriteSQLStatement}"/>
             <Button Content="x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="OpenTableCreator" ToolTip="{x:Static localisation:Resources.Tooltip_CreateTable}"/>

@@ -100,6 +100,20 @@ namespace SQLiteKei.DataAccess.Database
         }
 
         /// <summary>
+        /// Renames the specified table.
+        /// </summary>
+        /// <param name="oldName">The old name.</param>
+        /// <param name="newName">The new name.</param>
+        public void RenameTable(string oldName, string newName)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "ALTER TABLE '" + oldName + "' RENAME TO '" + newName + "'";
+                command.ExecuteNonQuery();
+            }
+        }
+
+        /// <summary>
         /// Deletes all rows from the specified table.
         /// </summary>
         /// <param name="tableName">Name of the table.</param>
