@@ -28,11 +28,11 @@
                 </MenuItem>
                 <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Tools}">
                     <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_QueryEditor}" Click="OpenQueryEditor" Background="#2D2D30"/>
-                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Preferences}" Background="#2D2D30"/>
+                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Preferences}" Click="OpenPreferences" Background="#2D2D30"/>
                 </MenuItem>
                 <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Help}">
                     <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Documentation}" Background="#2D2D30"/>
-                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_About}" Click="MenuItem_About_Click" Background="#2D2D30"/>
+                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_About}" Click="OpenAbout" Background="#2D2D30"/>
                 </MenuItem>
             </Menu>
         </DockPanel>
@@ -43,7 +43,7 @@
             <Button Content="x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="DeleteDatabase" ToolTip="{x:Static localisation:Resources.Tooltip_DeleteDatabase}"/>
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="5, 5, 0, 0" />
             <Button Content="x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="OpenQueryEditor" ToolTip="{x:Static localisation:Resources.Tooltip_WriteSQLStatement}"/>
-            <Button Content="x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="OpenTableCreator" ToolTip="NO TOOLTIP"/>
+            <Button Content="x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="OpenTableCreator" ToolTip="{x:Static localisation:Resources.Tooltip_CreateTable}"/>
         </DockPanel>
         <Grid Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <Grid.ColumnDefinitions>

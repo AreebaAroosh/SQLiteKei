@@ -97,6 +97,15 @@ namespace SQLiteKei.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ButtonText_Use.
+        /// </summary>
+        public static string ButtonText_Use {
+            get {
+                return ResourceManager.GetString("ButtonText_Use", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ContextMenuItem_CloseDatabase.
         /// </summary>
         public static string ContextMenuItem_CloseDatabase {
@@ -403,6 +412,24 @@ namespace SQLiteKei.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Preferences_GroupBoxHeader_Languages.
+        /// </summary>
+        public static string Preferences_GroupBoxHeader_Languages {
+            get {
+                return ResourceManager.GetString("Preferences_GroupBoxHeader_Languages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preferences_GroupBoxHeader_Themes.
+        /// </summary>
+        public static string Preferences_GroupBoxHeader_Themes {
+            get {
+                return ResourceManager.GetString("Preferences_GroupBoxHeader_Themes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to QueryEditor_Label_Database.
         /// </summary>
         public static string QueryEditor_Label_Database {
@@ -619,6 +646,15 @@ namespace SQLiteKei.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tooltip_CreateTable.
+        /// </summary>
+        public static string Tooltip_CreateTable {
+            get {
+                return ResourceManager.GetString("Tooltip_CreateTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tooltip_DeleteDatabase.
         /// </summary>
         public static string Tooltip_DeleteDatabase {
@@ -660,6 +696,15 @@ namespace SQLiteKei.Properties {
         public static string WindowTitle_About {
             get {
                 return ResourceManager.GetString("WindowTitle_About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WindowTitle_Preferences.
+        /// </summary>
+        public static string WindowTitle_Preferences {
+            get {
+                return ResourceManager.GetString("WindowTitle_Preferences", resourceCulture);
             }
         }
         

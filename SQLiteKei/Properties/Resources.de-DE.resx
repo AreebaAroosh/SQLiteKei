@@ -129,6 +129,9 @@
   <data name="ButtonText_Execute" xml:space="preserve">
     <value>Ausführen</value>
   </data>
+  <data name="ButtonText_Use" xml:space="preserve">
+    <value>Anwenden</value>
+  </data>
   <data name="ContextMenuItem_CloseDatabase" xml:space="preserve">
     <value>Trennen</value>
   </data>
@@ -205,7 +208,7 @@
     <value>Datenbank öffnen...</value>
   </data>
   <data name="MenuItemHeader_Preferences" xml:space="preserve">
-    <value>Optionen</value>
+    <value>Einstellungen</value>
   </data>
   <data name="MenuItemHeader_QueryEditor" xml:space="preserve">
     <value>Query-Editor</value>
@@ -230,6 +233,12 @@
   </data>
   <data name="MessageBox_TableDeleteWarning" xml:space="preserve">
     <value>Wollen Sie die Tabelle '{0}' wirklich löschen?</value>
+  </data>
+  <data name="Preferences_GroupBoxHeader_Languages" xml:space="preserve">
+    <value>Sprachen</value>
+  </data>
+  <data name="Preferences_GroupBoxHeader_Themes" xml:space="preserve">
+    <value>Anwendungs-Farbschema</value>
   </data>
   <data name="QueryEditor_Label_Database" xml:space="preserve">
     <value>Datenbank</value>
@@ -303,6 +312,9 @@
   <data name="Tooltip_CloseDatabase" xml:space="preserve">
     <value>Datenbank trennen</value>
   </data>
+  <data name="Tooltip_CreateTable" xml:space="preserve">
+    <value>Tabelle erzeugen</value>
+  </data>
   <data name="Tooltip_DeleteDatabase" xml:space="preserve">
     <value>Datenbank löschen</value>
   </data>
@@ -317,6 +329,9 @@
   </data>
   <data name="WindowTitle_About" xml:space="preserve">
     <value>Über</value>
+  </data>
+  <data name="WindowTitle_Preferences" xml:space="preserve">
+    <value>Einstellungen</value>
   </data>
   <data name="WindowTitle_QueryEditor" xml:space="preserve">
     <value>Query-Editor</value>

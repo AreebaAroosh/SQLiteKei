@@ -129,6 +129,9 @@
   <data name="ButtonText_Execute" xml:space="preserve">
     <value>Execute</value>
   </data>
+  <data name="ButtonText_Use" xml:space="preserve">
+    <value>Use</value>
+  </data>
   <data name="ContextMenuItem_CloseDatabase" xml:space="preserve">
     <value>Close</value>
   </data>
@@ -231,6 +234,12 @@
   <data name="MessageBox_TableDeleteWarning" xml:space="preserve">
     <value>Do you really want to delete the table '{0}'?</value>
   </data>
+  <data name="Preferences_GroupBoxHeader_Languages" xml:space="preserve">
+    <value>Languages</value>
+  </data>
+  <data name="Preferences_GroupBoxHeader_Themes" xml:space="preserve">
+    <value>Application Theme</value>
+  </data>
   <data name="QueryEditor_Label_Database" xml:space="preserve">
     <value>Database</value>
   </data>
@@ -303,6 +312,9 @@
   <data name="Tooltip_CloseDatabase" xml:space="preserve">
     <value>Close Database</value>
   </data>
+  <data name="Tooltip_CreateTable" xml:space="preserve">
+    <value>Create Table</value>
+  </data>
   <data name="Tooltip_DeleteDatabase" xml:space="preserve">
     <value>Delete Database</value>
   </data>
@@ -317,6 +329,9 @@
   </data>
   <data name="WindowTitle_About" xml:space="preserve">
     <value>About</value>
+  </data>
+  <data name="WindowTitle_Preferences" xml:space="preserve">
+    <value>Preferences</value>
   </data>
   <data name="WindowTitle_QueryEditor" xml:space="preserve">
     <value>Query Editor</value>

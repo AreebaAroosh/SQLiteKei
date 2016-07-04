@@ -34,9 +34,14 @@ namespace SQLiteKei
             System.Windows.Application.Current.Shutdown();
         }
 
-        private void MenuItem_About_Click(object sender, RoutedEventArgs e)
+        private void OpenAbout(object sender, RoutedEventArgs e)
         {
             new About().ShowDialog();
+        }
+
+        private void OpenPreferences(object sender, RoutedEventArgs e)
+        {
+            new Preferences().ShowDialog();
         }
 
         private void OpenQueryEditor(object sender, RoutedEventArgs e)
