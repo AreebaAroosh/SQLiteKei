@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:localisation="clr-namespace:SQLiteKei.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
@@ -11,10 +12,12 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="20"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button x:Name="SelectButton" Content="Select" Width="50" HorizontalAlignment="Left" Click="ExecuteSelect" />
-        </StackPanel>
-        <DataGrid x:Name="RecordsDataGrid" Grid.Row="1" HeadersVisibility="Column">
+        <DockPanel Grid.Row="0">
+            <Button DockPanel.Dock="Left"  x:Name="SelectButton" Content="Select" Width="50" HorizontalAlignment="Left" Click="ExecuteSelect" />
+            <TextBox DockPanel.Dock="Right" Width="100" HorizontalAlignment="Right" VerticalContentAlignment="Center" Text="{Binding SearchString, UpdateSourceTrigger=PropertyChanged}" />
+            <Label DockPanel.Dock="Right" Content="{x:Static localisation:Resources.TableRecordsTab_Filter}" HorizontalAlignment="Right" />
+        </DockPanel>
+        <DataGrid x:Name="RecordsDataGrid" Grid.Row="1" HeadersVisibility="Column" ItemsSource="{Binding DataGridCollection}">
         </DataGrid>
         <TextBox x:Name="StatusBar" Grid.Row="2" Style="{StaticResource SelectableStatusBar}"
                  VerticalAlignment="Center"/>
