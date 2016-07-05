@@ -137,5 +137,18 @@ namespace SQLiteKei.DataAccess.Database
                 }
             }
         }
+
+        /// <summary>
+        /// Reindexes the specified table.
+        /// </summary>
+        /// <param name="tableName"></param>
+        public void ReindexTable(string tableName)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = string.Format("REINDEX '{0}'", tableName);
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }
