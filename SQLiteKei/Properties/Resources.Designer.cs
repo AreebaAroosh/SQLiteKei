@@ -565,6 +565,15 @@ namespace SQLiteKei.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to TableGeneralTab_ButtonText_Reindex.
+        /// </summary>
+        public static string TableGeneralTab_ButtonText_Reindex {
+            get {
+                return ResourceManager.GetString("TableGeneralTab_ButtonText_Reindex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TableGeneralTab_ColumnName.
         /// </summary>
         public static string TableGeneralTab_ColumnName {
