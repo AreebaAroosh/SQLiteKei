@@ -222,6 +222,9 @@
   <data name="MessageBoxTitle_EmptyTable" xml:space="preserve">
     <value>Tabelle leeren</value>
   </data>
+  <data name="MessageBoxTitle_ReindexTable" xml:space="preserve">
+    <value>Tabelle neu indizieren</value>
+  </data>
   <data name="MessageBoxTitle_TableDeletion" xml:space="preserve">
     <value>Tabelle löschen</value>
   </data>
@@ -230,6 +233,9 @@
   </data>
   <data name="MessageBox_EmptyTable" xml:space="preserve">
     <value>Möchten Sie die Tabelle '{0}' wirklich leeren? Hiermit werden alle Einträge aus der Tabelle entfernt.</value>
+  </data>
+  <data name="MessageBox_ReindexTable" xml:space="preserve">
+    <value>Sind Sie sicher, dass Sie die Tabelle '{0}' neu indizieren möchten?</value>
   </data>
   <data name="MessageBox_TableDeleteWarning" xml:space="preserve">
     <value>Wollen Sie die Tabelle '{0}' wirklich löschen?</value>

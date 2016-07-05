@@ -53,6 +53,12 @@ namespace SQLiteKei.Views.UserControls
 
         private void ReindexTable(object sender, RoutedEventArgs e)
         {
+            var message = LocalisationHelper.GetString("MessageBox_ReindexTable", tableInfo.TableName);
+            var messageTitle = LocalisationHelper.GetString("MessageBoxTitle_ReindexTable");
+            var result = MessageBox.Show(message, messageTitle, MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (result != MessageBoxResult.Yes) return;
+
             tableInfo.ReindexTable();
         }
 

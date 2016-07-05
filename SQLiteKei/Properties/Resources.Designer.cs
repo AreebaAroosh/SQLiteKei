@@ -376,6 +376,15 @@ namespace SQLiteKei.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to MessageBox_ReindexTable.
+        /// </summary>
+        public static string MessageBox_ReindexTable {
+            get {
+                return ResourceManager.GetString("MessageBox_ReindexTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to MessageBox_TableDeleteWarning.
         /// </summary>
         public static string MessageBox_TableDeleteWarning {
@@ -399,6 +408,15 @@ namespace SQLiteKei.Properties {
         public static string MessageBoxTitle_EmptyTable {
             get {
                 return ResourceManager.GetString("MessageBoxTitle_EmptyTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MessageBoxTitle_ReindexTable.
+        /// </summary>
+        public static string MessageBoxTitle_ReindexTable {
+            get {
+                return ResourceManager.GetString("MessageBoxTitle_ReindexTable", resourceCulture);
             }
         }
         
