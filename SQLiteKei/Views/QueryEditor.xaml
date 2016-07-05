@@ -27,7 +27,7 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
         </StackPanel>
-        <TextBox Grid.Row="1" VerticalAlignment="Stretch" Text="{Binding SqlStatement}" TextWrapping="Wrap" Margin="5 0 5 5"></TextBox>
+        <TextBox Grid.Row="1" VerticalAlignment="Stretch" Text="{Binding SqlStatement}" TextWrapping="Wrap" AcceptsReturn="True" Margin="5 0 5 5"></TextBox>
         <GridSplitter Grid.Row="2" HorizontalAlignment="Stretch" ResizeDirection="Rows" ResizeBehavior="PreviousAndNext" Background="#3F3F46"/>
         <DataGrid x:Name="QueryGrid" Grid.Row="3" HeadersVisibility="Column"></DataGrid>
         <Grid Grid.Row="4">

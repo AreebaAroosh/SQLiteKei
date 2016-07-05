@@ -27,7 +27,7 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
             <Label Content="{x:Static localisation:Resources.TableCreator_Label_TableName}" />
-            <TextBox Text="{Binding TableName}" Width="125"/>
+            <TextBox Text="{Binding TableName, UpdateSourceTrigger=PropertyChanged}" Width="125"/>
         </StackPanel>
         <TabControl Grid.Row="1">
             <TabItem Header="{x:Static localisation:Resources.TableCreator_TabHeader_Columns}">
@@ -37,7 +37,7 @@
                             <ItemsControl.Resources>
                                 <DataTemplate DataType="{x:Type model:ColumnDefinitionItem}">
                                     <DockPanel>
-                                        <TextBox Text="{Binding ColumnName}" Width="175"/>
+                                        <TextBox Text="{Binding ColumnName, UpdateSourceTrigger=PropertyChanged}" Width="175"/>
                                         <ComboBox SelectedItem="{Binding DataType}" ItemsSource="{Binding DataTypes}" Width="85" VerticalContentAlignment="Center"/>
                                         <Label Content="PK"/>
                                         <CheckBox IsChecked="{Binding IsPrimary}" VerticalAlignment="Center" Margin="3 0"/>
