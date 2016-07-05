@@ -51,6 +51,11 @@ namespace SQLiteKei.Views.UserControls
             tableInfo.EmptyTable();
         }
 
+        private void ReindexTable(object sender, RoutedEventArgs e)
+        {
+            tableInfo.ReindexTable();
+        }
+
         #region INotifyPropertyChanged Members
         public event PropertyChangedEventHandler PropertyChanged;
 

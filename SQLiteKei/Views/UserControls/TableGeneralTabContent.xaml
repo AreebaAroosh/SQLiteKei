@@ -37,8 +37,8 @@
             </StackPanel>
         </GroupBox>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button Content="{x:Static localisation:Resources.TableGeneralTab_ButtonText_Empty}" Height="25" Margin="15 0 0 0" Click="EmptyTable" />
-            <Button Content="{x:Static localisation:Resources.TableGeneralTab_ButtonText_Reindex}" Height="25" Margin="5 0" />
+            <Button Content="{x:Static localisation:Resources.TableGeneralTab_ButtonText_Empty}" Height="25" Width="100" Margin="15 0 0 0" Click="EmptyTable"  />
+            <Button Content="{x:Static localisation:Resources.TableGeneralTab_ButtonText_Reindex}" Height="25" Width="100" Margin="5 0" Click="ReindexTable"   />
         </StackPanel>
         <GroupBox Grid.Row="2" Header="{x:Static localisation:Resources.TabContent_GroupBoxHeader_Columns}" Margin="5, 0, 5, 5" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="Auto">
             <Grid>

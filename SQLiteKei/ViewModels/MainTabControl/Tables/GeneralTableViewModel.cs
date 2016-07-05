@@ -90,5 +90,13 @@ namespace SQLiteKei.ViewModels.MainTabControl.Tables
                 RowCount = 0;
             }
         }
+
+        internal void ReindexTable()
+        {
+            using (var tableHandler = new TableHandler(Properties.Settings.Default.CurrentDatabase))
+            {
+                tableHandler.ReindexTable(TableName);
+            }
+        }
     }
 }
