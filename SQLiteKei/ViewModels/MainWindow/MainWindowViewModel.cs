@@ -1,13 +1,16 @@
-﻿using SQLiteKei.Helpers;
+﻿using SQLiteKei.DataAccess.Database;
+using SQLiteKei.Helpers;
 using SQLiteKei.Helpers.Interfaces;
 using SQLiteKei.ViewModels.Base;
 using SQLiteKei.ViewModels.DBTreeView;
 using SQLiteKei.ViewModels.DBTreeView.Base;
 using SQLiteKei.ViewModels.DBTreeView.Mapping;
 
+using System;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 
 namespace SQLiteKei.ViewModels.MainWindow
 {
@@ -20,6 +23,13 @@ namespace SQLiteKei.ViewModels.MainWindow
         {
             get { return treeViewItems; }
             set { treeViewItems = value; NotifyPropertyChanged("TreeViewItems"); }
+        }
+
+        private string statusBarInfo;
+        public string StatusBarInfo
+        {
+            get { return statusBarInfo; }
+            set { statusBarInfo = value; NotifyPropertyChanged("StatusBarInfo"); }
         }
 
         public MainWindowViewModel(ITreeSaveHelper treeSaveHelper)
@@ -84,6 +94,49 @@ namespace SQLiteKei.ViewModels.MainWindow
         public void SaveTree()
         {
             treeSaveHelper.Save(TreeViewItems);
+        }
+
+        internal void EmptyTable(string tableName)
+        {
+            var message = LocalisationHelper.GetString("MessageBox_EmptyTable", tableName);
+            var messageTitle = LocalisationHelper.GetString("MessageBoxTitle_EmptyTable");
+            var result = MessageBox.Show(message, messageTitle, MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result != MessageBoxResult.Yes) return;
+
+            using (var tableHandler = new TableHandler(Properties.Settings.Default.CurrentDatabase))
+            {
+                try
+                {
+                    tableHandler.EmptyTable(tableName);
+                }
+                catch (Exception ex)
+                {
+                    StatusBarInfo = ex.Message;
+                }
+            }
+        }
+
+        internal void DeleteTable(TableItem tableItem)
+        {
+            var message = LocalisationHelper.GetString("MessageBox_TableDeleteWarning", tableItem.DisplayName);
+            var result = MessageBox.Show(message, LocalisationHelper.GetString("MessageBoxTitle_TableDeletion"), MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result != MessageBoxResult.Yes) return;
+
+            try
+            {
+                using (var tableHandler = new TableHandler(Properties.Settings.Default.CurrentDatabase))
+                {
+                    tableHandler.DropTable(tableItem.DisplayName);
+                    RemoveItemFromTree(tableItem);
+                }
+            }
+            catch (Exception ex)
+            {
+                var statusInfo = ex.Message.Replace("SQL logic error or missing database\r\n", "SQL-Error - ");
+                StatusBarInfo = statusInfo;
+            }
         }
     }
 }

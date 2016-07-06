@@ -4,9 +4,9 @@ using SQLiteKei.ViewModels.DBTreeView.Mapping;
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace SQLiteKei.Helpers

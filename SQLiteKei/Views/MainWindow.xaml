@@ -140,7 +140,7 @@
         </Grid>
         <StatusBar Grid.Row="3">
             <StatusBarItem>
-                <TextBlock x:Name="StatusBarInfo" FontWeight="DemiBold"></TextBlock>
+                <TextBlock Text="{Binding StatusBarInfo}" FontWeight="DemiBold"></TextBlock>
             </StatusBarItem>
         </StatusBar>
     </Grid>
