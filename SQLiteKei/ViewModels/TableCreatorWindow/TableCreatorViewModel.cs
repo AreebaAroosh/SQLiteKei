@@ -20,7 +20,7 @@ namespace SQLiteKei.ViewModels.TableCreatorWindow
 
         public ObservableCollection<ColumnDefinitionItem> ColumnDefinitions { get; set; }
 
-        private ILog logger = LogHelper.GetLogger();
+        private readonly ILog logger = LogHelper.GetLogger();
 
         private string tableName;
         public string TableName
