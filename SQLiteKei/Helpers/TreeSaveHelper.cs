@@ -66,7 +66,7 @@ namespace SQLiteKei.Helpers
         {
             var roamingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
-            return Path.Combine(roamingDirectory, "SQLiteKei", "TreeView.xml");;
+            return Path.Combine(roamingDirectory, "SQLiteKei", "TreeView.xml");
         }
     }
 }

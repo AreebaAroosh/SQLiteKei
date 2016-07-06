@@ -8,23 +8,25 @@ namespace SQLiteKei.IntegrationTests.Base
 {
     public class DbTestBase
     {
-        protected const string TESTDIRECTORY = @"C:\Test";
-
         protected const string DATABASEFILENAME = "TestDb";
+
+        protected string testDirectory;
 
         protected string targetDatabaseFilePath;
 
         [OneTimeSetUp]
         public void CreateDatabase()
         {
-            if (Directory.Exists(TESTDIRECTORY))
+            testDirectory = Path.Combine(Path.GetTempPath(), "SQLiteKei");
+
+            if (Directory.Exists(testDirectory))
             {
-                Directory.Delete(TESTDIRECTORY, true); 
+                Directory.Delete(testDirectory, true); 
             }
 
-            Directory.CreateDirectory(TESTDIRECTORY);
+            Directory.CreateDirectory(testDirectory);
 
-            targetDatabaseFilePath = Path.Combine(TESTDIRECTORY, DATABASEFILENAME);
+            targetDatabaseFilePath = Path.Combine(testDirectory, DATABASEFILENAME);
             SQLiteConnection.CreateFile(targetDatabaseFilePath);
         }
 
