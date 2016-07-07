@@ -20,8 +20,6 @@ namespace SQLiteKei.ViewModels.TableCreatorWindow
 
         public ObservableCollection<ColumnDefinitionItem> ColumnDefinitions { get; set; }
 
-        private readonly ILog logger = LogHelper.GetLogger();
-
         private string tableName;
         public string TableName
         {
@@ -114,7 +112,6 @@ namespace SQLiteKei.ViewModels.TableCreatorWindow
             }
             catch (Exception ex)
             {
-                logger.Error(ex);
                 StatusInfo = ex.Message;
                 IsValidTableDefinition = false;
             }

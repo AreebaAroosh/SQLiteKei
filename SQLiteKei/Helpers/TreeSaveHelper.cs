@@ -1,4 +1,5 @@
-﻿using SQLiteKei.Helpers.Interfaces;
+﻿using log4net;
+using SQLiteKei.Helpers.Interfaces;
 using SQLiteKei.ViewModels.DBTreeView.Base;
 using SQLiteKei.ViewModels.DBTreeView.Mapping;
 
@@ -13,6 +14,8 @@ namespace SQLiteKei.Helpers
 {
     public class TreeSaveHelper : ITreeSaveHelper
     {
+        private ILog logger = LogHelper.GetLogger();
+
         public void Save(ObservableCollection<TreeItem> tree)
         {
             var targetPath = GetSaveLocationPath();
@@ -28,7 +31,15 @@ namespace SQLiteKei.Helpers
 
             using (var streamWriter = new StreamWriter(targetPath))
             {
-                xmlSerializer.Serialize(streamWriter, rootItemDatabasePaths);
+                try
+                {
+                    xmlSerializer.Serialize(streamWriter, rootItemDatabasePaths);
+                    logger.Info("Successfully saved database tree.");
+                }
+                catch(Exception ex)
+                {
+                    logger.Error("Unable to save database tree.", ex);
+                }
             }
         }
 
@@ -42,20 +53,33 @@ namespace SQLiteKei.Helpers
             }
 
             var xmlSerializer = new XmlSerializer(typeof(List<string>));
-
             var resultCollection = new ObservableCollection<TreeItem>();
 
             using (var streamReader = new StreamReader(targetPath))
             {
-                var databasePaths = xmlSerializer.Deserialize(streamReader) as List<string>;
-                var schemaMapper = new SchemaToViewModelMapper();
-                foreach (var path in databasePaths)
+                try
                 {
-                    if (File.Exists(path))
+                    logger.Info("Restoring recently used databases...");
+
+                    var databasePaths = xmlSerializer.Deserialize(streamReader) as List<string>;
+                    var schemaMapper = new SchemaToViewModelMapper();
+
+                    foreach (var path in databasePaths)
                     {
-                        var rootItem = schemaMapper.MapSchemaToViewModel(path);
-                        resultCollection.Add(rootItem);
+                        if (File.Exists(path))
+                        {
+                            var rootItem = schemaMapper.MapSchemaToViewModel(path);
+                            resultCollection.Add(rootItem);
+                        }
+                        else
+                        {
+                            logger.Info("Could not restore database file at " + path + "\nThe file might have been moved or deleted outside of SQLK.");
+                        }
                     }
+                }
+                catch(Exception ex)
+                {
+                    logger.Error("Could not load database tree.", ex);
                 }
             }
 

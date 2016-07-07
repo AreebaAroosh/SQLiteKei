@@ -1,8 +1,10 @@
-﻿using SQLiteKei.DataAccess.Database;
+﻿using log4net;
+
+using SQLiteKei.DataAccess.Database;
+using SQLiteKei.Helpers;
 
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
 using System.Linq;
 
@@ -17,6 +19,8 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
 
         private DatabaseHandler dbHandler;
 
+        private ILog logger = LogHelper.GetLogger();
+
         /// <summary>
         /// Maps the provided database to a hierarchical ViewModel structure with a DatabaseItem as its root.
         /// </summary>
@@ -24,6 +28,7 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
         /// <returns></returns>
         public DatabaseItem MapSchemaToViewModel(string databasePath)
         {
+            logger.Info("Trying to load database file at " + databasePath);
             this.databasePath = databasePath;
             dbHandler = new DatabaseHandler(databasePath);
 
@@ -43,6 +48,7 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
             databaseItem.Items.Add(indexFolder);
             databaseItem.Items.Add(triggerFolder);
 
+            logger.Info("Loaded database " + databaseItem.DisplayName + ".");
             return databaseItem;
         }
 
