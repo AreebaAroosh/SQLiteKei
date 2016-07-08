@@ -339,6 +339,12 @@
   <data name="Tooltip_WriteSQLStatement" xml:space="preserve">
     <value>Create SQL Statement</value>
   </data>
+  <data name="UnhandledException" xml:space="preserve">
+    <value>An unexpected and unhandled error occured. The application will be terminated.</value>
+  </data>
+  <data name="UnhandledException_Title" xml:space="preserve">
+    <value>Oops, something went wrong</value>
+  </data>
   <data name="WindowTitle_About" xml:space="preserve">
     <value>About</value>
   </data>

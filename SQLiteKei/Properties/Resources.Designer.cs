@@ -727,6 +727,24 @@ namespace SQLiteKei.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to UnhandledException.
+        /// </summary>
+        public static string UnhandledException {
+            get {
+                return ResourceManager.GetString("UnhandledException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UnhandledException_Title.
+        /// </summary>
+        public static string UnhandledException_Title {
+            get {
+                return ResourceManager.GetString("UnhandledException_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to WindowTitle_About.
         /// </summary>
         public static string WindowTitle_About {

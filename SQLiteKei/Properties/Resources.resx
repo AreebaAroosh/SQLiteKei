@@ -339,6 +339,12 @@
   <data name="Tooltip_WriteSQLStatement" xml:space="preserve">
     <value>Tooltip_WriteSQLStatement</value>
   </data>
+  <data name="UnhandledException" xml:space="preserve">
+    <value>UnhandledException</value>
+  </data>
+  <data name="UnhandledException_Title" xml:space="preserve">
+    <value>UnhandledException_Title</value>
+  </data>
   <data name="WindowTitle_About" xml:space="preserve">
     <value>WindowTitle_About</value>
   </data>
