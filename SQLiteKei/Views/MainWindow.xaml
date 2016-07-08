@@ -11,10 +11,42 @@
         Width="1024" Height="768" MinWidth="900" MinHeight="700"
         WindowState="Maximized"
         Background="#2D2D30">
+    <Window.Resources>
+        <Style x:Key="MenuButton" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="25"/>
+            <Setter Property="Margin" Value="5 5 0 0"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="Chrome" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="#ADADAD"/>
+                                <Setter Property="Opacity" TargetName="Chrome" Value="0.5"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#404045"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
-            <RowDefinition Height="30" />
+            <RowDefinition Height="36" />
             <RowDefinition Height="*" />
             <RowDefinition Height="25" />
         </Grid.RowDefinitions>
@@ -37,14 +69,28 @@
             </Menu>
         </DockPanel>
         <DockPanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Button Content="*" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="CreateNewDatabase" ToolTip="{x:Static localisation:Resources.Tooltip_NewDatabase}"/>
-            <Button Content="+" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="OpenDatabase" ToolTip="{x:Static localisation:Resources.Tooltip_OpenDatabase}"/>
-            <Button Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="CloseDatabase" ToolTip="{x:Static localisation:Resources.Tooltip_CloseDatabase}"/>
-            <Button Content="x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="DeleteDatabase" ToolTip="{x:Static localisation:Resources.Tooltip_DeleteDatabase}"/>
-            <Button Content="O" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="RefreshTree" ToolTip="NO TOOLTIP"/>
-            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="5, 5, 0, 0" />
-            <Button Content="x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="OpenQueryEditor" ToolTip="{x:Static localisation:Resources.Tooltip_WriteSQLStatement}"/>
-            <Button Content="x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="5, 5, 0, 0" Click="OpenTableCreator" ToolTip="{x:Static localisation:Resources.Tooltip_CreateTable}"/>
+            <Button Style="{DynamicResource MenuButton}" Click="CreateNewDatabase" ToolTip="{x:Static localisation:Resources.Tooltip_NewDatabase}" >
+                <Image Source="../Resources/Icons/Database_New.png"></Image>
+            </Button>
+            <Button Style="{DynamicResource MenuButton}" Click="OpenDatabase" ToolTip="{x:Static localisation:Resources.Tooltip_OpenDatabase}" >
+                <Image Source="../Resources/Icons/Database_Open.png" />
+            </Button>
+            <Button Style="{DynamicResource MenuButton}" Click="CloseDatabase" ToolTip="{x:Static localisation:Resources.Tooltip_CloseDatabase}">
+                <Image Source="../Resources/Icons/Database_Close.png" />
+            </Button>
+            <Button Style="{DynamicResource MenuButton}" Click="DeleteDatabase" ToolTip="{x:Static localisation:Resources.Tooltip_DeleteDatabase}">
+                <Image Source="../Resources/Icons/Database_Delete.png" />
+            </Button>
+            <Button Style="{DynamicResource MenuButton}" Click="RefreshTree" ToolTip="Refresh">
+                <Image Source="../Resources/Icons/Refresh.png" />
+            </Button>
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="5, 5, 0, 5" />
+            <Button Style="{DynamicResource MenuButton}" VerticalAlignment="Top" Click="OpenQueryEditor" ToolTip="{x:Static localisation:Resources.Tooltip_WriteSQLStatement}">
+                <Image Source="../Resources/Icons/SQL_Statement.png" />
+            </Button>
+            <Button Style="{DynamicResource MenuButton}" HorizontalAlignment="Left" Click="OpenTableCreator" ToolTip="{x:Static localisation:Resources.Tooltip_CreateTable}" >
+                <Image Source="../Resources/Icons/Table_New.png" />
+            </Button>
         </DockPanel>
         <Grid Grid.Row="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <Grid.ColumnDefinitions>
@@ -134,9 +180,7 @@
                 </TreeView>
             </Border>
             <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" ResizeBehavior="PreviousAndNext" Background="#3F3F46"/>
-            <TabControl x:Name="MainTabControl" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <TabItem Header="General" />
-            </TabControl>
+            <TabControl x:Name="MainTabControl" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
         </Grid>
         <StatusBar Grid.Row="3">
             <StatusBarItem>
