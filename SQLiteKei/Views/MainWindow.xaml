@@ -12,6 +12,9 @@
         WindowState="Maximized"
         Background="#2D2D30">
     <Window.Resources>
+        <Style TargetType="{x:Type TreeViewItem}">
+            <Setter Property="Foreground" Value="#EEE" />
+        </Style>
         <Style x:Key="MenuButton" TargetType="{x:Type Button}">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="1"/>
@@ -98,93 +101,95 @@
                 <ColumnDefinition Width="2" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="0" BorderThickness="1" BorderBrush="#3F3F46">
-                <TreeView x:Name="DBTreeView" 
+            <TreeView x:Name="DBTreeView" 
                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                           SelectedItemChanged="DBTreeView_SelectedItemChanged"
                           ItemsSource="{Binding TreeViewItems}"
-                          MouseRightButtonDown="TreeViewRightMouseButtonDown">
-                    <TreeView.Resources>
-                        <HierarchicalDataTemplate DataType="{x:Type model:DatabaseItem}" ItemsSource="{Binding Items}">
-                            <TextBlock Text="{Binding DisplayName}" ToolTip="{Binding DatabasePath}">
-                                <TextBlock.ContextMenu>
-                                    <ContextMenu>
-                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_CloseDatabase}" Click="CloseDatabase" />
-                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_RenameDatabase}" />
-                                        <Separator/>
-                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_DeleteDatabase}" Click="DeleteDatabase" />
-                                    </ContextMenu>
-                                </TextBlock.ContextMenu>
-                            </TextBlock>
-                        </HierarchicalDataTemplate>
-                        <HierarchicalDataTemplate DataType="{x:Type model:FolderItem}" ItemsSource="{Binding Items}">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding DisplayName}" />
-                                <TextBlock Text=" (" />
-                                <TextBlock Text="{Binding Items.Count}" />
-                                <TextBlock Text=")" />
-                            </StackPanel>
-                        </HierarchicalDataTemplate>
-                        <HierarchicalDataTemplate DataType="{x:Type model:TableFolderItem}" ItemsSource="{Binding Items}">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding DisplayName}" />
-                                    <TextBlock Text=" (" />
-                                    <TextBlock Text="{Binding Items.Count}" />
-                                    <TextBlock Text=")" />
-                                    <StackPanel.ContextMenu>
-                                        <ContextMenu>
-                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_NewTable}" Click="OpenTableCreator"/>
-                                        </ContextMenu>
-                                    </StackPanel.ContextMenu>
-                                </StackPanel>
-                            </HierarchicalDataTemplate>
-                        <HierarchicalDataTemplate DataType="{x:Type model:TableItem}">
-                           <TextBlock Text="{Binding Path=DisplayName}" >
-                               <TextBlock.ContextMenu>
-                                    <ContextMenu>
-                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_EmptyTable}" Click="EmptyTable" />
-                                        <Separator />
-                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_DeleteTable}" Click="DeleteTable" />
-                                    </ContextMenu>
-                               </TextBlock.ContextMenu>
-                           </TextBlock>
-                        </HierarchicalDataTemplate>
-                        <DataTemplate DataType="{x:Type model:IndexItem}">
-                            <TextBlock Text="{Binding Path=DisplayName}" />
-                        </DataTemplate>
-                        <DataTemplate DataType="{x:Type model:TriggerItem}">
-                            <TextBlock Text="{Binding Path=DisplayName}">
-                                <TextBlock.ContextMenu>
-                                    <ContextMenu>
-                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_DeleteTrigger}"></MenuItem>
-                                    </ContextMenu>
-                                </TextBlock.ContextMenu>
-                            </TextBlock>
-                        </DataTemplate>
-                        <DataTemplate DataType="{x:Type model:ViewItem}">
-                            <TextBlock Text="{Binding Path=DisplayName}">
-                                <TextBlock.ContextMenu>
-                                    <ContextMenu>
-                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_DeleteView}"></MenuItem>
-                                    </ContextMenu>
-                                </TextBlock.ContextMenu>
-                            </TextBlock>
-                        </DataTemplate>
-                    </TreeView.Resources>
-                    <TreeView.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_OpenDatabase}" Click="OpenDatabase" />
-                            <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_NewDatabase}" Click="CreateNewDatabase" />
-                        </ContextMenu>
-                    </TreeView.ContextMenu>
-                </TreeView>
-            </Border>
+                          MouseRightButtonDown="TreeViewRightMouseButtonDown"
+                          Background="#232324"
+                          BorderThickness="1"
+                          BorderBrush="#3F3F46"
+                          Margin="5 0 0 0">
+                <TreeView.Resources>
+                    <HierarchicalDataTemplate DataType="{x:Type model:DatabaseItem}" ItemsSource="{Binding Items}">
+                        <TextBlock Text="{Binding DisplayName}" ToolTip="{Binding DatabasePath}">
+                            <TextBlock.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_CloseDatabase}" Click="CloseDatabase" />
+                                    <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_RenameDatabase}" />
+                                    <Separator/>
+                                    <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_DeleteDatabase}" Click="DeleteDatabase" />
+                                </ContextMenu>
+                            </TextBlock.ContextMenu>
+                        </TextBlock>
+                    </HierarchicalDataTemplate>
+                    <HierarchicalDataTemplate DataType="{x:Type model:FolderItem}" ItemsSource="{Binding Items}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding DisplayName}" />
+                            <TextBlock Text=" (" />
+                            <TextBlock Text="{Binding Items.Count}" />
+                            <TextBlock Text=")" />
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                    <HierarchicalDataTemplate DataType="{x:Type model:TableFolderItem}" ItemsSource="{Binding Items}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding DisplayName}" />
+                            <TextBlock Text=" (" />
+                            <TextBlock Text="{Binding Items.Count}" />
+                            <TextBlock Text=")" />
+                            <StackPanel.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_NewTable}" Click="OpenTableCreator"/>
+                                </ContextMenu>
+                            </StackPanel.ContextMenu>
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                    <HierarchicalDataTemplate DataType="{x:Type model:TableItem}">
+                        <TextBlock Text="{Binding Path=DisplayName}" >
+                            <TextBlock.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_EmptyTable}" Click="EmptyTable" />
+                                    <Separator />
+                                    <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_DeleteTable}" Click="DeleteTable" />
+                                </ContextMenu>
+                            </TextBlock.ContextMenu>
+                        </TextBlock>
+                    </HierarchicalDataTemplate>
+                    <DataTemplate DataType="{x:Type model:IndexItem}">
+                        <TextBlock Text="{Binding Path=DisplayName}" />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type model:TriggerItem}">
+                        <TextBlock Text="{Binding Path=DisplayName}">
+                            <TextBlock.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_DeleteTrigger}"></MenuItem>
+                                </ContextMenu>
+                            </TextBlock.ContextMenu>
+                        </TextBlock>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type model:ViewItem}">
+                        <TextBlock Text="{Binding Path=DisplayName}">
+                            <TextBlock.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_DeleteView}"></MenuItem>
+                                </ContextMenu>
+                            </TextBlock.ContextMenu>
+                        </TextBlock>
+                    </DataTemplate>
+                </TreeView.Resources>
+                <TreeView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_OpenDatabase}" Click="OpenDatabase" />
+                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_NewDatabase}" Click="CreateNewDatabase" />
+                    </ContextMenu>
+                </TreeView.ContextMenu>
+            </TreeView>
             <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" ResizeBehavior="PreviousAndNext" Background="#3F3F46"/>
             <TabControl x:Name="MainTabControl" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
         </Grid>
-        <StatusBar Grid.Row="3">
+        <StatusBar Grid.Row="3" Background="#2D2D30">
             <StatusBarItem>
-                <TextBlock Text="{Binding StatusBarInfo}" FontWeight="DemiBold"></TextBlock>
+                <TextBlock Text="{Binding StatusBarInfo}" FontWeight="DemiBold" Foreground="#EEE"></TextBlock>
             </StatusBarItem>
         </StatusBar>
     </Grid>
