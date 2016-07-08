@@ -2,6 +2,7 @@
 
 using SQLiteKei.Helpers;
 
+using System;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -25,6 +26,21 @@ namespace SQLiteKei
             e.Handled = true;
 
             Current.Shutdown();
+        }
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            log.Info("============= Application Startup =============");
+            log.Info("Running on " + Environment.OSVersion);
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            base.OnExit(e);
+
+            log.Info("============= Application Shutdown =============");
         }
     }
 }
