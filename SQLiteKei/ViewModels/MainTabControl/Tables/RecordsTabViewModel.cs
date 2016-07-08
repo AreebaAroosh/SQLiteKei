@@ -1,5 +1,7 @@
-﻿using SQLiteKei.ViewModels.Base;
+﻿using SQLiteKei.Extensions;
+using SQLiteKei.ViewModels.Base;
 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -59,7 +61,7 @@ namespace SQLiteKei.ViewModels.MainTabControl.Tables
             var row = rowView.Row;
 
             return row.ItemArray.Select(entry => entry.ToString())
-                .Any(value => value.Contains(searchString));
+                .Any(value => value.Contains(searchString, StringComparison.OrdinalIgnoreCase));
         }
     }
 }
