@@ -16,8 +16,8 @@
 
         </GroupBox>
         <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="{x:Static localisation:Resources.ButtonText_Use}" Margin="5 0"/>
-            <Button Content="{x:Static localisation:Resources.ButtonText_Cancel}" Margin="5 0" IsCancel="True"/>
+            <Button Style="{StaticResource ButtonDark}" Content="{x:Static localisation:Resources.ButtonText_Use}" Margin="5 0"/>
+            <Button Style="{StaticResource ButtonDark}" Content="{x:Static localisation:Resources.ButtonText_Cancel}" Margin="5 0" IsCancel="True"/>
         </StackPanel>
     </DockPanel>
 </Window>

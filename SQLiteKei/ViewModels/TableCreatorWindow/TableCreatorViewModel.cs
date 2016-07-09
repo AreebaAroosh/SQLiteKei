@@ -1,8 +1,5 @@
-﻿using log4net;
-
-using SQLiteKei.DataAccess.Exceptions;
+﻿using SQLiteKei.DataAccess.Exceptions;
 using SQLiteKei.DataAccess.QueryBuilders;
-using SQLiteKei.Helpers;
 using SQLiteKei.ViewModels.Base;
 using SQLiteKei.ViewModels.Common;
 

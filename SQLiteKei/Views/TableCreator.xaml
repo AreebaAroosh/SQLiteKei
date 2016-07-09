@@ -35,7 +35,7 @@
                         <ItemsControl ItemsSource="{Binding ColumnDefinitions}">
                             <ItemsControl.Resources>
                                 <DataTemplate DataType="{x:Type model:ColumnDefinitionItem}">
-                                    <DockPanel>
+                                    <DockPanel Margin="0 2">
                                         <TextBox Text="{Binding ColumnName, UpdateSourceTrigger=PropertyChanged}" Width="175"/>
                                         <ComboBox SelectedItem="{Binding DataType}" ItemsSource="{Binding DataTypes}" Width="85" VerticalContentAlignment="Center"/>
                                         <Label Content="PK"/>
@@ -48,7 +48,7 @@
                                 </DataTemplate>
                             </ItemsControl.Resources>
                         </ItemsControl>
-                        <Button Content="{x:Static localisation:Resources.TableCreator_ButtonText_AddColumn}" Click="AddColumn" />
+                        <Button Style="{StaticResource ButtonLight}" Content="{x:Static localisation:Resources.TableCreator_ButtonText_AddColumn}" Click="AddColumn" />
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
@@ -62,10 +62,10 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Margin="3 2" Content="{x:Static localisation:Resources.ButtonText_Create}" 
+            <Button Style="{StaticResource ButtonDark}" Grid.Column="0" Margin="3 2" Content="{x:Static localisation:Resources.ButtonText_Create}" 
                     Click="Create" IsEnabled="{Binding IsValidTableDefinition}"/>
             <TextBox Grid.Column="1" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding StatusInfo}"></TextBox>
-            <Button Grid.Column="2" Margin="3 2" Content="{x:Static localisation:Resources.ButtonText_Cancel}" IsCancel="True" />
+            <Button Style="{StaticResource ButtonDark}" Grid.Column="2" Margin="3 2" Content="{x:Static localisation:Resources.ButtonText_Cancel}" IsCancel="True" />
         </Grid>
     </Grid>
 </Window>

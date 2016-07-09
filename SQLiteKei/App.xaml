@@ -18,9 +18,8 @@
         <Style TargetType="{x:Type views:SelectQueryWindow}" BasedOn="{StaticResource {x:Type Window}}" />
         <Style TargetType="{x:Type views:TableCreator}" BasedOn="{StaticResource {x:Type Window}}" />
         <Style TargetType="{x:Type views:About}" BasedOn="{StaticResource {x:Type Window}}" />
-        
-        <Style TargetType="Button">
-            <Setter Property="Background" Value="#2D2D30" />
+
+        <Style TargetType="{x:Type Button}">
             <Setter Property="Foreground" Value="#EEE" />
             <Setter Property="Template">
                 <Setter.Value>
@@ -30,7 +29,10 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#404045"></Setter>
+                                <Setter Property="Background" Value="#404045" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="#555" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -38,7 +40,132 @@
             </Setter>
         </Style>
 
+        <!-- Combobox -->
+        <Style x:Key="ComboBoxToggleButton" TargetType="ToggleButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="18" />
+                            </Grid.ColumnDefinitions>
+                            <Border x:Name="Border"
+                                    Grid.ColumnSpan="2"
+                                    CornerRadius="0"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="1" />
+                            <Path x:Name="Arrow" 
+                                  Grid.Column="1"
+                                  Fill="{TemplateBinding Foreground}"
+                                  Stroke="{TemplateBinding Foreground}"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Data="M 0 0 L 4 4 L 8 0 Z"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type ComboBox}">
+            <Setter Property="Background" Value="#2D2D30" />
+            <Setter Property="Foreground" Value="#EEE" />
+            <Setter Property="BorderBrush" Value="#3F3F46" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <ToggleButton
+                                Name="ToggleButton"
+                                Style="{StaticResource ComboBoxToggleButton}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                Background="{TemplateBinding Background}"
+                                Foreground="#54545e"
+                                Grid.Column="2"
+                                Focusable="false"
+                                IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
+                                ClickMode="Press">
+                            </ToggleButton>
+                            <ContentPresenter
+                                IsHitTestVisible="False"
+                                Content="{TemplateBinding SelectionBoxItem}"
+                                ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                Margin="3,1,18,1"
+                                VerticalAlignment="Center" />
+                            <Popup
+                                Name="Popup"
+                                Placement="Bottom"
+                                IsOpen="{TemplateBinding IsDropDownOpen}"
+                                Focusable="False"
+                                PopupAnimation="Slide">
+                                <Grid
+                                  SnapsToDevicePixels="True"               
+                                  MinWidth="{TemplateBinding ActualWidth}"
+                                  MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <Border
+                                        Background="#232324"
+                                        BorderThickness="1"
+                                        BorderBrush="#3F3F46"/>
+                                    <ScrollViewer Margin="4 6" SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#3F3F46" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type ComboBoxItem}">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBoxItem">
+                        <Border Name="Border"
+                                Margin="0 1" Padding="5 0"
+                                CornerRadius="0" Background="Transparent" BorderBrush="Transparent" >
+                            <TextBlock>
+                                <ContentPresenter />
+                            </TextBlock>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsHighlighted" Value="true">
+                                <Setter TargetName="Border" Property="Background" Value="#2D2D30"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!-- End of ComboBox styles -->
+
+        <Style TargetType="{x:Type TabControl}">
+            <Setter Property="Background" Value="#232324" />
+        </Style>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="#EEE" />
+        </Style>
+
         <!-- Individual custom styles -->
+        <!-- Buttons-->
+        <Style x:Key="ButtonLight" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Background" Value="#2D2D30" />
+        </Style>
+        <Style x:Key="ButtonDark" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Background" Value="#232324" />
+        </Style>
+        <!-- End of Buttons -->
+        
         <Style x:Key="SelectableLabelTextBox" TargetType="TextBox">
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="Foreground" Value="#EEE" />
@@ -49,6 +176,7 @@
         </Style>
         <Style x:Key="SelectableStatusBar" TargetType="TextBox">
             <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="#EEE" />
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="IsReadOnly" Value="True" />
         </Style>

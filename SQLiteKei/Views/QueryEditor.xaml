@@ -35,9 +35,9 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Margin="3 2" Content="{x:Static localisation:Resources.ButtonText_Execute}" Click="Execute" />
+            <Button Style="{StaticResource ButtonDark}" Grid.Column="0" Margin="3 2" Content="{x:Static localisation:Resources.ButtonText_Execute}" Click="Execute" />
             <TextBox Grid.Column="1" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding StatusInfo}"></TextBox>
-            <Button Grid.Column="2" Margin="3 2" Content="{x:Static localisation:Resources.ButtonText_Cancel}" IsCancel="True" />
+            <Button Style="{StaticResource ButtonDark}" Grid.Column="2" Margin="3 2" Content="{x:Static localisation:Resources.ButtonText_Cancel}" IsCancel="True" />
         </Grid>
     </Grid>
 </Window>

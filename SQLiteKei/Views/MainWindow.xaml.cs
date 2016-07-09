@@ -26,6 +26,7 @@ namespace SQLiteKei
         {
             viewModel = new MainWindowViewModel(new TreeSaveHelper());
             DataContext = viewModel;
+
             InitializeComponent();
         }
 

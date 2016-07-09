@@ -23,10 +23,10 @@
                     <ItemsControl ItemsSource="{Binding Selects}">
                         <ItemsControl.Resources>
                             <DataTemplate DataType="{x:Type viewmodel:SelectItem}">
-                                <DockPanel>
+                                <DockPanel Height="25">
                                     <CheckBox IsChecked="{Binding IsSelected}" Margin="5 0" VerticalAlignment="Center" />
                                     <TextBlock Text="{Binding ColumnName}" TextTrimming="CharacterEllipsis" ToolTip="{Binding ColumnName}" 
-                                               Width="125" VerticalAlignment="Center"  />
+                                               Width="125" VerticalAlignment="Center" Foreground="#EEE" />
                                     <Label Content="AS" FontWeight="DemiBold" />
                                     <TextBox Text="{Binding Alias}" HorizontalAlignment="Stretch"></TextBox>
                                 </DockPanel>
@@ -40,10 +40,10 @@
                     <ItemsControl ItemsSource="{Binding Selects}">
                         <ItemsControl.Resources>
                             <DataTemplate DataType="{x:Type viewmodel:SelectItem}">
-                                <DockPanel Visibility="{Binding IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                <DockPanel Visibility="{Binding IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}" Height="25">
                                     <TextBlock Text="{Binding ColumnName}" TextTrimming="CharacterEllipsis" ToolTip="{Binding ColumnName}" 
-                                               Width="125" VerticalAlignment="Center"  />
-                                    <ComboBox Width="75" SelectedValue="{Binding CompareType}" SelectedValuePath="Content">
+                                               Width="125" VerticalAlignment="Center" Foreground="#EEE"  />
+                                    <ComboBox Width="75" Margin="5 0" SelectedValue="{Binding CompareType}" SelectedValuePath="Content">
                                         <ComboBoxItem Content="="  IsSelected="True" />
                                         <ComboBoxItem Content=">" />
                                         <ComboBoxItem Content=">=" />
@@ -76,17 +76,17 @@
                                 </DataTemplate>
                             </ItemsControl.Resources>
                         </ItemsControl>
-                        <Button Content="+" Click="AddOrderStatement"/>
+                        <Button Style="{StaticResource ButtonLight}" Content="+" Click="AddOrderStatement"/>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="SQL">
-                <TextBox IsReadOnly="True" Text="{Binding SelectQuery}" TextWrapping="Wrap"></TextBox>
+                <TextBox Text="{Binding SelectQuery}" TextWrapping="Wrap"></TextBox>
             </TabItem>
         </TabControl>
         <StackPanel Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Button Content="{x:Static localisation:Resources.ButtonText_Cancel}" Margin="3 2" IsCancel="True"></Button>
-            <Button Content="{x:Static localisation:Resources.ButtonText_Execute}" Margin="3 2" Click="Execute"></Button>
+            <Button Style="{StaticResource ButtonDark}" Content="{x:Static localisation:Resources.ButtonText_Cancel}" Margin="3 2" IsCancel="True"></Button>
+            <Button Style="{StaticResource ButtonDark}" Content="{x:Static localisation:Resources.ButtonText_Execute}" Margin="3 2" Click="Execute"></Button>
         </StackPanel>
     </Grid>
 </Window>
