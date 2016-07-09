@@ -185,7 +185,7 @@
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type model:ViewItem}">
                         <DockPanel>
-                            <Image Source="../Resources/Icons/TreeItem_Index.png" Height="16" Width="16" Margin="4 1"/>
+                            <Image Source="../Resources/Icons/TreeItem_View.png" Height="16" Width="16" Margin="4 1"/>
                             <TextBlock Text="{Binding Path=DisplayName}">
                                 <TextBlock.ContextMenu>
                                     <ContextMenu>
