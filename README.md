@@ -6,7 +6,7 @@ SQLite Kei is a database management tool for SQLite databases for .NET
 - Create, open, close, refresh and remove databases
 - Manage multiple databases simultaneously
 - Manage tables, including the option to use useful editors/wizards that assist you in the creation of tables and select queries
-- Option so sarch your queried select results
+- Option to search your queried select results
 - Simple query editor to write plain SQL to your databases
 
 ##Planned Features
@@ -45,5 +45,5 @@ You can report any issue on my Taiga.io project [here](https://tree.taiga.io/pro
 
 ##Trivia
 - About the project name: I was looking for a working title and noticed that all the cool stuff like Manager, Management, Studio, Administrator, etcetera all were in use already. Since I like to use random Japanese words as working titles for my projects I picked the Japanese Kanji 系 (written as 'kei') which means "system".
-- It started out as a side project for me to learn different technologies. Hooray for messy beginner code! This tool is **not** written in MVVM style, though I consider refactoring it into that direction the future. 
+- It started out as a side project for me to learn different technologies. Hooray for messy beginner code! This tool is **not** written in MVVM style, though I consider refactoring it into that direction in the future. 
 - I organize myself using [Taiga.io](https://taiga.io "Taiga.io"), an open source project management tool that supports Scrum and Kanban styled procedures. It's a really neat and powerful tool, you should check them out.
