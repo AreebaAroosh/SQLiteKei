@@ -6,7 +6,6 @@
         xmlns:localisation="clr-namespace:SQLiteKei.Properties"
         mc:Ignorable="d"
         Title="{x:Static localisation:Resources.WindowTitle_Preferences}"
-        Icon="../Resources/Icons/Logo_32x32.png"
         Height="200" Width="250"
         ResizeMode="NoResize">
     <DockPanel Margin="6">

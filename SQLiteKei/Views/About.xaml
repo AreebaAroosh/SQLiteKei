@@ -7,9 +7,7 @@
         mc:Ignorable="d"
         Title="{x:Static localisation:Resources.WindowTitle_About}"
         Height="178.776" Width="265.714"
-        ResizeMode="NoResize" FontSize="10.667" FontFamily="Arial"
-        Icon="../Resources/Icons/Logo_32x32.png"
-        Background="#2D2D30">
+        ResizeMode="NoResize" FontSize="10.667" FontFamily="Arial">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>

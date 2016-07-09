@@ -7,10 +7,8 @@
         xmlns:localisation="clr-namespace:SQLiteKei.Properties"
         mc:Ignorable="d"
         Title="SQLite Kei" 
-        Icon="../Resources/Icons/Logo_32x32.png"
         Width="1024" Height="768" MinWidth="900" MinHeight="700"
-        WindowState="Maximized"
-        Background="#2D2D30">
+        WindowState="Maximized">
     <Window.Resources>
         <Style TargetType="{x:Type TreeViewItem}">
             <Setter Property="Foreground" Value="#EEE" />
@@ -185,7 +183,7 @@
                 </TreeView.ContextMenu>
             </TreeView>
             <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" ResizeBehavior="PreviousAndNext" Background="#3F3F46"/>
-            <TabControl x:Name="MainTabControl" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            <TabControl x:Name="MainTabControl" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#232324" />
         </Grid>
         <StatusBar Grid.Row="3" Background="#2D2D30">
             <StatusBarItem>

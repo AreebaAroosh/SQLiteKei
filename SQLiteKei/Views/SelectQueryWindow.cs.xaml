@@ -7,7 +7,6 @@
         xmlns:localisation="clr-namespace:SQLiteKei.Properties"
         mc:Ignorable="d"
         Title="{x:Static localisation:Resources.WindowTitle_SelectQueryCreator}"
-        Icon="../Resources/Icons/Logo_32x32.png"
         Height="350" Width="550"
         MinHeight="300" MinWidth="300">
     <Window.Resources>

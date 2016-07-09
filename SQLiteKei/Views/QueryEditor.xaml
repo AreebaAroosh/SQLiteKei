@@ -7,7 +7,6 @@
         xmlns:cmodel="clr-namespace:SQLiteKei.ViewModels.Common"
         mc:Ignorable="d"
         Title="{x:Static localisation:Resources.WindowTitle_QueryEditor}"
-        Icon="../Resources/Icons/Logo_32x32.png"
         Height="500" Width="400" MinHeight="500" MinWidth="400">
     <Grid>
         <Grid.RowDefinitions>

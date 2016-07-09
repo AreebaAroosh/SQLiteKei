@@ -7,7 +7,6 @@
         xmlns:cmodel="clr-namespace:SQLiteKei.ViewModels.Common"
         xmlns:localisation="clr-namespace:SQLiteKei.Properties"
         mc:Ignorable="d"
-        Icon="../Resources/Icons/Logo_32x32.png"
         Title="{x:Static localisation:Resources.WindowTitle_TableCreator}"
         MinHeight="400" MinWidth="500"
         Height="400" Width="600">
