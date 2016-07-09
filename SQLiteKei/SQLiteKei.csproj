@@ -242,6 +242,18 @@
   <ItemGroup>
     <Resource Include="Resources\Icons\Table_New.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Placeholder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\TreeItem_Folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\TreeItem_Database.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\TreeItem_Table.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(SolutionDir)packages\System.Data.SQLite.Core.1.0.101.0\build\net451\x86\SQLite.Interop.dll" "$(OutputDir)" /y /f</PostBuildEvent>

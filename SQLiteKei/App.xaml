@@ -151,6 +151,7 @@
 
         <Style TargetType="{x:Type TabControl}">
             <Setter Property="Background" Value="#232324" />
+            <Setter Property="BorderBrush" Value="#3F3F46" />
         </Style>
         <Style TargetType="{x:Type Label}">
             <Setter Property="Foreground" Value="#EEE" />

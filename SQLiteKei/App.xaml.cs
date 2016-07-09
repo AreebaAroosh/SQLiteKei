@@ -32,7 +32,7 @@ namespace SQLiteKei
         {
             base.OnStartup(e);
 
-            log.Info("============= Application Startup =============");
+            log.Info("============= Application Startup ==============");
             log.Info("Running on " + Environment.OSVersion);
         }
 

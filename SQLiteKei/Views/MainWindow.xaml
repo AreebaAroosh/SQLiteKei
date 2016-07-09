@@ -110,48 +110,60 @@
                           Margin="5 0 0 0">
                 <TreeView.Resources>
                     <HierarchicalDataTemplate DataType="{x:Type model:DatabaseItem}" ItemsSource="{Binding Items}">
-                        <TextBlock Text="{Binding DisplayName}" ToolTip="{Binding DatabasePath}">
-                            <TextBlock.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_CloseDatabase}" Click="CloseDatabase" />
-                                    <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_RenameDatabase}" />
-                                    <Separator/>
-                                    <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_DeleteDatabase}" Click="DeleteDatabase" />
-                                </ContextMenu>
-                            </TextBlock.ContextMenu>
-                        </TextBlock>
+                        <DockPanel>
+                            <Image Source="../Resources/Icons/TreeItem_Database.png" Height="16" Width="16" Margin="4 1"/>
+                            <TextBlock Text="{Binding DisplayName}" ToolTip="{Binding DatabasePath}">
+                                <TextBlock.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_CloseDatabase}" Click="CloseDatabase" />
+                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_RenameDatabase}" />
+                                        <Separator/>
+                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_DeleteDatabase}" Click="DeleteDatabase" />
+                                    </ContextMenu>
+                                </TextBlock.ContextMenu>
+                            </TextBlock>
+                        </DockPanel>
                     </HierarchicalDataTemplate>
                     <HierarchicalDataTemplate DataType="{x:Type model:FolderItem}" ItemsSource="{Binding Items}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding DisplayName}" />
-                            <TextBlock Text=" (" />
-                            <TextBlock Text="{Binding Items.Count}" />
-                            <TextBlock Text=")" />
-                        </StackPanel>
+                        <DockPanel>
+                            <Image Source="../Resources/Icons/TreeItem_Folder.png" Height="16" Width="16" Margin="4 1"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding DisplayName}" />
+                                <TextBlock Text=" (" />
+                                <TextBlock Text="{Binding Items.Count}" />
+                                <TextBlock Text=")" />
+                            </StackPanel>
+                        </DockPanel>
                     </HierarchicalDataTemplate>
                     <HierarchicalDataTemplate DataType="{x:Type model:TableFolderItem}" ItemsSource="{Binding Items}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding DisplayName}" />
-                            <TextBlock Text=" (" />
-                            <TextBlock Text="{Binding Items.Count}" />
-                            <TextBlock Text=")" />
-                            <StackPanel.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_NewTable}" Click="OpenTableCreator"/>
-                                </ContextMenu>
-                            </StackPanel.ContextMenu>
-                        </StackPanel>
+                        <DockPanel>
+                            <Image Source="../Resources/Icons/TreeItem_Folder.png" Height="16" Width="16" Margin="4 1"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding DisplayName}" />
+                                <TextBlock Text=" (" />
+                                <TextBlock Text="{Binding Items.Count}" />
+                                <TextBlock Text=")" />
+                                <StackPanel.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_NewTable}" Click="OpenTableCreator"/>
+                                    </ContextMenu>
+                                </StackPanel.ContextMenu>
+                            </StackPanel>
+                        </DockPanel>
                     </HierarchicalDataTemplate>
                     <HierarchicalDataTemplate DataType="{x:Type model:TableItem}">
-                        <TextBlock Text="{Binding Path=DisplayName}" >
-                            <TextBlock.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_EmptyTable}" Click="EmptyTable" />
-                                    <Separator />
-                                    <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_DeleteTable}" Click="DeleteTable" />
-                                </ContextMenu>
-                            </TextBlock.ContextMenu>
-                        </TextBlock>
+                        <DockPanel>
+                            <Image Source="../Resources/Icons/TreeItem_Table.png" Height="16" Width="16" Margin="4 1"/>
+                            <TextBlock Text="{Binding Path=DisplayName}" >
+                                <TextBlock.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_EmptyTable}" Click="EmptyTable" />
+                                        <Separator />
+                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_DeleteTable}" Click="DeleteTable" />
+                                    </ContextMenu>
+                                </TextBlock.ContextMenu>
+                            </TextBlock>
+                        </DockPanel>
                     </HierarchicalDataTemplate>
                     <DataTemplate DataType="{x:Type model:IndexItem}">
                         <TextBlock Text="{Binding Path=DisplayName}" />
@@ -183,7 +195,7 @@
                 </TreeView.ContextMenu>
             </TreeView>
             <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" ResizeBehavior="PreviousAndNext" Background="#3F3F46"/>
-            <TabControl x:Name="MainTabControl" Grid.Column="2" BorderBrush="#3F3F46" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <TabControl x:Name="MainTabControl" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         </Grid>
         <StatusBar Grid.Row="3" Background="#2D2D30">
             <StatusBarItem>
