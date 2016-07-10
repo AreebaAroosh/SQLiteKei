@@ -26,7 +26,9 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
         </StackPanel>
-        <TextBox Grid.Row="1" VerticalAlignment="Stretch" Text="{Binding SqlStatement, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" AcceptsReturn="True" Margin="5 0 5 5"></TextBox>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <TextBox VerticalAlignment="Stretch" Text="{Binding SqlStatement, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" AcceptsReturn="True" Margin="5 0 5 5"></TextBox>
+        </ScrollViewer>
         <GridSplitter Grid.Row="2" HorizontalAlignment="Stretch" ResizeDirection="Rows" ResizeBehavior="PreviousAndNext" Background="#3F3F46"/>
         <DataGrid x:Name="QueryGrid" Grid.Row="3" HeadersVisibility="Column"></DataGrid>
         <Grid Grid.Row="4">

@@ -70,7 +70,7 @@
                                     <DockPanel Margin="0 2">
                                         <ComboBox ItemsSource="{Binding Columns, Mode=OneWay}" SelectedItem="{Binding SelectedColumn}" Width="200"/>
                                         <CheckBox VerticalAlignment="Center" Margin="5 0" IsChecked="{Binding Descending}">
-                                            <TextBlock Text="DESC" VerticalAlignment="Center"></TextBlock>
+                                            <TextBlock Text="DESC" Foreground="#EEE" VerticalAlignment="Center" />
                                         </CheckBox>
                                     </DockPanel>
                                 </DataTemplate>
@@ -81,7 +81,9 @@
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="SQL">
-                <TextBox Text="{Binding SelectQuery}" TextWrapping="Wrap"></TextBox>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <TextBox Text="{Binding SelectQuery}" TextWrapping="Wrap" />
+                </ScrollViewer>
             </TabItem>
         </TabControl>
         <StackPanel Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft">
