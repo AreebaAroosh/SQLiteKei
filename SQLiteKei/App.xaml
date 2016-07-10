@@ -231,6 +231,34 @@
             <Setter Property="Background" Value="#232324" />
             <Setter Property="BorderBrush" Value="#3F3F46" />
         </Style>
+
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="Foreground" Value="#EEE" />
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Border Name="Header" BorderThickness="1 1 1 0">
+                            <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="15 3" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Header" Property="Background" Value="#232324" />
+                                <Setter TargetName="Header" Property="BorderBrush" Value="#3F3F46" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Setter TargetName="Header" Property="Background" Value="#2D2D30" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style TargetType="{x:Type Label}">
             <Setter Property="Foreground" Value="#EEE" />
         </Style>

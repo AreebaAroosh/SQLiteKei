@@ -14,7 +14,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="25" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="25" />
+            <RowDefinition Height="30" />
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" Height="25">
             <Label Content="{x:Static localisation:Resources.TableCreator_Label_Database}" />
@@ -62,10 +62,10 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Button Style="{StaticResource ButtonDark}" Grid.Column="0" Margin="3 2" Content="{x:Static localisation:Resources.ButtonText_Create}" 
+            <Button Style="{StaticResource ButtonDark}" Grid.Column="0" Margin="5 3" Padding="5 0" Content="{x:Static localisation:Resources.ButtonText_Create}" 
                     Click="Create" IsEnabled="{Binding IsValidTableDefinition}"/>
             <TextBox Grid.Column="1" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding StatusInfo}"></TextBox>
-            <Button Style="{StaticResource ButtonDark}" Grid.Column="2" Margin="3 2" Content="{x:Static localisation:Resources.ButtonText_Cancel}" IsCancel="True" />
+            <Button Style="{StaticResource ButtonDark}" Grid.Column="2" Margin="5 3" Padding="5 0" Content="{x:Static localisation:Resources.ButtonText_Cancel}" IsCancel="True" />
         </Grid>
     </Grid>
 </Window>

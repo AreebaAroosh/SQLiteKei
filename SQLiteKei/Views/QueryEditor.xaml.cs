@@ -8,6 +8,7 @@ using SQLiteKei.ViewModels.QueryEditorWindow;
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Input;
 
 namespace SQLiteKei.Views
 {
@@ -32,10 +33,24 @@ namespace SQLiteKei.Views
             }
 
             DataContext = viewModel;
+
+            KeyDown += new KeyEventHandler(Window_KeyDown);
+
             InitializeComponent();
         }
 
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return && (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
+                Execute();
+        }
+
         private void Execute(object sender, RoutedEventArgs e)
+        {
+            Execute();
+        }
+
+        private void Execute()
         {
             viewModel.StatusInfo = string.Empty;
 
@@ -71,7 +86,7 @@ namespace SQLiteKei.Views
                     viewModel.StatusInfo = ex.Message.Replace("SQL logic error or missing database\r\n", "SQL-Error - ");
                 }
             }
-                
+
         }
     }
 }
