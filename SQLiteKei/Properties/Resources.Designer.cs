@@ -467,6 +467,15 @@ namespace SQLiteKei.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to QueryEditor_NoDatabaseSelected.
+        /// </summary>
+        public static string QueryEditor_NoDatabaseSelected {
+            get {
+                return ResourceManager.GetString("QueryEditor_NoDatabaseSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TabContent_GroupBoxHeader_About.
         /// </summary>
         public static string TabContent_GroupBoxHeader_About {

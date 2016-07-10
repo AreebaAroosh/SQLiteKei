@@ -1,4 +1,5 @@
 ﻿using SQLiteKei.DataAccess.Database;
+using SQLiteKei.Helpers;
 using SQLiteKei.ViewModels.Common;
 using SQLiteKei.ViewModels.DBTreeView;
 using SQLiteKei.ViewModels.DBTreeView.Base;
@@ -37,6 +38,12 @@ namespace SQLiteKei.Views
         private void Execute(object sender, RoutedEventArgs e)
         {
             viewModel.StatusInfo = string.Empty;
+
+            if (DatabaseComboBox.SelectedItem == null)
+            {
+                viewModel.StatusInfo = LocalisationHelper.GetString("TableCreator_NoDatabaseSelected");
+                return;
+            }
 
             if (!string.IsNullOrEmpty(viewModel.SqlStatement))
             {

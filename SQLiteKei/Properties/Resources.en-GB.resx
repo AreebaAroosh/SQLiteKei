@@ -249,6 +249,9 @@
   <data name="QueryEditor_Label_Database" xml:space="preserve">
     <value>Database</value>
   </data>
+  <data name="QueryEditor_NoDatabaseSelected" xml:space="preserve">
+    <value>No database selected</value>
+  </data>
   <data name="TabContent_GroupBoxHeader_About" xml:space="preserve">
     <value>About</value>
   </data>
