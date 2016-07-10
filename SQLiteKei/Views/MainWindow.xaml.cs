@@ -1,4 +1,6 @@
-﻿using SQLiteKei.DataAccess.Database;
+﻿using log4net;
+
+using SQLiteKei.DataAccess.Database;
 using SQLiteKei.Helpers;
 using SQLiteKei.ViewModels.DBTreeView;
 using SQLiteKei.ViewModels.DBTreeView.Base;
@@ -6,6 +8,7 @@ using SQLiteKei.ViewModels.MainWindow;
 using SQLiteKei.Views;
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,10 +25,13 @@ namespace SQLiteKei
     {
         private readonly MainWindowViewModel viewModel;
 
+        private readonly ILog log = LogHelper.GetLogger();
+
         public MainWindow()
         {
             viewModel = new MainWindowViewModel(new TreeSaveHelper());
             DataContext = viewModel;
+            KeyDown += new System.Windows.Input.KeyEventHandler(Window_KeyDown);
 
             InitializeComponent();
         }
@@ -163,6 +169,30 @@ namespace SQLiteKei
         protected override void OnClosed(EventArgs e)
         {
             viewModel.SaveTree();
+        }
+
+        private void OpenDocumentation(object sender, RoutedEventArgs e)
+        {
+            OpenDocumentation();
+        }
+
+        private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.F1)
+                OpenDocumentation();
+        }
+
+        private void OpenDocumentation()
+        {
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "Resources", "Documentation.pdf");
+            try
+            {
+                Process.Start(path);
+            }
+            catch(Exception ex)
+            {
+                log.Error("Failed to open documentation.", ex);
+            }
         }
 
         #region TreeViewRightClickEvent

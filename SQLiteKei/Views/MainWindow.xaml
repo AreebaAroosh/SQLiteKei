@@ -64,7 +64,7 @@
                     <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Preferences}" Click="OpenPreferences" Background="#2D2D30"/>
                 </MenuItem>
                 <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Help}">
-                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Documentation}" Background="#2D2D30"/>
+                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Documentation}" Background="#2D2D30" Click="OpenDocumentation"/>
                     <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_About}" Click="OpenAbout" Background="#2D2D30"/>
                 </MenuItem>
             </Menu>
