@@ -8,13 +8,13 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="20"></RowDefinition>
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0">
-            <Button DockPanel.Dock="Left" Style="{StaticResource ButtonLight}" x:Name="SelectButton" Content="Select" Width="50" HorizontalAlignment="Left" Click="ExecuteSelect" />
-            <TextBox DockPanel.Dock="Right" Width="100" HorizontalAlignment="Right" VerticalContentAlignment="Center" Text="{Binding SearchString, UpdateSourceTrigger=PropertyChanged}" />
+            <Button DockPanel.Dock="Left" Width="50" Height="25" Margin="3 0 0 0" Style="{StaticResource ButtonLight}" x:Name="SelectButton" Content="Select"  HorizontalAlignment="Left" Click="ExecuteSelect" />
+            <TextBox DockPanel.Dock="Right" Width="100" Height="25" HorizontalAlignment="Right" VerticalContentAlignment="Center" Text="{Binding SearchString, UpdateSourceTrigger=PropertyChanged}" />
             <Label DockPanel.Dock="Right" Content="{x:Static localisation:Resources.TableRecordsTab_Filter}" HorizontalAlignment="Right" />
         </DockPanel>
         <DataGrid x:Name="RecordsDataGrid" Grid.Row="1" HeadersVisibility="Column" ItemsSource="{Binding DataGridCollection}">

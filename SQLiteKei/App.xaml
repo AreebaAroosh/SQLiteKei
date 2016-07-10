@@ -148,6 +148,39 @@
             </Setter>
         </Style>
         <!-- End of ComboBox styles -->
+        
+        <!-- DataGrid styles -->
+        <Style TargetType="{x:Type DataGrid}">
+            <Setter Property="Background" Value="#232324" />
+            <Setter Property="Foreground" Value="#EEE" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="#1C1C1C" />
+            <Setter Property="HorizontalGridLinesBrush" Value="#1C1C1C" />
+            <Setter Property="VerticalGridLinesBrush" Value="#1C1C1C" />
+        </Style>
+
+        <Style TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="Background" Value="#2C2C2C" />
+            <Setter Property="BorderBrush" Value="#1C1C1C" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="FontWeight" Value="DemiBold" />
+            <Setter Property="Padding" Value="5" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#1C1C1C" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="{x:Type DataGridRow}">
+            <Setter Property="Background" Value="#2D2D30" />
+        </Style>
+
+        <Style TargetType="{x:Type DataGridCell}">
+            <Setter Property="Margin" Value="2 0 0 0" />
+        </Style>
+
+        <!--End of DataGrid styles -->
 
         <Style TargetType="{x:Type GroupBox}">
             <Setter Property="Template">
