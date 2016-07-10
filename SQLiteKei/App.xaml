@@ -182,6 +182,7 @@
 
         <!--End of DataGrid styles -->
         <Style TargetType="{x:Type GroupBox}">
+            <Setter Property="Background" Value="#2D2D30" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="GroupBox">
@@ -193,7 +194,7 @@
                             <Border Grid.Row="0"
                                     BorderThickness="1"
                                     BorderBrush="#3F3F46"
-                                    Background="#2D2D30">
+                                    Background="{TemplateBinding Background}">
                                 <Label Foreground="#EEE">
                                     <ContentPresenter Margin="1" ContentSource="Header" RecognizesAccessKey="True" />
                                 </Label>
@@ -454,7 +455,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
         <!-- End of Scrollbar Styles -->
 
         <Style TargetType="{x:Type Label}">

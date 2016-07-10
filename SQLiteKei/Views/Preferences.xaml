@@ -9,7 +9,7 @@
         Height="300" Width="250"
         ResizeMode="NoResize">
     <DockPanel Margin="6">
-        <GroupBox  DockPanel.Dock="Top" Header="{x:Static localisation:Resources.Preferences_GroupBoxHeader_Languages}">
+        <GroupBox  DockPanel.Dock="Top" Header="{x:Static localisation:Resources.Preferences_GroupBoxHeader_Languages}" Background="#232324">
             <StackPanel>
                 <DockPanel>
                     <Label Content="{x:Static localisation:Resources.Preferences_Language}" />
@@ -18,12 +18,12 @@
                 <TextBox Text="{x:Static localisation:Resources.Preferences_LanguageChangeInfo}" Style="{StaticResource SelectableLabelTextBox}" TextWrapping="Wrap"></TextBox>
             </StackPanel>
         </GroupBox>
-        <GroupBox  DockPanel.Dock="Top" Header="{x:Static localisation:Resources.Preferences_GroupBoxHeader_Themes}">
+        <GroupBox  DockPanel.Dock="Top" Header="{x:Static localisation:Resources.Preferences_GroupBoxHeader_Themes}" Background="#232324">
             <Label Content="Under Construction"></Label>
         </GroupBox>
         <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Style="{StaticResource ButtonDark}" Content="{x:Static localisation:Resources.ButtonText_Use}" Click="ApplySettings" Margin="5 0" Padding="5 2"/>
-            <Button Style="{StaticResource ButtonDark}" Content="{x:Static localisation:Resources.ButtonText_Cancel}" Margin="5 0" Padding="5 2" IsCancel="True"/>
+            <Button Style="{StaticResource ButtonDark}" Content="{x:Static localisation:Resources.ButtonText_Apply}" Click="ApplySettings" Margin="5 0" Padding="5 2" MinWidth="50"/>
+            <Button Style="{StaticResource ButtonDark}" Content="{x:Static localisation:Resources.ButtonText_Cancel}" Margin="5 0" Padding="5 2" IsCancel="True" MinWidth="50"/>
         </StackPanel>
     </DockPanel>
 </Window>

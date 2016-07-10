@@ -120,6 +120,9 @@
   <data name="About_CheckOutOnGithub" xml:space="preserve">
     <value>About_CheckOutOnGithub</value>
   </data>
+  <data name="ButtonText_Apply" xml:space="preserve">
+    <value>ButtonText_Apply</value>
+  </data>
   <data name="ButtonText_Cancel" xml:space="preserve">
     <value>ButtonText_Cancel</value>
   </data>
@@ -128,9 +131,6 @@
   </data>
   <data name="ButtonText_Execute" xml:space="preserve">
     <value>ButtonText_Execute</value>
-  </data>
-  <data name="ButtonText_Use" xml:space="preserve">
-    <value>ButtonText_Use</value>
   </data>
   <data name="ContextMenuItem_CloseDatabase" xml:space="preserve">
     <value>ContextMenuItem_CloseDatabase</value>

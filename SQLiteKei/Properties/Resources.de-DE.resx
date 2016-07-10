@@ -120,6 +120,9 @@
   <data name="About_CheckOutOnGithub" xml:space="preserve">
     <value>Auf Github</value>
   </data>
+  <data name="ButtonText_Apply" xml:space="preserve">
+    <value>Anwenden</value>
+  </data>
   <data name="ButtonText_Cancel" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
@@ -128,9 +131,6 @@
   </data>
   <data name="ButtonText_Execute" xml:space="preserve">
     <value>Ausführen</value>
-  </data>
-  <data name="ButtonText_Use" xml:space="preserve">
-    <value>Anwenden</value>
   </data>
   <data name="ContextMenuItem_CloseDatabase" xml:space="preserve">
     <value>Trennen</value>
@@ -253,7 +253,7 @@
     <value>Sprache</value>
   </data>
   <data name="Preferences_LanguageChangeInfo" xml:space="preserve">
-    <value>Das Ändern der Sprache tritt nach einem Neustart der Anwendung in Kraft.</value>
+    <value>Die Änderung der Sprache wird erst nach einem Neustart der Anwendung übernommen.</value>
   </data>
   <data name="Preferences_Language_English" xml:space="preserve">
     <value>Englisch</value>

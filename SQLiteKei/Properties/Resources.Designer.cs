@@ -70,6 +70,15 @@ namespace SQLiteKei.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ButtonText_Apply.
+        /// </summary>
+        public static string ButtonText_Apply {
+            get {
+                return ResourceManager.GetString("ButtonText_Apply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ButtonText_Cancel.
         /// </summary>
         public static string ButtonText_Cancel {
@@ -93,15 +102,6 @@ namespace SQLiteKei.Properties {
         public static string ButtonText_Execute {
             get {
                 return ResourceManager.GetString("ButtonText_Execute", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ButtonText_Use.
-        /// </summary>
-        public static string ButtonText_Use {
-            get {
-                return ResourceManager.GetString("ButtonText_Use", resourceCulture);
             }
         }
         
