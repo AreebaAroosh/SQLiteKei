@@ -82,10 +82,15 @@ namespace SQLiteKei.DataAccess.Database
 
             foreach (var row in dataRows)
             {
-                indexes.Add(new Index
+                var indexName = row.ItemArray[5].ToString();
+
+                if(!indexName.Contains("_PK_"))
                 {
-                    Name = row.ItemArray[5].ToString()
-                });
+                    indexes.Add(new Index
+                    {
+                        Name = row.ItemArray[5].ToString()
+                    });
+                }
             }
 
             return indexes;
