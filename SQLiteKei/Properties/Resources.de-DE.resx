@@ -168,6 +168,9 @@
   <data name="DatabaseGeneralTab_DatabasePath" xml:space="preserve">
     <value>Datenbankpfad:</value>
   </data>
+  <data name="DatabaseGeneralTab_FileSize" xml:space="preserve">
+    <value>Dateigröße:</value>
+  </data>
   <data name="DatabaseGeneralTab_NoTablesFound" xml:space="preserve">
     <value>Es wurden keine Tabellen gefunden</value>
   </data>

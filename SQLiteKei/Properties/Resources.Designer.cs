@@ -214,6 +214,15 @@ namespace SQLiteKei.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DatabaseGeneralTab_FileSize.
+        /// </summary>
+        public static string DatabaseGeneralTab_FileSize {
+            get {
+                return ResourceManager.GetString("DatabaseGeneralTab_FileSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DatabaseGeneralTab_NoTablesFound.
         /// </summary>
         public static string DatabaseGeneralTab_NoTablesFound {

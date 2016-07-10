@@ -168,6 +168,9 @@
   <data name="DatabaseGeneralTab_DatabasePath" xml:space="preserve">
     <value>DatabaseGeneralTab_DatabasePath</value>
   </data>
+  <data name="DatabaseGeneralTab_FileSize" xml:space="preserve">
+    <value>DatabaseGeneralTab_FileSize</value>
+  </data>
   <data name="DatabaseGeneralTab_NoTablesFound" xml:space="preserve">
     <value>DatabaseGeneralTab_NoTablesFound</value>
   </data>

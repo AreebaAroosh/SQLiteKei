@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -24,6 +25,8 @@ namespace SQLiteKei.ViewModels.MainTabControl.Databases
         public string Name { get; set; }
 
         public string FilePath { get; set; }
+
+        public string FileSize { get; set; }
 
         public int TableCount { get; set; }
 
@@ -56,7 +59,26 @@ namespace SQLiteKei.ViewModels.MainTabControl.Databases
                         RowCount = tableRowCount
                     });
                 }
+
+                var fileInfo = new FileInfo(FilePath);
+                FileSize = GetSize(fileInfo.Length);
             }
+        }
+
+        static readonly string[] SizeSuffixes = { "Bytes", "KB", "MB", "GB", "TB" };
+
+        private string GetSize(long value)
+        {
+            int suffix = 0;
+            decimal decimalValue = (decimal)value;
+
+            while(Math.Round(decimalValue / 1024) >= 1)
+            {
+                decimalValue /= 1024;
+                suffix++;
+            }
+
+            return string.Format("{0} {1}", Math.Round(decimalValue, 2), SizeSuffixes[suffix]);
         }
     }
 }

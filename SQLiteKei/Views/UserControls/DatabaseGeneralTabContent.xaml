@@ -14,26 +14,24 @@
             <RowDefinition MinHeight="50"></RowDefinition>
         </Grid.RowDefinitions>
         <GroupBox Grid.Row="0" Header="{x:Static localisation:Resources.TabContent_GroupBoxHeader_About}" Margin="5" Width="Auto" Height="Auto">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                </Grid.RowDefinitions>
-                <TextBox Grid.Row="0" Grid.Column="0" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="{x:Static localisation:Resources.DatabaseGeneralTab_DatabaseName}" />
-                <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding DatabaseInfo.Name}" />
-                <TextBox Grid.Row="1" Grid.Column="0" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="{x:Static localisation:Resources.DatabaseGeneralTab_DatabasePath}" />
-                <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding DatabaseInfo.FilePath}"/>
-                <TextBox Grid.Row="0" Grid.Column="2" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="{x:Static localisation:Resources.DatabaseGeneralTab_Tables}" />
-                <TextBox Grid.Row="0" Grid.Column="3" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding DatabaseInfo.TableCount}" />
-                <TextBox Grid.Row="1" Grid.Column="2" Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="{x:Static localisation:Resources.DatabaseGeneralTab_Records}" />
-                <TextBox Grid.Row="1" Grid.Column="3" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding DatabaseInfo.RowCount}"/>
-            </Grid>
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="{x:Static localisation:Resources.DatabaseGeneralTab_DatabaseName}" />
+                    <TextBox Style="{StaticResource SelectableLabelTextBox}" Text="{Binding DatabaseInfo.Name}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="{x:Static localisation:Resources.DatabaseGeneralTab_DatabasePath}" />
+                    <TextBox Style="{StaticResource SelectableLabelTextBox}" Text="{Binding DatabaseInfo.FilePath}"/>
+                    <TextBox Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="{x:Static localisation:Resources.DatabaseGeneralTab_FileSize}" />
+                    <TextBox Style="{StaticResource SelectableLabelTextBox}" Text="{Binding DatabaseInfo.FileSize}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="{x:Static localisation:Resources.DatabaseGeneralTab_Tables}" />
+                    <TextBox Style="{StaticResource SelectableLabelTextBox}" Text="{Binding DatabaseInfo.TableCount}" />
+                    <TextBox Style="{StaticResource SelectableLabelTextBox}" FontWeight="Bold" Text="{x:Static localisation:Resources.DatabaseGeneralTab_Records}" />
+                    <TextBox Style="{StaticResource SelectableLabelTextBox}" Text="{Binding DatabaseInfo.RowCount}"/>
+                </StackPanel>
+            </StackPanel>
         </GroupBox>
         <GroupBox Grid.Row="1" Header="{x:Static localisation:Resources.TabContent_GroupBoxHeader_Tables}" Margin="5, 0, 5, 5" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="Auto">
             <Grid>
