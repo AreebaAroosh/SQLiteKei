@@ -3,6 +3,7 @@
 using SQLiteKei.Helpers;
 
 using System;
+using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -30,6 +31,7 @@ namespace SQLiteKei
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(SQLiteKei.Properties.Settings.Default.UILanguage);
             base.OnStartup(e);
 
             log.Info("============= Application Startup ==============");

@@ -249,6 +249,18 @@
   <data name="Preferences_GroupBoxHeader_Themes" xml:space="preserve">
     <value>Application Theme</value>
   </data>
+  <data name="Preferences_Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Preferences_LanguageChangeInfo" xml:space="preserve">
+    <value>Changing the language will come in effect after an application restart.</value>
+  </data>
+  <data name="Preferences_Language_English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Preferences_Language_German" xml:space="preserve">
+    <value>German</value>
+  </data>
   <data name="QueryEditor_Label_Database" xml:space="preserve">
     <value>Database</value>
   </data>

@@ -253,6 +253,18 @@
   <data name="Preferences_GroupBoxHeader_Themes" xml:space="preserve">
     <value>Preferences_GroupBoxHeader_Themes</value>
   </data>
+  <data name="Preferences_Language" xml:space="preserve">
+    <value>Preferences_Language</value>
+  </data>
+  <data name="Preferences_LanguageChangeInfo" xml:space="preserve">
+    <value>Preferences_LanguageChangeInfo</value>
+  </data>
+  <data name="Preferences_Language_German" xml:space="preserve">
+    <value>Preferences_Language_German</value>
+  </data>
+  <data name="Preferneces_Language_English" xml:space="preserve">
+    <value />
+  </data>
   <data name="QueryEditor_Label_Database" xml:space="preserve">
     <value>QueryEditor_Label_Database</value>
   </data>

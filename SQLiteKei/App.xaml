@@ -93,7 +93,7 @@
                                 Content="{TemplateBinding SelectionBoxItem}"
                                 ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
                                 ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                Margin="3,1,18,1"
+                                Margin="5,1,18,1"
                                 VerticalAlignment="Center" />
                             <Popup
                                 Name="Popup"

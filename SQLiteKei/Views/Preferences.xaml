@@ -6,18 +6,24 @@
         xmlns:localisation="clr-namespace:SQLiteKei.Properties"
         mc:Ignorable="d"
         Title="{x:Static localisation:Resources.WindowTitle_Preferences}"
-        Height="200" Width="250"
+        Height="300" Width="250"
         ResizeMode="NoResize">
     <DockPanel Margin="6">
         <GroupBox  DockPanel.Dock="Top" Header="{x:Static localisation:Resources.Preferences_GroupBoxHeader_Languages}">
-            
+            <StackPanel>
+                <DockPanel>
+                    <Label Content="{x:Static localisation:Resources.Preferences_Language}" />
+                    <ComboBox Width="80" ItemsSource="{Binding AvailableLanguages}" SelectedItem="{Binding SelectedLanguage}"/>
+                </DockPanel>
+                <TextBox Text="{x:Static localisation:Resources.Preferences_LanguageChangeInfo}" Style="{StaticResource SelectableLabelTextBox}" TextWrapping="Wrap"></TextBox>
+            </StackPanel>
         </GroupBox>
         <GroupBox  DockPanel.Dock="Top" Header="{x:Static localisation:Resources.Preferences_GroupBoxHeader_Themes}">
-
+            <Label Content="Under Construction"></Label>
         </GroupBox>
         <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Style="{StaticResource ButtonDark}" Content="{x:Static localisation:Resources.ButtonText_Use}" Margin="5 0"/>
-            <Button Style="{StaticResource ButtonDark}" Content="{x:Static localisation:Resources.ButtonText_Cancel}" Margin="5 0" IsCancel="True"/>
+            <Button Style="{StaticResource ButtonDark}" Content="{x:Static localisation:Resources.ButtonText_Use}" Click="ApplySettings" Margin="5 0" Padding="5 2"/>
+            <Button Style="{StaticResource ButtonDark}" Content="{x:Static localisation:Resources.ButtonText_Cancel}" Margin="5 0" Padding="5 2" IsCancel="True"/>
         </StackPanel>
     </DockPanel>
 </Window>

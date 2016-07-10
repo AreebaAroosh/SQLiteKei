@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SQLiteKei.ViewModels.PreferencesWindow;
+
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SQLiteKei.Views
 {
@@ -19,9 +9,19 @@ namespace SQLiteKei.Views
     /// </summary>
     public partial class Preferences : Window
     {
+        private PreferencesViewModel viewModel;
+
         public Preferences()
         {
+            viewModel = new PreferencesViewModel();
+            DataContext = viewModel;
             InitializeComponent();
+        }
+
+        private void ApplySettings(object sender, RoutedEventArgs e)
+        {
+            viewModel.ApplySettings();
+            Close();
         }
     }
 }

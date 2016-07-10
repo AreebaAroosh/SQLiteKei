@@ -467,6 +467,42 @@ namespace SQLiteKei.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Preferences_Language.
+        /// </summary>
+        public static string Preferences_Language {
+            get {
+                return ResourceManager.GetString("Preferences_Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preferences_Language_German.
+        /// </summary>
+        public static string Preferences_Language_German {
+            get {
+                return ResourceManager.GetString("Preferences_Language_German", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preferences_LanguageChangeInfo.
+        /// </summary>
+        public static string Preferences_LanguageChangeInfo {
+            get {
+                return ResourceManager.GetString("Preferences_LanguageChangeInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Preferneces_Language_English {
+            get {
+                return ResourceManager.GetString("Preferneces_Language_English", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to QueryEditor_Label_Database.
         /// </summary>
         public static string QueryEditor_Label_Database {

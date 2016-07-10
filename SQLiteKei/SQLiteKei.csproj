@@ -132,6 +132,7 @@
     <Compile Include="ViewModels\Common\DatabaseSelectItem.cs" />
     <Compile Include="ViewModels\MainTabControl\Tables\RecordsTabViewModel.cs" />
     <Compile Include="ViewModels\MainWindow\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\PreferencesWindow\PreferencesViewModel.cs" />
     <Compile Include="ViewModels\QueryEditorWindow\QueryEditorViewModel.cs" />
     <Compile Include="ViewModels\SelectQueryWindow\OrderItem.cs" />
     <Compile Include="ViewModels\TableCreatorWindow\ColumnDefinitionItem.cs" />

@@ -12,11 +12,11 @@
         Height="400" Width="600">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25" />
+            <RowDefinition Height="30" />
             <RowDefinition Height="*" />
             <RowDefinition Height="30" />
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Height="25">
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Label Content="{x:Static localisation:Resources.TableCreator_Label_Database}" />
             <ComboBox x:Name="DatabaseComboBox" Width="150" Height="20" ItemsSource="{Binding Databases}">
                 <ComboBox.ItemTemplate>
@@ -26,7 +26,7 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
             <Label Content="{x:Static localisation:Resources.TableCreator_Label_TableName}" />
-            <TextBox Text="{Binding TableName, UpdateSourceTrigger=PropertyChanged}" Width="125" VerticalContentAlignment="Center"/>
+            <TextBox Height="25" Text="{Binding TableName, UpdateSourceTrigger=PropertyChanged}" Width="125" VerticalContentAlignment="Center"/>
         </StackPanel>
         <TabControl Grid.Row="1">
             <TabItem Header="{x:Static localisation:Resources.TableCreator_TabHeader_Columns}">

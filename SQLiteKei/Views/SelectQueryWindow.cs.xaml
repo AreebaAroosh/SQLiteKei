@@ -87,8 +87,8 @@
             </TabItem>
         </TabControl>
         <StackPanel Grid.Row="1" Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Button Style="{StaticResource ButtonDark}" Content="{x:Static localisation:Resources.ButtonText_Cancel}" Margin="3 2" IsCancel="True"></Button>
-            <Button Style="{StaticResource ButtonDark}" Content="{x:Static localisation:Resources.ButtonText_Execute}" Margin="3 2" Click="Execute"></Button>
+            <Button Style="{StaticResource ButtonDark}" Content="{x:Static localisation:Resources.ButtonText_Cancel}" Margin="3 2" IsCancel="True" />
+            <Button Style="{StaticResource ButtonDark}" Content="{x:Static localisation:Resources.ButtonText_Execute}" Margin="3 2" Click="Execute" />
         </StackPanel>
     </Grid>
 </Window>

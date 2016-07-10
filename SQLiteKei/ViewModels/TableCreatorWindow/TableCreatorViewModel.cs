@@ -102,11 +102,6 @@ namespace SQLiteKei.ViewModels.TableCreatorWindow
                 SqlStatement = builder.Build();
                 IsValidTableDefinition = true;
             }
-            catch (ColumnDefinitionException ex)
-            {
-                IsValidTableDefinition = false;
-                StatusInfo = ex.Message;
-            }
             catch (Exception ex)
             {
                 StatusInfo = ex.Message;
