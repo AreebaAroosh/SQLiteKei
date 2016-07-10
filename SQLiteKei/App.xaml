@@ -149,6 +149,34 @@
         </Style>
         <!-- End of ComboBox styles -->
 
+        <Style TargetType="{x:Type GroupBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GroupBox">
+                        <Grid Margin="4">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0"
+                                    BorderThickness="1"
+                                    BorderBrush="#3F3F46"
+                                    Background="#2D2D30">
+                                <Label Foreground="#EEE">
+                                    <ContentPresenter Margin="1" ContentSource="Header" RecognizesAccessKey="True" />
+                                </Label>
+                            </Border>
+                            <Border Grid.Row="1" 
+                                    BorderThickness="1 0 1 1"
+                                    BorderBrush="#3F3F46">
+                                <ContentPresenter Margin="4"/>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style TargetType="{x:Type TabControl}">
             <Setter Property="Background" Value="#232324" />
             <Setter Property="BorderBrush" Value="#3F3F46" />
