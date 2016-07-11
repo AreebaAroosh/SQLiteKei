@@ -31,8 +31,6 @@ namespace SQLiteKei.Helpers
                 return GenerateDatabaseTabs((DatabaseItem)treeItem);
             if (treeItem.GetType() == typeof(TableItem))
                 return GenerateTableTabs((TableItem)treeItem);
-            if (treeItem.GetType() == typeof(IndexItem))
-                return GenerateIndexTabs((IndexItem)treeItem);
             return GenerateDefaultTabs();
         }
 
