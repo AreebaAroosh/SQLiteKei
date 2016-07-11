@@ -1,4 +1,6 @@
-﻿using SQLiteKei.Helpers;
+﻿using log4net;
+
+using SQLiteKei.Helpers;
 
 using System.Collections.Generic;
 
@@ -6,6 +8,8 @@ namespace SQLiteKei.ViewModels.PreferencesWindow
 {
     public class PreferencesViewModel
     {
+        private readonly ILog log = LogHelper.GetLogger();
+
         public List<string> AvailableLanguages { get; set; }
 
         private string selectedLanguage;
@@ -51,18 +55,21 @@ namespace SQLiteKei.ViewModels.PreferencesWindow
 
         private void ApplyLanguage()
         {
-            if(selectedLanguage.Equals(LocalisationHelper.GetString("Preferences_Language_German")))
+            if (selectedLanguage.Equals(GetLanguageFromSettings())) return;
+
+            if (selectedLanguage.Equals(LocalisationHelper.GetString("Preferences_Language_German")))
             {
                 Properties.Settings.Default.UILanguage = "de-DE";
-                Properties.Settings.Default.Save();
-                Properties.Settings.Default.Reload();
             }
             else
             {
                 Properties.Settings.Default.UILanguage = "en-GB";
-                Properties.Settings.Default.Save();
-                Properties.Settings.Default.Reload();
             }
+
+            Properties.Settings.Default.Save();
+            Properties.Settings.Default.Reload();
+
+            log.Info("Applied application language " + Properties.Settings.Default.UILanguage);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using SQLiteKei.DataAccess.Database;
+﻿using System.Data.SqlClient;
+using log4net;
+using SQLiteKei.DataAccess.Database;
 using SQLiteKei.Helpers;
 using SQLiteKei.Helpers.Interfaces;
 using SQLiteKei.ViewModels.Base;
@@ -17,6 +19,8 @@ namespace SQLiteKei.ViewModels.MainWindow
     public class MainWindowViewModel : NotifyingModel
     {
         private readonly ITreeSaveHelper treeSaveHelper;
+
+        private readonly ILog log = LogHelper.GetLogger();
 
         private ObservableCollection<TreeItem> treeViewItems;
         public ObservableCollection<TreeItem> TreeViewItems
@@ -47,12 +51,16 @@ namespace SQLiteKei.ViewModels.MainWindow
             DatabaseItem databaseItem = schemaMapper.MapSchemaToViewModel(databasePath);
 
             TreeViewItems.Add(databaseItem);
+
+            log.Info("Opened database '" + databaseItem.DisplayName + "'.");
         }
 
         public void CloseDatabase(string databasePath)
         {
             var db = TreeViewItems.SingleOrDefault(x => x.DatabasePath.Equals(databasePath));
             TreeViewItems.Remove(db);
+
+            log.Info("Closed database '" + db.DisplayName + "'.");
         }
 
         public void RemoveItemFromTree(TreeItem treeItem)
@@ -67,6 +75,7 @@ namespace SQLiteKei.ViewModels.MainWindow
                 if (item == treeItem)
                 {
                     treeItems.Remove(item);
+                    log.Info(string.Format("Removed item of type {0} from tree hierarchy.", item.GetType()));
                     break;
                 }
 
@@ -81,6 +90,7 @@ namespace SQLiteKei.ViewModels.MainWindow
 
         public void RefreshTree()
         {
+            log.Info("Refreshing the database tree.");
             var databasePaths = TreeViewItems.Select(x => x.DatabasePath).ToList();
             TreeViewItems.Clear();
 
@@ -112,6 +122,7 @@ namespace SQLiteKei.ViewModels.MainWindow
                 }
                 catch (Exception ex)
                 {
+                    log.Error("Failed to empty table" + tableName, ex);
                     StatusBarInfo = ex.Message;
                 }
             }
@@ -134,6 +145,7 @@ namespace SQLiteKei.ViewModels.MainWindow
             }
             catch (Exception ex)
             {
+                log.Error("Failed to delete table '" + tableItem.DisplayName + "'.", ex);
                 var statusInfo = ex.Message.Replace("SQL logic error or missing database\r\n", "SQL-Error - ");
                 StatusBarInfo = statusInfo;
             }

@@ -1,4 +1,7 @@
-﻿using SQLiteKei.DataAccess.Exceptions;
+﻿using log4net;
+
+using SQLiteKei.DataAccess.Exceptions;
+using SQLiteKei.DataAccess.Helpers;
 using SQLiteKei.DataAccess.Models;
 using SQLiteKei.DataAccess.QueryBuilders;
 
@@ -11,6 +14,8 @@ namespace SQLiteKei.DataAccess.Database
 {
     public class TableHandler : DisposableDbHandler
     {
+        private ILog logger = LogHelper.GetLogger();
+
         public TableHandler(string databasePath) : base(databasePath)
         {
         }
@@ -65,6 +70,7 @@ namespace SQLiteKei.DataAccess.Database
                 }
             }
 
+            logger.Error("Could not find table '" + tableName + "'");
             throw new TableNotFoundException(tableName);
         }
 
@@ -96,6 +102,7 @@ namespace SQLiteKei.DataAccess.Database
             {
                 command.CommandText = QueryBuilder.Drop(tableName).Build();
                 command.ExecuteNonQuery();
+                logger.Info("Dropped table '" + tableName + "'.");
             }
         }
 
@@ -110,6 +117,7 @@ namespace SQLiteKei.DataAccess.Database
             {
                 command.CommandText = "ALTER TABLE '" + oldName + "' RENAME TO '" + newName + "'";
                 command.ExecuteNonQuery();
+                logger.Info("Renamed table '" + oldName + "' to '" + newName + "'.");
             }
         }
 
@@ -126,11 +134,13 @@ namespace SQLiteKei.DataAccess.Database
                 try
                 {
                     command.ExecuteNonQuery();
+                    logger.Info("Emptied table '" + tableName + "'.");
                 }
                 catch(SQLiteException ex)
                 {
                     if(ex.Message.Contains("no such table"))
                     {
+                        logger.Info("Could not empty table '" + tableName + "'. No such table found.");
                         throw new TableNotFoundException(tableName);
                     }
                     throw;
@@ -148,6 +158,7 @@ namespace SQLiteKei.DataAccess.Database
             {
                 command.CommandText = string.Format("REINDEX '{0}'", tableName);
                 command.ExecuteNonQuery();
+                logger.Info("Reindexed table '" + tableName + "'.");
             }
         }
     }

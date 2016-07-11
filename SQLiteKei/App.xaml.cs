@@ -34,15 +34,23 @@ namespace SQLiteKei
             Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(SQLiteKei.Properties.Settings.Default.UILanguage);
             base.OnStartup(e);
 
-            log.Info("============= Application Startup ==============");
+            string assemblyVersion = System.Reflection.Assembly.GetExecutingAssembly()
+                                           .GetName()
+                                           .Version
+                                           .ToString();
+
+            log.Info("================= GENERAL INFO =================");
+            log.Info("SQLite Kei " + assemblyVersion);
             log.Info("Running on " + Environment.OSVersion);
+            log.Info("Application language is " + Thread.CurrentThread.CurrentUICulture);
+            log.Info("================================================");
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
             base.OnExit(e);
 
-            log.Info("============= Application Shutdown =============");
+            log.Info("============= APPLICATION SHUTDOWN =============");
         }
     }
 }

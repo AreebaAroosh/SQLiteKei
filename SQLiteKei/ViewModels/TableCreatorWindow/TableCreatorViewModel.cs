@@ -1,5 +1,4 @@
-﻿using SQLiteKei.DataAccess.Exceptions;
-using SQLiteKei.DataAccess.QueryBuilders;
+﻿using SQLiteKei.DataAccess.QueryBuilders;
 using SQLiteKei.ViewModels.Base;
 using SQLiteKei.ViewModels.Common;
 

@@ -38,6 +38,9 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -66,6 +69,7 @@
     <Compile Include="Exceptions\CreateQueryBuilderException.cs" />
     <Compile Include="Exceptions\SelectQueryBuilderException.cs" />
     <Compile Include="Exceptions\TableNotFoundException.cs" />
+    <Compile Include="Helpers\LogHelper.cs" />
     <Compile Include="Models\Column.cs" />
     <Compile Include="Models\Index.cs" />
     <Compile Include="Models\Table.cs" />

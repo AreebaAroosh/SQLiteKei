@@ -1,12 +1,15 @@
-﻿using System;
+﻿using log4net;
+
+using SQLiteKei.DataAccess.Database;
+using SQLiteKei.Helpers;
+using SQLiteKei.ViewModels.MainTabControl.Tables;
+using SQLiteKei.ViewModels.SelectQueryWindow;
+
+using System;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-
-using SQLiteKei.DataAccess.Database;
-using SQLiteKei.ViewModels.MainTabControl.Tables;
-using SQLiteKei.ViewModels.SelectQueryWindow;
 
 namespace SQLiteKei.Views.UserControls
 {
@@ -15,6 +18,8 @@ namespace SQLiteKei.Views.UserControls
     /// </summary>
     public partial class TableRecordsTabContent : UserControl
     {
+        private readonly ILog log = LogHelper.GetLogger();
+
         public TableRecordsDataItem TableInfo { get; set; }
 
         public RecordsTabViewModel ViewModel { get; set; }
@@ -40,6 +45,7 @@ namespace SQLiteKei.Views.UserControls
 
         private void Execute(string selectQuery)
         {
+            log.Info("Executing select query from SelectQuery window.\n" + selectQuery);
             try
             {
                 var dbPath = Properties.Settings.Default.CurrentDatabase;
@@ -47,10 +53,11 @@ namespace SQLiteKei.Views.UserControls
                 var resultTable = dbHandler.ExecuteReader(selectQuery);
 
                 ViewModel.DataGridCollection = new ListCollectionView(resultTable.DefaultView);
-                StatusBar.Text = string.Format("Rows returned: {0}", resultTable.Rows.Count);       
+                StatusBar.Text = string.Format("Rows returned: {0}", resultTable.Rows.Count);
             }
             catch (Exception ex)
             {
+                log.Error("Select query failed.", ex);
                 var oneLineMessage = Regex.Replace(ex.Message, @"\n", " ");
                 oneLineMessage = Regex.Replace(oneLineMessage, @"\t|\r", "");
                 oneLineMessage = oneLineMessage.Replace("SQL logic error or missing database ", "SQL Error - ");

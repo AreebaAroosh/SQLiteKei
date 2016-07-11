@@ -28,7 +28,7 @@
                                     <TextBlock Text="{Binding ColumnName}" TextTrimming="CharacterEllipsis" ToolTip="{Binding ColumnName}" 
                                                Width="125" VerticalAlignment="Center" Foreground="#EEE" />
                                     <Label Content="AS" FontWeight="DemiBold" />
-                                    <TextBox Text="{Binding Alias}" HorizontalAlignment="Stretch"></TextBox>
+                                    <TextBox Text="{Binding Alias}" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" ></TextBox>
                                 </DockPanel>
                             </DataTemplate>
                         </ItemsControl.Resources>
