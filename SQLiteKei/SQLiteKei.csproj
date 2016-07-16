@@ -71,42 +71,46 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Themes\Dark\Dark_Button.xaml">
+    <Resource Include="Resources\Themes\Dark\Dark_Button.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+    <Resource Include="Resources\Themes\Dark\Dark_ComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+    <Resource Include="Resources\Themes\Dark\Dark_DataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+    <Resource Include="Resources\Themes\Dark\Dark_GroupBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+    <Resource Include="Resources\Themes\Dark\Dark_ScrollBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+    <Resource Include="Resources\Themes\Dark\Dark_TabControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+    <Resource Include="Resources\Themes\Dark\Dark_TextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+    <Resource Include="Resources\Themes\Dark\Dark_TreeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+    <Resource Include="Resources\Themes\Dark\Dark_Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+    <EmbeddedResource Include="Resources\Themes\Light\Light.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Themes\Dark\Dark_ComboBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Themes\Dark\Dark_DataGrid.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Themes\Dark\Dark_GroupBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Themes\Dark\Dark_ScrollBar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Themes\Dark\Dark_TabControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Themes\Dark\Dark_TextBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Themes\Dark\Dark_TreeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <Page Include="Resources\Themes\Light.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\Preferences.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -152,6 +156,7 @@
     <Compile Include="Helpers\Interfaces\ITreeSaveHelper.cs" />
     <Compile Include="Helpers\LocalisationHelper.cs" />
     <Compile Include="Helpers\LogHelper.cs" />
+    <Compile Include="Helpers\ThemeHelper.cs" />
     <Compile Include="Helpers\TreeSaveHelper.cs" />
     <Compile Include="Properties\Resources.en-GB.Designer.cs">
       <DependentUpon>Resources.en-GB.resx</DependentUpon>
@@ -258,7 +263,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\Themes\Light\" />
     <Folder Include="ViewModels\MainTabControl\Indexes\" />
     <Folder Include="ViewModels\MainTabControl\Views\" />
   </ItemGroup>

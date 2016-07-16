@@ -1,17 +1,17 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:main="clr-namespace:SQLiteKei"
-                    xmlns:views="clr-namespace:SQLiteKei.Views"
-                    xmlns:local="clr-namespace:SQLiteKei.Resources.Themes.Dark">
+                    xmlns:main="clr-namespace:SQLiteKei;assembly=SQLiteKei"
+                    xmlns:views="clr-namespace:SQLiteKei.Views;assembly=SQLiteKei">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="Dark_Button.xaml" />
-        <ResourceDictionary Source="Dark_ComboBox.xaml" />
-        <ResourceDictionary Source="Dark_DataGrid.xaml" />
-        <ResourceDictionary Source="Dark_GroupBox.xaml" />
-        <ResourceDictionary Source="Dark_ScrollBar.xaml" />
-        <ResourceDictionary Source="Dark_TabControl.xaml" />
-        <ResourceDictionary Source="Dark_TextBox.xaml" />
-        <ResourceDictionary Source="Dark_TreeView.xaml" />
+        <ResourceDictionary Source="/SQLiteKei;component/Resources/Themes/Dark/Dark_Button.xaml" />
+        <ResourceDictionary Source="/SQLiteKei;component/Resources/Themes/Dark/Dark_ComboBox.xaml" />
+        <ResourceDictionary Source="/SQLiteKei;component/Resources/Themes/Dark/Dark_DataGrid.xaml" />
+        <ResourceDictionary Source="/SQLiteKei;component/Resources/Themes/Dark/Dark_GroupBox.xaml" />
+        <ResourceDictionary Source="/SQLiteKei;component/Resources/Themes/Dark/Dark_Menu.xaml" />
+        <ResourceDictionary Source="/SQLiteKei;component/Resources/Themes/Dark/Dark_ScrollBar.xaml" />
+        <ResourceDictionary Source="/SQLiteKei;component/Resources/Themes/Dark/Dark_TabControl.xaml" />
+        <ResourceDictionary Source="/SQLiteKei;component/Resources/Themes/Dark/Dark_TextBox.xaml" />
+        <ResourceDictionary Source="/SQLiteKei;component/Resources/Themes/Dark/Dark_TreeView.xaml" />
     </ResourceDictionary.MergedDictionaries>
     
     <!-- Colors -->
@@ -22,7 +22,7 @@
     <!-- Global base styles -->
     <Style TargetType="{x:Type Window}">
         <Setter Property="Background" Value="{StaticResource ApplicationBackground}" />
-        <Setter Property="Icon" Value="../../Icons/Logo_32x32.png" />
+        <Setter Property="Icon" Value="Resources/Icons/Logo_32x32.png" />
     </Style>
 
     <Style TargetType="{x:Type main:MainWindow}" BasedOn="{StaticResource {x:Type Window}}" />

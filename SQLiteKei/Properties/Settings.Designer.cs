@@ -46,5 +46,17 @@ namespace SQLiteKei.Properties {
                 this["UILanguage"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Dark")]
+        public string UITheme {
+            get {
+                return ((string)(this["UITheme"]));
+            }
+            set {
+                this["UITheme"] = value;
+            }
+        }
     }
 }

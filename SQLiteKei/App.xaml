@@ -6,10 +6,5 @@
              StartupUri="Views/MainWindow.xaml"
              DispatcherUnhandledException="App_DispatcherUnhandledException">
     <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Themes/Dark/Dark.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
     </Application.Resources>
 </Application>
