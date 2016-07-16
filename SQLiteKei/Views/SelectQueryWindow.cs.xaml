@@ -26,7 +26,7 @@
                                 <DockPanel Height="25">
                                     <CheckBox IsChecked="{Binding IsSelected}" Margin="5 0" VerticalAlignment="Center" />
                                     <TextBlock Text="{Binding ColumnName}" TextTrimming="CharacterEllipsis" ToolTip="{Binding ColumnName}" 
-                                               Width="125" VerticalAlignment="Center" Foreground="#EEE" />
+                                               Width="125" VerticalAlignment="Center" Foreground="{DynamicResource ApplicationFontColor}" />
                                     <Label Content="AS" FontWeight="DemiBold" />
                                     <TextBox Text="{Binding Alias}" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" ></TextBox>
                                 </DockPanel>
@@ -42,7 +42,7 @@
                             <DataTemplate DataType="{x:Type viewmodel:SelectItem}">
                                 <DockPanel Visibility="{Binding IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}" Height="25">
                                     <TextBlock Text="{Binding ColumnName}" TextTrimming="CharacterEllipsis" ToolTip="{Binding ColumnName}" 
-                                               Width="125" VerticalAlignment="Center" Foreground="#EEE"  />
+                                               Width="125" VerticalAlignment="Center" Foreground="{DynamicResource ApplicationFontColor}"  />
                                     <ComboBox Width="75" Margin="5 0" SelectedValue="{Binding CompareType}" SelectedValuePath="Content">
                                         <ComboBoxItem Content="="  IsSelected="True" />
                                         <ComboBoxItem Content=">" />
@@ -70,7 +70,7 @@
                                     <DockPanel Margin="0 2">
                                         <ComboBox ItemsSource="{Binding Columns, Mode=OneWay}" SelectedItem="{Binding SelectedColumn}" Width="200"/>
                                         <CheckBox VerticalAlignment="Center" Margin="5 0" IsChecked="{Binding Descending}">
-                                            <TextBlock Text="DESC" Foreground="#EEE" VerticalAlignment="Center" />
+                                            <TextBlock Text="DESC" Foreground="{DynamicResource ApplicationFontColor}" VerticalAlignment="Center" />
                                         </CheckBox>
                                     </DockPanel>
                                 </DataTemplate>

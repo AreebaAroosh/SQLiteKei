@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:main="clr-namespace:SQLiteKei"
+                    xmlns:views="clr-namespace:SQLiteKei.Views"
+                    xmlns:local="clr-namespace:SQLiteKei.Resources.Themes.Light">
+    
+    <Style TargetType="Button">
+        <Setter Property="Background" Value="Magenta"/>
+    </Style>
+</ResourceDictionary>

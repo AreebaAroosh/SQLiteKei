@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:SQLiteKei.Resources.Themes.Dark">
+    <!-- Colors -->
+    <SolidColorBrush x:Key="TabControlBackgroundColor" Color="#232324" />
+    <SolidColorBrush x:Key="TabControlBorderColor" Color="#3F3F46" />
+    <SolidColorBrush x:Key="TabItemBackground_Selected" Color="#232324" />
+    <SolidColorBrush x:Key="TabItemBackground_Unselected" Color="#2D2D30" />
+    <SolidColorBrush x:Key="TabItemBorder_Selected" Color="#3F3F46" />
+    <!---->
+    
+    <Style TargetType="{x:Type TabControl}">
+        <Setter Property="Background" Value="{StaticResource TabControlBackgroundColor}" />
+        <Setter Property="BorderBrush" Value="{StaticResource TabControlBorderColor}" />
+    </Style>
+
+    <Style TargetType="{x:Type TabItem}">
+        <Setter Property="Foreground" Value="{DynamicResource ApplicationFontColor}" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Border Name="Header" BorderThickness="1 1 1 0" Background="#232324">
+                        <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="15 3" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                             <Setter TargetName="Header" Property="Background" Value="{StaticResource TabItemBackground_Selected}" />
+                            <Setter TargetName="Header" Property="BorderBrush" Value="{StaticResource TabItemBorder_Selected}" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="Header" Property="Background" Value="{StaticResource TabItemBackground_Unselected}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

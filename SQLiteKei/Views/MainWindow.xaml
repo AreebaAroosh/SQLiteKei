@@ -10,9 +10,6 @@
         Width="1024" Height="768" MinWidth="900" MinHeight="700"
         WindowState="Maximized">
     <Window.Resources>
-        <Style TargetType="{x:Type TreeViewItem}">
-            <Setter Property="Foreground" Value="#EEE" />
-        </Style>
         <Style x:Key="MenuButton" TargetType="{x:Type Button}">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="1"/>
@@ -52,20 +49,20 @@
             <RowDefinition Height="25" />
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0" HorizontalAlignment="Stretch" LastChildFill="False" VerticalAlignment="Stretch">
-            <Menu DockPanel.Dock="Top" Background="#2D2D30" Foreground="#EEEEEE">
-                <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_File}" Background="#2D2D30">
-                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_NewDatabase}" Click="CreateNewDatabase" Background="#2D2D30"/>
-                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_OpenDatabase}" Click="OpenDatabase" Background="#2D2D30"/>
-                    <Separator Background="#2D2D30"/>
-                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Exit}" Click="MenuItem_Exit_Click" Background="#2D2D30"/>
+            <Menu DockPanel.Dock="Top" >
+                <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_File}">
+                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_NewDatabase}" Click="CreateNewDatabase"/>
+                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_OpenDatabase}" Click="OpenDatabase"/>
+                    <Separator/>
+                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Exit}" Click="MenuItem_Exit_Click"/>
                 </MenuItem>
                 <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Tools}">
-                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_QueryEditor}" Click="OpenQueryEditor" Background="#2D2D30"/>
-                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Preferences}" Click="OpenPreferences" Background="#2D2D30"/>
+                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_QueryEditor}" Click="OpenQueryEditor"/>
+                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Preferences}" Click="OpenPreferences"/>
                 </MenuItem>
                 <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Help}">
-                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Documentation}" Background="#2D2D30" Click="OpenDocumentation"/>
-                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_About}" Click="OpenAbout" Background="#2D2D30"/>
+                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Documentation}" Click="OpenDocumentation"/>
+                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_About}" Click="OpenAbout"/>
                 </MenuItem>
             </Menu>
         </DockPanel>
@@ -104,9 +101,6 @@
                           SelectedItemChanged="DBTreeView_SelectedItemChanged"
                           ItemsSource="{Binding TreeViewItems}"
                           MouseRightButtonDown="TreeViewRightMouseButtonDown"
-                          Background="#232324"
-                          BorderThickness="1"
-                          BorderBrush="#3F3F46"
                           Margin="5 0 0 0" Padding="0 4">
                 <TreeView.Resources>
                     <HierarchicalDataTemplate DataType="{x:Type model:DatabaseItem}" ItemsSource="{Binding Items}">
@@ -206,9 +200,9 @@
             <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" ResizeBehavior="PreviousAndNext" Background="#3F3F46"/>
             <TabControl x:Name="MainTabControl" Grid.Column="2" Margin="0 -2 5 0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
         </Grid>
-        <StatusBar Grid.Row="3" Background="#2D2D30">
+        <StatusBar Grid.Row="3">
             <StatusBarItem>
-                <TextBlock Text="{Binding StatusBarInfo}" FontWeight="DemiBold" Foreground="#EEE"></TextBlock>
+                <TextBlock Text="{Binding StatusBarInfo}" FontWeight="DemiBold" Foreground="{DynamicResource ApplicationFontColor}"></TextBlock>
             </StatusBarItem>
         </StatusBar>
     </Grid>
