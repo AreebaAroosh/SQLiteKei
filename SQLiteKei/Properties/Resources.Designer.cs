@@ -449,6 +449,15 @@ namespace SQLiteKei.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Preferences_ApplicationTheme.
+        /// </summary>
+        public static string Preferences_ApplicationTheme {
+            get {
+                return ResourceManager.GetString("Preferences_ApplicationTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Preferences_GroupBoxHeader_Languages.
         /// </summary>
         public static string Preferences_GroupBoxHeader_Languages {
@@ -476,6 +485,15 @@ namespace SQLiteKei.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Preferences_Language_English.
+        /// </summary>
+        public static string Preferences_Language_English {
+            get {
+                return ResourceManager.GetString("Preferences_Language_English", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Preferences_Language_German.
         /// </summary>
         public static string Preferences_Language_German {
@@ -490,15 +508,6 @@ namespace SQLiteKei.Properties {
         public static string Preferences_LanguageChangeInfo {
             get {
                 return ResourceManager.GetString("Preferences_LanguageChangeInfo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Preferneces_Language_English {
-            get {
-                return ResourceManager.GetString("Preferneces_Language_English", resourceCulture);
             }
         }
         

@@ -9,7 +9,7 @@
       <Value Profile="(Default)">en-GB</Value>
     </Setting>
     <Setting Name="UITheme" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Dark</Value>
+      <Value Profile="(Default)">Light</Value>
     </Setting>
   </Settings>
 </SettingsFile>

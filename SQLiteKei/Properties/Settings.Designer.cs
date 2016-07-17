@@ -49,7 +49,7 @@ namespace SQLiteKei.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Dark")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Light")]
         public string UITheme {
             get {
                 return ((string)(this["UITheme"]));

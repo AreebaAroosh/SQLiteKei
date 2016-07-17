@@ -3,6 +3,7 @@
 using SQLiteKei.Helpers;
 
 using System.Collections.Generic;
+using System;
 
 namespace SQLiteKei.ViewModels.PreferencesWindow
 {
@@ -39,6 +40,21 @@ namespace SQLiteKei.ViewModels.PreferencesWindow
             };
         }
 
+        public List<string> AvailableThemes { get; set; }
+
+        private string selectedTheme;
+        public string SelectedTheme
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(selectedTheme))
+                    selectedTheme = Properties.Settings.Default.UITheme;
+
+                return selectedTheme;
+            }
+            set { selectedTheme = value; }
+        }
+
         public PreferencesViewModel()
         {
             AvailableLanguages = new List<string>
@@ -46,11 +62,20 @@ namespace SQLiteKei.ViewModels.PreferencesWindow
                 LocalisationHelper.GetString("Preferences_Language_German"),
                 LocalisationHelper.GetString("Preferences_Language_English")
             };
+
+            AvailableThemes = new List<string>
+            {
+                "Dark", "Light"
+            };
         }
 
         internal void ApplySettings()
         {
             ApplyLanguage();
+            ApplyApplicationTheme();
+
+            Properties.Settings.Default.Save();
+            Properties.Settings.Default.Reload();
         }
 
         private void ApplyLanguage()
@@ -66,10 +91,24 @@ namespace SQLiteKei.ViewModels.PreferencesWindow
                 Properties.Settings.Default.UILanguage = "en-GB";
             }
 
-            Properties.Settings.Default.Save();
-            Properties.Settings.Default.Reload();
-
             log.Info("Applied application language " + Properties.Settings.Default.UILanguage);
+        }
+
+        private void ApplyApplicationTheme()
+        {
+            if (selectedTheme.Equals(Properties.Settings.Default.UITheme)) return;
+
+            log.Info("Applying '" + selectedTheme + "' application theme.");
+
+            try
+            {
+                ThemeHelper.LoadTheme(selectedTheme);
+                Properties.Settings.Default.UITheme = selectedTheme;
+            }
+            catch(Exception ex)
+            {
+                log.Error("Could not apply application theme '" + selectedTheme + "'.", ex);
+            }
         }
     }
 }

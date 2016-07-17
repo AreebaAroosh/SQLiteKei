@@ -243,6 +243,9 @@
   <data name="MessageBox_TableDeleteWarning" xml:space="preserve">
     <value>Do you really want to delete the table '{0}'?</value>
   </data>
+  <data name="Preferences_ApplicationTheme" xml:space="preserve">
+    <value>Current Theme</value>
+  </data>
   <data name="Preferences_GroupBoxHeader_Languages" xml:space="preserve">
     <value>Languages</value>
   </data>

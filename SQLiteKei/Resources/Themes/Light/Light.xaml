@@ -2,8 +2,41 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:main="clr-namespace:SQLiteKei;assembly=SQLiteKei"
                     xmlns:views="clr-namespace:SQLiteKei.Views;assembly=SQLiteKei">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/SQLiteKei;component/Resources/Themes/Light/Light_Button.xaml" />
+        <ResourceDictionary Source="/SQLiteKei;component/Resources/Themes/Light/Light_ComboBox.xaml" />
+        <ResourceDictionary Source="/SQLiteKei;component/Resources/Themes/Light/Light_DataGrid.xaml" />
+        <ResourceDictionary Source="/SQLiteKei;component/Resources/Themes/Light/Light_GroupBox.xaml" />
+        <ResourceDictionary Source="/SQLiteKei;component/Resources/Themes/Light/Light_Menu.xaml" />
+        <ResourceDictionary Source="/SQLiteKei;component/Resources/Themes/Light/Light_ScrollBar.xaml" />
+        <ResourceDictionary Source="/SQLiteKei;component/Resources/Themes/Light/Light_TabControl.xaml" />
+        <ResourceDictionary Source="/SQLiteKei;component/Resources/Themes/Light/Light_TextBox.xaml" />
+        <ResourceDictionary Source="/SQLiteKei;component/Resources/Themes/Light/Light_TreeView.xaml" />
+    </ResourceDictionary.MergedDictionaries>
     
-    <Style TargetType="TreeView">
-        <Setter Property="Background" Value="Magenta"/>
+    <!-- Colors -->
+    <SolidColorBrush x:Key="ApplicationFontColor" Color="#111" />
+    <SolidColorBrush x:Key="ApplicationFontColor_Disabled" Color="#666" />
+    <SolidColorBrush x:Key="ApplicationBackground" Color="#2D2D30" />
+       
+    <!-- Global base styles -->
+    <Style TargetType="{x:Type Window}">
+        <Setter Property="Background" Value="{StaticResource ApplicationBackground}" />
+        <Setter Property="Icon" Value="Resources/Icons/Logo_32x32.png" />
+    </Style>
+
+    <Style TargetType="{x:Type main:MainWindow}" BasedOn="{StaticResource {x:Type Window}}" />
+    <Style TargetType="{x:Type views:Preferences}" BasedOn="{StaticResource {x:Type Window}}" />
+    <Style TargetType="{x:Type views:QueryEditor}" BasedOn="{StaticResource {x:Type Window}}" />
+    <Style TargetType="{x:Type views:SelectQueryWindow}" BasedOn="{StaticResource {x:Type Window}}" />
+    <Style TargetType="{x:Type views:TableCreator}" BasedOn="{StaticResource {x:Type Window}}" />
+    <Style TargetType="{x:Type views:About}" BasedOn="{StaticResource {x:Type Window}}" />    
+
+    <Style TargetType="{x:Type StatusBar}">
+        <Setter Property="Background" Value="{StaticResource ApplicationBackground}" />
+    </Style>
+
+    <Style TargetType="{x:Type Label}">
+        <Setter Property="Foreground" Value="{StaticResource ApplicationFontColor}" />
     </Style>
 </ResourceDictionary>
