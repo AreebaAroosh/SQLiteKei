@@ -9,7 +9,7 @@
         Height="300" Width="250"
         ResizeMode="NoResize">
     <DockPanel Margin="6">
-        <GroupBox  DockPanel.Dock="Top" Header="{x:Static localisation:Resources.Preferences_GroupBoxHeader_Languages}" Background="#232324">
+        <GroupBox  DockPanel.Dock="Top" Header="{x:Static localisation:Resources.Preferences_GroupBoxHeader_Languages}" Background="{DynamicResource GroupBoxBackgroundColor_Darker}">
             <StackPanel>
                 <DockPanel>
                     <Label Content="{x:Static localisation:Resources.Preferences_Language}" />
@@ -18,7 +18,7 @@
                 <TextBox Text="{x:Static localisation:Resources.Preferences_LanguageChangeInfo}" Style="{DynamicResource SelectableLabelTextBox}" TextWrapping="Wrap"></TextBox>
             </StackPanel>
         </GroupBox>
-        <GroupBox DockPanel.Dock="Top" Header="{x:Static localisation:Resources.Preferences_GroupBoxHeader_Themes}" Background="#232324">
+        <GroupBox DockPanel.Dock="Top" Header="{x:Static localisation:Resources.Preferences_GroupBoxHeader_Themes}" Background="{DynamicResource GroupBoxBackgroundColor_Darker}">
             <DockPanel>
                 <Label Content="{x:Static localisation:Resources.Preferences_ApplicationTheme}"/>
                 <ComboBox Width="80" ItemsSource="{Binding AvailableThemes}" SelectedItem="{Binding SelectedTheme}"/>

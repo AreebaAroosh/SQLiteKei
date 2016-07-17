@@ -39,4 +39,7 @@
     <Style TargetType="{x:Type Label}">
         <Setter Property="Foreground" Value="{StaticResource ApplicationFontColor}" />
     </Style>
+    <Style TargetType="{x:Type GridSplitter}">
+        <Setter Property="Background" Value="#3F3F46" />
+    </Style>
 </ResourceDictionary>

@@ -17,7 +17,7 @@
     <!-- Colors -->
     <SolidColorBrush x:Key="ApplicationFontColor" Color="#111" />
     <SolidColorBrush x:Key="ApplicationFontColor_Disabled" Color="#666" />
-    <SolidColorBrush x:Key="ApplicationBackground" Color="#2D2D30" />
+    <SolidColorBrush x:Key="ApplicationBackground" Color="#e0e0e0" />
        
     <!-- Global base styles -->
     <Style TargetType="{x:Type Window}">
@@ -38,5 +38,9 @@
 
     <Style TargetType="{x:Type Label}">
         <Setter Property="Foreground" Value="{StaticResource ApplicationFontColor}" />
+    </Style>
+
+    <Style TargetType="{x:Type GridSplitter}">
+        <Setter Property="Background" Value="#C1C1C1" />
     </Style>
 </ResourceDictionary>

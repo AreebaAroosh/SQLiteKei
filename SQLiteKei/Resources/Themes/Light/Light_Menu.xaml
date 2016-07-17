@@ -1,11 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <!-- Colors -->
-    <SolidColorBrush x:Key="ItemHighlighting" Color="#3F3F46" />
-    <SolidColorBrush x:Key="PopupBackground" Color="#191919" />
-    <SolidColorBrush x:Key="PopupBorder" Color="#3F3F46" />
-    <SolidColorBrush x:Key="ContextMenuBackground" Color="#191919" />
-    <SolidColorBrush x:Key="ContextMenuBorder" Color="#3F3F46" />
+    <SolidColorBrush x:Key="ItemHighlighting" Color="#C1C1C1" />
+    <SolidColorBrush x:Key="PopupBackground" Color="#e7e7e7" />
+    <SolidColorBrush x:Key="PopupBorder" Color="#C1C1C1" />
+    <SolidColorBrush x:Key="ContextMenuBackground" Color="#e7e7e7" />
+    <SolidColorBrush x:Key="ContextMenuBorder" Color="#C1C1C1" />
     <!---->
     
     <Style x:Key="{x:Type Menu}" TargetType="{x:Type Menu}">

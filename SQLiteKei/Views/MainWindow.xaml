@@ -195,7 +195,7 @@
                     </ContextMenu>
                 </TreeView.ContextMenu>
             </TreeView>
-            <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" ResizeBehavior="PreviousAndNext" Background="#3F3F46"/>
+            <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" ResizeBehavior="PreviousAndNext"/>
             <TabControl x:Name="MainTabControl" Grid.Column="2" Margin="0 -2 5 0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
         </Grid>
         <StatusBar Grid.Row="3">

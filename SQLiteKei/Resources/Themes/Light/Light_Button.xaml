@@ -2,10 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:SQLiteKei.Resources.Themes.Dark">
     <!-- Colors -->
-    <SolidColorBrush x:Key="HoverColor" Color="#404045" />
-    <SolidColorBrush x:Key="BorderColor" Color="#3F3F46" />
-    <SolidColorBrush x:Key="ButtonLight_Background" Color="#2D2D30" />
-    <SolidColorBrush x:Key="ButtonDark_Background" Color="#232324" />
+    <SolidColorBrush x:Key="HoverColor" Color="#A0A0A0" />
+    <SolidColorBrush x:Key="BorderColor" Color="#C1C1C1" />
+    <SolidColorBrush x:Key="ButtonLight_Background" Color="#e0e0e0" />
+    <SolidColorBrush x:Key="ButtonDark_Background" Color="#f3f3f3" />
     <!---->
     
     <Style TargetType="{x:Type Button}">

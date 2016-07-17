@@ -2,12 +2,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:SQLiteKei.Resources.Themes.Dark">
     <!-- Colors -->
-    <SolidColorBrush x:Key="ComboBoxBackground" Color="#2D2D30" />
-    <SolidColorBrush x:Key="ComboBoxBorder" Color="#3F3F46" />
+    <SolidColorBrush x:Key="ComboBoxBackground" Color="#e0e0e0" />
+    <SolidColorBrush x:Key="ComboBoxBorder" Color="#C1C1C1" />
     <SolidColorBrush x:Key="ToggleButtonForeground" Color="#54545e" />
-    <SolidColorBrush x:Key="PopupListBackground" Color="#232324" />
-    <SolidColorBrush x:Key="PopupListBorder" Color="#3F3F46" />
-    <SolidColorBrush x:Key="PopupHoverBackground" Color="#3F3F46" />
+    <SolidColorBrush x:Key="PopupListBackground" Color="#f3f3f3" />
+    <SolidColorBrush x:Key="PopupListBorder" Color="#C1C1C1" />
+    <SolidColorBrush x:Key="PopupHoverBackground" Color="#C1C1C1" />
     <!---->
     
     <Style x:Key="ComboBoxToggleButton" TargetType="ToggleButton">
