@@ -48,24 +48,22 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="25" />
         </Grid.RowDefinitions>
-        <DockPanel Grid.Row="0" HorizontalAlignment="Stretch" LastChildFill="False" VerticalAlignment="Stretch">
-            <Menu DockPanel.Dock="Top" >
-                <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_File}">
-                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_NewDatabase}" Click="CreateNewDatabase"/>
-                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_OpenDatabase}" Click="OpenDatabase"/>
-                    <Separator/>
-                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Exit}" Click="MenuItem_Exit_Click"/>
-                </MenuItem>
-                <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Tools}">
-                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_QueryEditor}" Click="OpenQueryEditor"/>
-                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Preferences}" Click="OpenPreferences"/>
-                </MenuItem>
-                <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Help}">
-                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Documentation}" Click="OpenDocumentation"/>
-                    <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_About}" Click="OpenAbout"/>
-                </MenuItem>
-            </Menu>
-        </DockPanel>
+        <Menu Grid.Row="0">
+            <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_File}">
+                <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_NewDatabase}" Click="CreateNewDatabase"/>
+                <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_OpenDatabase}" Click="OpenDatabase"/>
+                <Separator Background="Magenta"/>
+                <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Exit}" Click="MenuItem_Exit_Click"/>
+            </MenuItem>
+            <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Tools}">
+                <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_QueryEditor}" Click="OpenQueryEditor"/>
+                <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Preferences}" Click="OpenPreferences"/>
+            </MenuItem>
+            <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Help}">
+                <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_Documentation}" Click="OpenDocumentation"/>
+                <MenuItem Header="{x:Static localisation:Resources.MenuItemHeader_About}" Click="OpenAbout"/>
+            </MenuItem>
+        </Menu>
         <DockPanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Button Style="{DynamicResource MenuButton}" Click="CreateNewDatabase" ToolTip="{x:Static localisation:Resources.Tooltip_NewDatabase}" >
                 <Image Source="../Resources/Icons/Database_New.png"></Image>
