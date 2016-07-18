@@ -159,6 +159,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\UnhandledExceptionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\UserControls\DatabaseGeneralTabContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -226,6 +230,9 @@
     </Compile>
     <Compile Include="Views\TableCreator.xaml.cs">
       <DependentUpon>TableCreator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UnhandledExceptionWindow.xaml.cs">
+      <DependentUpon>UnhandledExceptionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\DatabaseGeneralTabContent.xaml.cs">
       <DependentUpon>DatabaseGeneralTabContent.xaml</DependentUpon>

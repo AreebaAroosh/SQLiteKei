@@ -1,6 +1,7 @@
 ﻿using log4net;
 
 using SQLiteKei.Helpers;
+using SQLiteKei.Views;
 
 using System;
 using System.Threading;
@@ -20,10 +21,7 @@ namespace SQLiteKei
         {
             log.Fatal("An unhandled exception was thrown and a message is shown to the user.", e.Exception);
 
-            var message = LocalisationHelper.GetString("UnhandledException");
-            var title = LocalisationHelper.GetString("UnhandledException_Title");
-
-            MessageBox.Show(message, title, MessageBoxButton.OK, MessageBoxImage.Error);
+            new UnhandledExceptionWindow().ShowDialog();
             e.Handled = true;
 
             Current.Shutdown();

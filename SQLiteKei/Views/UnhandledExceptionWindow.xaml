@@ -1,0 +1,22 @@
+﻿<Window x:Class="SQLiteKei.Views.UnhandledExceptionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:localisation="clr-namespace:SQLiteKei.Properties"
+        mc:Ignorable="d"
+        Title="{x:Static localisation:Resources.UnhandledException_Title}" Height="150" Width="400"
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <TextBox Grid.Row="0"  Margin="20 20" Height="Auto" TextWrapping="Wrap" Text="{x:Static localisation:Resources.UnhandledException}" BorderThickness="0" IsReadOnly="True" />
+            <Border Grid.Row="1" BorderThickness="0 1 0 0" BorderBrush="Black">
+            <DockPanel  Height="25" LastChildFill="False">
+                <Button Style="{DynamicResource ButtonDark}" Margin="5 0" Height="20"  DockPanel.Dock="Right" Width="50" Content="OK" IsCancel="True" />
+            </DockPanel>
+        </Border>
+    </Grid>
+</Window>
