@@ -19,7 +19,7 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
 
         private DatabaseHandler dbHandler;
 
-        private ILog logger = LogHelper.GetLogger();
+        private readonly ILog logger = LogHelper.GetLogger();
 
         /// <summary>
         /// Maps the provided database to a hierarchical ViewModel structure with a DatabaseItem as its root.
@@ -56,7 +56,7 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
         {
             List<TableItem> tableViewItems = GenerateTableItems();
 
-            var tableFolder = new TableFolderItem { DisplayName = "Tables" };
+            var tableFolder = new TableFolderItem { DisplayName = LocalisationHelper.GetString("TreeItem_Tables") };
 
             foreach (var item in tableViewItems)
             {
@@ -90,7 +90,7 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
 
             IEnumerable indexNames = indexes.Select(x => x.Name);
 
-            var indexFolder = new FolderItem { DisplayName = "Indexes" };
+            var indexFolder = new FolderItem { DisplayName = LocalisationHelper.GetString("TreeItem_Indexes") };
 
             foreach (string indexName in indexNames)
             {
@@ -109,7 +109,7 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
             var triggers = dbHandler.GetTriggers();
             IEnumerable triggerNames = triggers.Select(x => x.Name);
 
-            var triggerFolder = new FolderItem { DisplayName = "Triggers" };
+            var triggerFolder = new FolderItem { DisplayName = LocalisationHelper.GetString("TreeItem_Triggers") };
 
             foreach (string triggerName in triggerNames)
             {
@@ -128,7 +128,7 @@ namespace SQLiteKei.ViewModels.DBTreeView.Mapping
             var views = dbHandler.GetViews();
             IEnumerable viewNames = views.Select(x => x.Name);
 
-            var viewFolder = new FolderItem { DisplayName = "Views" };
+            var viewFolder = new FolderItem { DisplayName = LocalisationHelper.GetString("TreeItem_Views") };
 
             foreach (string viewName in viewNames)
             {

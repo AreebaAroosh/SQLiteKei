@@ -809,6 +809,42 @@ namespace SQLiteKei.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to TreeItem_Indexes.
+        /// </summary>
+        public static string TreeItem_Indexes {
+            get {
+                return ResourceManager.GetString("TreeItem_Indexes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TreeItem_Tables.
+        /// </summary>
+        public static string TreeItem_Tables {
+            get {
+                return ResourceManager.GetString("TreeItem_Tables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TreeItem_Triggers.
+        /// </summary>
+        public static string TreeItem_Triggers {
+            get {
+                return ResourceManager.GetString("TreeItem_Triggers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TreeItem_Views.
+        /// </summary>
+        public static string TreeItem_Views {
+            get {
+                return ResourceManager.GetString("TreeItem_Views", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to UnhandledException.
         /// </summary>
         public static string UnhandledException {

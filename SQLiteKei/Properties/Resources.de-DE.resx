@@ -363,6 +363,18 @@
   <data name="Tooltip_WriteSQLStatement" xml:space="preserve">
     <value>SQL Statement erstellen</value>
   </data>
+  <data name="TreeItem_Indexes" xml:space="preserve">
+    <value>Indexe</value>
+  </data>
+  <data name="TreeItem_Tables" xml:space="preserve">
+    <value>Tabellen</value>
+  </data>
+  <data name="TreeItem_Triggers" xml:space="preserve">
+    <value>Trigger</value>
+  </data>
+  <data name="TreeItem_Views" xml:space="preserve">
+    <value>Views</value>
+  </data>
   <data name="UnhandledException" xml:space="preserve">
     <value>Ein unerwarteter und unbehandelter Fehler ist aufgetreten. Die Anwendung wird nun beendet. </value>
   </data>

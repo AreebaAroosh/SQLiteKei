@@ -367,6 +367,18 @@
   <data name="Tooltip_WriteSQLStatement" xml:space="preserve">
     <value>Tooltip_WriteSQLStatement</value>
   </data>
+  <data name="TreeItem_Indexes" xml:space="preserve">
+    <value>TreeItem_Indexes</value>
+  </data>
+  <data name="TreeItem_Tables" xml:space="preserve">
+    <value>TreeItem_Tables</value>
+  </data>
+  <data name="TreeItem_Triggers" xml:space="preserve">
+    <value>TreeItem_Triggers</value>
+  </data>
+  <data name="TreeItem_Views" xml:space="preserve">
+    <value>TreeItem_Views</value>
+  </data>
   <data name="UnhandledException" xml:space="preserve">
     <value>UnhandledException</value>
   </data>
