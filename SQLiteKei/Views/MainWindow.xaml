@@ -108,7 +108,8 @@
                                 <TextBlock.ContextMenu>
                                     <ContextMenu>
                                         <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_CloseDatabase}" Click="CloseDatabase" />
-                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_RenameDatabase}" />
+                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_RenameDatabase}" IsEnabled="False" />
+                                        <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_OpenFileDirectory}" Click="OpenFileDirectory" />
                                         <Separator/>
                                         <MenuItem Header="{x:Static localisation:Resources.ContextMenuItem_DeleteDatabase}" Click="DeleteDatabase" />
                                     </ContextMenu>

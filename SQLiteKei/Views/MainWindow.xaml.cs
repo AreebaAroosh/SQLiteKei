@@ -195,6 +195,14 @@ namespace SQLiteKei
             }
         }
 
+        private void OpenFileDirectory(object sender, RoutedEventArgs e)
+        {
+            var database = (DatabaseItem)DBTreeView.SelectedItem;
+            var targetDirectory = Path.GetDirectoryName(database.DatabasePath);
+
+            Process.Start(targetDirectory);
+        }
+
         #region TreeViewRightClickEvent
         /// <summary>
         /// Method that is used to make sure a tree view element is selected on a right click event before the context menu is opened.

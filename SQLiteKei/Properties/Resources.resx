@@ -159,6 +159,9 @@
   <data name="ContextMenuItem_OpenDatabase" xml:space="preserve">
     <value>ContextMenuItem_OpenDatabase</value>
   </data>
+  <data name="ContextMenuItem_OpenFileDirectory" xml:space="preserve">
+    <value>ContextMenuItem_OpenFileDirectory</value>
+  </data>
   <data name="ContextMenuItem_RenameDatabase" xml:space="preserve">
     <value>ContextMenuItem_RenameDatabase</value>
   </data>
