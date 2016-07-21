@@ -60,33 +60,43 @@ namespace SQLiteKei.Views
                 return;
             }
 
-            if (!string.IsNullOrEmpty(viewModel.SqlStatement))
+            if (string.IsNullOrEmpty(viewModel.SqlStatement)) return;
+
+            if (string.IsNullOrEmpty(QueryBox.SelectedText))
             {
-                var database = DatabaseComboBox.SelectedItem as DatabaseSelectItem;
-                var dbHandler = new DatabaseHandler(database.DatabasePath);
+                ExecuteSql(viewModel.SqlStatement);
+            }
+            else
+            {
+                ExecuteSql(QueryBox.SelectedText);    
+            }
+        }
 
-                try
+        private void ExecuteSql(string sqlStatement)
+        {
+            var database = DatabaseComboBox.SelectedItem as DatabaseSelectItem;
+            var dbHandler = new DatabaseHandler(database.DatabasePath);
+
+            try
+            {
+                if (viewModel.SqlStatement.StartsWith("SELECT", StringComparison.CurrentCultureIgnoreCase))
                 {
-                    if (viewModel.SqlStatement.StartsWith("SELECT", StringComparison.CurrentCultureIgnoreCase))
-                    {
-                        var queryResult = dbHandler.ExecuteReader(viewModel.SqlStatement);
+                    var queryResult = dbHandler.ExecuteReader(sqlStatement);
 
-                        QueryGrid.ItemsSource = queryResult.DefaultView;
-                        viewModel.StatusInfo = string.Format("Rows returned: {0}", queryResult.Rows.Count);
-                    }
-                    else
-                    {
-                        var commandResult = dbHandler.ExecuteNonQuery(viewModel.SqlStatement);
-
-                        viewModel.StatusInfo = string.Format("Rows affected: {0}", commandResult);
-                    }
+                    QueryGrid.ItemsSource = queryResult.DefaultView;
+                    viewModel.StatusInfo = string.Format("Rows returned: {0}", queryResult.Rows.Count);
                 }
-                catch (Exception ex)
+                else
                 {
-                    viewModel.StatusInfo = ex.Message.Replace("SQL logic error or missing database\r\n", "SQL-Error - ");
+                    var commandResult = dbHandler.ExecuteNonQuery(sqlStatement);
+
+                    viewModel.StatusInfo = string.Format("Rows affected: {0}", commandResult);
                 }
             }
-
+            catch (Exception ex)
+            {
+                viewModel.StatusInfo = ex.Message.Replace("SQL logic error or missing database\r\n", "SQL-Error - ");
+            }
         }
     }
 }
