@@ -9,6 +9,8 @@ SQLite Kei is a database management tool for SQLite databases for .NET
 - Option to search your queried select results
 - Simple query editor to write plain SQL to your databases
 
+![alt tag](http://puu.sh/qbBrv/82021fedc2.png)
+
 ##Planned Features
 - Rename tables
 - Extended query editor
