@@ -16,12 +16,13 @@ namespace SQLiteKei.UnitTests.Queries
         [Test]
         public void Build_WithValidData_ReturnsValidQuery()
         {
-            const string EXPECTED_QUERY = "CREATE TABLE Table\n(\nColumn1 Integer PRIMARY KEY NOT NULL,\nColumn2 Text NOT NULL\n);";
+            const string EXPECTED_QUERY = "CREATE TABLE Table\n(\nColumn1 Integer PRIMARY KEY NOT NULL,\nColumn2 Text NOT NULL,\nFOREIGN KEY(Column1) REFERENCES ReferencedTable(ReferencedColumn)\n);";
 
             var result = QueryBuilder
                 .Create("Table")
                 .AddColumn("Column1", DataType.Integer, true)
                 .AddColumn("Column2", DataType.Text)
+                .AddForeignKey("Column1", "ReferencedTable", "ReferencedColumn")
                 .Build();
 
             Assert.AreEqual(EXPECTED_QUERY, result);
@@ -104,6 +105,15 @@ namespace SQLiteKei.UnitTests.Queries
             Assert.Throws(typeof(ColumnDefinitionException),
                 () => QueryBuilder.Create("Table")
                 .AddColumn("  ", DataType.Bool));
+        }
+
+        [Test]
+        public void AddForeignKey_WithKeysWithTheSameName_ThrowsException()
+        {
+            Assert.Throws(typeof(CreateQueryBuilderException),
+                () => QueryBuilder.Create("Table")
+                .AddForeignKey("Local", "RefTable", "RefCol")
+                .AddForeignKey("Local", "RefTable", "RefCol"));
         }
     }
 }
