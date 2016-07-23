@@ -63,6 +63,7 @@ namespace SQLiteKei.ViewModels.TableCreatorWindow
             using (var dbHandler = new DatabaseHandler(SelectedDatabasePath))
             {
                 var tables = dbHandler.GetTables();
+                ReferencableTables.Clear();
 
                 foreach (var table in tables)
                 {
