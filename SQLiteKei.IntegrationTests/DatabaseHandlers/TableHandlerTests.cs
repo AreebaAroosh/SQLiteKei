@@ -29,7 +29,7 @@ namespace SQLiteKei.IntegrationTests.DatabaseHandlers
             {
                 var result = tableHandler.GetCreateStatement("TEST10");
 
-                Assert.AreEqual("CREATE TABLE TEST10 (ColumnA10 varchar(10), ColumnB10 int)", result);
+                Assert.AreEqual("CREATE TABLE TEST10 (ColumnA10 varchar(60), ColumnB10 int)", result);
             }
         }
 
