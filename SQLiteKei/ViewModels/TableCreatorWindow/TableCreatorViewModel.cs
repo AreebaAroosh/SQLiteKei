@@ -85,7 +85,6 @@ namespace SQLiteKei.ViewModels.TableCreatorWindow
                 {
                     item.PropertyChanged -= CollectionItemPropertyChanged;
                 }
-                UpdateAvailableColumnsForForeignKeys();
             }
             else if (e.Action == NotifyCollectionChangedAction.Add)
             {
@@ -93,6 +92,11 @@ namespace SQLiteKei.ViewModels.TableCreatorWindow
                 {
                     item.PropertyChanged += CollectionItemPropertyChanged;
                 }
+            }
+
+            var sendingModel = sender as ObservableCollection<ColumnDefinitionItem>;
+            if(sendingModel != null)
+            {
                 UpdateAvailableColumnsForForeignKeys();
             }
         }
@@ -120,6 +124,16 @@ namespace SQLiteKei.ViewModels.TableCreatorWindow
                         definition.IsPrimary,
                         definition.IsNotNull,
                         definition.DefaultValue);
+                }
+
+                foreach(var foreignKey in ForeignKeyDefinitions)
+                {
+                    if(!string.IsNullOrWhiteSpace(foreignKey.SelectedColumn)
+                       && !string.IsNullOrWhiteSpace(foreignKey.SelectedTable)
+                       && !string.IsNullOrWhiteSpace(foreignKey.SelectedReferencedColumn))
+                    {
+                        builder.AddForeignKey(foreignKey.SelectedColumn, foreignKey.SelectedTable, foreignKey.SelectedReferencedColumn);
+                    }
                 }
 
                 SqlStatement = builder.Build();

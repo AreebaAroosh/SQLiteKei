@@ -63,7 +63,7 @@
                                         <ComboBox ItemsSource="{Binding AvailableColumns, Mode=OneWay}" SelectedItem="{Binding SelectedColumn}" MinWidth="100"/>
                                         <Label Content="{x:Static localisation:Resources.TableCreator_References}" />
                                         <ComboBox ItemsSource="{Binding ReferencableTables, Mode=OneWay}" SelectedItem="{Binding SelectedTable}" MinWidth="100"/>
-                                        <ComboBox ItemsSource="{Binding ReferencableColumns, Mode=OneWay}" MinWidth="100"/>
+                                        <ComboBox ItemsSource="{Binding ReferencableColumns, Mode=OneWay}" SelectedItem="{Binding SelectedReferencedColumn}" MinWidth="100"/>
                                     </DockPanel>
                                 </DataTemplate>
                             </ItemsControl.Resources>

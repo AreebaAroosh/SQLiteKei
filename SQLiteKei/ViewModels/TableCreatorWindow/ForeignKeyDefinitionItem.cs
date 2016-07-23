@@ -78,6 +78,13 @@ namespace SQLiteKei.ViewModels.TableCreatorWindow
             set { availableTables = value; NotifyPropertyChanged("ReferencableTables"); }
         }
 
+        private string selectedReferencedColumn;
+        public string SelectedReferencedColumn
+        {
+            get { return selectedReferencedColumn; }
+            set { selectedReferencedColumn = value; NotifyPropertyChanged("SelectedReferencedColumn"); }
+        }
+
         private ObservableCollection<string> referencableColumns;
         public ObservableCollection<string> ReferencableColumns
         {
