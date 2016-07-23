@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Label Content="{x:Static localisation:Resources.TableCreator_Label_Database}" />
-            <ComboBox x:Name="DatabaseComboBox" Width="150" Height="20" ItemsSource="{Binding Databases}">
+            <ComboBox x:Name="DatabaseComboBox" Width="150" Height="20" ItemsSource="{Binding Databases}" SelectedItem="{Binding SelectedDatabase}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate DataType="{x:Type cmodel:DatabaseSelectItem}">
                         <TextBlock Text="{Binding DatabaseName}" VerticalAlignment="Center" ToolTip="{Binding DatabasePath}"></TextBlock>
@@ -49,6 +49,26 @@
                             </ItemsControl.Resources>
                         </ItemsControl>
                         <Button Style="{StaticResource ButtonLight}" Content="{x:Static localisation:Resources.TableCreator_ButtonText_AddColumn}" Click="AddColumn" />
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="{x:Static localisation:Resources.TableCreator_TabHeader_ForeignKeys}">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding ForeignKeyDefinitions}">
+                            <ItemsControl.Resources>
+                                <DataTemplate DataType="{x:Type model:ForeignKeyDefinitionItem}">
+                                    <DockPanel Margin="0 2">
+                                        <Label Content="{x:Static localisation:Resources.TableCreator_ForeignKey}" />
+                                        <ComboBox ItemsSource="{Binding AvailableColumns, Mode=OneWay}" SelectedItem="{Binding SelectedColumn}" MinWidth="100"/>
+                                        <Label Content="{x:Static localisation:Resources.TableCreator_References}" />
+                                        <ComboBox ItemsSource="{Binding ReferencableTables, Mode=OneWay}" SelectedItem="{Binding SelectedTable}" MinWidth="100"/>
+                                        <ComboBox ItemsSource="{Binding ReferencableColumns, Mode=OneWay}" MinWidth="100"/>
+                                    </DockPanel>
+                                </DataTemplate>
+                            </ItemsControl.Resources>
+                        </ItemsControl>
+                        <Button Style="{StaticResource ButtonLight}" Content="+" Click="AddForeignKey"/>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>

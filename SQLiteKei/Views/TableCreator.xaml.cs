@@ -10,6 +10,7 @@ using SQLiteKei.ViewModels.TableCreatorWindow;
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace SQLiteKei.Views
 {
@@ -73,6 +74,11 @@ namespace SQLiteKei.Views
         private void AddColumn(object sender, RoutedEventArgs e)
         {
             viewModel.AddColumnDefinition();
+        }
+
+        private void AddForeignKey(object sender, RoutedEventArgs e)
+        {
+            viewModel.AddForeignKeyDefinition();
         }
     }
 }

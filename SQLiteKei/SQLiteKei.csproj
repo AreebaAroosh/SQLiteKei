@@ -221,6 +221,7 @@
     <Compile Include="ViewModels\QueryEditorWindow\QueryEditorViewModel.cs" />
     <Compile Include="ViewModels\SelectQueryWindow\OrderItem.cs" />
     <Compile Include="ViewModels\TableCreatorWindow\ColumnDefinitionItem.cs" />
+    <Compile Include="ViewModels\TableCreatorWindow\ForeignKeyDefinitionItem.cs" />
     <Compile Include="ViewModels\TableCreatorWindow\TableCreatorViewModel.cs" />
     <Compile Include="Views\Preferences.xaml.cs">
       <DependentUpon>Preferences.xaml</DependentUpon>

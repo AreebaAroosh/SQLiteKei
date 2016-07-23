@@ -294,6 +294,9 @@
   <data name="TableCreator_ButtonText_AddColumn" xml:space="preserve">
     <value>Spalte hinzufügen</value>
   </data>
+  <data name="TableCreator_ForeignKey" xml:space="preserve">
+    <value>Fremdschlüssel</value>
+  </data>
   <data name="TableCreator_Label_Database" xml:space="preserve">
     <value>Datenbank</value>
   </data>
@@ -306,8 +309,14 @@
   <data name="TableCreator_NoDatabaseSelected" xml:space="preserve">
     <value>Keine Datenbank ausgewählt</value>
   </data>
+  <data name="TableCreator_References" xml:space="preserve">
+    <value>referenziert</value>
+  </data>
   <data name="TableCreator_TabHeader_Columns" xml:space="preserve">
     <value>Spalten</value>
+  </data>
+  <data name="TableCreator_TabHeader_ForeignKeys" xml:space="preserve">
+    <value>Fremdschlüssel</value>
   </data>
   <data name="TableCreator_TableCreateSuccess" xml:space="preserve">
     <value>Tabelle erfolgreich erzeugt!</value>

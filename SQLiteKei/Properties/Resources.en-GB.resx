@@ -294,6 +294,9 @@
   <data name="TableCreator_ButtonText_AddColumn" xml:space="preserve">
     <value>Add column</value>
   </data>
+  <data name="TableCreator_ForeignKey" xml:space="preserve">
+    <value>Foreign key</value>
+  </data>
   <data name="TableCreator_Label_Database" xml:space="preserve">
     <value>Database</value>
   </data>
@@ -306,8 +309,14 @@
   <data name="TableCreator_NoDatabaseSelected" xml:space="preserve">
     <value>No database selected</value>
   </data>
+  <data name="TableCreator_References" xml:space="preserve">
+    <value>references</value>
+  </data>
   <data name="TableCreator_TabHeader_Columns" xml:space="preserve">
     <value>Columns</value>
+  </data>
+  <data name="TableCreator_TabHeader_ForeignKeys" xml:space="preserve">
+    <value>Foreign Keys</value>
   </data>
   <data name="TableCreator_TableCreateSuccess" xml:space="preserve">
     <value>Table created successfully!</value>
