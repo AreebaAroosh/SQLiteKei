@@ -9,18 +9,14 @@ namespace SQLiteKei.Views
     /// </summary>
     public partial class Preferences : Window
     {
-        private PreferencesViewModel viewModel;
-
         public Preferences()
         {
-            viewModel = new PreferencesViewModel();
-            DataContext = viewModel;
+            DataContext = new PreferencesViewModel();
             InitializeComponent();
         }
 
-        private void ApplySettings(object sender, RoutedEventArgs e)
+        private void Close(object sender, RoutedEventArgs e)
         {
-            viewModel.ApplySettings();
             Close();
         }
     }

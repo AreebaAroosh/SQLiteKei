@@ -4,9 +4,13 @@ using SQLiteKei.Helpers;
 
 using System.Collections.Generic;
 using System;
+using SQLiteKei.Commands;
 
 namespace SQLiteKei.ViewModels.PreferencesWindow
 {
+    /// <summary>
+    /// The ViewModel for the preference window
+    /// </summary>
     public class PreferencesViewModel
     {
         private readonly ILog log = LogHelper.GetLogger();
@@ -67,9 +71,11 @@ namespace SQLiteKei.ViewModels.PreferencesWindow
             {
                 "Dark", "Light"
             };
+
+            applySettingsCommand = new DelegateCommand(ApplySettings);
         }
 
-        internal void ApplySettings()
+        private void ApplySettings()
         {
             ApplyLanguage();
             ApplyApplicationTheme();
@@ -77,6 +83,10 @@ namespace SQLiteKei.ViewModels.PreferencesWindow
             Properties.Settings.Default.Save();
             Properties.Settings.Default.Reload();
         }
+
+        private readonly DelegateCommand applySettingsCommand;
+
+        public DelegateCommand ApplySettingsCommand { get { return applySettingsCommand; } }
 
         private void ApplyLanguage()
         {
