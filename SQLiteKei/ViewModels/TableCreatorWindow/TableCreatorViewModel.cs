@@ -1,4 +1,9 @@
-﻿using SQLiteKei.DataAccess.QueryBuilders;
+﻿using log4net;
+
+using SQLiteKei.Commands;
+using SQLiteKei.DataAccess.Database;
+using SQLiteKei.DataAccess.QueryBuilders;
+using SQLiteKei.Helpers;
 using SQLiteKei.ViewModels.Base;
 using SQLiteKei.ViewModels.Common;
 
@@ -12,18 +17,20 @@ namespace SQLiteKei.ViewModels.TableCreatorWindow
 {
     public class TableCreatorViewModel : NotifyingModel
     {
+        private readonly ILog logger = LogHelper.GetLogger();
+
         private DatabaseSelectItem selectedDatabase;
         public DatabaseSelectItem SelectedDatabase
         {
             get { return selectedDatabase; }
-            set { selectedDatabase = value; UpdateSelectedDatabaseOnForeignKeys(); }
-        }
-
-        private void UpdateSelectedDatabaseOnForeignKeys()
-        {
-            foreach(var foreignKey in ForeignKeyDefinitions)
+            set
             {
-                foreignKey.SelectedDatabasePath = selectedDatabase.DatabasePath;
+                selectedDatabase = value;
+
+                foreach (var foreignKey in ForeignKeyDefinitions)
+                {
+                    foreignKey.SelectedDatabasePath = selectedDatabase.DatabasePath;
+                }
             }
         }
 
@@ -71,10 +78,13 @@ namespace SQLiteKei.ViewModels.TableCreatorWindow
             Databases = new List<DatabaseSelectItem>();
             ColumnDefinitions = new ObservableCollection<ColumnDefinitionItem>();
             ForeignKeyDefinitions = new ObservableCollection<ForeignKeyDefinitionItem>();
-            sqlStatement = string.Empty;
 
             ColumnDefinitions.CollectionChanged += CollectionContentChanged;
             ForeignKeyDefinitions.CollectionChanged += CollectionContentChanged;
+
+            addColumnCommand = new DelegateCommand(AddColumnDefinition);
+            addForeignKeyCommand = new DelegateCommand(AddForeignKeyDefinition);
+            createCommand = new DelegateCommand(Create);
         }
 
         private void CollectionContentChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -158,10 +168,14 @@ namespace SQLiteKei.ViewModels.TableCreatorWindow
             }
         }
 
-        public void AddColumnDefinition()
+        private void AddColumnDefinition()
         {
             ColumnDefinitions.Add(new ColumnDefinitionItem());
         }
+
+        private readonly DelegateCommand addColumnCommand;
+
+        public DelegateCommand AddColumnCommand { get { return addColumnCommand; } }
 
         public void AddForeignKeyDefinition()
         {
@@ -179,5 +193,44 @@ namespace SQLiteKei.ViewModels.TableCreatorWindow
 
             ForeignKeyDefinitions.Add(foreignKeyDefinition);
         }
+
+        private readonly DelegateCommand addForeignKeyCommand;
+
+        public DelegateCommand AddForeignKeyCommand { get { return addForeignKeyCommand; } }
+
+        private void Create()
+        {
+            StatusInfo = string.Empty;
+
+            if (SelectedDatabase == null)
+            {
+                StatusInfo = LocalisationHelper.GetString("TableCreator_NoDatabaseSelected");
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(SqlStatement))
+            {
+                var database = SelectedDatabase as DatabaseSelectItem;
+                var dbHandler = new DatabaseHandler(database.DatabasePath);
+
+                try
+                {
+                    if (SqlStatement.StartsWith("CREATE TABLE", StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        dbHandler.ExecuteNonQuery(SqlStatement);
+                        StatusInfo = LocalisationHelper.GetString("TableCreator_TableCreateSuccess");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    logger.Error("An error occured when the user tried to create a table from the TableCreator.", ex);
+                    StatusInfo = ex.Message.Replace("SQL logic error or missing database\r\n", "SQL-Error - ");
+                }
+            }
+        }
+
+        private readonly DelegateCommand createCommand;
+
+        public DelegateCommand CreateCommand { get { return createCommand; } }
     }
 }

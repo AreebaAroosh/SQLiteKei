@@ -48,7 +48,7 @@
                                 </DataTemplate>
                             </ItemsControl.Resources>
                         </ItemsControl>
-                        <Button Style="{StaticResource ButtonLight}" Content="{x:Static localisation:Resources.TableCreator_ButtonText_AddColumn}" Click="AddColumn" />
+                        <Button Style="{DynamicResource ButtonLight}" Content="{x:Static localisation:Resources.TableCreator_ButtonText_AddColumn}" Command="{Binding AddColumnCommand}" />
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
@@ -68,7 +68,7 @@
                                 </DataTemplate>
                             </ItemsControl.Resources>
                         </ItemsControl>
-                        <Button Style="{StaticResource ButtonLight}" Content="+" Click="AddForeignKey"/>
+                        <Button Style="{DynamicResource ButtonLight}" Content="+" Command="{Binding AddForeignKeyCommand}"/>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
@@ -84,10 +84,10 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Button Style="{StaticResource ButtonDark}" Grid.Column="0" Margin="5 3" Padding="5 0" Content="{x:Static localisation:Resources.ButtonText_Create}" 
-                    Click="Create" IsEnabled="{Binding IsValidTableDefinition}"/>
-            <TextBox Grid.Column="1" Style="{StaticResource SelectableLabelTextBox}" Text="{Binding StatusInfo}"></TextBox>
-            <Button Style="{StaticResource ButtonDark}" Grid.Column="2" Margin="5 3" Padding="5 0" Content="{x:Static localisation:Resources.ButtonText_Cancel}" IsCancel="True" />
+            <Button Style="{DynamicResource ButtonDark}" Grid.Column="0" Margin="5 3" Padding="5 0" Content="{x:Static localisation:Resources.ButtonText_Create}" 
+                    Command="{Binding CreateCommand}" IsEnabled="{Binding IsValidTableDefinition}"/>
+            <TextBox Grid.Column="1" Style="{DynamicResource SelectableLabelTextBox}" Text="{Binding StatusInfo}" />
+            <Button Style="{DynamicResource ButtonDark}" Grid.Column="2" Margin="5 3" Padding="5 0" Content="{x:Static localisation:Resources.ButtonText_Cancel}" IsCancel="True" />
         </Grid>
     </Grid>
 </Window>

@@ -191,6 +191,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Helpers\DatabaseTabGenerator.cs" />
     <Compile Include="Helpers\Interfaces\ITreeSaveHelper.cs" />
